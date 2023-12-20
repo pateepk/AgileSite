@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="CMSApp.CMSWebParts.WTE.Custom.Modules.WTE_UserPicture"  Codebehind="WTE_UserPicture.ascx.cs" %>
+<asp:Literal ID="ltlImage" runat="server" EnableViewState="false" />

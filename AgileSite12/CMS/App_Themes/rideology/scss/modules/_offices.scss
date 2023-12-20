@@ -1,0 +1,50 @@
+//regular offices template
+//wrapped in auto-grid
+.office-item, 
+.office-detail {
+	
+	a {
+		color: $text-color;
+		
+		&:hover {
+			color: $brand-2;
+			text-decoration: none;
+		}
+	}
+	
+	h4 {
+		border-bottom: 1px solid $border;
+		margin-bottom: .25rem;
+	}
+	
+	dt {
+		font-weight: 600;
+		font-size: .8rem;
+		text-transform: uppercase;
+		color: $text-muted;
+	}
+}
+
+
+// template with maps
+.map-container {
+	@extend %shad-fade;
+	padding: 2px;
+	background: white;
+	margin-bottom: 1rem;
+}
+
+.map-popup {
+	color: $gray-7;
+	
+	h3 {
+		font-size: .9rem;
+		margin-bottom: .25rem;
+	}
+}
+
+// title & link only - used with map layout
+.office-basic {
+	text-align: center;
+}
+

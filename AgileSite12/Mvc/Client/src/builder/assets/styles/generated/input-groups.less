@@ -1,0 +1,230 @@
+//
+// Input groups
+// --------------------------------------------------
+
+
+// Display as table-cell
+// -------------------------
+.ktc-input-group-btn {
+    display: table-cell;
+
+    &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+    }
+}
+// Addon and addon wrapper for buttons
+.ktc-input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle; // Match the inputs
+}
+
+// Button input groups - updated for textbox with additional actions
+// -------------------------
+.ktc-input-group-btn {
+    white-space: nowrap;
+    position: absolute;
+    width: auto;
+    text-align: right;
+    right: 0;
+    top: @input-height-base - @input-border-width;
+
+    > .ktc-btn + .ktc-btn.ktc-btn-first {
+        margin-left: @base-unit * 0.25;
+    }
+}
+
+textarea + .ktc-input-group-btn {
+    top: -@input-height-base + @input-border-width;
+}
+
+.ktc-input-group-btn > .ktc-btn {
+    height: @input-height-base;
+    width: @input-height-base;
+    padding: 0;
+    margin: 0;
+    // Jankily prevent input button groups from wrapping
+    + .ktc-btn {
+        margin-left: -4px;
+    }
+    // Bring the "active" button to the front
+    &:hover,
+    &:active {
+        z-index: 2;
+    }
+}
+
+.ktc-input-group-btn:last-child > .ktc-btn:not(:first-child):not(.ktc-btn-first) {
+    border-left: 1px solid @btn-default-box-shadow;
+}
+
+// Inputs with buttons shown on focus
+.ktc-cms-input-group {
+    position: relative;
+    width: 100%;
+
+    .ktc-input-group-btn {
+        .ktc-sr-only;
+        z-index: @zindex-dropdown;
+
+        &:hover, &:focus {
+            .ktc-sr-only-disabled;
+        }
+
+        .ktc-btn-default:focus:not(:hover), .ktc-btn-default:active:not(:hover) {
+            background-color: @btn-default-bg;
+        }
+    }
+
+    input:focus + .ktc-input-group-btn, textarea:focus + .ktc-input-group-btn {
+        .ktc-sr-only-disabled;
+    }
+}
+
+// Obsolete styling for "responsive form group"
+.ktc-cms-form-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    width: 100%;
+
+    .ktc-form-control {
+        display: block;
+    }
+
+    .ktc-cms-form-group-btn, .ktc-cms-form-group-text {
+        width: 1px;
+        min-width: @base-unit * 0.5;
+        display: table-cell;
+        &:extend(.ktc-cms-bootstrap .ktc-clearfix all);
+
+        &:first-child span {
+            padding-left: 0;
+        }
+    }
+
+    .ktc-cms-form-group-btn, .ktc-cms-form-group-text, .ktc-cms-form-group-input {
+        display: table-cell;
+        position: relative;
+        white-space: nowrap;
+        vertical-align: middle;
+        font-size: 0;
+
+        .ktc-btn {
+            margin-left: @base-unit * 0.5;
+            font-size: @font-size-base;
+        }
+
+        span {
+            padding-left: @base-unit * 0.5;
+            font-size: @font-size-base;
+            vertical-align: middle;
+            font-weight: bold;
+        }
+
+        & + .ktc-cms-form-group-input {
+            padding-left: @base-unit * 0.5;
+        }
+    }
+}
+
+// Forced inline grouping, used for example in collision dialog in Online Marketing
+.ktc-control-group-inline-forced {
+    .ktc-control-group-inline;
+
+    div {
+        display: inline !important;
+        vertical-align: top !important;
+    }
+}
+
+// Controls get margins to be wrapped on new line correctly
+.ktc-control-group-inline-wrap {
+    .ktc-btn {
+        margin-left: 0;
+        margin-right: @base-unit * 0.5;
+        margin-bottom: @base-unit * 0.5;
+    }
+}
+
+// Group for inline controls - use for special controls
+.ktc-control-group-inline {
+    .ktc-fix-white-space();
+
+    .ktc-button-explanation-text {
+        margin-top: @base-unit * 0.375;
+        margin-left: @base-unit * 0.5;
+        display: inline-block;
+        float: left;
+    }
+
+    .ktc-btn, .ktc-btn-dropdown {
+        vertical-align: top;
+    }
+
+    .ktc-form-control,
+    .ktc-radio,
+    .ktc-checkbox {
+        .ktc-inline-input();
+    }
+
+    .ktc-checkbox-no-label {
+        .ktc-inline-input();
+        margin-right: 0;
+    }
+
+    .ktc-form-control-text {
+        margin-top: @base-unit * 0.375;
+        margin-right: @base-unit * 0.5;
+        font-size: @font-size-base;
+        display: inline-block;
+    }
+
+    & + .ktc-control-group-inline,
+    & + .ktc-control-group-inline-forced {
+        margin-top: @base-unit * 0.5;
+    }
+
+    .ktc-cms-icon-80 {
+        margin-top: @base-unit * 0.25;
+    }
+
+    .ktc-control-group-inline,
+    .ktc-btns-vertical {
+        display: inline-block;
+        vertical-align: top;
+        white-space: nowrap; // For responsive, we'll need media query here
+    }
+
+    .ktc-checkbox {
+        margin-top: @base-unit * 0.375;
+    }
+
+    .ktc-btn-group + .ktc-checkbox {
+        margin-left: @base-unit;
+    }
+
+    .ktc-btn.ktc-btn-icon + .ktc-form-control-text {
+        margin-left: @base-unit * 0.5;
+    }
+
+    .ktc-input-label {
+        color: @color-blue-70;
+        .ktc-text-semibold();
+    }
+}
+
+// Use for display explanation text inline
+.ktc-control-group-units .ktc-explanation-text {
+    margin-top: @base-unit * 0.375;
+    margin-right: @base-unit * 0.5;
+    font-size: @font-size-base;
+    display: inline-block;
+}
+
+// Page template selector with buttons below. E.ktc-g. in Modules
+.ktc-btns-vertical {
+    &.ktc-btns-vertical-page-template {
+        margin-top: @base-unit * 0.75;
+    }
+}

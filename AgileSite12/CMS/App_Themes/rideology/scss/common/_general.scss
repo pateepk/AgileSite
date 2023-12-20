@@ -1,0 +1,33 @@
+.no-svg .icon-only:after {    
+    content: attr(aria-label);  
+}
+
+video[autoplay]:not([muted]) {    
+    display: none;  
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+small, 
+.small {
+	font-size: 80%;
+}
+
+.clearfix {
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+	}
+	
+	&:after {
+		clear: both;
+	}
+}
+
+
+
+

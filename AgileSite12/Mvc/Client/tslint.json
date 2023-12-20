@@ -1,0 +1,31 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**"
+    ]
+  },
+  "jsRules": {},
+  "rules": {
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "member-access": false,
+    "object-literal-sort-keys": false,
+    "max-line-length": [true, 180],
+    "ban": [
+      true,
+      { "name": ["*", "includes"], "message": "String.prototype.includes and Array.prototype.includes is not supported in IE 11"},
+      { "name": ["*", "findIndex"], "message": "Array.prototype.findIndex is not supported in IE 11"},
+      { "name": ["*", "find"], "message": "Array.prototype.find is not supported in IE 11"}
+    ],
+    "triple-equals": true,
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "no-return-await": true,
+    "no-floating-promises": true, // Requires Type Info
+    "await-promise": true // Requires Type Info
+  },
+  "rulesDirectory": []
+}

@@ -1,0 +1,43 @@
+@import 'src/builder/assets/styles/shared.less';
+
+@selectedValueSectionHeight: 3 * @base-unit;
+
+:host {
+  .ktc-page-selector {
+    padding: 0 0 0 @base-unit;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    .ktc-selected-value-wrapper {
+      height: @selectedValueSectionHeight + 1px; // height + border height because of box-sizing
+      line-height: @selectedValueSectionHeight;
+      width: calc(100% - 2 * @base-unit);
+      bottom: 0;
+      position: absolute;
+
+      &:before {
+        .dialog-line();
+      }
+
+      .ktc-selected-value {
+        line-height: @selectedValueSectionHeight;
+        padding-left: @base-unit;
+        white-space: nowrap;
+        display: flex;
+
+        .ktc-selected-value-label {
+          color: #0f6194;
+          font-weight: 600;
+        }
+
+        .ktc-selected-value-path-left-part {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-left: 0.5 * @base-unit;
+        }
+      }
+    }
+  }
+}

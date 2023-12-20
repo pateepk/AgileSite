@@ -1,0 +1,20 @@
+﻿@using Kentico.Components.Web.Mvc.Dialogs.Internal
+@using Kentico.Builder.Web.Mvc.Internal
+
+@model KenticoDialogErrorViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    @Html.Kentico().WebComponentsStyle()
+    <link href="@Url.Content("~/Kentico/Content/Selectors/Dialogs/Shared/error-page.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="ktc-message-box">
+        @Model.ErrorMessage
+    </div>
+</body>
+</html>

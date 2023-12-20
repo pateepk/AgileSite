@@ -1,0 +1,38 @@
+.ktc-admin-ui {
+  kentico-widget-header {
+    position: absolute;
+    z-index: @active-element-addon-z-index;
+    margin-left: (-1 * @border-width);
+    display: block;
+    width: @widget-width-including-border;
+
+    &.ktc-widget-header--top {
+      top: -1 * @widget-header-height;
+    }
+
+    &.ktc-widget-header--bottom {
+      bottom: -1 * (@widget-header-height - 1);
+    }
+  }
+}
+
+.ktc-section {
+  &.ktc-section--dragged,
+  &.ktc-draggable-mirror {
+    .ktc-admin-ui {
+      kentico-widget-header {
+        display: none !important;
+      }
+    }
+  }
+}
+
+.ktc-widget {
+  &.ktc-widget--dragged {
+    .ktc-admin-ui {
+      kentico-widget-header {
+        display: none !important;
+      }
+    }
+  }
+}

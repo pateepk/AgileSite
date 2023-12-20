@@ -1,0 +1,1 @@
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="CMSApp.CMSWebParts.WTE.Rideology.ValidateUser" CodeBehind="ValidateUser.ascx.cs" %> 

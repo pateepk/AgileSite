@@ -1,0 +1,35 @@
+.ktc-selector-header h4 {
+    text-align: left;
+    border-bottom: 1px solid @color-gray-140;
+    line-height: 0.1em;
+    height: 0.1em;
+    margin: @base-unit @base-unit @base-unit 0;
+
+    span {
+        background-color: @color-white;
+        padding: 0 @base-unit;
+    }
+}
+
+.ktc-selector-messages {
+    padding: @base-unit / 2 @base-unit 0;
+}
+
+.ktc-selector-no-templates {
+    display: none;
+    padding: @base-unit;
+}
+
+.ktc-selector-no-templates.ktc-show {
+    display: block;
+}
+
+.ktc-selector-image {
+    max-height: @base-unit * 8.5;
+    max-width: @base-unit * 8.5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%) translateY(4px);
+    transform: translate(-50%, ~"calc(-50% + 4px)");
+}

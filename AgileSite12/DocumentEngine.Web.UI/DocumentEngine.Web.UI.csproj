@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{68AF54B9-B6B4-4119-9590-E120F5605775}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>CMS.DocumentEngine.Web.UI</AssemblyName>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CMS.DocumentEngine.Web.UI</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.DocumentEngine.Web.UI.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>..\Output\Release\CMS\CMS.DocumentEngine.Web.UI.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml">
+      <Name>System.Xml</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Configuration\TabItem.cs" />
+    <Compile Include="ControlProperties\Abstract\CMSAbstractControlProperties.cs" />
+    <Compile Include="ControlProperties\Abstract\CMSAbstractBaseProperties.cs" />
+    <Compile Include="ControlProperties\Abstract\CMSAbstractDataProperties.cs" />
+    <Compile Include="ControlProperties\Abstract\CMSAbstractMenuProperties.cs" />
+    <Compile Include="ControlProperties\Abstract\CMSAbstractQueryProperties.cs" />
+    <Compile Include="ControlProperties\CMSMapProperties.cs" />
+    <Compile Include="ControlsV2\UniView\BasicUniView.cs" />
+    <Compile Include="ControlsV2\UniView\CMSUniView.cs" />
+    <Compile Include="ControlsV2\Transformations\HierarchicalTransformationInfo.cs" />
+    <Compile Include="ControlsV2\Transformations\HierarchicalTransformations.cs" />
+    <Compile Include="ControlsV2\UniView\QueryUniView.cs" />
+    <Compile Include="ControlsV2\Transformations\TransformationConditionTypeEnum.cs" />
+    <Compile Include="ControlsV2\UniView\SubLevelPlaceHolder.cs" />
+    <Compile Include="DataSources\Documents\LanguageDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\MacroDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Extenders\AlternativeUrlsConstraintControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Handlers\ContentUploader.cs" />
+    <Compile Include="MassActions\DocumentListMassActionsParameters.cs" />
+    <Compile Include="MassActions\DocumentListMassActionsUrlGenerator.cs" />
+    <Compile Include="EditableContent\CMSObjectManagementButtons.cs" />
+    <Compile Include="Filters\CMSAbstractRecycleBinFilterControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Filters\FilterHelper.cs" />
+    <Compile Include="Module\BackwardCompatibilityHandlers.cs" />
+    <Compile Include="Module\DocumentEngineWebUIModuleMetadata.cs" />
+    <Compile Include="Module\DocumentEngineWebUIModule.cs" />
+    <Compile Include="Module\Handlers\TransformationEvalEventArgs.cs" />
+    <Compile Include="Module\Handlers\TransformationEvalHandler.cs" />
+    <Compile Include="Module\DocumentEngineWebUIEvents.cs" />
+    <Compile Include="Paging\IUniPageableContainer.cs" />
+    <Compile Include="Paging\UniPagerConnector.cs" />
+    <Compile Include="DataSources\General\WebServiceDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\General\SQLDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditableContent\CMSHtmlEditor.cs" />
+    <Compile Include="Selectors\MediaSelector.cs" />
+    <Compile Include="DataSources\Documents\AttachmentsDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\CMSBaseDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paging\IUniPageable.cs" />
+    <Compile Include="Paging\UniPager.cs" />
+    <Compile Include="Paging\UniPagerEnums.cs" />
+    <Compile Include="Paging\UniPagerItem.cs" />
+    <Compile Include="DataSources\Documents\CMSControlDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\Documents\CMSDocumentsDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\CMSQueryDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\CustomTableDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\FileSystemDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\UsersDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSources\General\XMLDataSource.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditableContent\CMSEditableImage.cs" />
+    <Compile Include="EditableContent\CMSEditableRegion.cs" />
+    <Compile Include="EditableContent\CMSEditableRegionTypeEnum.cs" />
+    <Compile Include="EditableContent\CMSEditModeButtonAdd.cs" />
+    <Compile Include="EditableContent\CMSEditModeButtonEditDelete.cs" />
+    <Compile Include="Filters\CMSAbstractBaseFilterControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Filters\CMSAbstractControlFilterControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Filters\CMSAbstractDataFilterControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoFramesLiteral.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Syndication\AtomFeed.cs" />
+    <Compile Include="Syndication\AtomRepeater.cs" />
+    <Compile Include="Syndication\RSSFeed.cs" />
+    <Compile Include="Templates\SaveAsTemplateButtonActionProvider.cs" />
+    <Compile Include="Transformations\TempITemplate.cs" />
+    <Compile Include="Transformations\TransformationMethods.cs">
+    </Compile>
+    <Compile Include="Transformations\TransformationHelper.cs">
+    </Compile>
+    <Compile Include="Transformations\TextTransformationTemplate.cs" />
+    <Compile Include="Maps\BasicBingMaps.cs" />
+    <Compile Include="Transformations\TransformationNamespace.cs" />
+    <Compile Include="Transformations\TransformationNotFoundException.cs" />
+    <Compile Include="Transformations\TransformationResolvers.cs" />
+    <Compile Include="Viewers\Basic\BasicCalendar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Viewers\Basic\BasicDataGrid.cs" />
+    <Compile Include="Viewers\Basic\BasicDataList.cs" />
+    <Compile Include="Viewers\Basic\BasicDataPager.cs" />
+    <Compile Include="Maps\BasicGoogleMaps.cs" />
+    <Compile Include="Viewers\Basic\BasicMultiColumnTable.cs" />
+    <Compile Include="Viewers\Basic\BasicRepeater.cs" />
+    <Compile Include="Viewers\Basic\BasicRepeaterWithEffect.cs" />
+    <Compile Include="Viewers\Basic\BasicTabControl.cs" />
+    <Compile Include="Filters\CMSAbstractQueryFilterControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transformations\CMSAbstractTransformation.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlProperties\CMSBaseProperties.cs" />
+    <Compile Include="Navigation\CMSBreadCrumbs.cs" />
+    <Compile Include="Maps\CMSAbstractMap.cs" />
+    <Compile Include="Viewers\Documents\CMSCalendar.cs" />
+    <Compile Include="ControlProperties\CMSControlProperties.cs" />
+    <Compile Include="CMSControlsHelper.cs" />
+    <Compile Include="Viewers\Documents\CMSDataGrid.cs" />
+    <Compile Include="Viewers\Documents\CMSDataList.cs" />
+    <Compile Include="ControlProperties\CMSDataProperties.cs" />
+    <Compile Include="Viewers\Documents\CMSDocumentComparison.cs" />
+    <Compile Include="Viewers\Documents\CMSDocumentValue.cs" />
+    <Compile Include="Transformations\CMSErrorTransformation.cs" />
+    <Compile Include="Navigation\CMSListMenu.cs" />
+    <Compile Include="Search\CMSSearchDialog.cs" />
+    <Compile Include="Search\CMSSearchResults.cs" />
+    <Compile Include="Viewers\Documents\CMSRepeaterWithEffect.cs" />
+    <Compile Include="Viewers\Pagers\CMSTextPager.cs" />
+    <Compile Include="Navigation\CMSTreeView.cs" />
+    <Compile Include="ColorPicker.cs" />
+    <Compile Include="ContentProvider.cs" />
+    <Compile Include="ControlsV2\UniView\UniViewEnums.cs" />
+    <Compile Include="ControlsV2\UniView\UniView.cs" />
+    <Compile Include="ControlsV2\UniView\UniViewItem.cs" />
+    <Compile Include="Viewers\ControlLayoutEnum.cs" />
+    <Compile Include="Viewers\Query\QueryRepeaterWithEffect.cs" />
+    <Compile Include="Viewers\Pagers\DataPager.cs" />
+    <Compile Include="Selectors\ImageSelector.cs" />
+    <Compile Include="Viewers\Documents\GoogleSitemap.cs" />
+    <Compile Include="Viewers\Query\QueryDataGrid.cs" />
+    <Compile Include="ControlProperties\CMSQueryProperties.cs" />
+    <Compile Include="Viewers\Documents\CMSRepeater.cs" />
+    <Compile Include="Navigation\CMSSiteMap.cs" />
+    <Compile Include="Navigation\CMSTabControl.cs" />
+    <Compile Include="ControlProperties\CMSMenuProperties.cs" />
+    <Compile Include="Viewers\Documents\CMSViewer.cs" />
+    <Compile Include="Viewers\Documents\CMSViewerViewModeEnum.cs" />
+    <Compile Include="ControlProperties\Interfaces\ICMSBaseProperties.cs" />
+    <Compile Include="ControlProperties\Interfaces\ICMSDataProperties.cs" />
+    <Compile Include="ControlProperties\Interfaces\ICMSMenuProperties.cs" />
+    <Compile Include="ControlProperties\Interfaces\ICMSControlProperties.cs" />
+    <Compile Include="ControlProperties\Interfaces\ICMSQueryProperties.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Viewers\Query\QueryDataList.cs" />
+    <Compile Include="Viewers\Query\QueryRepeater.cs" />
+    <Compile Include="Navigation\TabControlLayoutEnum.cs" />
+    <Compile Include="Syndication\RSSRepeater.cs" />
+    <Compile Include="Viewers\Pagers\TemplateDataPager.cs" />
+    <Compile Include="Syndication\XMLRepeater.cs" />
+    <Compile Include="ViewStateDebug.cs" />
+    <Compile Include="Web References\WS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base.Web.UI\Base.Web.UI.csproj">
+      <Project>{aab21685-08cb-42d6-b70f-cafb766c0903}</Project>
+      <Name>Base.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine.Web.UI\FormEngine.Web.UI.csproj">
+      <Project>{71a95f61-5a1d-42d2-aa36-071a2d201754}</Project>
+      <Name>FormEngine.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169ad9d-510c-4196-9a44-bc1bcb957dfb}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine.Web.UI\PortalEngine.Web.UI.csproj">
+      <Project>{a7f95b77-a99a-4753-9084-ba691fc786e1}</Project>
+      <Name>PortalEngine.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceProfiles\DeviceProfiles.csproj">
+      <Project>{6e43ddf3-893d-4915-8828-ef7d40f1396e}</Project>
+      <Name>DeviceProfiles</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization.Web.UI\Globalization.Web.UI.csproj">
+      <Project>{212db99a-6e9f-4947-a34b-c6b799d63338}</Project>
+      <Name>Globalization.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomTables\CustomTables.csproj">
+      <Project>{AC9C8173-831E-4CF6-B68D-23620865F819}</Project>
+      <Name>CustomTables</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Routing.Web\Routing.Web.csproj">
+      <Project>{BD2F25A8-9315-4341-AAC3-E9731922DDB2}</Project>
+      <Name>Routing.Web</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Taxonomy\Taxonomy.csproj">
+      <Project>{d9a44465-6411-4bd5-9939-25f571deac4e}</Project>
+      <Name>Taxonomy</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WS\WebService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/CMS/CMSPages/WebService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS\</RelPath>
+      <UpdateFromURL>http://localhost/CMS/CMSPages/WebService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CMS_DocumentEngine_Web_UI_WS_WebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WS\WebService.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

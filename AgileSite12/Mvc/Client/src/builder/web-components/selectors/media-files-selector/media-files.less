@@ -1,0 +1,83 @@
+@tree-width: 11.5 * @base-unit;
+@header-height: @base-unit * 4;
+
+:host {
+  @import 'src/builder/assets/styles/icon-font.less';
+  @import 'src/builder/assets/styles/generated/mixins.less';
+  @import 'src/builder/assets/styles/forms.less';
+
+  height: 100%;
+
+  .ktc-container {
+    height: 100%;
+
+    .ktc-header {
+      margin: 0 @base-unit;
+      height: @header-height;
+      overflow: hidden;
+      border-bottom: solid 1px @color-gray-140;
+
+      .ktc-header-content {
+        margin: @base-unit 0;
+
+        .ktc-media-filter {
+          float: right;
+          width: @input-max-width;
+        }
+      }
+    }
+
+    .ktc-content {
+      display: flex;
+      height: calc(100% - @header-height - 1px);
+      overflow: hidden;
+      padding-left: @base-unit;
+
+      kentico-media-files-tree {
+        width: @tree-width;
+        border-right: solid 1px @color-gray-140;
+        overflow: auto;
+      }
+
+      .ktc-files-container {
+        flex: 1;
+        overflow: auto;
+      }
+
+      .ktc-loader-container-wrapper {
+        flex: 1;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .ktc-loader-container {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+      }
+    }
+
+    .ktc-message-box {
+      margin: @base-unit;
+    }
+  }
+
+  .ktc-counter {
+    cursor: default;
+    position: absolute;
+    bottom: 0;
+    right: @base-unit * 1.5;
+    background-color: @color-gray-140;
+    padding: @base-unit / 8 @base-unit / 2;
+    opacity: 0;
+    transition: .5s ease;
+  }
+
+  .ktc-counter-visible {
+    transition-property: opacity, bottom;
+    bottom: @base-unit / 2;
+    opacity: 1;
+  }
+}

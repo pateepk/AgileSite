@@ -1,0 +1,42 @@
+@import 'src/builder/assets/styles/generated/loader.less';
+@import 'src/builder/assets/styles/generated/component-animations.less';
+@import 'src/builder/assets/styles/shared.less';
+@import 'src/builder/assets/styles/icon-font.less';
+
+:host {
+  width: 100%;
+  height: 100%;
+
+  .ktc-loader-wrapper {
+    width: 100%;
+    height: 100%;
+
+    .ktc-overlayer {
+      display: block;
+      position: absolute;
+      width: 100%;
+    }
+
+    .ktc-loader {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 2 * @base-unit;
+
+      * {
+        color: @color-white;
+      }
+
+      .icon-spinner {
+        .icon-spinner();
+        font-size: @icon-size-100;
+        height: @icon-size-100;
+        width: @icon-size-100;
+        padding: @base-unit * 0.25;
+      }
+    }
+  }
+}

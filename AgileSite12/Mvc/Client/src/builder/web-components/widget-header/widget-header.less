@@ -1,0 +1,76 @@
+.ktc-admin-ui {
+
+  @import 'src/builder/assets/styles/shared.less';
+  @import 'src/builder/assets/styles/icon-font.less';
+  
+  kentico-widget-header {
+
+    .ktc-widget-header {
+      background-color: @color-blue-70;
+      box-sizing: border-box;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+
+      width: 100%;
+      padding: 0 (0.125 * @base-unit);
+
+      .ktc-widget-header-icon {
+        white-space: nowrap;
+
+        i {
+          color: @color-white;
+          padding:(0.5 * @base-unit) (0.25 * @base-unit);
+        }
+      }
+
+      .ktc-widget-header-handle {
+        // Set grab cursor if the browser supports it, else set the cursor to default move cursor (only in IE)
+        * {
+          cursor: move;
+          cursor: grab;
+        }
+      }
+
+      .ktc-widget-header-panel-left {
+        display: table-cell;
+
+        .icon-dots-vertical {
+          .icon-dots-vertical();
+        }
+      }
+
+      .ktc-widget-header-panel-title {
+        display: table-cell;
+        width: 100%;
+        position: relative;
+        font-size: @base-unit;
+
+        .ktc-widget-header-title-text {
+          color: @color-white;
+          line-height: @widget-header-height;
+          padding: 0 (0.25 * @base-unit);
+          font-size: 0.8em;
+
+          // Display ellipsis for small widget header
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .ktc-widget-header-panel-right {
+        display: table-cell;
+        padding-right: 0.125 * @base-unit;
+        white-space: nowrap;
+
+        .icon-bin {
+          cursor: pointer;
+          .icon-bin();
+        }
+      }
+    }
+  }
+}

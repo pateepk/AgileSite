@@ -1,0 +1,10 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model EmailInputComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+    htmlAttributes["type"] = "email";
+}
+
+@Html.TextBoxFor(m => m.Email, htmlAttributes)

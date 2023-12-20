@@ -1,0 +1,26 @@
+﻿@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+
+@{
+    Layout = null;
+}
+
+@model List<FormComponent>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ResHelper.GetString("kentico.formbuilder.formitempreview.title")</title>
+    @Html.Kentico().FormsScripts()
+    @Html.Kentico().FormBuilderStyles()
+</head>
+<body>
+    <div class="ktc-form-horizontal">
+        <div class="ktc-editing-form-design-mode ktc-editing-form-category-fields">
+            @Html.Kentico().FormFields(Model, SystemRenderingConfigurations.PreviewField)
+        </div>
+    </div>
+</body>
+</html>

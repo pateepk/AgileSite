@@ -1,0 +1,23 @@
+﻿@using Kentico.Forms.Web.Mvc
+@using Kentico.Forms.Web.Mvc.Internal;
+
+@{
+    Layout = null;
+}
+
+@model ErrorPage
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+    @Html.Kentico().FormBuilderStyles()
+</head>
+<body>
+    <div>
+        <span>@Model.ErrorMessage</span>
+    </div>
+</body>
+</html>

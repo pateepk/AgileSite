@@ -1,0 +1,259 @@
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Base styles
+// --------------------------------------------------
+
+// Core styles
+.ktc-btn {
+    display: inline-block;
+    padding: 0 @padding-base-horizontal;
+    margin: 0;
+    font-size: @font-size-base;
+    .ktc-text-semibold();
+    line-height: @btn-line-height;
+    width: auto;
+    height: @btn-height;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: @border-radius-large;
+    white-space: nowrap;
+    user-select: none;
+    text-shadow: none;
+
+    &:focus {
+        .ktc-tab-focus();
+    }
+
+    &:hover {
+        color: @btn-default-color;
+        text-decoration: none;
+    }
+
+    &:active,
+    &.ktc-active {
+        outline: 0;
+        background-image: none;
+    }
+    // Disabled buttons - which are not icons
+    &.ktc-btn-disabled:not(.ktc-btn-icon),
+    &[disabled]:not(.ktc-btn-icon),
+    &:disabled:not(.ktc-btn-icon) {
+        .ktc-action-disabled();
+        text-shadow: none;
+        box-shadow: none;
+    }
+    // Disabled button icons
+    &.ktc-btn-icon.ktc-btn-disabled,
+    &.ktc-btn-icon[disabled] {
+        .ktc-opacity(0.5);
+    }
+
+    i {
+        padding-right: @base-unit * 0.5;
+        font-size: @base-unit;
+        position: relative;
+    }
+
+    &.ktc-icon-only {
+        padding: 0 @btn-icononly-padding;
+		font-family: @icon-font-name; 
+
+        &.ktc-js-_move {
+            cursor: move;
+        }
+
+        i {
+            padding-right: 0;
+        }
+    }
+    // Groups of more buttons
+    + .ktc-btn {
+        margin-left: @padding-small-horizontal;
+    }
+
+    .ktc-cms-icon-30 {
+        .ktc-cms-icon-30;
+    }
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+// Default button
+.ktc-btn-default {
+    .ktc-button-variant(@btn-default-color;
+    @btn-default-bg;
+    @btn-default-box-shadow
+    );
+    box-shadow: @btn-default-box-shadow 0 -@btn-shadow-width 0 inset;
+
+    i {
+        color: @color-gray-70;
+    }
+}
+
+// Primary button
+.ktc-btn-primary {
+    .ktc-button-variant(@btn-primary-color;
+    @btn-primary-bg;
+    @btn-primary-box-shadow
+    );
+    box-shadow: @btn-primary-box-shadow 0 -@btn-shadow-width 0 inset;
+
+    .ktc-badge {
+        color: @color-white;
+    }
+}
+
+// Secondary button
+.ktc-btn-secondary {
+    .ktc-button-variant(@btn-secondary-color;
+    @btn-secondary-bg;
+    @btn-secondary-box-shadow
+    );
+    box-shadow: @btn-secondary-box-shadow 0 -@btn-shadow-width 0 inset;
+
+    .ktc-badge {
+        color: @color-white;
+    }
+}
+
+// Exception
+.ktc-btn-default {
+    &:hover,
+    &:active {
+        color: @btn-default-color;
+        background-color: @color-gray-100;
+        border-color: @color-gray-100;
+        box-shadow: @color-gray-100 0 -@btn-shadow-width 0 inset;
+
+        .ktc-badge {
+            color: @btn-default-color;
+        }
+    }
+
+    &.ktc-active {
+        background: @btn-secondary-bg;
+        color: @btn-secondary-color;
+        box-shadow: @btn-secondary-box-shadow 0 -@btn-shadow-width 0 inset;
+
+        .ktc-badge {
+            color: @btn-secondary-color;
+        }
+    }
+}
+
+// Button without background with hover on icon
+.ktc-btn-icon {
+    background: none;
+    color: @color-gray-70;
+    box-shadow: none;
+
+    &.ktc-btn {
+        margin: 0;
+		font-family: @icon-font-name;
+    }
+    // Fix for IE (and other browsers) ignoring 'pointer-events: none'
+    &:hover[disabled] {
+        color: @color-gray-70;
+    }
+
+    &:hover:not([disabled]),
+    &:focus {
+        text-decoration: none;
+        background: none;
+        box-shadow: none;
+
+        & i {
+            color: @color-blue-70;
+        }
+    }
+
+    .ktc-icon-disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+
+        &:hover {
+            color: inherit;
+        }
+    }
+}
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+.ktc-btn-link {
+    color: @link-color;
+    font-weight: normal;
+    cursor: pointer;
+    border-radius: 0;
+    text-decoration: underline;
+
+    &,
+    &:active,
+    &[disabled] {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+        &,
+        &:hover,
+        &:active {
+            border-color: transparent;
+        }
+
+            &:hover {
+                color: @link-hover-color;
+                text-decoration: underline;
+                background-color: transparent;
+            }
+
+            &[disabled] {
+                &:hover {
+                    color: @btn-link-disabled-color;
+                    text-decoration: none;
+                }
+            }
+}
+
+
+// Button which expands a dropdown menu
+.ktc-btn-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle; // match .ktc-btn alignment given font-size hack above
+    > .ktc-btn {
+        position: relative;
+        float: left;
+        // Bring the "active" button to the front
+        &:hover,
+        &:active,
+        &.ktc-active {
+            z-index: @zindex-btn-group-active;
+        }
+
+        > .ktc-caret {
+            color: @color-gray-70;
+            .ktc-cms-icon-30;
+            padding-right: @base-unit * 0.5;
+            position: relative;
+            right: -@padding-base-horizontal;
+            bottom: @base-unit * 0.125; // ~2px
+            border: none;
+            vertical-align: baseline;
+        }
+
+        &:focus {
+            // Remove focus outline when dropdown JS adds it after closing the menu
+            outline: none;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+/* ---- articles, news & press releases -------------------------*/
+.article { 
+	//articles is using card layout from layout/shared file
+	
+	h1 {
+		margin: 0;
+	}
+	
+	.date {
+		font-size: .75rem;
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+	
+	.author {
+
+	}
+	
+	.teaser {
+		height: 20vh;
+		width: 100%;
+		position: relative;
+		margin-bottom: 1rem;
+		
+		img {
+			object-fit: cover;
+			height: 20vh;
+			width: 100%;
+		}
+	}
+	
+	.caption {
+		background: rgba($gray-1, .7);
+		color: $gray-9;
+		position: absolute;
+		width: 100%;
+		bottom: .125rem;
+		left: 0;
+		text-align: center;
+		padding: .25rem;
+		font-size: .75rem;
+	}
+	
+	
+}
+

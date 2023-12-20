@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E801189A-C7F3-48D9-A452-88989046C478}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.DancingGoat.Samples</RootNamespace>
+    <AssemblyName>CMS.DancingGoat.Samples</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.DancingGoat.Samples.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.DancingGoat.Samples.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Data\SmartSearch\AzureSearchWebPartGenerator.cs" />
+    <Compile Include="Data\DataProtectionDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\ABTestAndConversionDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\Campaigns\ActivityDataParameters.cs" />
+    <Compile Include="Data\OnlineMarketing\Campaigns\CampaignConversionData.cs" />
+    <Compile Include="Data\OnlineMarketing\Campaigns\CampaignData.cs" />
+    <Compile Include="Data\OnlineMarketing\Campaigns\CampaignDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\Campaigns\CampaignDataGeneratorHelpers.cs" />
+    <Compile Include="Data\OnlineMarketing\Campaigns\ContactsIDData.cs" />
+    <Compile Include="Data\SmartSearch\AzureSearchWebPartValidator.cs" />
+    <Compile Include="Data\SampleWebPartsGenerator.cs" />
+    <Compile Include="Data\SamplesGenerator\ISampleDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\Campaigns\CampaignContactsDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\ContactGroupSubscribersDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\NewslettersDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\OnlineMarketingDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\ScoringWithRulesGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\PersonaWithRulesGenerator.cs" />
+    <Compile Include="IdentityCollectors\SampleContactInfoIdentityCollector.cs" />
+    <Compile Include="IdentityCollectors\SampleCustomerInfoIdentityCollector.cs" />
+    <Compile Include="Module\DataProtectionSamplesModule.cs" />
+    <Compile Include="PersonalDataCollectors\CollectedColumn.cs" />
+    <Compile Include="PersonalDataCollectors\SampleContactDataCollector.cs" />
+    <Compile Include="PersonalDataCollectors\SampleContactDataCollectorCore.cs" />
+    <Compile Include="PersonalDataCollectors\SampleCustomerDataCollector.cs" />
+    <Compile Include="PersonalDataCollectors\SampleCustomerDataCollectorCore.cs" />
+    <Compile Include="PersonalDataCollectors\Writers\HumanReadablePersonalDataWriter.cs" />
+    <Compile Include="PersonalDataCollectors\Writers\IPersonalDataWriter.cs" />
+    <Compile Include="PersonalDataCollectors\Writers\XmlPersonalDataWriter.cs" />
+    <Compile Include="PersonalDataErasers\SampleCustomerPersonalDataEraser.cs" />
+    <Compile Include="PersonalDataErasers\SampleContactPersonalDataEraser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\EcommerceSampleDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\OnlineMarketingSampleDataGenerator.cs" />
+    <Compile Include="Data\OnlineMarketing\WebAnalyticsDataGenerator.cs" />
+    <Compile Include="ResponsiveImages\Definitions\LargeSizeImageVariantDefinition.cs" />
+    <Compile Include="ResponsiveImages\Definitions\MediumSizeImageVariantDefinition.cs" />
+    <Compile Include="ResponsiveImages\Definitions\SmallSizeImageVariantDefinition.cs" />
+    <Compile Include="ResponsiveImages\Definitions\SmallSquareImageVariantDefinition.cs" />
+    <Compile Include="ResponsiveImages\Definitions\TeaserImageVariantDefinition.cs" />
+    <Compile Include="ResponsiveImages\Filters\CropImageFilter.cs" />
+    <Compile Include="ResponsiveImages\Filters\ResizeImageFilter.cs" />
+    <Compile Include="Tasks\EnableDataProtectionSampleTask.cs" />
+    <Compile Include="Tasks\RevokeTrackingConsentTask.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Activities\Activities.csproj">
+      <Project>{DC7FDFAA-4C8A-4D6F-8572-AC4F789E2494}</Project>
+      <Name>Activities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManagement\ContactManagement.csproj">
+      <Project>{77BDFFCB-2AEA-4B58-B7DA-A1B69A1E7F22}</Project>
+      <Name>ContactManagement</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProtection\DataProtection.csproj">
+      <Project>{631799c8-855d-4488-8188-3f7749c40356}</Project>
+      <Name>DataProtection</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceProfiles\DeviceProfiles.csproj">
+      <Project>{6E43DDF3-893D-4915-8828-EF7D40F1396E}</Project>
+      <Name>DeviceProfiles</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Ecommerce\Ecommerce.csproj">
+      <Project>{C333C520-6F02-4C22-B1CF-33D6E4599CA7}</Project>
+      <Name>Ecommerce</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{D9B92F71-4497-4050-A75D-0F9C84DFBE6B}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{C78D0DDE-11B5-4BBA-98C0-756EBB98228A}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Newsletters\Newsletters.csproj">
+      <Project>{51729DE3-8BFF-4943-B5CD-CC63DDCB3E56}</Project>
+      <Name>Newsletters</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineForms\OnlineForms.csproj">
+      <Project>{6780157E-48DF-4254-B455-D9CEBE73250F}</Project>
+      <Name>OnlineForms</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineMarketing\OnlineMarketing.csproj">
+      <Project>{A687FF7A-9726-4C43-8A28-0E6C5F7CDAE3}</Project>
+      <Name>OnlineMarketing</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Personas\Personas.csproj">
+      <Project>{FFA27418-83D1-43C5-B73A-844C3D5404CF}</Project>
+      <Name>Personas</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ResponsiveImages\ResponsiveImages.csproj">
+      <Project>{9fad4c1e-0aff-4a11-89dc-a238305938b1}</Project>
+      <Name>ResponsiveImages</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{F21C925B-3AA1-4139-9706-BA5073527A8F}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search.Azure\Search.Azure.csproj">
+      <Project>{537705da-ccbe-4525-bf55-b9f0da5a0df4}</Project>
+      <Name>Search.Azure</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAnalytics\WebAnalytics.csproj">
+      <Project>{C2B6B91C-1D58-4531-8893-388960AFAA80}</Project>
+      <Name>WebAnalytics</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine.Web.UI\PortalEngine.Web.UI.csproj">
+      <Project>{A7F95B77-A99A-4753-9084-BA691FC786E1}</Project>
+      <Name>PortalEngine.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,37 @@
+@import 'src/builder/assets/styles/generated/mixins.less';
+
+kentico-page-selector-form-component {
+
+  .ktc-page-selector-form-component-wrapper {
+    width: @input-max-width;
+
+    .ktc-page-selector-form-component {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @import 'src/builder/assets/styles/icon-font.less';
+      @import 'src/builder/assets/styles/generated/icon-classes.less';
+
+      .ktc-page-selector-selected-page {
+        flex: 1;
+        .ktc-text-overflow();
+
+        i {
+          vertical-align: bottom;
+          margin-bottom: 2px;
+        }
+
+        &.ktc-invalid-value,
+        &.ktc-invalid-value i {
+          color: @color-orange-80;
+        }
+      }
+
+      .ktc-page-selector-buttons {
+        margin-left: @base-unit * 0.5;
+      }
+    }
+  }
+}

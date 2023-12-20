@@ -1,0 +1,73 @@
+// Styles for form layout and basic form components
+@import "./generated/utilities.less";
+@import "./generated/variables.less";
+@import "./generated/mixins.less";
+@import "./generated/type.less";
+@import "./generated/forms.less";
+@import "./generated/buttons.less";
+@import "./generated/button-groups.less";
+@import "./generated/input-groups.less";
+
+@import "./generated/component-animations.less";
+
+.ktc-file-component-wrapper {
+  display: inline-block;
+  width: 100%;
+
+  .ktc-uploader-text {
+    max-width: ~"calc(100% - 26px)";
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: bottom;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .ktc-uploader-icon-button {
+    font-family: @icon-font-name;
+    font-size: @base-unit * 1.15;
+    position: absolute;
+    right: 6px;
+    color: @color-gray-80;
+    line-height: 20px;
+  }
+
+  .ktc-uploader-icon-button[data-icon="select"]::before {
+    content: @icon-arrow-up-line;
+  }
+
+  .ktc-uploader-icon-button[data-icon="loading"]::before {
+    content: @icon-spinner;
+    display: inline-block;
+    animation: spin 1.2s infinite linear;
+  }
+
+  .ktc-uploader-icon-button[data-icon="remove"] {
+    cursor: pointer;
+  }
+
+  .ktc-uploader-icon-button[data-icon="remove"]::before {
+    content: @icon-bin;
+  }
+
+  .ktc-uploader-text-button {
+    display: none;
+  }
+
+  .ktc-uploader-replacement {
+    display: none;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  label {
+    .ktc-form-control;
+    
+    max-width: @base-unit * 20;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+}

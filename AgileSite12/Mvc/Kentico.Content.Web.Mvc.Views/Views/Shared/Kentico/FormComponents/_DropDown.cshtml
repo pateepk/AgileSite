@@ -1,0 +1,9 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model DropDownComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+}
+
+@Html.DropDownListFor(x => x.SelectedValue, Model.Items, ResHelper.LocalizeString(Model.Properties.OptionLabel), htmlAttributes)

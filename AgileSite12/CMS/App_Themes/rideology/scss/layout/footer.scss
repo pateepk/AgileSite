@@ -1,0 +1,163 @@
+.foot1 {
+	background: $accent;
+	color: shade($accent,40);
+	
+	.container >div {
+		padding: 1rem;
+		text-align: center;
+		border-bottom: 1px solid shade($accent,10);
+	}
+		
+	h4 {
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: 700;
+		margin: 1rem 0 0;
+		color: shade($accent,40);
+	}
+	
+	a {
+		display: block;
+		line-height: 1;
+		color: shade($accent,40);
+		margin: .5rem 0;
+		font-size: .9rem;
+		
+		&:hover {
+			color: shade($accent,80);
+			text-decoration: none;
+		}
+	}
+	
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	.social {
+		margin-top: 1rem;
+		
+		a {
+			display: inline-block;
+			font-size: 28px;
+			margin: .5rem;
+			text-decoration: none;
+		}
+	}
+	
+	.mail-list {
+			margin: 1rem 0;
+			position: relative;
+			text-align: center;
+			
+			a {
+				display: inline-block;
+				text-decoration: none;
+				font-size: 1.1rem;
+				
+				&:hover {
+					text-decoration: none;
+				}
+			}
+			
+			label {
+				position: absolute;
+				top: -1.2rem;
+				left: 3rem;
+				font-size: .85rem;
+				color: $gray-3;
+			}
+			
+			input[type="text"] {
+				width: 180px;
+				
+				@media (min-width: 600px) {
+					width: 310px;
+				}
+			}
+		}
+	
+	@media (min-width: $mid) {
+		
+		.container {
+			
+			>div {
+				border-left: 1px solid shade($accent,10);
+				text-align: left;
+				border-bottom: none;
+				
+				&:first-child {
+					border: none;
+				}
+			}
+		
+			@supports (display: grid) {
+				display: grid;
+				grid-gap: .5rem;
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+	}
+}
+
+.foot2 {
+	background: $gray-8;
+
+	
+	.foot2a {
+		//not used in current layout
+		padding: 1rem;
+		
+		> div {
+			text-align: center;
+		}
+		
+
+			
+		@media (min-width: $wide) {
+			@supports (display: grid) {
+				display: grid;
+				grid-gap: .5rem;
+				grid-template-columns: 1fr 1fr;
+				align-items: center;
+			}
+		}
+	}
+	
+	.foot2b {
+		font-size: .75rem;
+		color: $gray-4;
+		text-align: center;
+		padding: .5rem 0;
+		
+		> div {
+			margin: .25rem 0;
+		}
+		
+		a {
+			color: $gray-4;
+			
+			&:hover {
+				color: $gray-2;
+			}
+		}
+		
+		@media (min-width: $mid) {
+			@supports (display: grid) {
+				display: grid;
+				grid-gap: .25rem;
+				grid-template-columns: repeat(3, 1fr);
+				
+				> div:first-child {
+					text-align: left;
+				}
+				
+				> div:last-child {
+					text-align: right;
+				}
+			}
+		}
+	}
+}
+

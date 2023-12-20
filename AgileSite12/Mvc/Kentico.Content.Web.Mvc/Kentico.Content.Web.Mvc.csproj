@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{430A1ADD-4583-459F-879C-A22A61E44A3B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kentico.Content.Web.Mvc</RootNamespace>
+    <AssemblyName>Kentico.Content.Web.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Output\Debug\MVC\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Output\Debug\MVC\Kentico.Content.Web.Mvc.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Output\Release\MVC\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Output\Release\MVC\Kentico.Content.Web.Mvc.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Forms\Components\Services\FileUploaderComponentService.cs" />
+    <Compile Include="Forms\Components\Services\IFileUploaderComponentService.cs" />
+    <Compile Include="Forms\Controllers\KenticoFormFileUploaderController.cs" />
+    <Compile Include="Forms\FormFileUploadLimitService.cs" />
+    <Compile Include="Forms\IFormFileUploadLimitService.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\BoolIsSetValidationRule.cs" />
+    <Compile Include="Handlers\GetBizFormFileHandler.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentViewNameUtils.cs" />
+    <Compile Include="Content\ContentGlobalFilters.cs" />
+    <Compile Include="PageBuilder\Configuration\ComponentPropertiesProcessor.cs" />
+    <Compile Include="PageBuilder\PageBuilderFormComponentContext.cs" />
+    <Compile Include="PageBuilder\RichTextProcessing\IPreviewLinksConverter.cs" />
+    <Compile Include="PageBuilder\RichTextProcessing\PreviewLinksConverter.cs" />
+    <Compile Include="Routing\AlternativeUrls\AlternativeUrlsService.cs" />
+    <Compile Include="Routing\AlternativeUrls\IAlternativeUrlsService.cs" />
+    <Compile Include="Selectors\Dialogs\Shared\ActionFilters\VirtualContextAuthorizeAttribute.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\MediaFilesSelectorAllowedExtensions.cs" />
+    <Compile Include="Selectors\FormComponents\Page\PageSelectorBase.cs" />
+    <Compile Include="Selectors\FormComponents\Page\PageSelectorItem.cs" />
+    <Compile Include="Forms\Components\FormComponents\FileUploaderComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\FileUploaderProperties.cs" />
+    <Compile Include="Selectors\Dialogs\Shared\ViewModels\KenticoDialogErrorViewModel.cs" />
+    <Compile Include="Selectors\FormComponents\MediaFiles\MediaFilesSelectorItem.cs" />
+    <Compile Include="Selectors\FormComponents\Page\PageSelector.cs" />
+    <Compile Include="Forms\FormComponents\Filters\FormComponentFilterContext.cs" />
+    <Compile Include="Selectors\FormComponents\Page\PageSelectorPropertiesBase.cs" />
+    <Compile Include="Selectors\FormComponents\Page\PageSelectorProperties.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentControllerExtensions.cs" />
+    <Compile Include="PageBuilder\Registration\ICustomViewNameComponentDefinition.cs" />
+    <Compile Include="Routing\AlternativeUrls\AlternativeUrlsCache.cs" />
+    <Compile Include="Routing\AlternativeUrls\MainDocumentData.cs" />
+    <Compile Include="Routing\AlternativeUrls\IAlternativeUrlsCache.cs" />
+    <Compile Include="PageBuilder\Routes\ComponentControllerConstraint.cs" />
+    <Compile Include="Routing\Extensions\ApplicationBuilderExtensions.cs" />
+    <Compile Include="Routing\Extensions\PageRoutingOptions.cs" />
+    <Compile Include="Routing\Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Routing\Routes\AlternativeUrlConstraint.cs" />
+    <Compile Include="Routing\Routes\AlternativeUrlRedirectHttpHandler.cs" />
+    <Compile Include="Routing\Routes\AlternativeUrlsRouteConstants.cs" />
+    <Compile Include="Routing\Routes\RouteCollectionExtensions.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\HtmlHelperModalDialogsExtensions.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\HtmlHelperWebComponentsExtensions.cs" />
+    <Compile Include="ComponentDefinitions\ComponentDefinitionBase.cs" />
+    <Compile Include="Builder\BuilderConstants.cs" />
+    <Compile Include="Builder\Bundles\BundleOrderer.cs" />
+    <Compile Include="Builder\Bundles\ComponentStyleBundler.cs" />
+    <Compile Include="Builder\Context\CurrentHttpContextProvider.cs" />
+    <Compile Include="Builder\Context\ICurrentHttpContextProvider.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\AllowedDomainsRetriever.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\BuilderAssetsProvider.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\BuilderAssetsProviderFactory.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\BuilderScriptConfiguration.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\IAllowedDomainsRetriever.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\IBuilderAssetsProvider.cs" />
+    <Compile Include="Builder\HelperMethods\HtmlHelper\IBuilderAssetsProviderFactory.cs" />
+    <Compile Include="Builder\Localization\ComponentLocalizationService.cs" />
+    <Compile Include="Builder\Localization\IComponentLocalizationService.cs" />
+    <Compile Include="Builder\Localization\ILocalizationScriptProvider.cs" />
+    <Compile Include="Builder\Localization\KenticoLocalizationScriptController.cs" />
+    <Compile Include="Builder\Localization\LocalizationScriptProvider.cs" />
+    <Compile Include="ComponentDefinitions\ComponentRegister.cs" />
+    <Compile Include="Builder\Routes\BuilderRoutes.cs" />
+    <Compile Include="Builder\Routes\RouteCollectionExtensions.cs" />
+    <Compile Include="ComponentFilters\IComponentFilter.cs" />
+    <Compile Include="Forms\FormComponents\Filters\IFormComponentFilter.cs" />
+    <Compile Include="Forms\FormBuilderFilters.cs" />
+    <Compile Include="Forms\Extensions\FormComponentDefinitionEnumerableExtensions.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentController.cs" />
+    <Compile Include="PageBuilder\Components\Base\IComponentPropertiesRetriever.cs" />
+    <Compile Include="PageBuilder\Components\Base\IComponentViewModel.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\PageTemplatesSelectorViewModel.cs" />
+    <Compile Include="PageBuilder\PageTemplates\HelperMethods\PageTemplateScriptConfiguration.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\IMediaLibraryDataLoader.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\IMediaLibraryFolderStructureLoader.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\Models\MediaLibraryItem.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\Controllers\KenticoMediaFilesUploaderController.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\ViewModels\KenticoMediaFilesDialogViewModel.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\MediaLibraryDataLoader.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\Models\MediaLibraryFileItem.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\MediaLibraryFolderStructureLoader.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\Models\MediaLibraryFolderNode.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\ActionFilters\MediaLibraryActionFilterAttribute.cs" />
+    <Compile Include="Selectors\Dialogs\Pages\KenticoPageSelectorDialogController.cs" />
+    <Compile Include="Selectors\Dialogs\Pages\Models\PageSelectorItemModel.cs" />
+    <Compile Include="Selectors\Dialogs\Pages\PageSelectorPagesRepository.cs" />
+    <Compile Include="Selectors\Dialogs\Pages\ViewModels\KenticoPageSelectorViewModel.cs" />
+    <Compile Include="Selectors\FormComponents\MediaFiles\MediaFilesSelector.cs" />
+    <Compile Include="Selectors\Dialogs\MediaFiles\Controllers\KenticoMediaFilesDialogController.cs" />
+    <Compile Include="Selectors\FormComponents\MediaFiles\MediaFilesSelectorProperties.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\KenticoPageTemplatesSelectorDialogController.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\KenticoPageTemplateDefaultController.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Filters\CustomPageTemplateProvider.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Filters\PageTemplateDefinitionProvider.cs" />
+    <Compile Include="Content\CookiePolicyDetection\CookiePolicyDetection.cs" />
+    <Compile Include="Content\CookiePolicyDetection\RouteCollectionExtensions.cs" />
+    <Compile Include="Forms\Components\Widgets\FormWidgetExtensions.cs" />
+    <Compile Include="Forms\Components\Widgets\FormWidgetForm.cs" />
+    <Compile Include="Forms\ModelBinding\ModelMetadataHelper.cs" />
+    <Compile Include="Forms\Rendering\FormWidget\FormWidgetRenderingConfiguration.cs" />
+    <Compile Include="Forms\Rendering\FormWidget\FormWrapperRenderingConfiguration.cs" />
+    <Compile Include="Forms\Rendering\FormWidget\GetFormWidgetRenderingConfigurationEventArgs.cs" />
+    <Compile Include="Forms\Rendering\GetFormFieldRenderingConfigurationEventArgs.cs" />
+    <Compile Include="Forms\Rendering\FormWidget\GetFormWidgetRenderingConfigurationHandler.cs" />
+    <Compile Include="Forms\Rendering\GetFormFieldRenderingConfigurationHandler.cs" />
+    <Compile Include="Forms\Rendering\RenderingConfigurationUtils.cs" />
+    <Compile Include="Forms\SystemFilters\EditorRowExceptionFilterAttribute.cs" />
+    <Compile Include="Forms\SystemFilters\FormSectionExceptionFilterAttribute.cs" />
+    <Compile Include="Forms\SystemFilters\FormWidgetExceptionFilterAttribute.cs" />
+    <Compile Include="Forms\SystemFilters\PropertiesPanelExceptionFilterAttribute.cs" />
+    <Compile Include="Forms\Extensions\FormExtensions_1.cs" />
+    <Compile Include="Forms\Utils\EditingComponentUtils.cs" />
+    <Compile Include="Module\ContentWebMvcModule.cs" />
+    <Compile Include="Forms\Components\FormComponents\BoolComparisonTypeSelectorComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\NumericComparisonTypeSelectorComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\StringComparisonTypeSelectorComponent.cs" />
+    <Compile Include="Forms\Components\FormSections\KenticoDefaultFormSectionController.cs" />
+    <Compile Include="Builder\Bundles\ComponentScriptBundler.cs" />
+    <Compile Include="Forms\Component\Context\SaveBizFormItemEventArgs.cs" />
+    <Compile Include="Forms\Component\Context\SaveBizFormItemHandler.cs" />
+    <Compile Include="Forms\Configuration\FormBuilderConfigurationRetriever.cs" />
+    <Compile Include="Forms\Configuration\IFormBuilderConfigurationRetriever.cs" />
+    <Compile Include="Forms\Extensions\FormComponentExtensions.cs" />
+    <Compile Include="Forms\Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Forms\Extensions\VisibilityConditionDefinitionExtensions.cs" />
+    <Compile Include="Forms\FormBuilderFeature.cs" />
+    <Compile Include="Forms\FormComponents\Attributes\CheckLicenseAttribute.cs" />
+    <Compile Include="Forms\FormComponents\Attributes\RequiresFeaturesAttribute.cs" />
+    <Compile Include="Forms\ExtensionsInternal\ModelStateDictionaryExtensions.cs" />
+    <Compile Include="Forms\Components\FormComponents\SelectorFormComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\ConsentSelectorComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\DropDownComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\RadioButtonsComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\RecaptchaComponent.cs" />
+    <Compile Include="Forms\FormComponents\Base\FormComponentConstants.cs" />
+    <Compile Include="Forms\FormComponents\Helpers\FormComponentDataTypeHelper.cs" />
+    <Compile Include="Forms\FormComponents\Helpers\SelectorDataSourceHelper.cs" />
+    <Compile Include="Forms\FormComponents\Properties\SelectorProperties.cs" />
+    <Compile Include="Forms\FormComponents\Properties\DropDownProperties.cs" />
+    <Compile Include="Forms\FormComponents\Properties\RadioButtonsProperties.cs" />
+    <Compile Include="Forms\FormComponents\Properties\RecaptchaProperties.cs" />
+    <Compile Include="Forms\Components\FormComponents\ConsentAgreementComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\ConsentAgreementProperties.cs" />
+    <Compile Include="Forms\FormInfo\IRecordedDataFormProvider.cs" />
+    <Compile Include="Forms\FormInfo\RecordedDataFormProvider.cs" />
+    <Compile Include="Forms\ModelBinding\FormComponentPrebinder.cs" />
+    <Compile Include="Forms\SystemFilters\FormBuilderApiExceptionFilterAttribute.cs" />
+    <Compile Include="Forms\Sections\ViewModel\SectionModel.cs" />
+    <Compile Include="Forms\HelperMethods\HtmlHelper\IFormBuilderAssetsProvider.cs" />
+    <Compile Include="Forms\Utils\IdentifierUtils.cs" />
+    <Compile Include="Forms\SystemFilters\FormBuilderMvcExceptionFilterAttribute.cs" />
+    <Compile Include="Forms\Utils\ScriptsBundleCollectionUtils.cs" />
+    <Compile Include="Forms\ValidationRules\Base\BoolFieldComparisonTypes.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\DecimalNumericCompareToFieldValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\DoubleNumericCompareToFieldValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\IntNumericCompareToFieldValidationRule.cs" />
+    <Compile Include="Forms\VisibilityConditions\Base\VisibilityConditionEditingComponentOrder.cs" />
+    <Compile Include="Forms\VisibilityConditions\Conditions\AnotherBoolFieldVisibilityCondition.cs" />
+    <Compile Include="Forms\VisibilityConditions\Registration\IDefaultVisibilityCondition.cs" />
+    <Compile Include="Forms\FormComponents\Attributes\SmartFieldPropertyValidationAttribute.cs" />
+    <Compile Include="Forms\Components\Widgets\KenticoFormWidgetController.cs" />
+    <Compile Include="Forms\Components\Widgets\FormWidgetProperties.cs" />
+    <Compile Include="Forms\Components\Widgets\FormWidgetViewModel.cs" />
+    <Compile Include="Forms\Components\InlineEditors\DropdownEditorViewModel.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentPropertiesRetriever.cs" />
+    <Compile Include="PageBuilder\Components\Base\IComponentProperties.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentPropertiesFormController.cs" />
+    <Compile Include="PageBuilder\Configuration\PageBuilderConfiguration.cs" />
+    <Compile Include="PageBuilder\Configuration\PageBuilderConfigurationSourceLoader.cs" />
+    <Compile Include="PageBuilder\FeatureAvailabilityCheckerFactory.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\HtmlHelperInlineEditorExtensions.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\IPageBuilderAssetsProvider.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\MvcInlineEditor.cs" />
+    <Compile Include="PageBuilder\IPageBuilderFeatureExtensions.cs" />
+    <Compile Include="PageBuilder\IPageBuilderDataContext.cs" />
+    <Compile Include="PageBuilder\IPageRetriever.cs" />
+    <Compile Include="PageBuilder\IFeatureAvailabilityChecker.cs" />
+    <Compile Include="PageBuilder\IFeatureAvailabilityCheckerFactory.cs" />
+    <Compile Include="PageBuilder\PageBuilderDataContext.cs" />
+    <Compile Include="PageBuilder\IPageBuilderInternalProperties.cs" />
+    <Compile Include="PageBuilder\PageBuilderPreviewPathDecoratorHandlers.cs" />
+    <Compile Include="PageBuilder\CurrentPageRetriever.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Configuration\IPageTemplateProperties.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Configuration\PageTemplateConfigurationSerializer.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Configuration\IPageTemplateConfigurationSerializer.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Configuration\PageTemplateConfiguration.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\KenticoPageTemplatePropertiesFormController.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\CustomPageTemplateViewModel.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Filters\IPageTemplateFilter.cs" />
+    <Compile Include="ComponentFilters\ComponentFilterCollection.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Filters\PageTemplateFilterContext.cs" />
+    <Compile Include="PageBuilder\PageBuilderFilters.cs" />
+    <Compile Include="PageBuilder\PageTemplates\PageTemplateController.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Metadata\PageTemplateMetadata.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\IPageTemplatesViewModelBuilder.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\PageTemplatesViewModelBuilder.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\PageTemplatesViewModel.cs" />
+    <Compile Include="PageBuilder\PageTemplates\PageTemplatePropertiesRetriever.cs" />
+    <Compile Include="PageBuilder\PageTemplates\TemplateResult.cs" />
+    <Compile Include="PageBuilder\Personalization\Evaluation\ConditionType.cs" />
+    <Compile Include="PageBuilder\Personalization\PersonalizationAvailabilityChecker.cs" />
+    <Compile Include="PageBuilder\Components\Sections\KenticoDefaultSectionController.cs" />
+    <Compile Include="PageBuilder\Registration\IPropertiesComponentDefinition.cs" />
+    <Compile Include="PageBuilder\Registration\IComponentDefinition.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentViewModel.cs" />
+    <Compile Include="PageBuilder\Components\Base\KenticoComponentDefaultController.cs" />
+    <Compile Include="PageBuilder\ScriptConfiguration\GetConfigurationEventArgs.cs" />
+    <Compile Include="PageBuilder\ScriptConfiguration\GetConfigurationHandler.cs" />
+    <Compile Include="PageBuilder\ScriptConfiguration\PageBuilderScriptConfigurationSource.cs" />
+    <Compile Include="PageBuilder\Routes\PageBuilderCultureRouteHandler.cs" />
+    <Compile Include="PageBuilder\Sections\Controllers\KenticoSectionPropertiesFormController.cs" />
+    <Compile Include="PageBuilder\Sections\ISectionProperties.cs" />
+    <Compile Include="PageBuilder\Sections\Registration\KenticoDefaultSection.cs" />
+    <Compile Include="PageBuilder\Sections\SectionController.cs" />
+    <Compile Include="Content\Security\SecurityAttributes\Http\CheckPagePermissionsAttribute.cs" />
+    <Compile Include="Content\Security\SecurityAttributes\Mvc\CheckPagePermissionsAttribute.cs" />
+    <Compile Include="PageBuilder\Serialization\IAnnotatedPropertiesSerializer.cs" />
+    <Compile Include="Builder\Serialization\SerializerHelper.cs" />
+    <Compile Include="PageBuilder\Serialization\AnnotatedPropertiesSerializer.cs" />
+    <Compile Include="Content\HelperMethods\AttachmentExtensions.cs" />
+    <Compile Include="Content\HelperMethods\DocumentAttachmentExtensions.cs" />
+    <Compile Include="Content\HelperMethods\FileUrlOptions.cs" />
+    <Compile Include="Content\HelperMethods\NameValueCollectionExtensions.cs" />
+    <Compile Include="Content\HelperMethods\SizeConstraint.cs" />
+    <Compile Include="Content\HelperMethods\UrlHelperFileExtensions.cs" />
+    <Compile Include="Forms\AuthorizationAttributes\Http\AuthorizeFormVirtualContextAttribute.cs" />
+    <Compile Include="Forms\AuthorizationAttributes\Mvc\AuthorizeFormVirtualContextAttribute.cs" />
+    <Compile Include="Forms\FormComponents\Attributes\DefaultValueEditingComponentAttribute.cs" />
+    <Compile Include="Forms\FormComponents\Attributes\EditingComponentAttribute.cs" />
+    <Compile Include="Forms\FormComponents\Attributes\EditingComponentPropertyAttribute.cs" />
+    <Compile Include="Forms\Component\Context\BizFormComponentContext.cs" />
+    <Compile Include="Forms\Component\Context\PropertiesPanelComponentContext.cs" />
+    <Compile Include="Forms\Component\EditingComponentConfigurator.cs" />
+    <Compile Include="Forms\FormComponents\Base\EditingComponentOrder.cs" />
+    <Compile Include="Forms\FormComponents\Base\FormComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\EmailInputProperties.cs" />
+    <Compile Include="Forms\FormComponents\Registration\FormComponentActivator.cs" />
+    <Compile Include="Forms\Component\Context\FormComponentContext.cs" />
+    <Compile Include="Forms\Component\FormComponentIdentifiers.cs" />
+    <Compile Include="Forms\FormComponents\Base\FormComponentProperties.cs" />
+    <Compile Include="Forms\Component\EditablePropertiesCollector.cs" />
+    <Compile Include="Forms\FormComponents\Base\FormComponentProperties_1.cs" />
+    <Compile Include="Forms\FormComponents\Base\FormComponent_2.cs" />
+    <Compile Include="Forms\Component\IEditingComponentConfigurator.cs" />
+    <Compile Include="Forms\FormComponents\Registration\IFormComponentActivator.cs" />
+    <Compile Include="Forms\Component\IEditablePropertiesCollector.cs" />
+    <Compile Include="Forms\Configuration\IInvalidComponentConfigurationBuilder.cs" />
+    <Compile Include="Forms\Configuration\InvalidComponentConfigurationBuilder.cs" />
+    <Compile Include="Forms\Configuration\FormBuilderConfigurationManager.cs" />
+    <Compile Include="Forms\Configuration\IFormBuilderConfigurationManager.cs" />
+    <Compile Include="Forms\Configuration\Serialization\EditableAreaConfiguration.cs" />
+    <Compile Include="Forms\Configuration\Serialization\FormBuilderConfiguration.cs" />
+    <Compile Include="Forms\Configuration\Serialization\FormBuilderConfigurationSerializer.cs" />
+    <Compile Include="Forms\Configuration\Serialization\FormBuilderTypesBinder.cs" />
+    <Compile Include="Forms\Configuration\Serialization\FormComponentConfiguration.cs" />
+    <Compile Include="Forms\Configuration\Serialization\IFormBuilderConfigurationSerializer.cs" />
+    <Compile Include="Forms\Configuration\Serialization\SectionConfiguration.cs" />
+    <Compile Include="Forms\Configuration\Serialization\UseFormBuilderJsonSerializationConfigurationAttribute.cs" />
+    <Compile Include="Forms\Configuration\Serialization\ZoneConfiguration.cs" />
+    <Compile Include="Forms\Controllers\KenticoFormBuilderConfigurationController.cs" />
+    <Compile Include="Forms\Controllers\KenticoFormBuilderController.cs" />
+    <Compile Include="Forms\Controllers\KenticoFormBuilderPropertiesPanelController.cs" />
+    <Compile Include="Forms\Controllers\KenticoFormComponentConfigurationController.cs" />
+    <Compile Include="Forms\Controllers\KenticoFormComponentMarkupController.cs" />
+    <Compile Include="Forms\Controllers\KenticoFormComponentMetadataController.cs" />
+    <Compile Include="Forms\Controllers\KenticoFormItemController.cs" />
+    <Compile Include="Forms\Controllers\KenticoValidationRuleMetadataController.cs" />
+    <Compile Include="Forms\Extensions\FormExtensions.cs" />
+    <Compile Include="Forms\Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Forms\Extensions\MessageExtensions.cs" />
+    <Compile Include="Forms\Extensions\ViewDataDictionaryExtensions.cs" />
+    <Compile Include="Forms\FormBuilderConstants.cs" />
+    <Compile Include="Forms\FormBuilderPathDecorator.cs" />
+    <Compile Include="Forms\FormBuilderUrlProcessor.cs" />
+    <Compile Include="Forms\ModelBinding\FormBuilderModelBindingContext.cs" />
+    <Compile Include="Forms\Registration\FormBuilderDefinitionProvider.cs" />
+    <Compile Include="Forms\FormComponents\Registration\FormComponentDefinition.cs" />
+    <Compile Include="Forms\FormComponents\Registration\FormComponentDefinitionProvider.cs" />
+    <Compile Include="Forms\Registration\IFormBuilderDefinition.cs" />
+    <Compile Include="Forms\Registration\IFormBuilderDefinitionProvider.cs" />
+    <Compile Include="Forms\FormComponents\Registration\IFormComponentDefinitionProvider.cs" />
+    <Compile Include="Forms\Sections\Registration\ISectionDefinitionProvider.cs" />
+    <Compile Include="Forms\Registration\RegisterComponentAttribute.cs" />
+    <Compile Include="Forms\FormComponents\Registration\RegisterFormComponentAttribute.cs" />
+    <Compile Include="Forms\Sections\Registration\RegisterFormSectionAttribute.cs" />
+    <Compile Include="Forms\Sections\Registration\SectionDefinition.cs" />
+    <Compile Include="Forms\Sections\Registration\SectionDefinitionProvider.cs" />
+    <Compile Include="Forms\Components\FormComponents\CheckBoxComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\EmailInputComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\USPhoneComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\CheckBoxProperties.cs" />
+    <Compile Include="Forms\Components\FormComponents\CompareToFieldSelectorComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\CompareToFieldSelectorProperties.cs" />
+    <Compile Include="Forms\Components\FormComponents\ComparisonTypeSelectorComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\ComparisonTypeSelectorProperties.cs" />
+    <Compile Include="Forms\Components\FormComponents\HiddenGuidInputComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\IntInputComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\IntInputProperties.cs" />
+    <Compile Include="Forms\Components\FormComponents\NameComponent.cs" />
+    <Compile Include="Forms\Components\FormComponents\TextAreaComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\TextAreaProperties.cs" />
+    <Compile Include="Forms\Components\FormComponents\TextInputComponent.cs" />
+    <Compile Include="Forms\FormComponents\Properties\HiddenGuidInputProperties.cs" />
+    <Compile Include="Forms\FormComponents\Properties\TextInputProperties.cs" />
+    <Compile Include="Forms\FormComponents\Properties\USPhoneProperties.cs" />
+    <Compile Include="Forms\FormInfo\FormComponentPropertiesMapper.cs" />
+    <Compile Include="Forms\FormInfo\FormInfoConstants.cs" />
+    <Compile Include="Forms\FormInfo\FormProvider.cs" />
+    <Compile Include="Forms\FormInfo\IFormComponentPropertiesMapper.cs" />
+    <Compile Include="Forms\FormInfo\IFormProvider.cs" />
+    <Compile Include="Forms\FormInfo\Serialization\ConfigurationsXmlSerializer.cs" />
+    <Compile Include="Forms\FormInfo\Serialization\IValidationRuleConfigurationsXmlSerializer.cs" />
+    <Compile Include="Forms\FormInfo\Serialization\IVisibilityConditionConfigurationXmlSerializer.cs" />
+    <Compile Include="Forms\FormInfo\Serialization\ValidationRuleConfigurationsXmlSerializer.cs" />
+    <Compile Include="Forms\FormInfo\Serialization\VisibilityConditionConfigurationXmlSerializer.cs" />
+    <Compile Include="Forms\HelperMethods\AttributesMethods.cs" />
+    <Compile Include="Forms\HelperMethods\FormBuilderConfigurationExtensions.cs" />
+    <Compile Include="Forms\HelperMethods\FormComponentConfigurationExtensions.cs" />
+    <Compile Include="Forms\HelperMethods\HtmlHelper\FormBuilderAssetsProvider.cs" />
+    <Compile Include="Forms\HelperMethods\HtmlHelper\FormBuilderScriptConfiguration.cs" />
+    <Compile Include="Forms\ExtensionsInternal\HtmlHelperExtensions.cs" />
+    <Compile Include="Forms\HelperMethods\HtmlHelper\AjaxHelperExtensions.cs" />
+    <Compile Include="Forms\HelperMethods\HtmlHelper\UpdatableMvcForm.cs" />
+    <Compile Include="Forms\ExtensionsInternal\UrlHelperExtensions.cs" />
+    <Compile Include="Forms\HelperMethods\StreamUtils.cs" />
+    <Compile Include="Forms\FormComponents\Metadata\FormComponentDefaultPropertiesUrlRetriever.cs" />
+    <Compile Include="Forms\FormComponents\Metadata\FormComponentMarkupUrlRetriever.cs" />
+    <Compile Include="Forms\FormComponents\Metadata\FormComponentMetadata.cs" />
+    <Compile Include="Forms\Metadata\FormComponentsMetadata.cs" />
+    <Compile Include="Forms\Metadata\FormComponentsMetadataBuilder.cs" />
+    <Compile Include="Forms\FormComponents\Metadata\IFormComponentDefaultPropertiesUrlRetriever.cs" />
+    <Compile Include="Forms\FormComponents\Metadata\IFormComponentMarkupUrlRetriever.cs" />
+    <Compile Include="Forms\Metadata\IFormComponentsMetadataBuilder.cs" />
+    <Compile Include="Forms\Sections\Metadata\ISectionMarkupUrlRetriever.cs" />
+    <Compile Include="Forms\Sections\Metadata\SectionMarkupUrlRetriever.cs" />
+    <Compile Include="Forms\Sections\Metadata\SectionMetadata.cs" />
+    <Compile Include="Forms\ModelBinding\BindablePropertyAttribute.cs" />
+    <Compile Include="Forms\ModelBinding\FormBuilderModelBinder.cs" />
+    <Compile Include="Forms\ModelBinding\UpdatableFormModelBinderAttribute.cs" />
+    <Compile Include="Forms\ModelBinding\FormComponentModelBinder.cs" />
+    <Compile Include="Forms\ModelBinding\EditablePropertiesModelBinder.cs" />
+    <Compile Include="Forms\ModelBinding\IFormComponentModelBinder.cs" />
+    <Compile Include="Forms\ModelBinding\IEditablePropertiesModelBinder.cs" />
+    <Compile Include="Forms\ModelBinding\UpdatableFormModelBinder.cs" />
+    <Compile Include="Forms\Rendering\ElementRenderingConfiguration.cs" />
+    <Compile Include="Forms\Rendering\FormFieldRenderingConfiguration.cs" />
+    <Compile Include="Forms\Rendering\SystemRenderingConfigurations.cs" />
+    <Compile Include="Forms\Routes\FormBuilderRoutes.cs" />
+    <Compile Include="Forms\Routes\FormComponentIdentifierConstraint.cs" />
+    <Compile Include="Forms\Routes\RouteCollectionExtensions.cs" />
+    <Compile Include="Forms\Routes\SectionConstraint.cs" />
+    <Compile Include="Forms\SystemComponents\InvalidComponent.cs" />
+    <Compile Include="Forms\SystemComponents\InvalidComponentProperties.cs" />
+    <Compile Include="Forms\TypeExtensions.cs" />
+    <Compile Include="Forms\Utils\StylesBundleCollectionUtils.cs" />
+    <Compile Include="Forms\Utils\ComparisonUtils.cs" />
+    <Compile Include="Forms\ValidationRules\Metadata\IValidationRulesMetadataBuilder.cs" />
+    <Compile Include="Forms\ValidationRules\Metadata\ValidationRuleConfiguration.cs" />
+    <Compile Include="Forms\ValidationRules\Metadata\ValidationRuleMetadata.cs" />
+    <Compile Include="Forms\ValidationRules\Metadata\ValidationRulesMetadataBuilder.cs" />
+    <Compile Include="Forms\ValidationRules\Registration\ValidationRuleActivator.cs" />
+    <Compile Include="Forms\ValidationRules\Registration\IValidationRuleActivator.cs" />
+    <Compile Include="Forms\ValidationRules\Registration\IValidationRuleDefinitionProvider.cs" />
+    <Compile Include="Forms\ValidationRules\Registration\RegisterFormValidationRuleAttribute.cs" />
+    <Compile Include="Forms\ValidationRules\Registration\ValidationRuleDefinition.cs" />
+    <Compile Include="Forms\ValidationRules\Registration\ValidationRuleDefinitionProvider.cs" />
+    <Compile Include="Forms\ValidationRules\Base\CompareToFieldValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Base\ICompareToFieldValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Base\ValidationRuleEditingComponentOrder.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\EmailValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\MaximumLengthValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\MaximumIntValueValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\MinimumLengthValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\MinimumIntValueValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\NumericCompareToFieldValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Base\NumericFieldComparisonTypes.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\RegularExpressionValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Base\StringFieldComparisonTypes.cs" />
+    <Compile Include="Forms\ValidationRules\Rules\StringCompareToFieldValidationRule.cs" />
+    <Compile Include="Forms\ValidationRules\Base\ValidationRule_1.cs" />
+    <Compile Include="Forms\ValidationRules\Base\ValidationRule.cs" />
+    <Compile Include="Forms\ViewModels\FormBuilderPage.cs" />
+    <Compile Include="Forms\ViewModels\ErrorPage.cs" />
+    <Compile Include="Forms\ViewModels\FormBuilderProperties.cs" />
+    <Compile Include="Forms\ViewModels\FormItemEdit.cs" />
+    <Compile Include="Forms\ViewModels\PropertiesPanel.cs" />
+    <Compile Include="Forms\ViewModels\ValidationRuleForm.cs" />
+    <Compile Include="Forms\ViewModels\VisibilityConditionForm.cs" />
+    <Compile Include="Forms\VisibilityConditions\Conditions\AnotherIntFieldVisibilityCondition.cs" />
+    <Compile Include="Forms\VisibilityConditions\Conditions\AnotherStringFieldVisibilityCondition.cs" />
+    <Compile Include="Forms\VisibilityConditions\Base\AnotherFieldVisibilityCondition.cs" />
+    <Compile Include="Forms\VisibilityConditions\Base\IAnotherFieldVisibilityCondition.cs" />
+    <Compile Include="Forms\VisibilityConditions\Evaluation\FormComponentVisibilityEvaluator.cs" />
+    <Compile Include="Forms\VisibilityConditions\Evaluation\IFormComponentVisibilityEvaluator.cs" />
+    <Compile Include="Forms\VisibilityConditions\Metadata\VisibilityConditionConfiguration.cs" />
+    <Compile Include="Forms\VisibilityConditions\Conditions\NeverVisibleVisibilityCondition.cs" />
+    <Compile Include="Forms\VisibilityConditions\Metadata\VisibilityConditionConfigurationJsonConverter.cs" />
+    <Compile Include="Forms\VisibilityConditions\Registration\IVisibilityConditionActivator.cs" />
+    <Compile Include="Forms\VisibilityConditions\Registration\IVisibilityConditionDefinitionProvider.cs" />
+    <Compile Include="Forms\VisibilityConditions\Registration\RegisterFormVisibilityConditionAttribute.cs" />
+    <Compile Include="Forms\VisibilityConditions\Registration\VisibilityConditionActivator.cs" />
+    <Compile Include="Forms\VisibilityConditions\Registration\VisibilityConditionDefinition.cs" />
+    <Compile Include="Forms\VisibilityConditions\Registration\VisibilityConditionDefinitionProvider.cs" />
+    <Compile Include="Forms\VisibilityConditions\Base\VisibilityCondition.cs" />
+    <Compile Include="PageBuilder\AbstractComponentUrlRetriever.cs" />
+    <Compile Include="PageBuilder\ApplicationBuilderExtensions.cs" />
+    <Compile Include="PageBuilder\PageRetriever.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\EditableAreaRenderer.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\HtmlHelperExtensions.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\IEditableAreaRenderer.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\IWidgetZoneRenderer.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\PageBuilderAssetsProvider.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\PageBuilderScriptConfiguration.cs" />
+    <Compile Include="PageBuilder\HelperMethods\HtmlHelper\WidgetZoneRenderer.cs" />
+    <Compile Include="PageBuilder\IComponentUrlRetriever.cs" />
+    <Compile Include="PageBuilder\ICurrentPageRetriever.cs" />
+    <Compile Include="PageBuilder\IFeatureSetExtensions.cs" />
+    <Compile Include="PageBuilder\IPageBuilderFeature.cs" />
+    <Compile Include="PageBuilder\IPageBuilderPostDataRetriever.cs" />
+    <Compile Include="PageBuilder\IPageBuilderRouteDataRetriever.cs" />
+    <Compile Include="PageBuilder\Metadata\ComponentMarkupUrlRetriever.cs" />
+    <Compile Include="PageBuilder\Metadata\ComponentsMetadata.cs" />
+    <Compile Include="PageBuilder\Metadata\ComponentsMetadataBuilder.cs" />
+    <Compile Include="PageBuilder\Metadata\IComponentsMetadataBuilder.cs" />
+    <Compile Include="PageBuilder\PageBuilderFeature.cs" />
+    <Compile Include="PageBuilder\PageBuilderOptions.cs" />
+    <Compile Include="PageBuilder\Personalization\Controllers\KenticoConditionTypeParametersFormController.cs" />
+    <Compile Include="PageBuilder\Serialization\UsePageBuilderJsonSerializerSettingsAttribute.cs" />
+    <Compile Include="PageBuilder\Utils\ScriptsBundleCollectionUtils.cs" />
+    <Compile Include="PageBuilder\Utils\TypeUtils.cs" />
+    <Compile Include="PageBuilder\Utils\StylesBundleCollectionUtils.cs" />
+    <Compile Include="PageBuilder\Utils\KeepSourceOrderOrderer.cs" />
+    <Compile Include="PageBuilder\Metadata\ComponentPropertiesFormMarkupUrlRetriever.cs" />
+    <Compile Include="PageBuilder\Personalization\ConditionTypeParametersRetriever.cs" />
+    <Compile Include="PageBuilder\Personalization\ConditionTypeParametersSerializer.cs" />
+    <Compile Include="PageBuilder\Personalization\IConditionTypeParametersRetriever.cs" />
+    <Compile Include="PageBuilder\Personalization\IConditionTypeParametersSerializer.cs" />
+    <Compile Include="PageBuilder\Personalization\JsonCamelCaseResult.cs" />
+    <Compile Include="PageBuilder\Personalization\ConditionTypeController.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentPropertiesPostData.cs" />
+    <Compile Include="PageBuilder\PageBuilderPostData.cs" />
+    <Compile Include="PageBuilder\PageBuilderPostDataRetriever.cs" />
+    <Compile Include="PageBuilder\PageBuilderRouteDataRetriever.cs" />
+    <Compile Include="PageBuilder\Personalization\Evaluation\IConditionType.cs" />
+    <Compile Include="PageBuilder\Personalization\Evaluation\PersonalizationVariantEvaluator.cs" />
+    <Compile Include="PageBuilder\Personalization\Metadata\ConditionTypeMetadata.cs" />
+    <Compile Include="PageBuilder\Personalization\Registration\ConditionTypeDefinition.cs" />
+    <Compile Include="PageBuilder\Personalization\Registration\RegisterPersonalizationConditionTypeAttribute.cs" />
+    <Compile Include="PageBuilder\Registration\ComponentDefinition.cs" />
+    <Compile Include="PageBuilder\Registration\ComponentDefinitionProvider.cs" />
+    <Compile Include="ComponentDefinitions\ComponentDefinitionStore.cs" />
+    <Compile Include="PageBuilder\Registration\ControllerSuffixRemover.cs" />
+    <Compile Include="PageBuilder\Registration\IComponentDefinitionProvider.cs" />
+    <Compile Include="PageBuilder\Registration\IMarkupComponentDefinition.cs" />
+    <Compile Include="PageBuilder\Registration\RegisterComponentAttribute.cs" />
+    <Compile Include="PageBuilder\Routes\PageBuilderRoutes.cs" />
+    <Compile Include="PageBuilder\Routes\RouteCollectionExtensions.cs" />
+    <Compile Include="PageBuilder\Sections\Metadata\SectionMetadata.cs" />
+    <Compile Include="PageBuilder\Sections\Registration\RegisterSectionAttribute.cs" />
+    <Compile Include="PageBuilder\Sections\Registration\SectionDefinition.cs" />
+    <Compile Include="PageBuilder\Routes\ComponentIdentifierConstraint.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\IEditableAreasConfigurationValidator.cs" />
+    <Compile Include="PageBuilder\Widgets\JsonConverterObjectToString.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\EditableAreaConfiguration.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\EditableAreasConfiguration.cs" />
+    <Compile Include="PageBuilder\Configuration\PageBuilderConfigurationManager.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\EditableAreasConfigurationSerializer.cs" />
+    <Compile Include="PageBuilder\Configuration\IPageBuilderConfigurationManager.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\IEditableAreasConfigurationSerializer.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentPropertiesSerializer.cs" />
+    <Compile Include="PageBuilder\Components\Base\IComponentPropertiesSerializer.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\IWidgetProperties.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\SectionConfiguration.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\WidgetConfiguration.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\WidgetVariantConfiguration.cs" />
+    <Compile Include="PageBuilder\Widgets\Configuration\ZoneConfiguration.cs" />
+    <Compile Include="PageBuilder\Widgets\Controllers\KenticoEditableAreasConfigurationController.cs" />
+    <Compile Include="PageBuilder\Widgets\Controllers\KenticoComponentsMetadataController.cs" />
+    <Compile Include="PageBuilder\Components\Base\EditModePathDecorator.cs" />
+    <Compile Include="Content\Security\IPageSecurityChecker.cs" />
+    <Compile Include="PageBuilder\Components\Base\IComponentDefaultPropertiesProvider.cs" />
+    <Compile Include="PageBuilder\Widgets\IWidgetPropertiesRetriever.cs" />
+    <Compile Include="PageBuilder\Widgets\IWidgetVariantEvaluator.cs" />
+    <Compile Include="PageBuilder\Metadata\ComponentDefaultPropertiesUrlRetriever.cs" />
+    <Compile Include="PageBuilder\Widgets\Metadata\WidgetMetadata.cs" />
+    <Compile Include="PageBuilder\Widgets\Models\GeneratedFormViewModel.cs" />
+    <Compile Include="PageBuilder\Widgets\PageBuilderConstants.cs" />
+    <Compile Include="Content\Security\PageSecurityChecker.cs" />
+    <Compile Include="PageBuilder\Widgets\Registration\RegisterWidgetAttribute.cs" />
+    <Compile Include="PageBuilder\Widgets\Registration\WidgetDefinition.cs" />
+    <Compile Include="PageBuilder\Widgets\WidgetController.cs" />
+    <Compile Include="PageBuilder\Components\Base\ComponentDefaultPropertiesProvider.cs" />
+    <Compile Include="PageBuilder\Widgets\Controllers\KenticoWidgetPropertiesFormController.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Routes\PageTemplateRoutes.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Routes\RouteCollectionExtensions.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\KenticoPageTemplatesViewModelController.cs" />
+    <Compile Include="PageBuilder\PageTemplates\Controllers\DefaultPageTemplateViewModel.cs" />
+    <Compile Include="Content\UseCamelCasePropertyNamesContractResolverAttribute.cs" />
+    <Compile Include="Preview\ApplicationBuilderExtensions.cs" />
+    <Compile Include="Content\CookiePolicyDetection\CookiePolicyDetectionController.cs" />
+    <Compile Include="Preview\FormActionModifier.cs" />
+    <Compile Include="Preview\IFeatureSetExtensions.cs" />
+    <Compile Include="Preview\IPathDecorator.cs" />
+    <Compile Include="Preview\IPreviewFeature.cs" />
+    <Compile Include="Preview\IVirtualContextPageRetriever.cs" />
+    <Compile Include="Preview\PreviewPathDecoratorEventArguments.cs" />
+    <Compile Include="Preview\PreviewResponseRedirectionModule.cs" />
+    <Compile Include="Preview\VirtualContextLinksClickjackingProtection.cs" />
+    <Compile Include="Preview\VirtualContextPrincipal.cs" />
+    <Compile Include="Preview\VirtualContextPrincipalAssigner.cs" />
+    <Compile Include="Preview\PreviewPathDecorator.cs" />
+    <Compile Include="Content\ContentOutputActionFilter.cs" />
+    <Compile Include="Preview\PreviewUrlProcessor.cs" />
+    <Compile Include="Preview\PreviewFeature.cs" />
+    <Compile Include="Preview\HelperMethods\UrlHelperPreviewExtensions.cs" />
+    <Compile Include="Preview\VirtualContextPageRetriever.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PageBuilder\PageTemplates\RegisterPageTemplateAttribute.cs" />
+    <Compile Include="PageBuilder\PageTemplates\PageTemplateDefinition.cs" />
+    <Compile Include="Selectors\FormComponents\Path\PathSelector.cs" />
+    <Compile Include="Selectors\FormComponents\Path\PathSelectorItem.cs" />
+    <Compile Include="Selectors\FormComponents\Path\PathSelectorProperties.cs" />
+    <Compile Include="Selectors\HelperMethods\HtmlHelper\SelectorsScriptConfiguration.cs" />
+    <Compile Include="Selectors\Routes\RouteCollectionExtensions.cs" />
+    <Compile Include="Selectors\Routes\SelectorRoutes.cs" />
+    <Compile Include="VirtualContextProcessing\ICurrentUrlProcessorService.cs" />
+    <Compile Include="VirtualContextProcessing\IVirtualContextUrlProcessor.cs" />
+    <Compile Include="VirtualContextProcessing\CurrentUrlProcessorService.cs" />
+    <Compile Include="VirtualContextProcessing\VirtualContextUrlRewriter.cs" />
+    <Compile Include="VirtualContextProcessing\VirtualContextUrlProcessorsRegister.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AspNet\Platform\AspNet.Platform.csproj">
+      <Project>{508a8d62-9685-4041-8878-e0c772e6686b}</Project>
+      <Name>AspNet.Platform</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ContactManagement\ContactManagement.csproj">
+      <Project>{77bdffcb-2aea-4b58-b7da-a1b69a1e7f22}</Project>
+      <Name>ContactManagement</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataProtection\DataProtection.csproj">
+      <Project>{631799C8-855D-4488-8188-3F7749C40356}</Project>
+      <Name>DataProtection</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{ca36a1e6-9385-46aa-a10e-97699e293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventLog\EventLog.csproj">
+      <Project>{7f74d14a-c101-457e-94b0-1df57a619c84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FormEngine\FormEngine.csproj">
+      <Project>{1169ad9d-510c-4196-9a44-bc1bcb957dfb}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MediaLibrary\MediaLibrary.csproj">
+      <Project>{C6138D80-09A5-4F3F-BBF2-019B407A20BD}</Project>
+      <Name>MediaLibrary</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OnlineForms\OnlineForms.csproj">
+      <Project>{6780157e-48df-4254-b455-d9cebe73250f}</Project>
+      <Name>OnlineForms</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Routing.Web\Routing.Web.csproj">
+      <Project>{BD2F25A8-9315-4341-AAC3-E9731922DDB2}</Project>
+      <Name>Routing.Web</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Kentico.Web.Mvc\Kentico.Web.Mvc.csproj">
+      <Project>{58edc0e7-c978-498b-855d-3461d75e0ca7}</Project>
+      <Name>Kentico.Web.Mvc</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PageBuilder\Sections\Routes\" />
+    <Folder Include="PageBuilder\Widgets\Routes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

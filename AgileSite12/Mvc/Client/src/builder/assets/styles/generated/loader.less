@@ -1,0 +1,39 @@
+//
+// Loader
+// --------------------------------------------------
+
+.ktc-loader {
+    color: @color-white;
+    background-color: @color-blue-100;
+    padding: @padding-loader-vertical @padding-loader-horizontal;
+    z-index: @zindex-loader;
+    display: none;
+}
+// Applist loader
+.ktc-loader-general {
+    display: block;
+}
+
+// General overlayer
+.ktc-overlayer {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: @zindex-loader;
+}
+
+.ktc-overlayer-general {
+    background-color: @color-white;
+    opacity: 0.6;
+}
+
+.ktc-loader-icon {
+    vertical-align: middle;
+    box-sizing: content-box;
+}
+
+.ktc-loader-text{
+    vertical-align: middle;
+    padding-left: @padding-small-horizontal;
+}

@@ -1,0 +1,45 @@
+@import 'src/builder/assets/styles/icon-font.less';
+@import 'src/builder/assets/styles/shared.less';
+
+:host {
+
+  .ktc-header-button {
+    position: relative;
+
+    a {
+      i {
+        cursor: pointer;
+        color: @color-white;
+        padding:(0.5 * @base-unit) (0.25 * @base-unit);
+      }
+
+      .icon-cogwheel {
+        .icon-cogwheel();
+      }
+
+      .icon-l-cols-30-70 {
+        .icon-l-cols-30-70();
+      }
+    }
+  }
+}
+
+:host([is-template-button="true"]) {
+  .ktc-header-button {
+    width: 2 * @base-unit;
+    height: 2 * @base-unit;
+    background-color: @color-orange-70;
+    cursor: pointer;
+
+    &:hover {
+      z-index: @active-element-z-index;
+    }
+
+    a {
+      i {
+        padding: @base-unit / 2;
+        opacity: 1;
+      }
+    }
+  }
+}

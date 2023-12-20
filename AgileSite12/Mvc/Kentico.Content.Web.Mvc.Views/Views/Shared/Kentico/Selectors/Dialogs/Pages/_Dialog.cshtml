@@ -1,0 +1,32 @@
+﻿@using Kentico.Components.Web.Mvc.Dialogs
+@using Kentico.Components.Web.Mvc.Dialogs.Internal
+@using Kentico.Builder.Web.Mvc.Internal
+@using Newtonsoft.Json
+
+@model KenticoPageSelectorViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    @Html.Kentico().ModalDialogScript()
+    @Html.Kentico().WebComponentsScript()
+    @Html.Kentico().WebComponentsStyle()
+    <link href="@Url.Content("~/Kentico/Content/Selectors/Dialogs/Pages/page-selector.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <kentico-page-selector data-endpoint="@Model.GetChildPagesEndpointUrl" alias-path-endpoint="@Model.GetAliasPathEndpointUrl">
+    </kentico-page-selector>
+    <script>
+        var pageSelector = document.querySelector("kentico-page-selector");
+        pageSelector.getString = window.kentico.localization.getString;
+        pageSelector.rootPage = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.RootPage))');
+
+        var dialogData = window.kentico.modalDialog.getData();
+        pageSelector.selectedValues = dialogData.selectedValues;
+        pageSelector.identifierMode = dialogData.identifierMode;
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+.card-custom {
+    display: flex;
+    //justify-content: space-between;
+    //align-items: stretch;
+    flex-flow: nowrap column;
+    
+    margin: 1em;
+    border: 1px solid $border;
+    border-bottom: 3px solid $border;
+    border-radius: 3px;
+    
+    &_header {
+	   padding: .5rem 1rem;
+	   border-bottom: 1px solid rgba(0,0,0,0.125);
+	   background: $gray-1; 
+    }
+    
+    .event-header {
+	    text-shadow: 0 1px 3px rgba(255,255,255,0.8);
+		text-align: center;
+    }
+    
+    &_body {
+	    flex: 3 0 auto;
+	    padding: 1rem;
+    }
+    
+    &_title {
+	    font-size: 1.25rem;
+	    line-height: 1.1;
+	    margin-bottom: .5rem;
+    }
+    
+    &_subtitle {
+	    color: $text-muted;
+	    
+	    p {
+		    margin-bottom: 0;
+	    }
+    }
+
+    
+    img {
+        width: 100%;
+    }
+    
+    .card-text {
+        margin-bottom: 1em;
+    }
+    
+    .btn-wrapper {
+        text-align: right;
+    }
+}
+
+
+
+.modal-body {
+    .btn + .btn {
+        margin-top: 1rem;
+    }
+}

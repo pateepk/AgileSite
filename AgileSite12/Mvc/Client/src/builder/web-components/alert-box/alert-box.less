@@ -1,0 +1,34 @@
+@import 'src/builder/assets/styles/shared.less';
+@import 'src/builder/assets/styles/icon-font.less';
+
+:host {
+  .ktc-alert-box-wrapper {
+    background-color: @color-white;
+    border: 2px solid @color-red-70;
+    padding: @base-unit * 0.5 @base-unit;
+
+    &, * {
+      cursor: not-allowed;
+    }
+
+    .ktc-alert-box {
+      display: table-row;
+
+      .ktc-alert-icon {
+        display: table-cell;
+        padding-right: @base-unit * 0.5;
+
+        .icon-times-circle {
+          .icon-times-circle();
+          font-size: @icon-size-150;
+          color: @color-red-70;
+        }
+      }
+
+      .ktc-alert-text {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+}

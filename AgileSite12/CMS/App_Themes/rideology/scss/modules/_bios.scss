@@ -1,0 +1,56 @@
+.bio-item > .expandable .grid,
+.bio-detail .grid,
+.bio-preview .grid {
+    
+    .teaser {     
+        text-align: center;
+/*
+		padding: 2px;
+	    @extend %shad-fade;
+	    border-radius: .25rem;
+*/        
+    }
+    
+    .info a {
+	    color: $text-color;
+	    
+	    &:hover {
+		    color: $brand-2;
+		    text-decoration: none;
+	    }
+    }
+    
+    .detail-link {
+	    text-align: center;
+    }
+    
+    @media (min-width: 800px) {
+	    
+	    @supports (display: grid) {
+		    display: grid;
+		    grid-gap: 1rem;
+		    grid-template-columns: 250px 1fr;
+	    }
+    }
+}
+
+
+.bio-preview.rt,
+.bio-detail.rt {
+	margin-bottom: 1rem;
+	
+	.info {
+		text-align: center;
+	}
+	
+	.grid {
+	    @media (min-width: 800px) {
+	    
+		    @supports (display: grid) {
+			    display: grid;
+			    grid-gap: 1rem;
+			    grid-template-columns: 1fr 250px;
+			}
+		}
+	}
+}

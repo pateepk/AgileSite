@@ -1,0 +1,10 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model IntInputComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+}
+
+
+@Html.TextBoxFor(m => m.Number, htmlAttributes)

@@ -1,0 +1,27 @@
+@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+
+@{
+    Layout = null;
+
+    var title = Model.FormItemId > 0 ? ResHelper.GetString("BizForm_Edit_EditRecord.EditRecord") :
+        ResHelper.GetString("BizForm_Edit_EditRecord.NewRecord");
+}
+
+@model FormItemEdit
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@title</title>
+    @Html.Kentico().FormBuilderStyles()
+</head>
+<body>
+    @Html.Partial("~/Views/Shared/Kentico/FormBuilder/FormItemEditForm.cshtml", Model)
+
+    @Kentico.Forms.Web.Mvc.Internal.HtmlHelperExtensions.RenderJQueryScriptTags()
+    @Html.Kentico().FormsScripts()
+</body>
+</html>

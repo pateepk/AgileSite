@@ -1,0 +1,91 @@
+﻿@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+
+@model FileUploaderComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+    var fileInputHtmlAttributes = new Dictionary<string, object>(htmlAttributes);
+    var fileInputId = ViewData.TemplateInfo.GetFullHtmlFieldId(Model.FileInputClientId);
+    var inputPlaceholderId = $"{fileInputId}-placeholder";
+    var inputReplacementFilenameId = $"{fileInputId}-replacement";
+    var inputTextButtonId = $"{fileInputId}-button";
+    var inputIconButtonId = $"{fileInputId}-icon";
+
+    fileInputHtmlAttributes.Add("id", fileInputId);
+
+    var showCurrentFile = !String.IsNullOrEmpty(Model.PlainSystemFileName) && !Model.DeleteOrReplaceFile;
+    var isFormSubmittable = Model.GetBizFormComponentContext().FormIsSubmittable;
+
+    var maxAllowedFileSize = Model.MaxAllowedFileSize;
+    var maxFileSizeExceededErrorMessage = ResHelper.GetStringFormat("formfileuploader.exceededmaxfilesize.errormessage", Math.Round(maxAllowedFileSize / 1024.0, 2));
+
+    var fileInputConfiguration = Newtonsoft.Json.JsonConvert.SerializeObject(new
+    {
+        fileInputId = fileInputId,
+        tempFileIdentifierInputId = Html.IdFor(m => m.TempFileIdentifier).ToHtmlString(),
+        tempFileOriginalNameInputId = Html.IdFor(m => m.TempFileOriginalName).ToHtmlString(),
+        systemFileNameInputId = Html.IdFor(m => m.SystemFileName).ToHtmlString(),
+        originalFileNameInputId = Html.IdFor(m => m.OriginalFileName).ToHtmlString(),
+        deletePersistentFileInputId = Html.IdFor(m => m.DeleteOrReplaceFile).ToHtmlString(),
+        deleteFileIconButtonTitle = ResHelper.GetString("kentico.formbuilder.component.fileuploader.deletefile"),
+        submitEndpoint = Url.Kentico().AuthenticateUrl(Url.RouteUrl("Kentico.FormBuilder.FormFileUploader.PostFile", Model.GetFileUploadParameters())).ToHtmlString(),
+        deleteEndpoint = Url.Kentico().AuthenticateUrl(Url.RouteUrl("Kentico.FormBuilder.FormFileUploader.DeleteFile", Model.GetFileUploadParameters())).ToHtmlString(),
+        originalFileNamePlain = Model.PlainOriginalFileName,
+        maxFileSize = maxAllowedFileSize,
+        maxFileSizeExceededErrorMessage = maxFileSizeExceededErrorMessage
+    });
+}
+
+<div class="ktc-file-component-wrapper">
+    <label for="@fileInputId" title="@ResHelper.GetString("kentico.formbuilder.component.fileuploader.selectfile")">
+        <span id="@inputPlaceholderId" class="ktc-uploader-text">
+            @if (isFormSubmittable || String.IsNullOrEmpty(Model.PlainOriginalFileName))
+            {
+                @ResHelper.GetString("kentico.formbuilder.component.fileuploader.selectfile")
+            }
+            else
+            {
+                @Model.PlainOriginalFileName
+            }
+        </span>
+        <span id="@inputIconButtonId" class="ktc-uploader-icon-button" data-icon="select"></span>
+    </label>
+
+    <span id="@inputReplacementFilenameId" class="ktc-uploader-replacement">@Model.TempFileOriginalName</span>
+    @if (isFormSubmittable)
+    {
+        @Html.Kentico().File(fileInputHtmlAttributes)
+    }
+    <a id="@inputTextButtonId" class="ktc-uploader-text-button" @if (!showCurrentFile) { <text> hidden="hidden" </text> }>@ResHelper.GetString("kentico.formbuilder.component.fileuploader.deletefile")</a>
+    @if (showCurrentFile && Model.ShowViewFileLink)
+    {
+        <a id="@Html.Id("CurrentFile")" href="@Url.Kentico().GetFormFileUrl(Model.PlainSystemFileName, Model.PlainOriginalFileName, Model.FormSite.SiteName)"
+           title="@ResHelper.GetStringFormat("kentico.formbuilder.component.fileuploader.viewfile", Model.PlainOriginalFileName)" target="_blank">
+            @ResHelper.GetStringFormat("kentico.formbuilder.component.fileuploader.viewfile", Model.PlainOriginalFileName)
+        </a>
+    }
+</div>
+
+<input type="hidden" id="@Html.IdFor(m => m.TempFileIdentifier)" name="@Html.NameFor(m => m.TempFileIdentifier)" value="@Model.TempFileIdentifier" />
+<input type="hidden" id="@Html.IdFor(m => m.TempFileOriginalName)" name="@Html.NameFor(m => m.TempFileOriginalName)" value="@Model.TempFileOriginalName" />
+<input type="hidden" id="@Html.IdFor(m => m.SystemFileName)" name="@Html.NameFor(m => m.SystemFileName)" value="@Model.SystemFileName" />
+<input type="hidden" id="@Html.IdFor(m => m.OriginalFileName)" name="@Html.NameFor(m => m.OriginalFileName)" value="@Model.OriginalFileName" />
+<input type="hidden" id="@Html.IdFor(m => m.DeleteOrReplaceFile)" name="@Html.NameFor(m => m.DeleteOrReplaceFile)" value="@(Model.DeleteOrReplaceFile ? "True" : "False" )" />
+
+@if (isFormSubmittable)
+{
+    <script type="text/javascript">
+    (function () {
+        function attachFileUploadScript() {
+            window.kentico._forms.formFileUploaderComponent.attachScript(@Html.Raw(fileInputConfiguration));
+        };
+
+        if (window.kentico && window.kentico._forms && window.kentico._forms.formFileUploaderComponent) {
+            attachFileUploadScript();
+        } else {
+            document.addEventListener("DOMContentLoaded", attachFileUploadScript);
+        }
+    })();
+    </script>
+}

@@ -1,0 +1,282 @@
+// classes for required - add class to form field
+//------------------------------------------------------------
+
+.FieldLabel .required,
+.required .text-captcha > div > span {
+    //with 'required' set on caption css class
+    &:before {
+        content: '*';
+        color: $brand-danger;
+        margin-right: 3px;
+        display: inline-block;
+    }
+}
+
+.editing-form-label-cell .required {
+	//color: $brand-danger;
+	&:after {
+		content: '*';
+        color: $brand-danger;
+        margin-left: 3px;
+        display: inline-block;
+	}
+}
+
+// reformat for checkbox fields - must add class check to Field css class in form
+.check {
+	@supports (display: grid) {
+		display: grid;
+		grid-gap: .5rem;
+		grid-template-columns: 1rem 1fr;
+		margin-bottom: 1rem;
+		
+		> div:first-child {
+			order: 2;
+		}
+		
+		> div:last-child {
+			order: 1;
+			
+			.checkbox {
+				position: relative;
+				top: -3px;
+				
+				label {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+//file selector
+.uploader {
+	margin-bottom: .25rem;
+}
+
+//small width fields
+input.input-width-15 {
+	width: 4rem;
+}
+
+input.input-width-20 {
+	width: 6rem;
+}
+
+//radio buttons
+.radio-list-vertical,
+.radio-list-horizontal {
+	
+	input[type="radio"] {
+		position: relative;
+		top: -2px;
+	}
+}
+
+.radio-list-horizontal {
+
+	label {
+		margin-right: 1rem;
+	}
+}
+
+// checkboxes
+.checkbox-list-vertical,
+.checkbox-list-horizontal {
+	
+	input[type="checkbox"] {
+		position: relative;
+		top: -2px;
+	}
+}
+
+.checkbox-list-horizontal {
+	
+	label {
+		margin-right: 1rem;
+	}
+}
+
+
+//categories
+.collapsible-div {
+
+	> span:first-child {
+		display: inline-block;
+		margin: 0 .5rem;
+		float: right;
+	}
+}
+
+.editing-form-category {
+	
+	h4 {
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: 1.3rem;
+		border-bottom: 1px solid $border;
+		padding-bottom: .25rem;
+	}
+}
+
+.EditingFormTable .EditingFormCategoryRow td:first-child {
+	padding: .25rem;
+	
+	@media (min-width: 768px) {
+		text-align: center;
+	}
+}
+
+//explanation text
+.ExplanationText,
+.explanation-text {
+	font-style: italic;
+	//font-size: .9rem;
+	margin: .125rem 0;
+	color: $text-muted;
+}
+
+//error labels
+.EditingFormErrorLabel,
+.ErrorLabel {
+	color: $brand-danger;
+}
+
+.ErrorLabel {
+	font-weight: bold;
+}
+
+//calendar icons
+.CalendarTextBox.hasDatepicker {
+	width: 12rem;
+}
+
+.icon-only.btn-icon.btn {
+	background: none;
+	border: none;
+	padding: 0 .5rem;
+	outline: none;
+	appearance: none;
+	
+	&:hover {
+		color: $gray-8;
+		appearance: none;
+	}
+	
+	.icon-calendar {
+		font-size: 1.2rem;
+		
+		&:before {
+			@extend %fa-icon;
+			font-family: 'Font Awesome 5 Duotone';
+			font-weight: 900;
+			content: '\f073';
+			display: none;
+		}
+	}
+}
+
+.calendar-action {
+	font-size: .8rem;
+}
+	
+
+//new style div layout ---------------------------------------------------------
+.form-group {
+    margin-bottom: 1em;
+    font-family: $sans;
+    
+    .editing-form-label-cell {
+	    label, span {
+        	font-weight: bold;
+        }
+    }
+
+    .CheckBoxMovedLeft {
+        float: left;
+        margin-bottom: 1em;
+        + label {
+          position: relative;
+          top: 5px;
+          left: 5px;  
+        }
+    }
+}
+
+//flexible bizform layout ------------------------------------------------------
+.EditingFormTable {
+		
+	td, th {
+		display: block;
+		text-align: left;
+		font-family: $sans;
+	}
+	
+	tr td:first-child {
+		padding: 0;
+		
+		label, span {
+			font-weight: 600;
+		}
+	}
+	
+	tr td:last-child {
+		padding: 0 .25rem 1.5rem 0;
+	}
+
+	@media (min-width: 768px) {
+		width: 100%;
+		
+		td, th {
+			display: table-cell;
+		}
+		
+		tr td:first-child,
+		tr td:last-child {
+			padding: .25rem;
+		}
+		
+		tr td:first-child {
+			text-align: right;
+			width: 16rem;
+			vertical-align: middle;
+			
+			label, span {
+				line-height: 1;
+				
+				&:after {
+					content: ':';
+				}
+			}
+		}
+	}
+}
+
+//Captcha - text style - leave at bottom
+.CaptchaTable {
+	margin: 0;
+	
+	.form-control-text {
+		display: inline-block;
+	}
+	
+	@media (min-width: 768px) {
+		tr td:first-child,
+		tr td:last-child {
+			text-align: left;
+			padding: 0;
+			
+			label, span {
+				&:after {
+					content: ' ';
+				}
+			}
+		}
+	}
+}
+
+.CaptchaTextBoxSmall {
+	max-width: 3rem;
+	margin: 0 .25rem;
+	display: inline-block;
+}

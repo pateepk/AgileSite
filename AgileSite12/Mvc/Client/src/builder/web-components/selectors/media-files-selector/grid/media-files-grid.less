@@ -1,0 +1,119 @@
+:host {
+	@import 'src/builder/assets/styles/icon-font.less';
+	@import 'src/builder/assets/styles/generated/variables.less';
+	@import 'src/builder/assets/styles/generated/mixins.less';
+	@import 'src/builder/assets/styles/generated/type.less';
+
+	@grid-item-size: 160px;
+	@grid-item-label-box-height: 56px;
+	height: 100%;
+
+	.icon-doc {
+		.icon-doc();
+	}
+
+	.ktc-grid {
+		box-sizing: border-box;
+		padding: @base-unit;
+		height: 100%;
+
+		.ktc-grid-no-filtered-items-container {
+			position: relative;
+			height: 100%;
+
+			.ktc-grid-no-filtered-items-label {
+				font-size: 20px;
+				font-weight: bold;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+			}
+		}
+
+		.ktc-grid-item,
+		.ktc-grid-item--active {
+			margin: 0 @base-unit / 2 @base-unit / 2 0;
+			float: left;
+			text-align: center;
+			height: @grid-item-size;
+			width: @grid-item-size;
+			cursor: pointer;
+
+			&:hover:not(.ktc-grid-item--active) {
+				background: #d0e8ed;
+			}
+		}
+
+		.ktc-grid-item-thumbnail-container {
+			height: @grid-item-size;
+			position: relative;
+		}
+
+		.ktc-grid-item-thumbnail {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.ktc-grid-item-thumbnail-image {
+			max-width: @grid-item-size - @base-unit;
+			max-height: @grid-item-size - @base-unit;
+		}
+
+		.ktc-grid-item-label-box {
+			visibility: hidden;
+		}
+
+		.grid-item-label-box() {
+			visibility: visible;
+			position: absolute;
+			overflow: hidden;
+			bottom: 0;
+			height: @grid-item-label-box-height;
+			width: @grid-item-size;
+			background-color: rgba(255, 255, 255, 0.75);
+		}
+
+		.ktc-grid-item,
+		.ktc-grid-item--active {
+			&:hover {
+				.ktc-grid-item-label-box {
+					.grid-item-label-box();
+				}
+			}
+		}
+
+		.ktc-grid-item--no-thumbnail {
+			.ktc-grid-item-label-box {
+				.grid-item-label-box();
+				background: none;
+			}
+			&:hover {
+				.ktc-grid-item-label-box {
+					background: none;
+				}
+			}
+		}
+
+		.ktc-grid-item-label {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			line-height: @base-unit;
+      width: @grid-item-size - @base-unit;
+      word-wrap: break-word;
+		}
+
+		.ktc-grid-item--active {
+			background: #b3dce9;
+		}
+
+		.ktc-grid-clear {
+			clear: both;
+		}
+	}
+}

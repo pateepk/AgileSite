@@ -1,0 +1,162 @@
+// UniFlat selector
+
+.ktc-PTSelection .ktc-UniFlatSearchPanel {
+    background: #e5e5e5;
+}
+
+.ktc-PTSelection .ktc-UniFlatContent {
+    height: 225px;
+}
+
+.ktc-PTSelection .ktc-ItemSelector .ktc-InheritedTemplate {
+    padding: 15px;
+}
+
+.ktc-PTSelection .ktc-SelectorFlatItems {
+    background-color: #ffffff;
+}
+
+.ktc-Gecko .ktc-UniFlatSearchPanel label {
+    vertical-align: baseline;
+}
+
+.ktc-FlatItem .ktc-SelectorEnvelope {
+    float: left;
+    text-align: center;
+    height: 160px;
+    width: 152px;
+
+    &.ktc-EnvelopeBig {
+        height: @base-unit * 14;
+    }
+}
+
+.ktc-FlatItem .ktc-SelectorEnvelope:hover {
+    background: #d0e8ed;
+}
+
+.ktc-FlatSelectedItem .ktc-SelectorEnvelope {
+    .ktc-FlatItem .ktc-SelectorEnvelope;
+    background: #b3dce9;
+}
+
+.ktc-RTL {
+    .ktc-FlatItem, .ktc-FlatSelectedItem {
+        .ktc-SelectorEnvelope {
+            float: right;
+        }
+    }
+}
+
+.ktc-UniFlatContent {
+    overflow: auto;
+}
+
+.ktc-SelectorEnvelope {
+    cursor: pointer;
+}
+
+.ktc-SelectorFlatItems {
+    margin: @base-unit @base-unit 0 @base-unit;
+
+    .ktc-SelectorFlatText {
+        font-weight: bold;
+    }
+}
+
+.ktc-NewPageDialog .ktc-UniFlatPager {
+    padding: 5px 15px;
+}
+
+.ktc-PageContentFrame .ktc-selector-flat-description {
+    height: 120px;
+}
+
+.ktc-SelectorTree {
+    width: 300px;
+    height: 700px;
+    overflow: auto;
+
+    span.ktc-Name {
+        display: inline-block;
+    }
+
+    .ktc-TreePadding {
+        padding: 8px;
+    }
+}
+
+.ktc-PageContentFrame .ktc-SelectorTree {
+    width: 250px;
+}
+
+.ktc-SelectorNoResults {
+    padding-left: 5px;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.ktc-RTL .ktc-SelectorNoResults {    
+    text-align: right;
+}
+
+.ktc-SelectorTable {
+    width: 100%;
+
+    td {
+        vertical-align: top;
+    }
+}
+
+.ktc-SelectorBorder {
+    background-color: #d6d9d6;
+}
+
+.ktc-SelectorBorderGlue {
+    width: 8px;
+}
+
+.ktc-SelectorTable .ktc-ItemSelectorArea {
+    width: 100%;
+}
+
+.ktc-SelectorFlatImage {
+    padding: @base-unit @base-unit * 0.5 0 @base-unit * 0.5;
+    min-height: @base-unit * 4;
+    border: none;
+
+    i {
+        color: @color-gray-70;
+        font-size: 64px !important;
+    }
+}
+.ktc-EnvelopeBig {
+    .ktc-SelectorFlatImage {
+        padding: @base-unit * 0.5 @base-unit * 0.5 0 @base-unit * 0.5;
+        min-height: @base-unit * 8.5;
+        position: relative;
+    }
+}
+
+.ktc-SelectorFlatText {
+    display: block;
+    margin: 0;
+    padding: @base-unit * 0.25 @base-unit * 0.5;
+    color: @color-blue-70;
+    word-wrap: break-word;
+    line-height: 19px;
+}
+
+.ktc-PTSelection .ktc-RadioPanel label {
+    position: relative;
+    top: 2px;
+}
+
+.ktc-IE9 .ktc-PTSelection .ktc-RadioPanel label {
+    top: 3px;
+}
+
+.ktc-UniFlatSearchCheckBox label {
+    position: relative;
+    top: -2px;
+}

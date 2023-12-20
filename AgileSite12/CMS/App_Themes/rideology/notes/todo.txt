@@ -1,0 +1,43 @@
+left to update 9/22/20
+
+//secure section
+//system
+
+home page
+	//number blocks
+	//boxes
+	//animations
+
+check:
+	//roles
+	/versioning
+	//run speed test
+	
+last:
+	build web template
+	build web template for demo3 also
+	
+	
+	
+
+
+animation notes:
+see https://animate.style for documentation
+uses an updated version of animate.scss
+
+add classes to element like: 
+	class="animate__animated animate__zoomInUp animate__slower"
+	
+	or 
+	
+	.my-element {
+		display: inline-block or block;
+
+		animation: bounce; /* referring directly to the animation's @keyframe declaration */
+		animation-duration: 2s; /* don't forget to set a duration! */
+}
+
+
+
+<h2 class="multi-type animate__animated hidden"></h2>
+

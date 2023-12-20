@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TN_CustomTableManage.ascx.cs" Inherits="CMSApp.CMSWebParts.WTE.TrainingNetwork.TN_CustomTableManage" %>
+<asp:Label ID="lblMsg" runat="server" EnableViewState="false" />

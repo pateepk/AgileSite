@@ -1,0 +1,84 @@
+@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+
+@{
+    var renderingConfiguration = SystemRenderingConfigurations.PreviewField;
+
+    var formId = "formItemEdit";
+    var replaceDiv = "formItemEditDiv";
+}
+
+@model FormItemEdit
+
+<div id="@replaceDiv">
+    @using (UpdatableMvcForm form = Html.Kentico().BeginUpdatableForm(formId, replaceDiv, htmlAttributes: new Dictionary<string, object> { { "action", Model.SubmitUrl } }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="ktc-header-panel">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="ktc-checkbox">
+                                <input id="@nameof(Model.SendNotificationEmail)" type="checkbox" @if (Model.SendNotificationEmail) 
+                                    { <text> checked </text> }
+                                       name="@nameof(Model.SendNotificationEmail)" value="true" @UpdatableMvcForm.NOT_OBSERVED_ELEMENT_ATTRIBUTE_NAME />
+                                @Html.LabelFor(m => m.SendNotificationEmail, ResHelper.GetString("bizform.sendnotification"))
+                                <input type="hidden" name="@nameof(Model.SendNotificationEmail)" value="false" checked />
+                            </span>
+                        </td>
+                        <td style="width: 20px;">&nbsp;</td>
+                        <td>
+                            <span class="ktc-checkbox">
+                                <input id="@nameof(Model.SendAutoResponderEmail)" type="checkbox" @if (Model.SendAutoResponderEmail)
+                                    { <text> checked </text> }
+                                       name="@nameof(Model.SendAutoResponderEmail)" value="true" @UpdatableMvcForm.NOT_OBSERVED_ELEMENT_ATTRIBUTE_NAME />
+                                @Html.LabelFor(m => m.SendAutoResponderEmail, ResHelper.GetString("bizform.sendautoresponder"))
+                                <input type="hidden" name="@nameof(Model.SendAutoResponderEmail)" value="false" checked />
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ktc-header-actions-container">
+            <input type="submit" class="ktc-btn ktc-btn-primary" value="@ResHelper.GetString("general.save")" />
+        </div>
+        <div class="ktc-padding-100">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="ktc-alert ktc-alert-error">
+                    <span class="ktc-alert-icon">
+                        <i class="icon-times-circle"></i>
+                        <span class="ktc-sr-only">Error</span>
+                    </span>
+                    <div class="ktc-alert-label">
+                        @ResHelper.GetString("general.errorvalidationerror")
+                        <br />
+                        <br />
+                        @Html.Kentico().ValidationSummary(Model.FormComponents)
+                    </div>
+                </div>
+            }
+            @if (Model.ChangesSavedMessage)
+            {
+                <div class="ktc-alert ktc-alert-success" style="position: relative !important;">
+                    <span class="ktc-alert-icon">
+                        <i class="icon-check-circle"></i>
+                        <span class="ktc-sr-only">Success</span>
+                    </span>
+                    <span class="ktc-alert-label">
+                        @ResHelper.GetString("general.changessaved")
+                    </span>
+                </div>
+            }
+            <div class="ktc-form-horizontal">
+                <div class="ktc-editing-form-design-mode ktc-editing-form-category-fields">
+                    @Html.Kentico().FormFields(Model.FormComponents, renderingConfiguration)
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.FormId)
+            @Html.HiddenFor(m => m.FormItemId)
+        </div>
+    }
+</div>

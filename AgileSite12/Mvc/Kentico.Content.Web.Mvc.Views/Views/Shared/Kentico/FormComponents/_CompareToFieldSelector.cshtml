@@ -1,0 +1,9 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model CompareToFieldSelectorComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+}
+
+@Html.DropDownListFor(m => m.FieldGuid, Model.FieldNames, htmlAttributes)

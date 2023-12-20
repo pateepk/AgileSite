@@ -1,0 +1,142 @@
+.all-styles-reset() {
+  .reset-default-values();
+  .reset-inherited-values();
+
+  // Break styles that are inherited by default and set their initial values
+  * {
+    .reset-default-values();
+    .reset-inherited-values();
+  }
+
+  @import './html5-default-styles.less';
+}
+
+
+.reset-default-values() {
+  // Initial values manually copy/pasted from https://www.w3schools.com/cssref/
+  // Excluded styles that are inherited from parent elements (color, font-family...)
+
+  align-content: stretch;
+  // align-items: stretch; /* Commented out because it causes wrong alignment of widget property dropdown values in Safari */
+  align-self: auto;
+  backface-visibility: visible;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: transparent;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  background-size: auto;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-style: none;
+  border-image: none 100% 1 0 stretch;
+  border-left-style: none;
+  border-radius: 0;
+  border-right-style: none;
+  border-top-style: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  bottom: auto;
+  box-shadow: none;
+  box-sizing: content-box;
+  clear: none;
+  clip: auto;
+  column-fill: balance;
+  column-gap: normal;
+  column-rule-style: none;
+  column-span: none;
+  columns: auto auto;
+  content: normal;
+  counter-increment: none;
+  counter-reset: none;
+  filter: none;
+  flex: 0 1 auto;
+  flex-flow: row nowrap;
+  float: none;
+  grid-area: auto / auto / auto / auto;
+  grid-column: auto / auto;
+  grid-gap: 0 0;
+  grid-row: auto / auto;
+  height: auto;
+  isolation: auto;
+  justify-content: flex-start;
+  left: auto;
+  margin: 0;
+  max-height: none;
+  max-width: none;
+  min-height: 0;
+  min-width: 0;
+  opacity: 1;
+  order: 0;
+  outline-style: none;
+  outline-offset: 0;
+  overflow: visible;
+  overflow-x: visible;
+  overflow-y: visible;
+  padding: 0;
+  page-break-after: auto;
+  page-break-before: auto;
+  page-break-inside: auto;
+  perspective: none;
+  perspective-origin: 50% 50%;
+  position: static;
+  resize: none;
+  right: auto;
+  table-layout: auto;
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-overflow: clip;
+  top: auto;
+  transform: none;
+  transform-origin: 50% 50% 0;
+  transform-style: flat;
+  transition: all 0s ease 0s;
+  user-select: auto;
+  vertical-align: baseline;
+  width: auto;
+  z-index: auto;
+
+  // Custom values
+  border-spacing: 0px;
+}
+
+
+.reset-inherited-values() {
+  // Break styles that are inherited by default and set their initial values
+  border-collapse: separate;
+  border-color: transparent;
+  caption-side: top;
+  color: @color-gray-50; // Custom value
+  cursor: auto;
+  direction: ltr;
+  empty-cells: show;
+  font-family: @font-family-base; // Custom value
+  font-kerning: auto;
+  font-size: @font-size-base; // Custom value
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  hyphens: manual;
+  letter-spacing: normal;
+  line-height: @line-height-100; // Custom value
+  list-style: disc outside none;
+  object-position: 50% 50%;
+  // Do not reset pointer-events
+  // Drag&drop relies on the value inheritance and would not work correctly (clumsy identification of drop areas, wrong cursor)
+  // pointer-events: auto;
+  tab-size: 8;
+  text-align: left;
+  text-align-last: auto;
+  text-indent: 0;
+  text-justify: auto;
+  text-shadow: none;
+  text-transform: none;
+  unicode-bidi: normal;
+  visibility: visible;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+}

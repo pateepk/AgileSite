@@ -1,0 +1,28 @@
+﻿@using Kentico.Components.Web.Mvc.FormComponents
+
+@model PageSelector
+
+@{
+    var componentId = Html.IdFor(m => m.Value) + "_component";
+}
+
+<kentico-page-selector-form-component
+  id="@componentId"
+  input-name="@Html.NameFor(m => m.Value)"
+  mode="guid"
+  root-path="@Model.RootPath"
+  style="width: 100%;">
+</kentico-page-selector-form-component>
+
+<script type="text/javascript">
+(function () {
+    const selectedPageData = "@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.SelectedPageModel))";
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
+            window.kentico._modalDialog.pageSelector.init("@componentId", selectedPageData);
+        });
+    } else {
+        window.kentico._modalDialog.pageSelector.init("@componentId", selectedPageData);
+    }
+})();
+</script>

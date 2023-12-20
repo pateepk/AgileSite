@@ -1,0 +1,118 @@
+@arrow-size: @base-unit * 0.375;
+@icon-horizontal-padding: @base-unit * 0.875;
+@item-name-left-margin: 1px;
+@column-width: 190px;
+@arrow-horizontal-margin: @base-unit;
+@item-name-width: @column-width - @icon-size-80 - @icon-horizontal-padding - @arrow-horizontal-margin - @arrow-size - @item-name-left-margin;
+@parent-item-height: 48px;
+
+@keyframes slide {
+  0% {
+    left: -1 * @column-width;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+.parent-item-separator(@width, @left) {
+  &::after {
+    content: "";
+    border-bottom: solid 1px @color-gray-140;
+    width: @width;
+    margin-top: @base-unit * 0.5;
+    position: absolute;
+    left: @left;
+  }
+}
+
+kentico-miller-column {
+  margin-right: 4px;
+  background-color: @color-white;
+  height: 100%;
+
+  // Separator line in the first column needs to start from the left edge of the column,
+  // it shouldn't be centered as in other columns.
+  &:first-of-type .ktc-miller-column__wrapper .ktc-miller-column__parent {
+    .parent-item-separator(95%, 0);
+  }
+
+  .ktc-miller-column__wrapper {
+    height: 100%;
+    position: relative;
+    border-right: 1px solid @color-gray-130;
+    box-shadow: 1px 0 2px @color-gray-140;
+
+    &.ktc-slide {
+      animation: slide 0.3s;
+    }
+
+    .ktc-miller-column__parent {
+      padding: @base-unit * 0.5 0;
+      margin-bottom: @base-unit * 0.5;
+      list-style-type: none;
+
+      .parent-item-separator(169px, 10px);
+    }
+
+    .ktc-miller-column {
+      width: @column-width;
+      height: calc(100% - @parent-item-height);
+      background-color: @color-white;
+
+      span {
+        color: @color-gray-140;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      .ktc-miller-column__item {
+        &:not(.ktc-miller-column__item--parent) {
+          &:hover {
+            background-color: @color-blue-130;
+          }
+
+          a {
+            cursor: pointer;
+          }
+        }
+
+        &.ktc-miller-column__item--selected {
+          background-color: #b3dce9;
+        }
+
+        .ktc-listing-item {
+          display: inline-flex;
+          width: 100%;
+
+            i {
+              padding: @base-unit * 0.25 @icon-horizontal-padding * 0.5;
+            }
+
+          .ktc-listing-item-name {
+            width: @item-name-width;
+            line-height: @line-height-150;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-left: @item-name-left-margin;
+          }
+
+          .ktc-arrow {
+            width: 0;
+            height: 0;
+            border-top: @arrow-size solid transparent;
+            border-bottom: @arrow-size solid transparent;
+
+            border-left: @arrow-size solid @color-blue-70;
+            margin: @base-unit * 0.375 @arrow-horizontal-margin * 0.5;
+          }
+        }
+      }
+    }
+  }
+}

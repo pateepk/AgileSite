@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pop-up-listing rendering should render with item list 1`] = `
+<kentico-pop-up-listing
+  class="hydrated"
+>
+  
+  <div
+    class="ktc-pop-up-item-listing"
+  >
+    <ul>
+      <li
+        class="ktc-pop-up-item ktc-pop-up-item-double-column"
+        data-component-identifier="GUID1"
+        title="NoDescriptionItem1"
+      >
+        <div
+          class="ktc-pop-up-item-icon"
+        >
+          <i
+            aria-hidden="true"
+            class="icon-test"
+          />
+        </div>
+        <div
+          class="ktc-pop-up-item-label"
+        >
+          NoDescriptionItem1
+        </div>
+      </li>
+      <li
+        class="ktc-pop-up-item ktc-pop-up-item-double-column"
+        data-component-identifier="GUID2"
+        title="NoIconItem2
+Item2"
+      >
+        
+        <div
+          class="ktc-pop-up-item-label ktc-pop-up-item-label--no-icon"
+        >
+          NoIconItem2
+        </div>
+      </li>
+      <li
+        class="ktc-pop-up-item ktc-pop-up-item-double-column"
+        data-component-identifier="GUID3"
+        title="NoIconNorDescriptionItem3"
+      >
+        
+        <div
+          class="ktc-pop-up-item-label ktc-pop-up-item-label--no-icon"
+        >
+          NoIconNorDescriptionItem3
+        </div>
+      </li>
+      <li
+        class="ktc-pop-up-item ktc-pop-up-item-double-column"
+        data-component-identifier="GUID4"
+        title="Item4
+Item4"
+      >
+        <div
+          class="ktc-pop-up-item-icon"
+        >
+          <i
+            aria-hidden="true"
+            class="icon-test"
+          />
+        </div>
+        <div
+          class="ktc-pop-up-item-label"
+        >
+          Item4
+        </div>
+      </li>
+      <li
+        class="ktc-pop-up-item ktc-pop-up-item-double-column"
+        data-component-identifier="GUID5"
+        title="Item5
+Item5"
+      >
+        <div
+          class="ktc-pop-up-item-icon"
+        >
+          <i
+            aria-hidden="true"
+            class="icon-test"
+          />
+        </div>
+        <div
+          class="ktc-pop-up-item-label"
+        >
+          Item5
+        </div>
+      </li>
+    </ul>
+  </div>
+</kentico-pop-up-listing>
+`;
+
+exports[`pop-up-listing rendering should render with no items available message 1`] = `
+<kentico-pop-up-listing
+  class="hydrated"
+>
+  
+  <div
+    class="ktc-pop-up-item-listing ktc-pop-up-item-listing--empty"
+  >
+    TEST-MESSAGE
+  </div>
+</kentico-pop-up-listing>
+`;

@@ -1,0 +1,9 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model InvalidComponent
+
+<div class="ktc-form-builder-mvc-invalid-component">
+    <strong>@ResHelper.GetString("kentico.formbuilder.error.componentloading")</strong>
+    <div class="ktc-error-message">@Model.GetValue()</div>
+    <span>@ResHelper.GetString("kentico.formbuilder.seeeventlog")</span>
+</div>

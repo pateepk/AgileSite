@@ -1,0 +1,15 @@
+﻿@model Kentico.Forms.Web.Mvc.Internal.DropdownEditorViewModel
+
+@using CMS.Membership
+
+@{ 
+    var cultureCode = MembershipContext.AuthenticatedUser.PreferredUICultureCode;
+}
+
+@using (Html.Kentico().BeginInlineEditor("kentico-dropdown-editor", Model.PropertyName, new { @class = "ktc-dropdown-editor" }))
+{
+    var optionLabel = Model.Options.Any() ? ResHelper.GetString("kentico.builder.inlineeditors.dropdown.selectoption", cultureCode) : ResHelper.GetString(Model.NoOptionsMessageKey, cultureCode);
+
+    @Html.LabelFor(m => m.Selected, ResHelper.GetString(Model.LabelKey, cultureCode))
+    @Html.DropDownListFor(model => model.Selected, Model.Options, optionLabel, new { @class = "ktc-selector" })
+}

@@ -1,0 +1,9 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model ConsentSelectorComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+}
+
+@Html.DropDownListFor(x => x.SelectedValue, Model.Items, Model.Properties.OptionLabel, htmlAttributes)

@@ -1,0 +1,40 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+
+@model PropertiesPanel
+
+@{
+    Guid guid = Guid.NewGuid();
+    string formId = "propertiesFormId-" + guid;
+    string propertiesTabId = "propertiesTab-" + guid;
+}
+
+<div id="@propertiesTabId">
+
+    @using (Ajax.BeginForm(null, null, null, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.ReplaceWith,
+        UpdateTargetId = @propertiesTabId,
+    }, new
+    {
+        @id = formId,
+        @action = Url.Kentico().GetValidatePropertiesUrl(Model.InstanceIdentifier, Model.TypeIdentifier, Model.FormId, Model.FormFieldName),
+        novalidate = ""
+    }))
+    {
+        <div class="ktc-form-builder-tab-content-header ">
+            @Html.Raw(Html.Kentico().FormBuilderSubmitButton(formId, ResHelper.GetString("general.apply"), Guid.NewGuid()))
+        </div>        
+
+        <div class="ktc-form-builder-tab-content-inner-for-header" onscroll="shadowFormBuilderPanellHeader(this)">
+            @foreach (var property in Model.PropertiesFormComponents)
+            {
+                @Html.Kentico().FormField(property, SystemRenderingConfigurations.PropertiesEditorField)
+            }
+        </div>
+    }
+
+    @Html.Raw(Html.Kentico().NotifyPropertiesValidated(Model, Html.ViewData.ModelState.IsValid))
+</div>

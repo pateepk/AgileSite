@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6BDC71F9-7A04-45DA-8821-1246EC51E3CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Modules</RootNamespace>
+    <AssemblyName>CMS.Modules</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Modules.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Modules.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.14.0.832, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ModuleLicenses\ModuleLicenseKeyInfo.cs" />
+    <Compile Include="ModuleLicenses\ModuleLicenseKeyInfoProvider.cs" />
+    <Compile Include="ModuleLicenses\ModuleLicensesHelper.cs" />
+    <Compile Include="ModuleLicenses\ModuleUsageTracking\ModuleLicensesUsageDataSource.cs" />
+    <Compile Include="Module\InstallableModulesInformationService.cs" />
+    <Compile Include="Module\InstallableModulesManager.cs" />
+    <Compile Include="Module\InstallableModulesState.cs" />
+    <Compile Include="Module\ModuleInstallationException.cs" />
+    <Compile Include="Module\ModuleInstallationState.cs" />
+    <Compile Include="Module\ModuleInstaller.cs" />
+    <Compile Include="Module\ModuleInstallerConfiguration.cs" />
+    <Compile Include="NuGetPackages\BuildNuSpecManifestEventArgs.cs" />
+    <Compile Include="NuGetPackages\BuildNuSpecManifestHandler.cs" />
+    <Compile Include="NuGetPackages\ModulePackagingEvents.cs" />
+    <Compile Include="UIElements\ElementAccessCheckResult.cs" />
+    <Compile Include="UIElements\ElementAccessCheckStatus.cs" />
+    <Compile Include="NuGetPackages\ExportPackage\ModuleDataProvider.cs" />
+    <Compile Include="NuGetPackages\ExportPackage\ModuleExportPackageImporter.cs" />
+    <Compile Include="NuGetPackages\InstallationMetaData\ModuleInstallationMetaDataBuilder.cs" />
+    <Compile Include="NuGetPackages\FileResolving\ModuleFile.cs" />
+    <Compile Include="NuGetPackages\FileResolving\ModuleFileResolver.cs" />
+    <Compile Include="NuGetPackages\FileResolving\ModuleFileResolverBase.cs" />
+    <Compile Include="NuGetPackages\FileResolving\ModuleInstallationFileResolver.cs" />
+    <Compile Include="NuGetPackages\ModulePackageMetadata.cs" />
+    <Compile Include="NuGetPackages\ModulePathRuleResolverContext.cs" />
+    <Compile Include="NuGetPackages\ExportPackage\ModuleExportPackageBuilder.cs" />
+    <Compile Include="NuGetPackages\ModulePathRuleResolver.cs" />
+    <Compile Include="NuGetPackages\ModulePackageBuilder.cs" />
+    <Compile Include="NuGetPackages\NuGetPackageBuilder.cs" />
+    <Compile Include="NuGetPackages\NuSpecBuilder.cs" />
+    <Compile Include="Modules\ResourceInfo.cs" />
+    <Compile Include="Modules\ResourceInfoProvider.cs" />
+    <Compile Include="Modules\ResourceSiteInfo.cs" />
+    <Compile Include="Modules\ResourceSiteInfoProvider.cs" />
+    <Compile Include="Module\ImportExport\ExportSpecialActions.cs" />
+    <Compile Include="Module\ImportExport\ImportSpecialActions.cs" />
+    <Compile Include="Module\ImportExport\ModuleExport.cs" />
+    <Compile Include="Module\ImportExport\ModuleImport.cs" />
+    <Compile Include="Module\ModulesModule.cs" />
+    <Compile Include="Module\ModulesModuleMetadata.cs" />
+    <Compile Include="NuGetPackages\FileResolving\ModuleFilePathRule.cs" />
+    <Compile Include="Permissions\PermissionNameInfo.cs" />
+    <Compile Include="Permissions\PermissionNameInfoProvider.cs" />
+    <Compile Include="Permissions\RolePermissionInfo.cs" />
+    <Compile Include="Permissions\RolePermissionInfoProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceLibraries\ResourceLibraryInfo.cs" />
+    <Compile Include="ResourceLibraries\ResourceLibraryInfoProvider.cs" />
+    <Compile Include="UIElements\ApplicationUrlHelper.cs" />
+    <Compile Include="UIElements\HelpTopicInfo.cs" />
+    <Compile Include="UIElements\HelpTopicInfoProvider.cs" />
+    <Compile Include="UIElements\RoleApplicationInfo.cs" />
+    <Compile Include="UIElements\RoleApplicationInfoProvider.cs" />
+    <Compile Include="UIElements\RoleUIElementInfo.cs" />
+    <Compile Include="UIElements\RoleUIElementInfoProvider.cs" />
+    <Compile Include="UIElements\UIElementCachingHelper.cs" />
+    <Compile Include="UIElements\UIElementInfo.cs" />
+    <Compile Include="UIElements\UIElementInfoProvider.cs" />
+    <Compile Include="UIElements\UIElementSizeEnum.cs" />
+    <Compile Include="UIElements\UIElementTypeEnum.cs" />
+    <Compile Include="Virtual\VirtualModuleManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

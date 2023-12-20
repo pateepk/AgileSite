@@ -1,0 +1,88 @@
+:host{
+  @import 'src/builder/assets/styles/icon-font.less';
+
+  @tree-branch-size: 0.75 * @base-unit;
+  @tree-icon-height: 0.75 * @base-unit;
+  @tree-branch-color:#ddd;
+
+  .icon-plus-circle, .icon-minus-circle  {
+    color: @color-blue-70;
+    font-size: @tree-icon-height;
+    height: @tree-icon-height;
+    position: absolute;
+    top: 2px;
+    left: -1.5 * @tree-branch-size;
+    z-index: 2;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .icon-plus-circle  {
+    .icon-plus-circle();
+  }
+
+  .icon-minus-circle {
+    .icon-minus-circle();
+  }
+
+  .ktc-treeview {
+    ul {
+      margin-left: 0px;
+      padding-left: @tree-branch-size;
+    }
+    li {
+      list-style-type: none;
+      margin: 5px 10px 5px 10px;
+      position: relative;
+
+      &::before, &::after{
+        content: "";
+        position: absolute;
+        z-index: 1;
+        left: -@tree-branch-size;
+        border-left: 1px solid @tree-branch-color;
+        width: @tree-branch-size;
+      }
+
+      &::before {
+        top: -5px;
+        border-bottom: 1px solid @tree-branch-color;
+        height: 13px;
+      }
+
+      &::after {
+        top: 8px;
+        border-top: 1px solid @tree-branch-color;
+        height: 100%;
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+      a {
+        padding: 1px 4px 2px 4px;
+        margin-left: 4px;
+        margin-right: 4px;
+        position: relative;
+        bottom: 2px;
+        cursor: pointer;
+
+        &.ktc-treeview-active{
+          background-color: @color-blue-130;
+        }
+      }
+    }
+    ul:first-child {
+      >li {
+        &:first-child {
+          &::before {
+            border-left: none;
+          }
+        }
+      }
+    }
+  }
+}

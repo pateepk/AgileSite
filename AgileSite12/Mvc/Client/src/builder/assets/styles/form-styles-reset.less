@@ -1,0 +1,48 @@
+@import (reference) "./reset/reset-mixins.less";
+
+.ktc-form-wrapper {
+    .ktc-form {
+      .reset-inherited-values();
+
+      @import "./forms.less";
+
+      .ktc-form-group {
+        min-height: 2.25 * @base-unit;
+
+        &:before, &:after {
+          content: " ";
+          display: table;
+        }
+
+        &:after {
+          clear: both;
+        }
+
+        .ktc-editing-form-value-cell {
+          width: 66%;
+        }
+
+        .ktc-editing-form-label-cell {
+          width: 33%;
+        }
+      }
+
+      .input-validation-error {
+        border-color: @validation-error-color;
+      }
+
+      .field-validation-error {
+        color: @validation-error-color;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      &:empty {
+        &:after {
+          border: 0;
+        }
+      }
+    }
+  }

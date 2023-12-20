@@ -1,0 +1,100 @@
+@import "src/builder/assets/styles/shared.less";
+
+@variant-item-height: 2.5 * @base-unit;
+@variant-item-action-icon-width: @base-unit / 2 + @icon-size-80;
+@variant-item-action-icon-padding: (@variant-item-height - @icon-size-80) / 2;
+@variant-item-width: @pop-up-container-width - 2 *@pop-up-padding;
+@variant-item-active-color: #b3dce9;
+@variant-item-drag-handle-left-padding: @base-unit * 0.25;
+@variant-item-drag-handle-width: @base-unit * 0.25 + @icon-size-80;
+@variant-item-editable-label-width: @variant-item-width - @variant-item-drag-handle-width - @variant-item-action-icon-width * 2;
+@variant-item-icon-drag-width: 2 * @variant-item-action-icon-width + @variant-item-drag-handle-width;
+
+:host {
+  @import 'src/builder/assets/styles/icon-font.less';
+  @import 'src/builder/assets/styles/generated/icon-classes.less';
+
+  .ktc-variant-item-list {
+    margin: 0;
+    padding: @pop-up-padding 0;
+    background-color: @color-white;
+
+    .ktc-variant-item {
+      display: block;
+      width: 100%;
+      height: @variant-item-height;
+
+      &.ktc-is-hovered {
+        background-color: @color-blue-130;
+
+        &, i {
+          cursor: pointer;
+        }
+
+        .ktc-variant-action-icons {
+          display: inline-block;
+        }
+      }
+
+      &.ktc-variant-item--active {
+        background-color: @variant-item-active-color;
+
+        &, * {
+          cursor: auto;
+        }
+
+        &.ktc-is-hovered {
+          background-color: @color-blue-130;
+        }
+      }
+
+      &.ktc-variant-item--editable {
+
+        .ktc-variant-item-label {
+          width: ~"calc(100% - @{variant-item-drag-handle-width});";
+        }
+
+        &.ktc-is-hovered {
+          .ktc-variant-item-label {
+            width: ~"calc(100% - @{variant-item-icon-drag-width});";
+          }
+        }
+      }
+
+
+      .ktc-variant-item-label {
+        display: inline-block;
+        vertical-align: top;
+        width: @variant-item-width;
+        height: @variant-item-height;
+        line-height: @variant-item-height;
+        font-size: 0.875 * @base-unit;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0 @base-unit/2;
+        box-sizing: border-box;
+      }
+
+      .ktc-variant-action-icons {
+        display: none;
+        padding: 11px 0 9px 0;
+
+        .ktc-variant-action-icon {
+          box-sizing: border-box;
+          margin-right: @base-unit/2;
+
+          i {
+            cursor: pointer;
+            color: @color-gray-90;
+            vertical-align: top;
+
+            &:hover {
+              color: @color-gray-50;
+            }
+          }
+        }
+      }
+    }
+  }
+}

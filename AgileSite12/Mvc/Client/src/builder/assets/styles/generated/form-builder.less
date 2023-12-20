@@ -1,0 +1,432 @@
+// FormBuilder - right panel
+.ktc-form-builder {
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100vh;
+
+    .ktc-form-component {
+        display: table;
+        width: 250px;
+        height: 40px;
+    }
+
+    .ktc-field-rule-designer .ktc-rule-designer-rules {
+        max-width: 100%;
+    }
+}
+
+.ktc-settings-panel {
+    background-color: @color-gray-150;
+    flex: 0 0 330px;
+    overflow: auto;
+    width: 330px;
+    padding: @base-unit;
+
+    .ktc-pnl-edit .ktc-btn-group {
+        padding-bottom: @base-unit;
+    }
+
+    .ktc-alert {
+        margin-bottom: 0;
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100%;
+    }
+
+    .ktc-label-property {
+        padding: 15px 0 3px;
+    }
+
+    .ktc-label-property.ktc-Top {
+        padding-top: 0;
+    }
+
+    .ktc-field-property {
+        min-height: 22px;
+    }
+
+    .ktc-inline-block {
+        display: inline-block;
+    }
+}
+
+.ktc-settings-content .ktc-ui-tabs-panel {
+    padding: 15px;
+}
+
+.ktc-options-designer .ktc-option-row {
+    background-color: @color-gray-130;
+    margin-bottom: 1px;
+    min-height: 20px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+
+    .ktc-checkbox, .ktc-radio {
+        display: inline-block;
+
+        label {
+            margin-right: 0;
+            width: 0;
+        }
+    }
+
+    .ktc-cms-input-group,
+    input[type="text"] {
+        display: inline-block;
+        width: @base-unit * 14;
+    }
+
+    .ktc-remove-option {
+        float: right;
+    }
+}
+
+.ktc-field-rule-designer {
+    .ktc-rule-row {
+        background-color: @color-gray-130;
+        min-height: @base-unit * 2;
+        margin-bottom: 1px;
+
+        > span {
+            cursor: pointer;
+            display: inline-block;
+            margin: @base-unit * 0.5;
+            width: 245px;
+        }
+
+        .ktc-checkbox, .ktc-radio {
+            display: inline-block;
+
+            label {
+                margin-right: 0;
+                width: 0;
+            }
+        }
+
+        .ktc-control-group-inline {
+            display: block;
+        }
+
+        .ktc-cms-input-group {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .ktc-rule-disabled {
+            cursor: default;
+        }
+    }
+
+    .ktc-edit-rule-row {
+        .ktc-editing-form-label-cell,
+        .ktc-editing-form-value-cell {
+            float: left;
+            width: 100%;
+        }
+
+        .ktc-control-label {
+            text-align: left;
+        }
+
+        .ktc-cms-input-group {
+            width: 100%;
+        }
+
+        .ktc-form-horizontal {
+            margin-bottom: 0;
+
+            .ktc-editing-form-category {
+                margin-top: 0;
+            }
+
+            .ktc-editing-form-category-fields {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .ktc-rule-row.ktc-edit-rule-row {
+        padding: @base-unit;
+    }
+
+    .ktc-rule-designer-rules {
+        margin-bottom: @base-unit;
+        max-width: @input-max-width;
+    }
+
+    .ktc-rule-actions {
+        float: right;
+    }
+
+    .ktc-rule-warning {
+        padding: @base-unit * 0.5 0;
+        cursor: pointer;
+        color: @color-warning;
+    }
+
+    .ktc-rule-row.ktc-edit-rule-row .ktc-rule-description {
+        display: inline-block;
+        margin-top: @base-unit * 0.5;
+    }
+
+    .ktc-Info {
+        display: inline-block;
+        padding: 3px 5px;
+        vertical-align: top;
+    }
+
+    .ktc-rule-row.ktc-edit-rule-row {
+        background-color: @color-blue-130;
+    }
+
+    .ktc-rule-row {
+        .ktc-remove-rule,
+        .ktc-rule-warning {
+            visibility: hidden;
+        }
+    }
+
+    .ktc-rule-row:hover {
+        .ktc-remove-rule,
+        .ktc-rule-warning {
+            visibility: visible;
+        }
+    }
+}
+
+.ktc-options-designer {
+    .ktc-options-designer-options {
+        margin-top: -10px;
+        margin-bottom: -10px;
+    }
+
+    .ktc-options-designer-options:before,
+    .ktc-options-designer-options:after {
+        content: "\00a0";
+    }
+
+    .ktc-drag-option {
+        cursor: move;
+        float: left;
+        padding: @base-unit * 0.5 @base-unit * 0.25;
+    }
+
+    .ktc-Info {
+        display: inline-block;
+        padding: 3px 5px;
+        vertical-align: top;
+    }
+
+    .ktc-option-row.ktc-selected-row {
+        background-color: @color-blue-130;
+    }
+
+    .ktc-option-row {
+        .ktc-LocalizablePanel,
+        .ktc-remove-option,
+        .ktc-drag-option {
+            visibility: hidden;
+        }
+    }
+
+    .ktc-option-row:hover .ktc-LocalizablePanel,
+    .ktc-option-row:hover .ktc-remove-option,
+    .ktc-option-row:hover .ktc-drag-option,
+    .ktc-option-row.ktc-selected-row .ktc-LocalizablePanel,
+    .ktc-option-row.ktc-selected-row .ktc-remove-option,
+    .ktc-option-row.ktc-selected-row .ktc-drag-option {
+        visibility: visible;
+    }
+}
+
+// FormBuilder - left panel
+
+.ktc-form-components {
+    background-color: @color-white;
+    border-right: 8px solid @color-gray-140;
+    flex: 0 0 270px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 2;
+
+    .ktc-ui-draggable-dragging {
+        position: fixed !important;
+        z-index: 5;
+    }
+
+    .ktc-components-heading {
+        padding: 5px 5px 5px 12px;
+    }
+
+    > div {
+        cursor: move;
+    }
+
+    > div:hover {
+        background-color: @color-blue-130;
+    }
+}
+
+.ktc-form-component {
+    .ktc-component-label {
+        display: table-cell;
+        vertical-align: middle;
+        width: 135px;
+        padding: 0 5px 0 16px;
+    }
+
+    img {
+        padding: 0 0 0 5px;
+        height: 40px;
+        width: 95px;
+    }
+}
+// FormBuilder - form
+.ktc-form-builder-form {
+    overflow: auto;
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    z-index: 1;
+
+    .ktc-editing-form-category-fields {
+        > div:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+    }
+}
+
+.ktc-editing-form-design-mode {
+    width: 100%;
+
+    .ktc-editing-form-category-fields > div {
+        position: relative;
+        border: 1px solid transparent;
+    }
+
+    .ktc-editing-form-category-fields > div:hover {
+        border: dashed 1px @color-gray-90;
+        cursor: move !important;
+    }
+
+    .ktc-editing-form-category-fields > div:hover .ktc-field-actions {
+        visibility: visible;
+    }
+
+    .ktc-editing-form-category-fields {
+        min-height: 2px;
+    }
+
+    .ktc-editing-form-label {
+        cursor: move;
+    }
+
+    .ktc-field-actions {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-left: 30px;
+        padding: 0 2px;
+        visibility: hidden;
+    }
+
+    .ktc-field-wrapper {
+        display: table;
+        width: 100%;
+    }
+
+    .ktc-form-group {
+        min-height: @input-height-base;
+        margin-bottom: @form-group-margin - 2;
+    }
+
+    .ktc-selected-field .ktc-field-actions {
+        visibility: visible;
+    }
+
+    .ktc-selected-number {
+        color: @color-white;
+        background-color: @color-red-100;
+        border-radius: 50%;
+        display: inline-block;
+        font-weight: bold;
+        height: @base-unit * 1.5;
+        line-height: @base-unit * 1.5;
+        position: absolute;
+        right: -@base-unit * 0.75;
+        text-align: center;
+        top: -@base-unit * 0.75;
+        width: @base-unit * 1.5;
+    }
+
+    .ktc-field-actions input[type="image"] {
+        cursor: pointer;
+    }
+
+    .ktc-sortable-placeholder {
+        border: dashed 1px @color-gray-90 !important;
+        background-color: @color-white;
+        min-width: 26px;
+        max-height: 800px;
+        max-width: 100%;
+        margin-bottom: @form-group-margin - 2;
+    }
+
+    .ktc-form-button {
+        // Temp solution while the label column has fixed width
+        margin-left: 108px;
+    }
+
+    .ktc-form-horizontal.ktc-collapsible-div {
+        cursor: pointer;
+    }
+
+    .ktc-empty-form-placeholder {
+        color: @color-gray-90;
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: bold;
+    }
+
+    .ktc-empty-form {
+        height: 60px;
+        width: 100%;
+        display: table;
+        text-align: center;
+        border: dashed 1px @color-gray-90;
+    }
+
+    .ktc-empty-form.ktc-Green {
+        border: dashed 1px @color-green-120;
+    }
+
+    .ktc-selected-field {
+        background-color: @color-blue-130;
+        border: 1px solid @color-blue-130;
+    }
+}
+
+.ktc-form-builder-info {
+    position: absolute;
+    top: 0;
+    right: 440px;
+    z-index: @zindex-alert-success;
+    padding: @base-unit * 0.5 @base-unit * 1.5;
+    background-color: @color-blue-130;
+}
+
+.ktc-alert.ktc-alert-error.ktc-form-builder-error-hidden {
+    display: none;
+}
+
+.ktc-alert.ktc-alert-error.ktc-form-builder-error {
+    display: block;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+}

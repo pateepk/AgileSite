@@ -1,0 +1,90 @@
+﻿@using Kentico.Components.Web.Mvc.Dialogs
+@using Kentico.PageBuilder.Web.Mvc.PageTemplates.Internal
+@model PageTemplatesSelectorViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ResHelper.GetString("kentico.pagebuilder.template.change")</title>
+    <link href="~/Kentico/Scripts/builders/page-template-selector.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="selectorWrapper">
+        <div class="ktc-selector-messages">
+            <div class="ktc-alert-info ktc-alert">
+                <span class="ktc-alert-icon">
+                    <i class="icon-i-circle"></i><span class="ktc-sr-only">@ResHelper.GetString("general.info")</span>
+                </span>
+                <div class="ktc-alert-label">
+                    @Html.Raw(Model.InfoMessage)
+                </div>
+            </div>
+        </div>
+        @if (!Model.HasDefaultTemplates && !Model.HasCustomTemplates)
+        {
+            <div class="ktc-selector-no-templates ktc-show">
+                @ResHelper.GetString("pagetemplatesmvc.notemplates")
+            </div>
+        }
+        @if (Model.HasDefaultTemplates)
+        {
+            <div class="ktc-selector-header">
+                <h4><span>@ResHelper.GetString("pagetemplatesmvc.defaulttemplates")</span></h4>
+            </div>
+            <div class="ktc-UniFlatContent">
+                <div class="ktc-UniFlatContentItems">
+                    <div class="ktc-SelectorFlatItems">
+                        <div>
+                            @foreach (var template in Model.Templates.DefaultPageTemplates)
+                            {
+                                var iconClass = template.IconClass ?? "icon-l-header-cols-2-footer";
+
+                                <div class="ktc-FlatItem ktc-template-item" data-identifier="@template.Identifier">
+                                    <div class="ktc-SelectorEnvelope" style="overflow: hidden" title="@template.Description">
+                                        <div class="ktc-SelectorFlatImage">
+                                            <i class="@iconClass" aria-hidden="true"></i>
+                                        </div>
+                                        <span class="ktc-SelectorFlatText">@template.Name</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (Model.HasCustomTemplates)
+        {
+            <div class="ktc-selector-header">
+                <h4><span>@ResHelper.GetString("pagetemplatesmvc.customtemplates")</span></h4>
+            </div>
+            <div class="ktc-UniFlatContent">
+                <div class="ktc-UniFlatContentItems">
+                    <div class="ktc-SelectorFlatItems">
+                        <div>
+                            @foreach (var template in Model.Templates.CustomPageTemplates)
+                            {
+                                var imagePath = Url.Content(template.ImagePath ?? "~/Kentico/Content/Selectors/Dialogs/PageTemplates/DefaultTemplateImage.png");
+
+                                <div class="ktc-FlatItem ktc-template-item" data-identifier="@template.Identifier">
+                                    <div class="ktc-SelectorEnvelope ktc-EnvelopeBig" style="overflow: hidden" title="@template.Description">
+                                        <div class="ktc-SelectorFlatImage">
+                                            <img src="@imagePath" class="ktc-selector-image" />
+                                        </div>
+                                        <span class="ktc-SelectorFlatText">@template.Name</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @Html.Kentico().ModalDialogScript()
+    <script src="~/Kentico/Content/Selectors/Dialogs/PageTemplates/page-template-selector.js" type="text/javascript"></script>
+</body>
+</html>

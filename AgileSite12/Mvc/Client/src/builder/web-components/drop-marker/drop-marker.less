@@ -1,0 +1,36 @@
+@import "src/builder/assets/styles/shared.less";
+
+@marker-color: @color-blue-100;
+@marker-terminator-width: @base-unit * 0.5;
+
+.ktc-drop-marker-wrapper {
+  .ktc-drop-marker {
+    top: -1px;
+    height: 2px;
+    width: 100%;
+    position: relative;
+    background-color: @marker-color;
+    z-index: @active-element-addon-z-index;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: @marker-terminator-width;
+      width: @marker-terminator-width;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background-color: @marker-color;
+    }
+
+    &:before {
+      left: 0;
+      margin-left: -(@marker-terminator-width * 0.5);
+    }
+
+    &:after {
+      right: 0;
+      margin-right: -(@marker-terminator-width * 0.5);
+    }
+  }
+}

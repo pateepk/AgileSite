@@ -1,0 +1,351 @@
+// import mixin to allow fluid font sizing
+@import 'fluid-type';
+
+//set values for main font sizes
+$min_width: 320px;
+$max_width: 1100px;
+$min_font: 16px;
+$max_font: 18px;
+
+
+html {
+	//do not edit these values
+	@include fluid-type($min_width, $max_width, $min_font, $max_font);
+	box-sizing: border-box;	
+	height: 100%;
+}
+
+//update values below for each element as needed
+
+h1 {
+  	@include fluid-type($min_width, $max_width, 30px, 32px);
+}
+
+h2 {
+  	@include fluid-type($min_width, $max_width, 26px, 28px);
+}
+
+h3 {
+  	@include fluid-type($min_width, $max_width, 22px, 24px);
+}
+
+h4 {
+  	@include fluid-type($min_width, $max_width, 18px, 20px);
+}
+
+h5 {
+ 	 @include fluid-type($min_width, $max_width, 16px, 18px);
+}
+
+h6 {
+  	@include fluid-type($min_width, $max_width, 16px, 18px);
+}
+
+
+%larger {
+  	@include fluid-type($min_width, $max_width, 17px, 21px);
+}
+
+%smaller {
+  	@include fluid-type($min_width, $max_width, 14px, 16px);
+}
+
+
+// simple reset ------------------------------------
+// no need to add normalize, etc
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*, *:before, *:after {    
+    box-sizing: inherit;  
+}
+
+// Body ------------------------------------
+
+body {
+	font-family: $base-font-family;
+	line-height: 1.5;
+	color: $text-color;
+	background: $bg-color;
+	height: 100%;
+	font-smoothing: antialiased;
+	font-feature-settings: "kern" 1;
+}
+
+
+// General Links ------------------------------------
+a { 
+	// note 'not' selector, so other links with class do not inherit 
+	color: $brand-1;
+	text-decoration: none;
+	outline: none;
+    transition: all .2s ease-out;
+    position: relative;
+    
+    &:hover {
+	    text-decoration: underline;
+		text-decoration-skip-ink: auto;
+	}
+    
+
+}
+
+a:focus, input:focus {
+    outline:  none;
+}
+
+// Rosario sans 300, 400, 400i, 600, 700
+// Rufino serif only 400
+// Headings ------------------------------------
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.1;
+	margin-bottom: 1rem;
+}
+
+h1, h2 {
+	font-family: $serif;
+}
+
+h3, h4, h5, h6 {
+	font-family: $sans;
+}
+
+h1 {
+	font-weight: 400;
+}
+
+h2 {
+	font-style: italic;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+h3 {
+	font-weight: 300;
+}
+
+h4 {
+	font-weight: 600;
+}
+
+h5 {
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+h6 {
+	font-style: italic;
+	font-weight: 300;
+}
+
+// Paragraphs ------------------------------------
+p {
+	margin: 0 0 1rem;
+}
+
+p.intro {
+	//adding intro class to paragraph makes it larger font & first line bold
+	@extend %larger;
+	
+	&:first-line {
+		font-weight: 700;
+	}
+}
+
+
+
+
+// Lists ------------------------------------
+
+//move lists up after certain elements
+p, h2, h3, h4 {
+	+ ul, + ol, + dl {
+	margin-top: -1rem;
+	}
+}
+
+ul, ol, dd {
+    margin: 0 0 1rem 1.5rem;
+}
+
+li {
+	
+}
+
+li > ul,
+li > ol {
+    margin-bottom: 0;
+}
+
+// list marker default
+ul {
+    list-style: disc;
+}
+
+ol {
+    list-style: decimal;
+}
+
+
+%plain-list {
+	// removes bullets & padding
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.inline-list {
+	@extend %plain-list;
+	margin: 0 0 1.5em;
+	
+	li {
+		list-style: none;
+		display: inline-block;
+		
+		&:not(:last-child):after {
+			//adds separator symbol between inline items if not last-child
+			content: '\02dc';
+			position: relative;
+			top: .3em;
+			line-height: 1;
+			padding: 0 .5em;
+			
+			// content options:
+			// ndash = 2013  + top = -.01em
+			// mdash = 2014  + top = -.01em   
+			// bullet = 2022 + top = -.1em
+			// small tilde = 02dc + top = .3em
+			// backslash = 005c + top = -.06em
+			// asterisk = 2217 + top = -.1em
+			// vertical line = 007c + top = -.06em
+			// broken bar = 00a6 + top = -.06em
+			// ellipsis = 2026 + top = -.24em
+		}
+	}
+}
+
+
+// Description Lists
+dl { 
+	margin-bottom: 1em; 
+}
+
+dt { 
+	font-weight: 700; 
+}
+
+dd {
+	 margin: 0 0 0 .5em; 
+}
+
+
+
+// Horizontal rules - fancy lines
+hr {
+	border: 1px solid $border; 
+	border-width: 1px 0 0;
+	text-align: center;
+	overflow: visible;
+	font-weight: 400;
+	
+	&:before {
+		content: '§';
+		display: inline-block;
+		position: relative;
+		top: -.9rem;
+		padding: 0 .25rem;
+		background: white;
+		color: shade($border, 20);
+		font-size: .8rem;
+		transform: rotate(60deg);
+	}
+}
+
+
+// Blockquotes ----------------------------
+q, 
+blockquote {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+blockquote {
+    @extend %larger;
+    font-weight: 400;
+    border-left: 8px solid $accent-dark;
+    margin: 1.5em 0;
+    padding: 1rem;
+    color: $text-color;
+
+    cite {
+        @extend %smaller;
+        font-style: normal;
+        text-align: right;
+        display: block;
+
+        &:before {
+            content: '- ';
+        }
+    }
+}
+
+blockquote.quote {
+    padding: 0 1.65rem;
+    margin: .5rem 0;
+    position: relative;
+    border: none;
+
+    &:before,
+    &:after {
+      position: absolute;
+      display: block;
+      font-size: 4rem;
+      line-height: 1;
+      font-family: Georgia;
+    }
+
+    &:before {
+      top: -.5rem;
+      left: 0;
+      content: "\201C";
+    }
+
+    &:after {
+      right: 0;
+      bottom: -.6rem;
+      content: "\201D";
+    }
+}
+
+
+// Figure  ----------------------------
+
+figure {
+    margin: 0 1rem 1rem 0;
+    padding: .5rem;
+    max-width: 100%;
+    width: auto;
+    border: 1px solid $border;
+	text-align: center;
+	display: inline-block;
+	border-radius: .125rem;
+	background: #fff;
+
+    figcaption {
+        @extend %smaller;
+        text-align: center;
+        padding: .25rem .5rem;
+        font-style: italic;
+        color: $gray-6;
+    }
+    
+    @media (min-width: 480px) {
+	    text-align: left;
+    }
+}
+
+
+    
+
+

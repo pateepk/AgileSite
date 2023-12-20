@@ -1,0 +1,118 @@
+<#@ template debug="false" hostspecific="false" language="C#" linePragmas="false" #>
+<#@ output encoding="UTF-8" #>
+using System;
+using System.Data;
+using System.Runtime.Serialization;
+<# if (HasReferences) { #>
+using System.Collections.Generic;
+<# } #>
+
+using CMS;
+using CMS.DataEngine;
+using CMS.Helpers;
+using <#= Namespace #>;
+
+[assembly: RegisterObjectType(typeof(<#= InfoClassName #>), <#= InfoClassName #>.OBJECT_TYPE)]
+
+namespace <#= Namespace #>
+{
+    /// <summary>
+    /// Data container class for <see cref="<#= InfoClassName #>"/>.
+    /// </summary>
+    [Serializable]
+    public <# if (GeneratePartialClass) { #>partial <# } #>class <#= InfoClassName #> : AbstractInfo<<#= InfoClassName #>>
+    {
+        /// <summary>
+        /// Object type.
+        /// </summary>
+        public const string OBJECT_TYPE = <#= ObjectType #>;
+
+
+        /// <summary>
+        /// Type information.
+        /// </summary>
+#warning "You will need to configure the type info."
+        public static readonly ObjectTypeInfo TYPEINFO = new ObjectTypeInfo(typeof(<#= InfoProviderClassName #>), OBJECT_TYPE, <#= ObjectClassName #>, <#= IdColumn #>, null, null, null, null, null, <#= SiteIdColumn #>, <#= ParentColumn #>, "<#= ParentObjectType #>")
+        {
+            ModuleName = "<#= ModuleName #>",
+            TouchCacheDependencies = true,
+<# if (HasReferences) { #>
+            DependsOn = new List<ObjectDependency>()
+            {
+<# foreach (InfoTemplateProperty property in References) { #><# if (!string.IsNullOrEmpty(property.ReferenceToObjectType)) { #>
+                new ObjectDependency("<#= property.Name #>", "<#= property.ReferenceToObjectType #>", ObjectDependencyEnum.<#= property.ReferenceType #>),
+<# } #><# } #>
+            },
+<# } #>
+        };
+<# foreach (InfoTemplateProperty property in Properties) { #>
+
+
+        /// <summary>
+        /// <#= property.Comment #>
+        /// </summary>
+<# if (property.HasDatabaseRepresentation) { #>
+        [DatabaseField]
+<# } #>
+        public virtual <#= property.Type #> <#= property.Name #>
+        {
+            get
+            {
+                return <#= property.GetMethod #>(<# if (property.UseGetValue) { #>GetValue("<#= property.Name #>")<# } else { #>"<#= property.Name #>"<# } #>, <#= property.DefaultValue #>);
+            }
+            set
+            {
+                SetValue("<#= property.Name #>", value<# if (property.AllowEmpty && !String.IsNullOrEmpty(property.TypeDefaultValue)) { #>, <#= property.TypeDefaultValue #><# } #>);
+            }
+        }
+<# } #>
+
+
+        /// <summary>
+        /// Deletes the object using appropriate provider.
+        /// </summary>
+        protected override void DeleteObject()
+        {
+            <#= InfoProviderClassName #>.Delete<#= InfoClassName #>(this);
+        }
+
+
+        /// <summary>
+        /// Updates the object using appropriate provider.
+        /// </summary>
+        protected override void SetObject()
+        {
+            <#= InfoProviderClassName #>.Set<#= InfoClassName #>(this);
+        }
+
+
+        /// <summary>
+        /// Constructor for de-serialization.
+        /// </summary>
+        /// <param name="info">Serialization info.</param>
+        /// <param name="context">Streaming context.</param>
+        protected <#= InfoClassName #>(SerializationInfo info, StreamingContext context)
+            : base(info, context, TYPEINFO)
+        {
+        }
+
+
+        /// <summary>
+        /// Creates an empty instance of the <see cref="<#= InfoClassName #>"/> class.
+        /// </summary>
+        public <#= InfoClassName #>()
+            : base(TYPEINFO)
+        {
+        }
+
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="<#= InfoClassName #>"/> class from the given <see cref="DataRow"/>.
+        /// </summary>
+        /// <param name="dr">DataRow with the object data.</param>
+        public <#= InfoClassName #>(DataRow dr)
+            : base(TYPEINFO, dr)
+        {
+        }
+    }
+}

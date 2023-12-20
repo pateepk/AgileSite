@@ -1,0 +1,117 @@
+@import 'src/builder/assets/styles/icon-font.less';
+
+@border-width: 2px;
+@box-width: 320px;
+@box-height: 240px;
+@bottom-offset: 72px;
+
+@box-content-width: @box-width - 2*@border-width;
+@box-content-height: @box-height - 2*@border-width;
+
+.horizontal-center() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.overlay-style() {
+  background-color: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  z-index: 1;
+}
+
+kentico-media-files-single-form-component {
+    .ktc-mediafile-selector-component {
+        .icon-doc {
+            .icon-doc();
+        }
+
+        .icon-ban-sign {
+            .icon-ban-sign();
+        }
+
+        .icon-exclamation-triangle {
+            .icon-exclamation-triangle();
+        }
+
+        .ktc-form-control.ktc-file-box {
+            height: @box-height;
+            width: @box-width;
+            position: relative;
+            padding: 0;
+
+            a {
+                text-decoration: none;
+            }
+
+            .ktc-overlay {
+                .overlay-style();
+            }
+
+            &:hover .ktc-overlay {
+                opacity: 1;
+            }
+
+            .ktc-selector-thumbnail {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+
+                .ktc-thumbnail-image {
+                    max-height: @box-content-height;
+                    max-width: @box-content-width;
+                }
+            }
+
+            .ktc-selector-file-icon {
+                .horizontal-center();
+                text-align: center;
+                top: 64px;
+
+                &.ktc-invalid-file {
+                    .ktc-label-filename, i {
+                        color: @color-orange-80;
+                    }
+                }
+
+                .ktc-label-filename {
+                    text-align: center;
+                    line-height: @base-unit;
+                    width: @base-unit * 10;
+                    word-wrap: break-word;
+                }
+            }
+
+            .ktc-selector-empty {
+                .horizontal-center();
+                top: 56px;
+
+                i {
+                    color: @color-gray-100;
+                    margin: 0;
+                }
+            }
+
+            .ktc-select-button {
+                .horizontal-center();
+                top: @box-content-height - @bottom-offset;
+            }
+
+            .ktc-overlay div {
+                .horizontal-center();
+                top: @box-content-height - @bottom-offset;
+                text-align: center;
+            }
+        }
+    }
+}

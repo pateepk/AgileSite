@@ -1,0 +1,1322 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+// Normalize non-controls
+//
+// Restyle and baseline non-control form elements.
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    // Chrome and Firefox set a `min-width: -webkit-min-content;` on fieldsets,
+    // so we reset that to ensure it behaves more like a standard block element.
+    // See https://github.ktc-com/twbs/bootstrap/issues/12359.
+    min-width: 0;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: @line-height-100;
+    font-size: (@font-size-base * 1.5);
+    line-height: inherit;
+    color: @legend-color;
+    border: 0;
+    border-bottom: 1px solid @legend-border-color;
+}
+
+// Normalize form controls
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+    box-sizing: border-box;
+}
+
+// Remove 'x' symbol from text boxes in IE
+input[type="search"], input[type="text"] {
+    &::-ms-clear {
+        display: none;
+    }
+}
+
+// Set the height of select and file controls to match text inputs
+input[type="file"] {
+    display: block;
+}
+
+// Make range inputs behave like textual form controls
+input[type="range"] {
+    display: block;
+    width: 100%;
+}
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+    height: auto;
+}
+
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
+
+// Warning
+.ktc-has-warning {
+    .ktc-form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg );
+}
+// Error
+.ktc-has-error {
+    .ktc-form-control-validation(@state-error-text; @state-error-text; @state-error-bg );
+}
+
+// Success
+.ktc-has-success {
+    .ktc-form-control-validation(@state-success-text; @state-success-text; @state-success-bg );
+}
+
+// Inline validation mostly in form
+.ktc-form-control-error {
+    font-size: @font-size-base;
+    color: @color-red-70;
+    display: inline-block; // important
+    margin-top: @base-unit * 0.375;
+    margin-right: @base-unit * 0.5;
+    // Error icon
+    &:before {
+        font-family: @icon-font-name;
+        font-size: @icon-size-80;
+        content: @icon-times-circle;
+        color: @field-check-color-error;
+        margin-right: @base-unit * 0.375;
+    }
+    // Override display used by .ktc-NET validator to show the error
+    &[style*="inline"] {
+        display: inline-block !important;
+    }
+}
+
+.ktc-form-control-loading {
+    font-size: @font-size-base;
+    color: @color-blue-100;
+    display: inline-block; // important
+    margin-top: @base-unit * 0.375;
+    margin-right: @base-unit * 0.5;
+    
+    // :before pseudo-selector cannot be used, because it cannot be animated in some browsers
+    // icon spinner has to be added manually into the element
+    i {
+      margin-right: @base-unit * 0.125 !important;
+      margin-left: -@base-unit * 0.25;
+    }
+}
+
+// obsolete version
+.ktc-CMSValidator {
+    span {
+        font-size: @font-size-base;
+        color: @color-red-70;
+        display: inline-block; // important
+        margin-top: @base-unit * 0.375;
+        margin-right: @base-unit * 0.5;
+        // Error icon
+        &:before {
+            font-family: @icon-font-name;
+            font-size: @icon-size-80;
+            content: @icon-times-circle;
+            color: @field-check-color-error;
+            margin-right: @base-unit * 0.375;
+        }
+        // Override display used by .ktc-NET validator to show the error
+        &[style*="inline"] {
+            display: inline-block !important;
+        }
+    }
+}
+
+// Colors of the validation results
+.ktc-validation-success {
+    color: @field-check-color-success;
+}
+
+.ktc-validation-warning {
+    color: @field-check-color-warning;
+}
+
+.ktc-validation-error {
+    color: @field-check-color-error;
+}
+
+// Horizontal forms
+//
+// Horizontal forms are built on grid classes and allow you to create forms with
+// labels on the left and inputs on the right.
+
+.ktc-form-horizontal {
+    width: 100%;
+    margin-bottom: @base-unit * 1.5;
+    // Consistent vertical alignment of labels, radios, and checkboxes
+    .ktc-control-label,
+    .ktc-control-label-top,
+    .ktc-radio,
+    .ktc-checkbox,
+    .ktc-selector-subitem {
+        margin-bottom: 0;
+        margin-top: (@padding-base-vertical + @input-border-width); // Default padding plus a border
+    }
+    // Fix for checkbox in table within a form
+    .ktc-table {
+        .ktc-radio,
+        .ktc-checkbox {
+            margin-top: 0;
+        }
+    }
+    // Make form groups behave like rows
+    .ktc-form-group {
+        &:extend(.ktc-cms-bootstrap .ktc-clearfix all);
+    }
+    // Vertical alignment in radio group for first item
+    .ktc-radio-list-vertical {
+        .ktc-radio {
+            margin-right: 0;
+        }
+
+        .ktc-radio:first-child {
+            margin-top: 0;
+        }
+
+        & + .ktc-control-group-inline {
+            margin-top: @base-unit * 0.5;
+        }
+    }
+    // Vertical alignment in checkbox group for first item
+    .ktc-checkbox-list-vertical {
+        .ktc-checkbox {
+            margin-right: 0;
+        }
+
+        .ktc-checkbox:first-child {
+            margin-top: 0;
+        }
+    }
+    // Left margin for selector subitems
+    .ktc-selector-subitem {
+        margin-left: @base-unit * 1.5;
+    }
+    // Only right align form labels here when the columns stop stacking
+    @media screen and (min-width: @screen-tablet) {
+        .ktc-control-label {
+            text-align: right;
+        }
+    }
+    // Left align for top labels
+    .ktc-control-label-top {
+        text-align: left;
+    }
+    // Cell for condition panel in generated filter control
+    .ktc-form-condition-cell-generated {
+        .ktc-input-width-60;
+        float: left;
+        padding-right: @grid-gutter-width-half;
+    }
+    // Category nested in category
+    h5.ktc-editing-form-category-caption {
+        padding: @base-unit * 0.5; // ~8px
+        padding-left: @base-unit;
+        margin-bottom: @base-unit * 0.5;
+    }
+}
+
+// Div layout
+//
+// Used for in horizontal-forms
+
+// Form groups
+// Standard form group
+.ktc-form-group {
+    margin-bottom: @form-group-margin;
+}
+// Submit buttons row
+.ktc-form-group-submit {
+    .ktc-make-column-offset(@screen-tablet; 4);
+    .ktc-make-column-offset(@screen-desktop; 2);
+}
+
+
+// Cell for field label
+.ktc-editing-form-label-cell {
+    font-size: @font-size-base;
+    .ktc-make-column(@screen-tablet; 4);
+    .ktc-make-column(@screen-desktop; 2);
+    padding-right: @grid-gutter-width;
+}
+
+// Cell for form control + button + error message
+.ktc-editing-form-value-cell {
+    .ktc-make-column(@screen-tablet; 8);
+    .ktc-make-column(@screen-desktop; 10);
+    .ktc-fix-white-space();
+
+    .ktc-form-control, .ktc-cms-input-group, .ktc-cms-form-group-btn, .ktc-cms-form-group-text {
+        .ktc-inline-input();
+        font-size: @font-size-base;
+    }
+
+    .ktc-btn {
+        vertical-align: top;
+
+        &.ktc-icon-only {
+            i {
+                margin: 0;
+            }
+        }
+
+        + .ktc-form-control-text {
+            margin-left: @base-unit * 0.5;
+        }
+    }
+    // Try not to use directly
+    .ktc-form-control-inline {
+        display: inline-block;
+        margin-top: (@padding-base-vertical + @input-border-width); // Default padding plus a border
+        margin-right: @base-unit * 0.5;
+    }
+    // Use in value cell for any text
+    .ktc-form-control-text {
+        .ktc-form-control-inline;
+        font-size: @font-size-base;
+    }
+    // Use in value cell for image control
+    .ktc-form-control-image {
+        .ktc-form-control-inline;
+    }
+    // Use in value cell for upload control
+    .ktc-form-control-upload {
+        .ktc-form-control-inline;
+    }
+
+    .ktc-field-value-override-checkbox {
+        margin-bottom: @margin-50;
+    }
+
+    i {
+        margin-right: @base-unit * 0.5;
+    }
+    // Macro edit styles
+    .ktc-macro-edit-cell {
+        display: inline-block;
+        // Place macro edit button between label and input
+        width: @grid-gutter-width;
+        margin-left: -@grid-gutter-width;
+        // Define higher specificity to disable margin
+        .ktc-macro-edit-remove-button.ktc-icon-only.ktc-btn {
+            padding: 0px;
+            margin: 0px;
+
+            .ktc-macro-edit-remove-icon {
+                // Fill whole gutter with clickable area
+                padding: @macro-edit-icon-padding;
+                // Class-defined icon size can't be used, because accessible button sets default icon size with higher specificity
+                font-size: 12px;
+            }
+        }
+    }
+
+    .ktc-macro-edit-control-cell {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+    }
+
+    .ktc-uploader {
+        margin-top: @base-unit *0.25;
+    }
+}
+
+// Cell for field label in narrow form
+.ktc-editing-form-label-cell-narrow {
+    .ktc-editing-form-label-cell;
+    .ktc-make-column(@screen-desktop; 4);
+}
+
+// Cell for form control + button + error message in narrow form
+.ktc-editing-form-value-cell-narrow {
+    .ktc-editing-form-value-cell;
+    .ktc-make-column(@screen-desktop; 8);
+}
+
+// Cell with offset
+.ktc-editing-form-value-cell-offset {
+    .ktc-make-column-offset(@screen-tablet; 4);
+    .ktc-make-column-offset(@screen-desktop; 2);
+}
+
+.ktc-settings-group-inline {
+    display: block;
+    .ktc-fix-white-space();
+
+    .ktc-control-group-inline,
+    input,
+    button,
+    p,
+    .ktc-country-selector span {
+        display: inline;
+    }
+
+    > .ktc-editing-form-control-nested-control,
+    > .ktc-settings-info-group {
+        display: inline-block;
+
+        & + .ktc-settings-info-group {
+            vertical-align: top;
+        }
+    }
+
+    .ktc-form-control {
+        width: @input-max-width;
+    }
+
+    .ktc-alert {
+        display: block;
+    }
+
+    .ktc-checkbox,
+    .ktc-radio,
+    .ktc-CM {
+        display: inline-block;
+        vertical-align: top;
+
+        div,
+        p,
+        .ktc-checkbox {
+            display: block;
+        }
+    }
+
+    .ktc-checkbox-no-label > label {
+        .ktc-fix-white-space();
+    }
+
+    .ktc-btn, .ktc-btn + .ktc-btn {
+        margin-left: 0;
+        margin-right: @padding-small-horizontal;
+    }
+}
+
+.ktc-editing-form-control-nested-control {
+    display: inline;
+}
+
+.ktc-editing-form-control-nested-control:not(:first-child) {
+    :first-child {
+        margin-top: @base-unit * 0.25;
+    }
+}
+
+// Mass actions
+.ktc-mass-action {
+    width: @screen-tablet;
+    margin-top: @base-unit;
+
+    .ktc-mass-action-label-cell {
+        .ktc-make-column(@screen-tablet; 3);
+        padding-right: @grid-gutter-width;
+        font-size: @font-size-base;
+    }
+
+    .ktc-mass-action-value-cell {
+        .ktc-fix-white-space();
+
+        .ktc-form-control {
+            min-width: @base-unit * 12;
+            width: auto;
+            max-width: @base-unit * 18;
+        }
+
+        .ktc-form-control, .ktc-cms-input-group, .ktc-cms-form-group-btn, .ktc-cms-form-group-text {
+            .ktc-inline-input();
+        }
+        // E.ktc-g. in product variants
+        .ktc-control-group-inline {
+            display: inline-block;
+            margin-left: @margin-50;
+        }
+
+        .ktc-input-price {
+            .ktc-input-width-40;
+            .ktc-input-number;
+            min-width: 0;
+        }
+
+        .ktc-btn {
+            vertical-align: top;
+        }
+    }
+}
+
+// Remove bottom indentation from filters for headers
+.ktc-cms-edit-menu .ktc-form-horizontal, .ktc-header-panel .ktc-form-horizontal {
+    margin-bottom: 0;
+
+    .ktc-form-group:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+// Labels
+label {
+    display: inline-block;
+
+    &.ktc-control-label, &.ktc-control-label-top {
+        color: @color-blue-70;
+        .ktc-text-semibold();
+        width: 100%;
+    }
+}
+
+// Special case of span-label (i.ktc-e. site selector)
+span {
+    &.ktc-control-label {
+        display: inline-block;
+        .ktc-text-semibold();
+        color: @color-blue-70;
+        width: 100%;
+    }
+}
+
+
+// Table layout used in custom form layout - generate default layout
+.ktc-form-table {
+    display: block;
+    float: left; // IE fix
+    tbody {
+        display: block;
+        float: left; // IE fix
+    }
+
+    .ktc-form-table-group {
+        display: block;
+        width: 100%; // IE fix
+        float: left; // IE fix
+        margin-bottom: @form-group-margin;
+        &:extend(.ktc-cms-bootstrap .ktc-clearfix all);
+    }
+
+    .ktc-form-table-label-cell {
+        .ktc-make-column(@screen-tablet; 4);
+        .ktc-make-column(@screen-desktop; 2);
+        display: block;
+        padding-right: @grid-gutter-width;
+        vertical-align: top;
+    }
+
+    .ktc-form-table-value-cell {
+        .ktc-make-column(@screen-tablet; 6);
+        .ktc-make-column(@screen-desktop; 8);
+        .ktc-fix-white-space();
+        display: block;
+        // All controls
+        .ktc-form-control {
+            .ktc-inline-input();
+        }
+        // Use in value cell for any text
+        .ktc-form-control-text {
+            display: inline-block;
+            margin-top: (@padding-base-vertical + @input-border-width); // Default padding plus a border
+            margin-right: @base-unit * 0.5;
+        }
+    }
+
+    .ktc-form-table-validation-cell {
+        .ktc-make-column(@screen-tablet; 2);
+        .ktc-make-column(@screen-desktop; 2);
+        display: block;
+    }
+}
+
+
+// Common form controls
+//
+// Shared size and type resets for form controls. Apply .ktc-form-control to any
+// of the following form controls:
+//
+// select
+// textarea
+// input[type="text"]
+// input[type="password"]
+// input[type="datetime"]
+// input[type="datetime-local"]
+// input[type="date"]
+// input[type="month"]
+// input[type="time"]
+// input[type="week"]
+// input[type="number"]
+// input[type="email"]
+// input[type="url"]
+// input[type="search"]
+// input[type="tel"]
+// input[type="color"]
+
+.ktc-form-control {
+    display: block;
+    width: 100%;
+    height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+    padding: @padding-base-vertical @padding-base-horizontal * 0.5;
+    font-size: @font-size-base;
+    line-height: @line-height-100;
+    color: @input-color;
+    vertical-align: baseline;
+    background-color: @input-bg;
+    border: @input-border-width solid @input-border;
+    border-radius: @input-border-radius;
+    box-sizing: border-box;
+    transition: ~"border-color ease-in-out .15s, box-shadow ease-in-out .15s";
+    // Customize the `:focus` state to imitate native WebKit styles.
+    .ktc-form-control-focus();
+    // Disabled and read-only inputs
+    // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+    // be disabled if the fieldset is disabled. Due to implementation difficulty,
+    // we don't honor that edge case; we style them as disabled anyway.
+    &[disabled],
+    &[readonly] {
+        color: @input-color-disabled;
+        background-color: @input-bg-disabled;
+        border-color: @input-bg-disabled;
+        .ktc-placeholder(@input-color-disabled);
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+    }
+}
+
+// Reset height for textareas
+textarea.ktc-form-control {
+    height: auto;
+}
+
+// Fix dropdown flag position in select
+select.ktc-form-control {
+    padding-right: @base-unit * 0.25;
+}
+
+&.ktc-IE select.ktc-form-control {
+    padding-top: @base-unit * 0.1875;
+}
+
+// Placeholder
+//
+// Placeholder text gets special styles because when browsers invalidate entire
+// lines if it doesn't understand a selector/
+.ktc-form-control {
+    .ktc-placeholder();
+}
+
+.ktc-form-control-icon {
+    .ktc-cms-icon-80;
+    margin-top: @base-unit * 0.25;
+}
+
+
+// Form controls sizing
+//
+
+// Main input width definitions
+.ktc-input-width-15 {
+    width: @base-unit * 3; // ~48px = 0n chars in drp, 3n chars in txb
+}
+
+.ktc-input-width-20 {
+    width: @base-unit * 5; // ~80px = 4n chars in drp, 7n chars in txb
+}
+
+.ktc-input-width-40 {
+    width: @base-unit * 7; // ~112px = 7n chars in drp, 11n chars in txb
+}
+
+.ktc-input-width-60 {
+    width: @base-unit * 12; // ~192px = 18n chars in drp, 21n chars in txb
+}
+
+.ktc-input-width-100 {
+    width: @base-unit * 20; // ~320px = 34n chars in drp, 37n chars in txb
+}
+
+// Other width definitions - use custom widths as little as possible
+.ktc-input-width-82 {
+    width: @base-unit * 16.5;
+}
+
+// For date/time textbox
+.ktc-input-width-58 {
+    width: @base-unit * 11;
+}
+
+
+// Bootstrap sizing - obsolete
+.ktc-input-sm {
+    .ktc-input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-80; @border-radius-small );
+}
+
+.ktc-input-lg {
+    .ktc-input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-200; @border-radius-large );
+}
+
+// Form types
+// Date
+.ktc-input-date {
+    .ktc-text-right;
+}
+
+// Number
+.ktc-input-number {
+    .ktc-text-right;
+}
+
+
+// Checkboxes and radios
+// Uses font-icon for the checkboxes and radio buttons
+//
+// Common radio and checkbox styles
+.ktc-radio,
+.ktc-checkbox {
+    display: block;
+
+    label {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        padding-left: @base-unit * 1.5;
+        font-size: @font-size-base;
+        line-height: @line-height-100;
+        font-weight: normal;
+        // Common styles for border and inner icon
+        &:before,
+        &:after {
+            content: "";
+            width: @base-unit - 1px; // remove white bg around
+            height: @base-unit - 1px; // remove white bg around
+            line-height: @base-unit;
+            display: inline-block;
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: @base-unit * 0.125; // special alignment
+            background-color: @color-white;
+        }
+        // Inner icon specific
+        &:after {
+            background-color: transparent;
+        }
+    }
+
+    input {
+        // Disabled styling
+        &[disabled], &:active[disabled] {
+            & + label {
+                cursor: not-allowed;
+
+                &:before, &:focus:before, &:active:before {
+                    color: @input-bg-disabled;
+                }
+
+                &:after {
+                    color: @input-color-disabled;
+                }
+            }
+        }
+        // Hide default inputs
+        position: fixed;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+        // Icons
+        + label:before,
+        + label:after {
+            font-family: @icon-font-name;
+            font-size: @icon-size-80;
+            text-align: center;
+        }
+
+        + label:before {
+            color: @color-gray-130;
+        }
+
+        + label:after {
+            color: @color-green-100;
+        }
+        // Focus
+        &:focus + label:before,
+        &:active + label:before {
+            color: @color-blue-100;
+        }
+    }
+}
+// Checkbox correction for Safari
+&.ktc-Safari {
+    .ktc-checkbox {
+        label {
+            &:after {
+                height: @base-unit;
+            }
+        }
+    }
+}
+// Checkbox correction for Chrome
+&.ktc-Chrome {
+    .ktc-checkbox {
+        label {
+            &:before,
+            &:after {
+                height: @base-unit;
+            }
+        }
+    }
+}
+
+// Radio specific styles
+.ktc-radio {
+    input {
+        // Border - shown for both selected and unselected
+        + label:before {
+            content: @icon-rb-uncheck;
+        }
+
+        &:disabled + label:before {
+            content: @icon-circle;
+        }
+        // Inner icon
+        &:checked + label:after {
+            content: @icon-rb-check-sign;
+        }
+    }
+    // Radio button border radius fix - because of background issue on table hover
+    label:before {
+        border-radius: 50%;
+    }
+}
+
+// Checkbox specific styles
+.ktc-checkbox {
+    input {
+        // Border - shown for both checked and unchecked
+        + label:before {
+            content: @icon-cb-uncheck;
+        }
+
+        &:disabled + label:before {
+            content: @icon-cb-check-disabled;
+        }
+        // Inner icon
+        &:checked + label:after {
+            content: @icon-cb-check-sign;
+        }
+    }
+
+    &:not(.ktc-checkbox-no-label):not(.ktc-control-group-inline, .ktc-checkbox) {
+        label {
+            margin-right: @base-unit * 0.5;
+        }
+    }
+}
+
+
+
+// Vertical radio and checkbox lists
+.ktc-radio-list-vertical,
+.ktc-checkbox-list-vertical {
+    margin-top: (@base-unit * 0.25 + @input-border-width);
+    margin-right: @base-unit * 0.5;
+
+    label:not(:first-of-type),
+    // When disabled, radio list item gets wrapped with a span
+    span:not(:first-of-type) label,
+    .ktc-radio + .ktc-radio,
+    .ktc-checkbox + .ktc-checkbox {
+        margin-top: @base-unit * 0.25;
+    }
+    // Use this class when the list is the first thing on the page
+    &.ktc-first-on-page {
+        margin-top: 0px;
+    }
+}
+
+// Horizontal radio and checkbox lists
+.ktc-radio-list-horizontal,
+.ktc-checkbox-list-horizontal {
+    .ktc-radio,
+    .ktc-checkbox {
+        display: inline-block;
+    }
+
+    label {
+        margin-right: @base-unit;
+    }
+}
+
+
+// Additional elements styling
+//
+// Full width for textarea column
+.ktc-textarea-full-width {
+    width: 100%;
+
+    .ktc-form-control, .ktc-cms-input-group {
+        max-width: 100%;
+    }
+}
+
+.ktc-form-field-full-column-width {
+    .ktc-form-control {
+        max-width: 100%;
+    }
+}
+
+// Label for full-width textarea
+.ktc-label-full-width {
+    width: 100%;
+
+    .ktc-control-label {
+        text-align: left;
+    }
+}
+
+// Text under the input
+.ktc-explanation-text {
+    font-size: @font-size-base;
+    display: block;
+    margin-top: @form-explanation-text-margin-top;
+    max-width: @explanation-text-max-width;
+}
+
+.ktc-form-field-full-column-width .ktc-explanation-text {
+    max-width: none;
+}
+
+.ktc-explanation-text-settings {
+    .ktc-explanation-text;
+    max-width: @explanation-text-max-width*1.75;
+}
+
+// Required mark (*)
+.ktc-required-mark {
+    font-size: @font-size-base;
+    font-weight: bold;
+    color: Red;
+}
+
+// Remove red outline added by automatic input validation before submit
+input:invalid {
+    box-shadow: none;
+}
+
+
+// Styles for collapsible panels (i.ktc-e. webpart properties)
+
+.ktc-form-horizontal .ktc-editing-form-category-fields {
+    margin-top: @base-unit;
+    margin-bottom: @base-unit * 1.5;
+}
+
+// Not used Bootstrap stuff
+// ------------------------
+
+// Static form control text
+//
+// Apply class to a `p` element to make any string of text align with labels in
+// a horizontal form layout.
+
+.ktc-form-control-static {
+    margin-bottom: 0; // Remove default margin from `p`
+    margin-top: (@padding-base-vertical + 1);
+}
+
+
+// Help text
+//
+// Apply to any element you wish to create light text for placement immediately
+// below a form control. Use for general help, formatting, or instructional text.
+
+.ktc-help-block {
+    display: block; // account for any element using help-block
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: lighten(@text-color, 25%); // lighten the text some for contrast
+}
+
+
+// Inline forms
+//
+// Make forms appear inline(-block) by adding the `.ktc-form-inline` class. Inline
+// forms begin stacked on extra small (mobile) devices and then go inline when
+// viewports reach <768px.
+//
+// Requires wrapping inputs and labels with `.ktc-form-group` for proper display of
+// default HTML form controls and our custom form controls (e.ktc-g., input groups).
+//
+// Heads up! This is mixin-ed into `.ktc-navbar-form` in navbars.ktc-less.
+
+.ktc-form-inline {
+    // Kick in the inline
+    @media screen and (min-width: @screen-tablet) {
+        // Inline-block all the things for "inline"
+        .ktc-form-group {
+            display: inline-block;
+            margin-bottom: 0;
+            vertical-align: middle;
+        }
+        // In navbar-form, allow folks to *not* use `.ktc-form-group`
+        .ktc-form-control {
+            display: inline-block;
+            width: auto;
+            min-width: 60px;
+        }
+        // Remove default margin on radios/checkboxes that were used for stacking, and
+        // then undo the floating of radios and checkboxes to match (which also avoids
+        // a bug in WebKit: https://github.ktc-com/twbs/bootstrap/issues/1969).
+        .ktc-radio,
+        .ktc-checkbox {
+            display: inline-block;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+
+        .ktc-radio input[type="radio"],
+        .ktc-checkbox input[type="checkbox"] {
+            float: none;
+            margin-left: 0;
+        }
+    }
+}
+
+// Form control used to select icon for RSS feeds
+.ktc-iconSelector {
+    // Set margin for different types of selectors
+    .ktc-selector {
+        margin-top: @base-unit;
+    }
+    // Set formatting for selection from group of predefined icons
+    .ktc-iconGroup {
+        .ktc-iconItem {
+            margin: @base-unit * 0.25;
+            padding: @base-unit * 0.5;
+            float: left;
+            cursor: pointer;
+            text-align: center;
+
+            &.ktc-selected {
+                background-color: @table-bg-hover;
+            }
+
+            img {
+                &:extend(.ktc-cms-bootstrap .ktc-clearfix all);
+                display: block;
+                margin: auto;
+            }
+        }
+    }
+}
+
+// Form control used to check for URL availability
+.ktc-url-checker {
+    // Basic status panel
+    .ktc-status {
+        margin-top: (@padding-base-vertical + @input-border-width);
+        display: inline-block;
+        margin-left: @margin-50;
+        // Status icon for available URL
+        .ktc-status-icon-ok {
+            color: @color-green-100;
+        }
+        // Status icon for not-available URL
+        .ktc-status-icon-error {
+            color: @color-red-100;
+        }
+        // Status text for available URL
+        .ktc-status-text.ktc-ok {
+            color: @color-green-70;
+        }
+        // Status text for not-available URL
+        .ktc-status-text.ktc-error {
+            color: @color-red-70;
+        }
+    }
+    // Error detail status panel
+    .ktc-status-error-detail {
+        margin-top: (@padding-base-vertical + @input-border-width);
+        padding: @padding-base-horizontal;
+        background-color: @color-red-130;
+        // Error detail heading
+        strong {
+            color: @color-red-70;
+        }
+        // Error detail text
+        p {
+            margin: 0;
+        }
+    }
+}
+
+// Styles for new-Page dialog
+.ktc-new-page-dialog {
+    h3 {
+        padding-left: @base-unit;
+    }
+
+    .ktc-message-label {
+        margin-left: @base-unit;
+        margin-top: @base-unit;
+    }
+
+    .ktc-page-content-frame {
+        .ktc-page-name-form {
+            padding: (@base-unit - 3px) @base-unit 0 @base-unit;
+
+            &.ktc-form-horizontal {
+                margin-bottom: 0;
+                background-color: @color-gray-140;
+                width: auto;
+            }
+
+            .ktc-form-group {
+                margin-bottom: 0;
+
+                .ktc-editing-form-value-cell {
+                    width: auto;
+
+                    .ktc-form-control {
+                        width: auto;
+                        .ktc-input-width-100;
+                    }
+                }
+
+                .ktc-editing-form-label-cell {
+                    width: auto;
+                    padding-right: @base-unit * 0.5;
+
+                    .ktc-control-label {
+                        font-size: @font-size-base;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ktc-selector-no-results {
+    padding-left: @base-unit;
+}
+
+.ktc-template-selection-control {
+    background-color: @color-gray-140;
+
+    .ktc-radio-list-horizontal {
+        padding: @base-unit;
+    }
+}
+
+// Styles for collision dialog
+.ktc-form-merge-collisions {
+    .ktc-label-state-selector {
+        margin-top: @base-unit * 1.5;
+    }
+
+    .ktc-merge-country-selector {
+        div {
+            display: block;
+
+            .ktc-control-group-inline {
+                display: block;
+                width: @input-max-width + @margin-50;
+            }
+        }
+    }
+
+    .ktc-merge-country-selector,
+    .ktc-merge-country-conflict-icons {
+        float: left;
+    }
+
+    .ktc-merge-country-conflict-icons {
+        width: @base-unit * 2;
+    }
+
+    .ktc-merge-country-conflict-icons i:not(:first-child) {
+        margin-top: @base-unit * 1.25;
+    }
+
+    .ktc-merge-gender-selector {
+        div {
+            display: inline;
+        }
+    }
+}
+
+// Styles for country selector
+.ktc-country-selector {
+    div {
+        &:nth-child(2) {
+            margin-top: @base-unit * 0.75;
+        }
+    }
+}
+
+// ScreenLock styling
+.ktc-screen-lock-dialog {
+    .ktc-form-info {
+        margin-bottom: @base-unit;
+        display: block;
+    }
+
+    .ktc-screen-lock-dialog-form {
+        .ktc-editing-form-label-cell {
+            .ktc-make-column(@screen-tablet, 4);
+            .ktc-make-column(@screen-desktop, 4);
+            padding-right: @grid-gutter-width;
+        }
+
+        .ktc-editing-form-value-cell {
+            .ktc-make-column(@screen-tablet, 8);
+            .ktc-make-column(@screen-desktop, 8);
+        }
+    }
+}
+// Form layout exceptions
+// Advanced export
+.ktc-advanced-export,
+// Classes
+.ktc-NewClassWizard,
+// Orders, Custom tables
+.ktc-GlobalWizard,
+// New product option category in Dialog
+.ktc-DialogPageBody .ktc-ecommerce_optioncategory,
+// Macro rules
+.ktc-MacroRuleDialogBody {
+    .ktc-editing-form-label-cell {
+        .ktc-make-column(@screen-tablet, 4);
+        .ktc-make-column(@screen-desktop, 4);
+    }
+
+    .ktc-editing-form-value-cell {
+        .ktc-make-column(@screen-tablet, 8);
+        .ktc-make-column(@screen-desktop, 8);
+    }
+}
+
+// Document type uploader form control used for specifying icon or files
+.ktc-doc-type-icon-uploader {
+    .ktc-ButtonUploaderContainer {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0 @padding-base-horizontal 0 @padding-small-horizontal;
+    }
+    // Defining size for large icon
+    .ktc-img-300 {
+        width: @base-unit * 3;
+        height: @base-unit * 3;
+    }
+    // Defining size for small icon
+    .ktc-img-100 {
+        width: @base-unit;
+        height: @base-unit;
+    }
+}
+
+// Mark localized inputs with icon flag
+
+.ktc-input-localized {
+    position: relative;
+
+    &::after {
+        content: @icon-earth;
+        font-family: @icon-font-name;
+        position: absolute;
+        top: 0;
+        right: 0;
+        .ktc-cms-icon-50;
+        margin: @base-unit * 0.25 @base-unit * 0.25 0 0;
+    }
+
+    &.ktc-has-scroller::after {
+        right: @base-unit;
+    }
+
+    .ktc-Gecko&.ktc-has-scroller::after {
+        right: @base-unit * 1.5;
+    }
+}
+
+// Info icon
+
+.ktc-info-icon {
+    .ktc-btn-icon;
+    cursor: default;
+
+    > i {
+        .ktc-cms-icon-80;
+        padding-left: 0;
+        margin-top: @base-unit * 0.25;
+    }
+
+    &.ktc-info-icon-heading > i {
+        margin-top: 0;
+    }
+}
+
+// Media selector form control
+.ktc-media-selector-image {
+    padding-top: @padding-base-vertical;
+}
+
+// Form control used for changing the zone type
+.ktc-zone-type-change-warning {
+    &.ktc-alert {
+        display: none;
+        position: fixed;
+    }
+}
+
+// Text Captcha form control
+.ktc-text-captcha input[type="text"].ktc-form-control {
+    width: @base-unit * 2;
+}
+
+// Toggle button form control used as image alternative to checkbox
+.ktc-toggle-button .ktc-checkbox input + label {
+    display: none;
+}
+
+// Textbox with placeholder
+&.ktc-Safari {
+    .ktc-cms-input-group.ktc-cms-textwithplaceholder-container::before {
+        padding: 6px 8px 6px;
+    }
+}
+
+.ktc-cms-input-group.ktc-cms-textwithplaceholder-container::before {
+    content: attr(data-content);
+    position: absolute;
+    color: @color-gray-90;
+    display: inline-block;
+    padding: 5px 8px 4px;
+    background-color: @color-gray-150;
+    border: 2px solid @color-gray-130;
+    border-radius: 3px 0 0 3px;
+}
+
+.ktc-cms-input-group.ktc-cms-textwithplaceholder-container {
+    .ktc-cms-textwithplaceholder-hidden {
+        display: inline-block;
+        visibility: hidden;
+        position: absolute;
+    }
+}

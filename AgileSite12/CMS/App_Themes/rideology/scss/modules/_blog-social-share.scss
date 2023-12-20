@@ -1,0 +1,60 @@
+/*============================================================================
+  Social Icon Buttons v1.0
+  Author:
+    Carson Shold | @cshold
+    http://www.carsonshold.com
+  MIT License
+==============================================================================*/
+
+/*================ Social share buttons ================*/
+
+.social-sharing {
+	font-family: inherit;
+
+  	a {
+	    display: inline-block;
+	    color: #fff;
+	    padding: .25rem .5rem;
+	    border-radius: .25rem;
+	    line-height: 1;
+	    text-decoration: none;
+	    font-weight: 600;
+	    font-size: .8rem;
+	    transition: all .1s;
+	    margin-left: .5rem;
+  	}
+}
+
+.share-facebook {
+  	background-color: #3b5998;
+
+  	&:hover {
+    	background-color: darken(#3b5998, 10%);
+  	}
+}
+
+.share-twitter {
+  	background-color: #00aced;
+
+  	&:hover {
+    	background-color: darken(#00aced, 10%);
+  	}
+}
+
+.share-pinterest {
+  	background-color: #cb2027;
+
+  	&:hover {
+    	background-color: darken(#cb2027, 10%);
+  	}
+}
+
+.share-linkedin {
+  	background-color: #0077b5;
+
+  	&:hover {
+    	background-color: darken(#0077b5, 10%);
+  	}
+}
+
+

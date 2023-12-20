@@ -1,0 +1,153 @@
+.searchBox {
+    input {
+        display: inline-block;
+    }
+    
+    .form-control {
+        max-width: 50%;
+    }
+    
+    .btn {
+        position: relative;
+        top: -2px;
+        
+        @media (min-width: 480px) {
+            top: 0;
+        }
+    }
+}
+
+.search-page {
+	padding-bottom: 5rem;
+}
+
+.predictiveSearchHolder {
+    position: relative; 
+    width: 100%;
+    left: 2.25rem;
+    
+    &:after {
+	    display: block;
+    }
+    
+    @media (min-width: 900px) {
+	    max-width: 280px;
+    }
+      
+    .predictiveSearchResults {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 999999;
+        background-color: $gray-0;
+        width: 100%;
+        border: 1px solid $border;
+        border-radius: .25rem;
+        text-align: left;
+        //padding: 4px;
+        
+        .selectedResult {
+            // added on hover
+            background: $accent-light;
+            text-decoration: none;
+        }
+        
+        a {
+            color: $gray-6;
+            display: block;
+            padding: .5em;
+            font-size: .85rem;
+            border-bottom: 1px solid $gray-2;
+            
+            &:hover {
+                text-decoration: none;
+            }
+            
+            &:last-child {
+	            border-bottom: none;
+            }
+        }
+        
+        .predictiveSearchCategory {
+            display: none;
+            background: white;
+        }
+    }
+}
+
+
+.card-search > div {
+	//extra div in code
+	margin: 1rem 0;
+
+	@supports (display: grid) {
+		display: grid;
+	    grid-gap: .5rem;
+	    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+.search-item {
+    margin-bottom: 1em;
+    padding: .5em;
+    //box-shadow: $box-shadow;
+    border: 1px solid $border;
+    border-width: 1px 1px 3px;
+    border-radius: 0 0 .25rem .25rem;
+    
+    display: grid;
+    grid-gap: .5rem;
+    grid-template-columns: 1fr;
+    
+    &-title {
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	
+	.data {
+		margin-left: 0;
+		align-self: end;
+		
+		p {
+			margin: 0;
+		}
+		
+		.highlight {
+			color: #fcc;
+		}
+		
+		.url, .created {
+			display: none;
+		}
+		
+		.relTitle {
+			//float: left; 
+			display: inline-block;
+			margin-right: .25em; 
+			font-size: 14px;
+			//font-style: italic;
+		}
+		
+		.rel {
+			width: 6em; 
+			border: solid 1px $gray-2;
+			color: $gray-2;
+			background: white; 
+			//margin: .5em .25em 0 0;
+            display: inline-block; 
+            height: .75em;
+            overflow: hidden;
+            position: relative;
+            top: 2px;
+
+			div {
+				background: $gray-2; 
+				height: 100%; 
+			}
+		
+		}
+	}	
+}
+
+.DidYouMean { margin-left: 0;}
+

@@ -1,0 +1,22 @@
+kentico-miller-columns {
+  @import (less) "node_modules/simplebar/dist/simplebar.min.css";
+
+  height: calc(100% - 3 * @base-unit - 1px);
+  width: calc(100% - 2 * @base-unit);
+  position: absolute;
+  box-sizing: border-box;
+
+  > [data-simplebar] {
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+  }
+
+  .ktc-miller-columns {
+    @import 'src/builder/assets/styles/icon-font.less';
+    @import "src/builder/assets/styles/generated/icon-classes.less";
+
+    height: 100%;
+    display: flex;
+  }
+}

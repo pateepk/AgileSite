@@ -1,0 +1,65 @@
+// Containers
+// --------------------------------------------------
+.ContentPadding {    
+    padding: 1em;
+}
+
+.border-box {
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		
+		li {
+			border-bottom: 1px solid $border;
+			
+			&:last-child {
+				border: none;
+			}
+		}
+		
+		a {
+			line-height: 1;
+			padding: .5rem 0;
+			display: block;
+		}
+	}
+	
+	h4 + ul {
+		margin: 0;
+	}
+	
+	h4 {
+	    text-transform: uppercase;
+	    font-weight: 300;
+	    color: $gray-4;
+    }
+}
+
+.border-box_brand-1 {
+    margin-bottom: 1em;
+    border: 1px solid $brand-1;
+    border-bottom: 3px solid $brand-1;
+    border-radius: 3px;
+    padding: 1em;
+}
+
+.border-box_brand-2 {
+    margin-bottom: 1em;
+    border: 1px solid $brand-2;
+    border-bottom: 3px solid $brand-2;
+    border-radius: 3px;
+    padding: 1em;
+    background: #fff;
+}
+
+.border-box_gray {
+    margin-bottom: 1em;
+    border: 1px solid $border;
+    border-width: 1px 1px 3px;
+    border-radius: 3px;
+    padding: 1em;
+}
+
+
+

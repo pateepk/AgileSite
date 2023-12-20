@@ -1,0 +1,29 @@
+@import "src/builder/assets/styles/shared.less";
+
+kentico-personalization-configuration {
+
+  .ktc-input-checkbox();
+
+  .ktc-variant-configuration {
+    padding-top: @pop-up-padding;
+
+    .ktc-variant-configuration-error {
+      color: @validation-error-color;
+    }
+
+    .ktc-configuration-footer {
+      background-color: @color-white;
+      min-height: @base-unit * 3.6;
+
+      &::before {
+        .dialog-line();
+        padding-top: @pop-up-padding;
+      }
+
+      kentico-submit-button {
+        float: right;
+        margin-top: @base-unit/2;
+      }
+    }
+  }
+}

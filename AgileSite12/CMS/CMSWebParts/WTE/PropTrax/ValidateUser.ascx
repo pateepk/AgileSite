@@ -1,0 +1,1 @@
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="CMSApp.CMSWebParts.WTE.PropTrax.ValidateUser" CodeBehind="ValidateUser.ascx.cs" %>

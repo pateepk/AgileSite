@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>CMS.DataEngine</AssemblyName>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CMS.DataEngine</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.DataEngine.XML</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>..\Output\Release\CMS\CMS.DataEngine.XML</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <Reference Include="Microsoft.SqlServer.TransactSql.ScriptDom, Version=13.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\Lib\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml">
+      <Name>System.Xml</Name>
+    </Reference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Abstract\Providers\AbstractInfoProvider_2.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Base\MemoryCacheItemPolicy.cs" />
+    <Compile Include="Abstract\Providers\InfoProviderLoader.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Base\ConcurrentDictionaryCacheStorage.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Base\MemoryCacheStorageConstants.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Base\MemoryCacheStorage_2.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Base\ICacheStorage.cs" />
+    <Compile Include="Abstract\Providers\HashtableSettings.cs" />
+    <Compile Include="Abstract\Providers\InfoProviderCache.cs" />
+    <Compile Include="Abstract\Providers\Interfaces\IBulkOperationProvider.cs" />
+    <Compile Include="Abstract\Providers\Interfaces\IInfoCacheProvider.cs" />
+    <Compile Include="Abstract\Providers\Interfaces\IInfoProvider.cs" />
+    <Compile Include="Abstract\Providers\Interfaces\IFullNameInfoProvider.cs" />
+    <Compile Include="Abstract\Providers\Interfaces\IRelatedObjectCountProvider.cs" />
+    <Compile Include="Abstract\Providers\Interfaces\IInternalProvider.cs" />
+    <Compile Include="Abstract\Providers\Interfaces\ITestableProvider.cs" />
+    <Compile Include="Abstract\Providers\Interfaces\IWebFarmProvider.cs" />
+    <Compile Include="Abstract\Providers\LoadProviderEventArgs.cs" />
+    <Compile Include="Abstract\Providers\RegisterCustomProviderAttribute.cs" />
+    <Compile Include="Application\ApplicationInitException.cs" />
+    <Compile Include="Application\CMSHttpApplication.cs" />
+    <Compile Include="Async\AsyncProcessData.cs" />
+    <Compile Include="Async\AsyncWorker.cs" />
+    <Compile Include="Async\AsyncWorkerStatusEnum.cs" />
+    <Compile Include="CollectionExtensions.cs" />
+    <Compile Include="Database\BulkDeleteSettings.cs" />
+    <Compile Include="Database\Capabilities\SqlServerCapabilities.cs" />
+    <Compile Include="Database\ColumnIndexDefinition.cs" />
+    <Compile Include="Database\DataTypes\DefaultDataTypeTextSerializer.cs" />
+    <Compile Include="Database\DataTypes\IDataTypeTextSerializer.cs" />
+    <Compile Include="Database\Helpers\QueryScopeEnum.cs" />
+    <Compile Include="Database\Helpers\SqlExceptionExtensions.cs" />
+    <Compile Include="Database\Helpers\SystemViews.cs" />
+    <Compile Include="Database\Indexing\ITableIndexInformationProvider.cs" />
+    <Compile Include="Database\Indexing\Index.cs" />
+    <Compile Include="Database\Indexing\IndexColumn.cs" />
+    <Compile Include="Database\Indexing\ITableIndexes.cs" />
+    <Compile Include="Database\Indexing\TableIndexes.cs" />
+    <Compile Include="Database\Indexing\IndexExtensions.cs" />
+    <Compile Include="Database\Installation\Containers\DatabaseInstallationSettings.cs" />
+    <Compile Include="Database\Scopes\TransactionScopeFactory.cs" />
+    <Compile Include="DataProviderSQL\DataConnection.cs" />
+    <Compile Include="DataProviderSQL\DataProvider.cs" />
+    <Compile Include="DataProviderSQL\SqlGenerator.cs" />
+    <Compile Include="DataProviderSQL\TableManager.cs" />
+    <Compile Include="Data\DataTable\DataTableProvider.cs" />
+    <Compile Include="Data\DataTable\IDataTableProvider.cs" />
+    <Compile Include="Data\DataTable\IDataTransferObject.cs" />
+    <Compile Include="Data\Export\TraverseObjectSettings.cs" />
+    <Compile Include="Data\Info\Abstract\AbstractWrapperInfo.cs" />
+    <Compile Include="Data\Info\Abstract\InfoCloneActionContext.cs" />
+    <Compile Include="Data\Info\Abstract\InfoCloneSynchronizationTempQueue.cs" />
+    <Compile Include="Data\Info\Dependencies\ObjectDependenciesRemover.cs" />
+    <Compile Include="Data\Info\Generators\ClassCodeGenerationSettingsHelper.cs" />
+    <Compile Include="Database\Helpers\SqlHints.cs" />
+    <Compile Include="Database\Objects\UpdateTableParameters.cs" />
+    <Compile Include="Data\Definition\DataDefinitionItemChangeHandler.cs" />
+    <Compile Include="Data\Definition\DataDefinitionItemChangeEventArgs.cs" />
+    <Compile Include="Data\Definition\IField.cs" />
+    <Compile Include="Data\Definition\DataDefinitionItemEventArgs.cs" />
+    <Compile Include="Data\Definition\DataDefinitionItemHandler.cs" />
+    <Compile Include="Data\Definition\DataDefinitionItemEvents.cs" />
+    <Compile Include="Data\Info\Abstract\AbstractCompositeInfo.cs" />
+    <Compile Include="Data\Info\Serialization\DeserializationResultBase.cs" />
+    <Compile Include="Data\Info\Serialization\FailedMapping.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\EmptyCollection.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\IInfoObjectCollection.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\IInfoObjectRepository.cs" />
+    <Compile Include="Data\Search\Events\CreateSearchFieldFromSettingsEventArgs.cs" />
+    <Compile Include="Data\Search\Events\CreateSearchFieldFromSettingsHandler.cs" />
+    <Compile Include="Data\Search\Events\CreateSearchFieldHandler.cs" />
+    <Compile Include="Data\Search\Events\IsContentFieldEventArgs.cs" />
+    <Compile Include="Data\Search\Events\IsContentFieldHandler.cs" />
+    <Compile Include="Data\Search\Events\IsIndexFieldEventArgs.cs" />
+    <Compile Include="Data\Search\Events\IsIndexFieldHandler.cs" />
+    <Compile Include="Data\Search\Events\CreateSearchFieldEventArgs.cs" />
+    <Compile Include="Data\Search\Factories\CreateSearchFieldOption.cs" />
+    <Compile Include="Data\Search\Factories\SearchFieldFactory.cs" />
+    <Compile Include="Data\Search\SearchDocument.cs" />
+    <Compile Include="Data\Search\SearchDocumentExtensions.cs" />
+    <Compile Include="Data\Search\SearchDocumentParameters.cs" />
+    <Compile Include="Data\Search\SearchField.cs" />
+    <Compile Include="Data\Search\SearchFieldsExtensions.cs" />
+    <Compile Include="Data\Search\SearchFieldsHelper.cs" />
+    <Compile Include="Data\Serialization\DataContractSerializerService.cs" />
+    <Compile Include="Data\Serialization\IDataContractSerializerService.cs" />
+    <Compile Include="Data\Translations\GetIDParameters.cs" />
+    <Compile Include="Data\Info\Abstract\AbstractInfo.cs" />
+    <Compile Include="Data\Info\Dependencies\DependencyReference.cs" />
+    <Compile Include="Data\Info\Dependencies\DynamicDependencyReference.cs" />
+    <Compile Include="Data\Info\Serialization\DeserializationFieldWrapper.cs" />
+    <Compile Include="Data\Info\Serialization\DeserializationResult.cs" />
+    <Compile Include="Data\Info\Serialization\InfoDeserializer.cs" />
+    <Compile Include="Data\Info\Serialization\InfoSerializer.cs" />
+    <Compile Include="Data\Info\Serialization\SerializationExtensions.cs" />
+    <Compile Include="Data\Info\Serialization\StringConverter.cs" />
+    <Compile Include="Data\Info\Serialization\StructuredData.cs" />
+    <Compile Include="Data\Translations\TranslationParameters.cs" />
+    <Compile Include="Data\Translations\TranslationReference.cs" />
+    <Compile Include="Data\Translations\TranslationHelperForeignKeyExtensions.cs" />
+    <Compile Include="Data\Translations\TranslationReferenceLoader.cs" />
+    <Compile Include="Data\Types\IObjectTypeFilter.cs" />
+    <Compile Include="Data\Types\ObjectTypeListItem.cs" />
+    <Compile Include="Data\Types\ObjectTypeSequenceAnalyzer.cs" />
+    <Compile Include="Data\Types\EnumerationObjectTypeFilter.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\ContinuousIntegrationSettings.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\IStructuredField.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\IStructuredData.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\ObjectReference.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\SeparatedField.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\StructuredField.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\SerializationSettings.cs" />
+    <Compile Include="Data\Types\TypeInfo\TypeConditionItem.cs" />
+    <Compile Include="Exceptions\ObjectTypeColumnNotFoundException.cs" />
+    <Compile Include="Exceptions\DataClassNotFoundException.cs" />
+    <Compile Include="Classes\ClassSiteInfo.cs" />
+    <Compile Include="Classes\ClassSiteInfoProvider.cs" />
+    <Compile Include="Classes\ClassInfo\DataClassInfo.base.cs" />
+    <Compile Include="Classes\ClassInfo\DataClassInfoProvider.base.cs" />
+    <Compile Include="Classes\LayoutHelper.cs" />
+    <Compile Include="Classes\Queries\QueryName.cs" />
+    <Compile Include="Application\CMSApplication.cs" />
+    <Compile Include="Database\BulkInsertSettings.cs" />
+    <Compile Include="Database\Capabilities\ISqlServerCapabilities.cs" />
+    <Compile Include="Database\Capabilities\SqlServerCapabilitiesFactory.cs" />
+    <Compile Include="Database\Connections\DatabaseHelper.cs" />
+    <Compile Include="Database\DataTypes\DataType.cs" />
+    <Compile Include="Database\DataTypes\DataTypeManager.cs" />
+    <Compile Include="Database\DataTypes\TypeEnum.cs" />
+    <Compile Include="Database\Helpers\SqlDebug.cs" />
+    <Compile Include="Database\Helpers\SqlOperator.cs" />
+    <Compile Include="Database\Installation\DataSetPostProcessingEventArgs.cs" />
+    <Compile Include="Database\Installation\SQLEngineEditionEnum.cs" />
+    <Compile Include="Database\Installation\SQLScript.cs" />
+    <Compile Include="Database\Installation\SQLSettings.cs" />
+    <Compile Include="Database\Objects\MissingSQLTypeException.cs" />
+    <Compile Include="Database\Scopes\CMSConnectionContext.cs" />
+    <Compile Include="Data\Definition\ColumnDefinition.cs" />
+    <Compile Include="Data\GetObjectsDataSettings.cs" />
+    <Compile Include="Data\Info\Abstract\InfoCloneHelper.cs" />
+    <Compile Include="Data\Licensing\ILicenseService.cs" />
+    <Compile Include="Data\Info\Abstract\AbstractInfoBase.wrapper.cs" />
+    <Compile Include="Data\Info\Abstract\BaseInfo.wrapper.cs" />
+    <Compile Include="Data\Info\General\GeneralInfoProvider.cs" />
+    <Compile Include="Data\Info\Generators\Bindings\BindingInfoProviderTemplate.cs">
+      <DependentUpon>BindingInfoProviderTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\Info\Generators\Bindings\BindingInfoProviderTemplateParams.cs" />
+    <Compile Include="Data\Info\Generators\Bindings\BindingInfoTemplate.cs">
+      <DependentUpon>BindingInfoTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\Info\Generators\Bindings\BindingInfoTemplateParams.cs" />
+    <Compile Include="Data\Info\Generators\ClassCodeGenerationSettings.cs" />
+    <Compile Include="Database\Installation\Containers\DeletedFKs.cs" />
+    <Compile Include="Database\Installation\Containers\TableAndClass.cs" />
+    <Compile Include="Database\Installation\DatabaseSeparationHelper.cs" />
+    <Compile Include="Database\Installation\FileReader.cs" />
+    <Compile Include="Database\Installation\Containers\ProcsFuncViewsTypes.cs" />
+    <Compile Include="Database\Installation\Containers\SeparatedTables.cs" />
+    <Compile Include="Database\Installation\Containers\TemporaryTables.cs" />
+    <Compile Include="Database\Installation\SqlInstallationHelper.cs" />
+    <Compile Include="Data\Info\InfoHelper.cs" />
+    <Compile Include="Data\Licensing\LicenseException.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\Bindings\BindingCollection.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\Bindings\BindingRepository.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\Bindings\OtherBindingCollection.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\Bindings\OtherBindingRepository.cs" />
+    <Compile Include="Data\Search\SearchAnalyzerTypeEnum.cs" />
+    <Compile Include="Data\Search\ISearchField.cs" />
+    <Compile Include="Data\Search\ISearchFields.cs" />
+    <Compile Include="Data\Search\SearchFieldsConstants.cs" />
+    <Compile Include="Data\Types\RegisterObjectTypeAttribute.cs" />
+    <Compile Include="Data\Types\TypeInfo\DynamicObjectTypeInfo.cs" />
+    <Compile Include="Data\Types\TypeInfo\Enums\IncludeToParentEnum.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\DefaultDataChildDependency.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\ObjectTreeLocation.cs" />
+    <Compile Include="Data\Types\TypeInfo\Enums\SynchronizationTypeEnum.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\SynchronizationSettings.cs" />
+    <Compile Include="Data\Types\TypeInfo\TypeCondition.cs" />
+    <Compile Include="Enums\MessageTypeEnum.cs" />
+    <Compile Include="Database\Helpers\SqlMacroHelper.cs" />
+    <Compile Include="Database\Helpers\QueryMacros.cs" />
+    <Compile Include="Database\Helpers\SqlSecurityHelper.cs" />
+    <Compile Include="Data\HierarchyHelper.cs" />
+    <Compile Include="Data\ObjectHelper.cs" />
+    <Compile Include="Data\Definition\DataDefinition.cs" />
+    <Compile Include="Data\Definition\FieldDataType.cs" />
+    <Compile Include="Data\Definition\FieldBase.cs" />
+    <Compile Include="Data\Definition\FieldInfo.cs" />
+    <Compile Include="Data\Definition\IDataDefinitionItem.cs" />
+    <Compile Include="Data\Info\Exceptions\CheckDependenciesException.cs" />
+    <Compile Include="Data\Info\Dependencies\DependencyInfo.cs" />
+    <Compile Include="Data\Info\Dependencies\RemoveDependencyInfo.cs" />
+    <Compile Include="Data\Info\Identifiers\InfoIdentifier.cs" />
+    <Compile Include="Data\Info\Abstract\IInfo.cs" />
+    <Compile Include="Data\Info\ObjectSettings\ObjectSettingsInfo.cs" />
+    <Compile Include="Data\Info\ObjectSettings\ObjectSettingsInfoProvider.cs" />
+    <Compile Include="Data\Repositories\DataSets\IInfoDataSet.cs" />
+    <Compile Include="Enums\Permissions\AuthorizationResultEnum.cs" />
+    <Compile Include="Classes\DefaultClassThumbnail.cs" />
+    <Compile Include="Exceptions\DataClassTableUpdateException.cs" />
+    <Compile Include="Files\Metafiles\CMSOutputMetaFile.cs" />
+    <Compile Include="Files\Metafiles\MetaFileInfo.cs" />
+    <Compile Include="Files\Metafiles\MetaFileInfoProvider.cs" />
+    <Compile Include="Files\Metafiles\MetaFileURLProvider.cs" />
+    <Compile Include="Data\Types\IObjectTypeDriven.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\ImportExportSettings.cs" />
+    <Compile Include="Enums\ObjectRangeEnum.cs" />
+    <Compile Include="Files\Metafiles\ObjectAttachmentsCategories.cs" />
+    <Compile Include="Files\TempFiles\TempFileInfo.cs" />
+    <Compile Include="Files\TempFiles\TempFileInfoProvider.cs" />
+    <Compile Include="Data\Info\Generators\DataEngineCodeTemplateGenerator.cs" />
+    <Compile Include="Data\Info\Generators\InfoProviderTemplate.cs">
+      <DependentUpon>InfoProviderTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\Info\Generators\InfoProviderTemplateParams.cs" />
+    <Compile Include="Data\Info\Generators\InfoTemplate.cs">
+      <DependentUpon>InfoTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\Info\Generators\InfoTemplateParams.cs" />
+    <Compile Include="Handlers\GetURL\URLHandler.cs" />
+    <Compile Include="Handlers\GetURL\URLEventArgs.cs" />
+    <Compile Include="Handlers\Objects\BulkDeleteEventArgs.cs" />
+    <Compile Include="Handlers\Objects\BulkDeleteHandler.cs" />
+    <Compile Include="Handlers\Objects\BulkInsertEventArgs.cs" />
+    <Compile Include="Handlers\Objects\BulkInsertHandler.cs" />
+    <Compile Include="Handlers\Objects\BulkUpdateEventArgs.cs" />
+    <Compile Include="Handlers\Objects\BulkUpdateHandler.cs" />
+    <Compile Include="Handlers\Objects\LogObjectChange\AbstractSycnhronizationSettings.cs" />
+    <Compile Include="Handlers\Objects\ObjectDataEventArgs.cs" />
+    <Compile Include="Handlers\Objects\ObjectDataEventHandler.cs" />
+    <Compile Include="Handlers\Objects\ObjectTypeInfoEventArgs.cs" />
+    <Compile Include="Handlers\Objects\SimpleObjectTypeInfoHandler.cs" />
+    <Compile Include="Handlers\Objects\Order\ObjectSortEventArgs.cs" />
+    <Compile Include="Handlers\Objects\Order\ObjectChangeOrderHandler.cs" />
+    <Compile Include="Handlers\Objects\Order\ObjectChangeOrderEventArgs.cs" />
+    <Compile Include="Handlers\Objects\Order\ObjectSortHandler.cs" />
+    <Compile Include="Handlers\Objects\Security\ObjectSecurityEventArgs.cs" />
+    <Compile Include="Handlers\Objects\Security\ObjectSecurityHandler.cs" />
+    <Compile Include="Handlers\RunQuery\QueryEventArgs.cs" />
+    <Compile Include="Handlers\RunQuery\QueryHandler.cs" />
+    <Compile Include="Handlers\SQL\BulkInsertDataEventArgs.cs" />
+    <Compile Include="Handlers\SQL\BulkInsertDataHandler.cs" />
+    <Compile Include="Handlers\SQL\ExecuteQueryEventArgs.cs" />
+    <Compile Include="Handlers\SQL\ExecuteQueryHandler.cs" />
+    <Compile Include="Handlers\SQL\SqlEvents.cs" />
+    <Compile Include="Helpers\ObjectDependenciesRemoverConditionHelper.cs" />
+    <Compile Include="IMacroSecurityCheckPermissions.cs" />
+    <Compile Include="LINQ\Metadata\DatabaseField.cs" />
+    <Compile Include="LINQ\Metadata\DatabaseIDFieldAttribute.cs" />
+    <Compile Include="LINQ\Provider\ExpressionTreeModifier.cs" />
+    <Compile Include="LINQ\ICMSQueryable.cs" />
+    <Compile Include="Data\Info\General\GeneralInfo.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\ExtraColumn.cs" />
+    <Compile Include="Data\Types\TypeInfo\Enums\ObjectDependencyEnum.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\ObjectDependency.cs" />
+    <Compile Include="Data\Types\ObjectTypeManager.cs" />
+    <Compile Include="Data\Info\Abstract\BaseInfo.cs" />
+    <Compile Include="LINQ\Metadata\IStringMetadata.cs" />
+    <Compile Include="LINQ\Metadata\SqlRepresentationAttribute.cs" />
+    <Compile Include="Data\Info\Abstract\LoadDataSettings.cs" />
+    <Compile Include="Module\DataEngineHandlers.cs" />
+    <Compile Include="Module\DataEngineModuleMetadata.cs" />
+    <Compile Include="Module\ConnectionContext.cs" />
+    <Compile Include="Query\Columns\BracketInvariantStringComparer.cs" />
+    <Compile Include="Query\Abstract\QueryColumnListBase.cs" />
+    <Compile Include="Query\Abstract\IQueryObject.cs" />
+    <Compile Include="Query\Abstract\IQueryObjectWithValue.cs" />
+    <Compile Include="Query\Abstract\IQueryParameters.cs" />
+    <Compile Include="Query\Columns\QueryColumnSqlFunctions.cs" />
+    <Compile Include="Query\Columns\QueryColumnList.cs" />
+    <Compile Include="Query\Columns\QueryColumnXmlExtensions.cs" />
+    <Compile Include="Query\Data\NestedQuerySettings.cs" />
+    <Compile Include="Query\Execution\DynamicDataParameter.cs" />
+    <Compile Include="Query\Expressions\QueryExpression.cs" />
+    <Compile Include="Query\Abstract\QueryParametersBase.cs" />
+    <Compile Include="Query\Columns\QueryColumn.cs" />
+    <Compile Include="Query\Columns\CountColumn.cs" />
+    <Compile Include="Query\Columns\OrderByColumn.cs" />
+    <Compile Include="Query\Columns\QueryColumnBase.cs" />
+    <Compile Include="Query\Expressions\IQueryExpression.cs" />
+    <Compile Include="Query\Expressions\QueryExpressionBase.cs" />
+    <Compile Include="Query\Columns\RowNumberColumn.cs" />
+    <Compile Include="Database\Helpers\SystemColumns.cs" />
+    <Compile Include="Query\Expressions\QueryValueExpression.cs" />
+    <Compile Include="Query\Expressions\UpdateQueryExpression.cs" />
+    <Compile Include="Query\Objects\ClassNameExecutingQueryProvider.cs" />
+    <Compile Include="Query\Objects\IExecutingQueryProvider.cs" />
+    <Compile Include="Query\Multi\IMultiObjectQuery.cs" />
+    <Compile Include="Query\Multi\IMultiQuery.cs" />
+    <Compile Include="Query\Multi\UseDefaultQueryEnum.cs" />
+    <Compile Include="Query\Objects\InfoObjectExecutingQueryProvider.cs" />
+    <Compile Include="Query\OrderBy\OrderByColumnList.cs" />
+    <Compile Include="Query\QueryBatch.cs" />
+    <Compile Include="Query\QueryExtensions.cs" />
+    <Compile Include="Query\Sources\ObjectSource.cs" />
+    <Compile Include="Query\Sources\ObjectSourceBase.cs" />
+    <Compile Include="Query\Sources\DataQuerySource.cs" />
+    <Compile Include="Query\Sources\DataQuerySourceParameters.cs" />
+    <Compile Include="Query\Sources\IQuerySource.cs" />
+    <Compile Include="Query\Sources\JoinTypeEnum.cs" />
+    <Compile Include="Query\Sources\MemoryDataQuerySource.cs" />
+    <Compile Include="Query\Execution\DataParameter.cs" />
+    <Compile Include="Query\Multi\MultiObjectQuery.cs" />
+    <Compile Include="Query\Multi\MultiObjectQueryBase.cs" />
+    <Compile Include="Query\Multi\MultiQueryBase.cs" />
+    <Compile Include="Query\Objects\IObjectQuery.cs" />
+    <Compile Include="Database\Scopes\CMSLateBoundTransaction.cs" />
+    <Compile Include="Database\Connections\DatabasePermission.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\Advanced\FullNameInfoObjectCollection.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\ExternalColumnSettings.cs" />
+    <Compile Include="Data\Info\General\GeneralizedAbstractInfo.cs" />
+    <Compile Include="Data\Info\Exceptions\CodeNameNotUniqueException.cs" />
+    <Compile Include="Data\Info\Exceptions\CodeNameNotValidException.cs" />
+    <Compile Include="Query\Sources\QuerySource.cs" />
+    <Compile Include="Query\Sources\QuerySourceBase.cs" />
+    <Compile Include="Query\Sources\QuerySourceTable.cs" />
+    <Compile Include="Query\Where\QueryUnaryOperator.cs" />
+    <Compile Include="Abstract\Providers\ProviderHelper.cs" />
+    <Compile Include="Query\Columns\AggregatedColumn.cs" />
+    <Compile Include="Query\Columns\AggregationType.cs" />
+    <Compile Include="Query\Columns\IQueryColumn.cs" />
+    <Compile Include="Query\Columns\NestedSelectQueryColumn.cs" />
+    <Compile Include="Query\Columns\OrderDirection.cs" />
+    <Compile Include="Query\Columns\SelectQueryColumnBase.cs" />
+    <Compile Include="Query\Data\DataQuerySettings.cs" />
+    <Compile Include="Query\Data\DataQuerySettingsBase.cs" />
+    <Compile Include="Query\Data\DataQuery.cs" />
+    <Compile Include="Query\Data\DataQueryBase.cs" />
+    <Compile Include="Query\Data\IDataQuery.cs" />
+    <Compile Include="Query\Data\IDataQuerySettings.cs" />
+    <Compile Include="Query\Objects\ObjectQuerySettings.cs" />
+    <Compile Include="Query\Objects\IDQuery.cs" />
+    <Compile Include="Query\Abstract\AbstractQueryObject.cs" />
+    <Compile Include="Query\Where\IWhereCondition.cs" />
+    <Compile Include="Query\Objects\ObjectQuery.cs" />
+    <Compile Include="Query\Objects\ObjectQueryBase.cs" />
+    <Compile Include="Query\Where\QueryOperator.cs" />
+    <Compile Include="Query\Where\WhereBuilder.cs" />
+    <Compile Include="Query\Where\WhereCondition.cs" />
+    <Compile Include="Query\Where\WhereConditionBase.cs" />
+    <Compile Include="Classes\ClassInfo\DataClassInfo.cs" />
+    <Compile Include="Classes\ClassInfo\DataClassInfoProvider.cs" />
+    <Compile Include="Classes\Queries\QueryInfo.cs" />
+    <Compile Include="Classes\Queries\QueryListInfo.cs" />
+    <Compile Include="Classes\Queries\QueryInfoProvider.cs" />
+    <Compile Include="Data\Info\Cloning\CloneResult.cs" />
+    <Compile Include="Data\Info\Cloning\CloneSettings.cs" />
+    <Compile Include="Database\Interfaces\IDataConnection.cs" />
+    <Compile Include="Database\Interfaces\IDataProvider.cs" />
+    <Compile Include="Database\Interfaces\ISqlGenerator.cs" />
+    <Compile Include="Database\Interfaces\ITableManager.cs" />
+    <Compile Include="Database\Interfaces\ITransactionScope.cs" />
+    <Compile Include="Query\Execution\QueryDataParameters.cs" />
+    <Compile Include="Query\Execution\QueryExecutionTypeEnum.cs" />
+    <Compile Include="Query\Execution\QueryTypeEnum.cs" />
+    <Compile Include="Database\Objects\SqlOperationTypeEnum.cs" />
+    <Compile Include="Settings\Categories\SettingsCategoryContainer.cs" />
+    <Compile Include="Settings\Categories\SettingsCategoryInfo.cs" />
+    <Compile Include="Settings\Categories\SettingsCategoryInfoProvider.cs" />
+    <Compile Include="Database\Helpers\SqlHelper.cs" />
+    <Compile Include="Database\Objects\SystemViewNames.cs" />
+    <Compile Include="Database\DataConnectionFactory.cs" />
+    <Compile Include="Data\Repositories\DataSets\InfoDataSet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\Repositories\InfoRepositories\InfoCollectionSettings.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\InfoObjectCollection.cs" />
+    <Compile Include="Data\Repositories\InfoRepositories\InfoObjectRepository.cs" />
+    <Compile Include="LINQ\Provider\AbstractCMSQueryProvider.cs" />
+    <Compile Include="LINQ\Provider\CMSQueryProvider.cs" />
+    <Compile Include="LINQ\EnumerableWrapper.cs" />
+    <Compile Include="LINQ\Provider\ExpressionBuilderSettings.cs" />
+    <Compile Include="Data\DataClass\MissingValue.cs" />
+    <Compile Include="Query\Execution\QueryParameters.cs" />
+    <Compile Include="Data\Repositories\Collections\BaseCollectionSettings.cs" />
+    <Compile Include="Data\Repositories\Collections\CombinedInfoObjectCollection.cs" />
+    <Compile Include="Data\Repositories\Collections\Properties\CollectionPropertyTransformation.cs" />
+    <Compile Include="Data\Repositories\Collections\Properties\CollectionPropertyWrapper.cs" />
+    <Compile Include="Data\Repositories\Collections\Properties\ObjectProperty.cs" />
+    <Compile Include="Query\SelectCondition\SelectCondition.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Base\AbstractProviderDictionary.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Infos\ProviderInfoDictionary.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Interfaces\IProviderDictionary.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Interfaces\IProviderDictionary_2.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\LoadHashtableEnum.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Base\ProviderDictionary.cs" />
+    <Compile Include="Abstract\Providers\Dictionaries\Base\ProviderDictionaryCollection.cs" />
+    <Compile Include="Enums\ExportFormatEnum.cs" />
+    <Compile Include="Enums\LayoutTypeEnum.cs" />
+    <Compile Include="Enums\Licensing\FeatureEnum.cs" />
+    <Compile Include="Enums\Licensing\ObjectActionEnum.cs" />
+    <Compile Include="Enums\Objects\ObjectPriorityEnum.cs" />
+    <Compile Include="Enums\Objects\ObjectStatusEnum.cs" />
+    <Compile Include="Enums\Objects\OperationTypeEnum.cs" />
+    <Compile Include="Enums\Permissions\PermissionsEnum.cs" />
+    <Compile Include="Enums\UpdateResultEnum.cs" />
+    <Compile Include="Enums\WorkflowStepTypeEnum.cs" />
+    <Compile Include="Data\Info\Exceptions\IDNotTranslatedException.cs" />
+    <Compile Include="Data\Info\Exceptions\InfoObjectException.cs" />
+    <Compile Include="Data\Info\Exceptions\PermissionCheckException.cs" />
+    <Compile Include="Data\Export\SynchronizationObjectSettings.cs" />
+    <Compile Include="DataExtensions.cs" />
+    <Compile Include="Handlers\Objects\LogObjectChange\LogObjectChangeEventArgs.cs" />
+    <Compile Include="Handlers\Objects\LogObjectChange\LogObjectChangeHandler.cs" />
+    <Compile Include="Handlers\Objects\LogObjectChange\LogObjectChangeSettings.cs" />
+    <Compile Include="Handlers\Objects\ObjectEventArgs.cs" />
+    <Compile Include="Handlers\Objects\ObjectEvents.cs" />
+    <Compile Include="Handlers\Objects\ObjectHandler.cs" />
+    <Compile Include="Handlers\Objects\ObjectMethod.cs" />
+    <Compile Include="Handlers\Objects\SimpleObjectHandler.cs" />
+    <Compile Include="Handlers\Translation\ColumnsTranslationEventArgs.cs" />
+    <Compile Include="Handlers\Translation\ColumnsTranslationEvents.cs" />
+    <Compile Include="Handlers\Translation\ColumnsTranslationHandler.cs" />
+    <Compile Include="LINQ\Metadata\DatabaseMappingAttribute.cs" />
+    <Compile Include="Data\Info\General\GeneralizedInfo.cs" />
+    <Compile Include="Data\Info\InfoObjectFactory.cs" />
+    <Compile Include="Data\Info\Empty\NotImplementedInfo.cs" />
+    <Compile Include="Data\Types\ObjectTypeTreeNode.cs" />
+    <Compile Include="Data\Search\SearchSettings.cs" />
+    <Compile Include="Data\Search\SearchSettingsInfo.cs" />
+    <Compile Include="Data\Translations\TranslationHelper.cs" />
+    <Compile Include="Data\Types\TypeInfo\Settings\DefaultDataSettings.cs" />
+    <Compile Include="Data\Types\TypeInfo\ObjectTypeInfo.cs" />
+    <Compile Include="Data\Types\TypeInfo\TypeInfoEvents.cs" />
+    <Compile Include="Modules\Module.cs" />
+    <Compile Include="Modules\ModuleCommands.cs" />
+    <Compile Include="Modules\ModuleManager.cs" />
+    <Compile Include="Module\PredefinedObjectType.cs" />
+    <Compile Include="Settings\Categories\SettingsMacroContainer.cs" />
+    <Compile Include="Settings\Keys\ProtectedSettings.cs" />
+    <Compile Include="Settings\Keys\SettingsKeyName.cs" />
+    <Compile Include="Settings\Keys\SettingsKeyActionEnum.cs" />
+    <Compile Include="Settings\Keys\SettingsKeyChangedEventArgs.cs" />
+    <Compile Include="Settings\Keys\SettingsKeyInfo.cs" />
+    <Compile Include="Settings\Keys\SettingsKeyInfoProvider.cs" />
+    <Compile Include="Data\Info\Identifiers\SiteInfoIdentifier.cs" />
+    <Compile Include="Settings\SettingsService.cs" />
+    <Compile Include="Data\Search\ISearchable.cs" />
+    <Compile Include="Data\Search\ISearchIndexInfo.cs" />
+    <Compile Include="Data\Search\SearchIndexSettings.cs" />
+    <Compile Include="Data\Search\SearchIndexSettingsInfo.cs" />
+    <Compile Include="Data\Info\TaskTypeEnum.cs" />
+    <Compile Include="Database\Abstract\AbstractDataProvider.cs" />
+    <Compile Include="Database\Abstract\AbstractDataConnection.cs" />
+    <Compile Include="Database\Abstract\AbstractSqlGenerator.cs" />
+    <Compile Include="Database\Abstract\AbstractTableManager.cs" />
+    <Compile Include="Database\Scopes\CMSConnectionScope.cs" />
+    <Compile Include="Database\Scopes\CMSTransactionScope.cs" />
+    <Compile Include="Data\Info\Abstract\AbstractInfoBase.cs" />
+    <Compile Include="Abstract\Providers\AbstractInfoProvider_3.cs" />
+    <Compile Include="Data\Definition\ClassStructureInfo.cs" />
+    <Compile Include="Database\Connections\ConnectionHelper.cs" />
+    <Compile Include="Data\DataClass\DataClassFactory.cs" />
+    <Compile Include="Database\Connections\GeneralConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\DataClass\IDataClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\DataClass\SimpleDataClass.cs" />
+    <Compile Include="Database\Objects\SqlGenerator.cs" />
+    <Compile Include="Database\Connections\SqlServerAuthenticationModeEnum.cs" />
+    <Compile Include="Database\Objects\TableManager.cs" />
+    <Compile Include="Module\DataEngineModule.cs" />
+    <Compile Include="Classes\DataClassFormVirtualObject.cs" />
+    <Compile Include="Synchronization\IStagingTaskGroup.cs" />
+    <Compile Include="WebFarm\DataTasks.cs" />
+    <Compile Include="WebFarm\TaskData\ClearClassStructureInfosWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\ClearHashtablesWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\ClearReadOnlyObjectsWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\DeleteMetaFileWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\DictionaryCommandWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\InvalidateAllWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\InvalidateChildrenWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\InvalidateObjectWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\ProcessObjectWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\RemoveClassStructureInfoWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\RemoveReadOnlyObjectWebFarmTask.cs" />
+    <Compile Include="WebFarm\TaskData\UpdateMetaFileWebFarmTask.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+    <Content Include="Data\Info\Generators\InfoProviderTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>InfoProviderTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>CMS.DataEngine.Generators</CustomToolNamespace>
+    </Content>
+    <Content Include="Data\Info\Generators\InfoTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>InfoTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>CMS.DataEngine.Generators</CustomToolNamespace>
+    </Content>
+    <Content Include="Data\Info\Generators\Bindings\BindingInfoProviderTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>BindingInfoProviderTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>CMS.DataEngine.Generators</CustomToolNamespace>
+    </Content>
+    <Content Include="Data\Info\Generators\Bindings\BindingInfoTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>BindingInfoTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>CMS.DataEngine.Generators</CustomToolNamespace>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

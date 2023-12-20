@@ -1,0 +1,110 @@
+@import "./common-variant-listing.less";
+
+:host { 
+  @abtest-variant-action-buttons-width: (@variant-item-action-icon-width) * 2;
+
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  min-width: 300px;
+
+  .ktc-variant-item-list {
+    .ktc-variant-item {
+      &.ktc-variant-item--editing {
+        cursor: auto;
+      }
+
+      &.ktc-variant-item--editable {
+        width: 100%;
+
+        .ktc-variant-item-label {
+          width: 100%;
+        }
+
+        &.ktc-is-hovered {
+          .ktc-variant-item-label {
+            width: calc(100% - @abtest-variant-action-buttons-width);
+          }
+        }
+      }
+    }
+
+    .ktc-variant-action-icons {
+
+      .ktc-variant-action-icon {
+
+        i {
+          cursor: pointer;
+          vertical-align: top;
+
+          &.hidden {
+            display: none;
+          }
+
+          &.disabled {
+            cursor: auto;
+            opacity: 0.5;
+          }
+
+          &.disabled:hover {
+            color: @color-gray-90;
+          }
+
+          &.enabled {
+            color: @color-gray-90;
+          }
+
+          &.enabled:hover {
+            color: @color-gray-50;
+          }
+        }
+      }
+    }
+  }
+
+  .ktc-variant-edit-wrapper {
+    padding: 0 @base-unit/2;
+    line-height: 40px;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+
+    input {
+      font-family: @font-family-sans-serif;
+      box-sizing: border-box;
+      height: 23px;
+      margin: auto 0;
+      flex: 1;
+    }
+
+    .ktc-variant-edit-icons {
+      font-size: @icon-size-80;
+
+      > i {
+        margin: auto 0 auto @base-unit / 2;
+      }
+      
+      > i.icon-check-circle {
+        color: @color-green-120;
+
+        &:hover {
+          color: @color-green-100;
+        }
+
+        &.disabled {
+          color: @color-gray-100;
+          pointer-events: none;
+          cursor: auto;
+        }
+      }
+      
+      > i.icon-times-circle {
+        color: @color-red-100;
+
+        &:hover {          
+          color: @color-red-70;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,159 @@
+@import 'src/builder/assets/styles/modal-dialog-base.less';
+
+@dialog-width: 600px;
+
+kentico-form-modal-dialog {
+  div.ktc-form-wrapper { // div selector to override ktc-admin-ui styles
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: @modal-dialog-base-z-index;
+  }
+
+  .ktc-form-modal-overlay {
+    .dialog-overlay();
+  }
+
+  .ktc-form-modal-dialog {
+    .dialog();
+    position: relative;
+    max-height: @dialog-max-height;
+    width: @dialog-width;
+    z-index: @modal-dialog-base-z-index + 1;
+
+    .ktc-form-modal-content {
+      padding: @dialog-content-padding;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      box-sizing: content-box;
+      min-height: calc(@dialog-min-height - @modal-dialog-footer-height - @modal-dialog-header-height - 2 * @dialog-content-padding - @header-bottom-border-width - @horizontal-line-width);
+      max-height: calc(@dialog-max-height - @modal-dialog-footer-height - @modal-dialog-header-height - 2 * @dialog-content-padding - @header-bottom-border-width - @horizontal-line-width);
+
+      .ktc-input-checkbox();
+    }
+
+    .ktc-form-modal-footer {
+      .dialog-footer();
+
+      .ktc-modal-dialog-buttons {
+        .dialog-footer-buttons();
+
+        .ktc-modal-dialog-button-spacer {
+          .dialog-footer-buttons-spacer();
+        }
+      }
+    }
+  }
+
+  // loading animation
+  @text-box-width: 387px;
+  @text-box-height: 33px;
+  @text-box-left:198px;
+  @text-box-top: 13px;
+
+  @label-text-box-vertical-padding: (@text-box-height - @label-height) / 2;
+  @label-width: 160px;
+  @label-height: @text-box-height / 2;
+  @label-left: 16px;
+  @label-top: @text-box-top + @label-text-box-vertical-padding;
+
+  @row-padding: 11px;
+
+  .animationStep(@color1, @color2, @color3, @color4, @color5) {
+    background-image:
+      // first row
+      linear-gradient(@color1 @label-height, transparent 0),
+      linear-gradient(@color1 @text-box-height, transparent 0),
+      // second row
+      linear-gradient(@color2 @label-height, transparent 0),
+      linear-gradient(@color2 @text-box-height, transparent 0),
+      // third row
+      linear-gradient(@color3 @label-height, transparent 0),
+      linear-gradient(@color3 @text-box-height, transparent 0),
+      // fourth row
+      linear-gradient(@color4 @label-height, transparent 0),
+      linear-gradient(@color4 @text-box-height, transparent 0),
+      // fifth row
+      linear-gradient(@color5 @label-height, transparent 0),
+      linear-gradient(@color5 @text-box-height, transparent 0);
+  }
+
+  @keyframes loading {
+    0% {
+      .animationStep(@color-gray-150, @color-gray-150, @color-gray-150, @color-gray-150, @color-gray-150);
+    }
+    13% {
+      .animationStep(@color-gray-140, @color-gray-150, @color-gray-150, @color-gray-150, @color-gray-150);
+    }
+    34% {
+      .animationStep(@color-gray-130, @color-gray-140, @color-gray-150, @color-gray-150, @color-gray-150);
+    }
+    45% {
+      .animationStep(@color-gray-130, @color-gray-130, @color-gray-140, @color-gray-150, @color-gray-150);
+    }
+    56% {
+      .animationStep(@color-gray-140, @color-gray-130, @color-gray-130, @color-gray-140, @color-gray-150);
+    }
+    67% {
+      .animationStep(@color-gray-150, @color-gray-140, @color-gray-130, @color-gray-130, @color-gray-140);
+    }
+    78% {
+      .animationStep(@color-gray-150, @color-gray-150, @color-gray-140, @color-gray-130, @color-gray-130);
+    }
+    89% {
+      .animationStep(@color-gray-150, @color-gray-150, @color-gray-150, @color-gray-140, @color-gray-130);
+    }
+    100% {
+      .animationStep(@color-gray-150, @color-gray-150, @color-gray-150, @color-gray-150, @color-gray-140);
+    }
+  }
+
+  .ktc-form-modal-content.ktc-is-loading {
+    height: @text-box-top + 5 * (@text-box-height + @row-padding);
+    background-repeat: no-repeat;
+    animation: loading 0.7s infinite 200ms;
+
+    // prepare gradients for the animation
+    .animationStep(transparent, transparent, transparent, transparent, transparent);
+
+    background-size:
+      // first row
+      @label-width @label-height,
+      @text-box-width @text-box-height,
+      // second row
+      @label-width @label-height,
+      @text-box-width @text-box-height,
+      // third row
+      @label-width @label-height,
+      @text-box-width @text-box-height,
+      // fourth row
+      @label-width @label-height,
+      @text-box-width @text-box-height,
+      // fifth row
+      @label-width @label-height,
+      @text-box-width @text-box-height;
+
+    background-position:
+      // first row
+      @label-left @label-top,
+      @text-box-left @text-box-top,
+      // second row
+      @label-left (@label-top + 1 * (@label-height + @row-padding + 2 * @label-text-box-vertical-padding)),
+      @text-box-left (@text-box-top + 1 * (@text-box-height + @row-padding)),
+      // third row
+      @label-left (@label-top + 2 * (@label-height + @row-padding + 2 * @label-text-box-vertical-padding)),
+      @text-box-left (@text-box-top + 2 * (@text-box-height + @row-padding)),
+      // fourth row
+      @label-left (@label-top + 3 * (@label-height + @row-padding + 2 * @label-text-box-vertical-padding)),
+      @text-box-left (@text-box-top + 3 * (@text-box-height + @row-padding)),
+      // fifth row
+      @label-left (@label-top + 4 * (@label-height + @row-padding + 2 * @label-text-box-vertical-padding)),
+      @text-box-left (@text-box-top + 4 * (@text-box-height + @row-padding));
+  }
+}

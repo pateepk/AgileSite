@@ -1,0 +1,99 @@
+$gold: $accent-dark;
+
+.fbx-io {
+	display: grid;
+	grid-gap: .25rem;
+	grid-template-columns: 1fr;
+	margin-bottom: 1rem;
+	
+	> div {
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+		position: relative;
+		padding: 4vw;
+		
+		display: grid;
+		justify-content: center;
+		align-items: stretch;
+		min-height: 250px;
+		
+		&:hover {
+			cursor: pointer;
+		}
+		
+		h2 {
+			margin: .5rem 0;
+			text-transform: uppercase;
+			text-shadow: 0 1px 1px rgba(black, .4);
+			transition: all .4s ease-out;
+			font-weight: 700;
+			
+			small {
+				display: block;
+				font-weight: 400;
+				font-size: 60%;
+				font-family: $sans-font-family;
+			}
+			
+			&:hover {
+				letter-spacing: .06rem;
+			}
+		}
+		
+		.fbx-io_link {
+			display: block;
+			text-decoration: none;
+			color: white;
+		}
+		
+		.fbx-io_in {
+			min-width: 280px;
+			min-height: 150px;
+		}
+		
+		p {
+			color: white;
+			margin-bottom: 0;
+			line-height: 1.2;
+			font-family: $sans-font-family;
+		}
+		
+		.fbx-io_line {
+			background: $gold;
+			width: 100%;
+			height: 4px;
+			margin: 1em 0;
+		}
+	}
+		
+	@media (min-width: 600px) {
+		grid-template-columns: 1fr 1fr;
+		
+		> div {
+			
+			&:hover {
+				.fbx-io_in {
+					opacity: 1;
+				}
+				
+				.fbx-io_line {
+					@include rubberBand(
+						$duration: 2s
+					);
+				}
+				
+				p {
+					@include slideInUp();
+				}
+			}
+			
+			.fbx-io_in {
+				opacity: 0;
+				transition: all .4s ease-out;
+				overflow: hidden; // so animations do not slide over other items
+			}
+		}
+	}
+}

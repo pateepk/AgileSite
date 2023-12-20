@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+const{h:o}=window.components;import{a as n}from"./chunk-d01dc526.js";import{b as i}from"./chunk-1df0e24b.js";const s=window.kentico=window.kentico||{},e=s._confirmDialog=s._confirmDialog||{},c=o=>new Promise(s=>{e.resolve=s,n(i.CONFIRM,{message:o},"*")});export{c as a};

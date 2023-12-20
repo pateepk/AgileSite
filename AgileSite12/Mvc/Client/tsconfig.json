@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "~/*": ["./test/*"]
+    },
+    "esModuleInterop": true,
+    "declaration": false,
+    "target": "es5",
+    "downlevelIteration": true,
+    "noImplicitThis": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "lib": ["dom", "dom.iterable", "es5", "es2015", "es2017", "es6"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "jsx": "react",
+    "jsxFactory": "h"
+  },
+  "include": ["src/**/*", "test/**/*", "types/jsx.d.ts"],
+  "exclude": ["node_modules"]
+}

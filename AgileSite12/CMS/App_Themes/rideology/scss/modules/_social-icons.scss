@@ -1,0 +1,314 @@
+//social media colors
+$facebook: #3b5998;
+$flickr: #ff0084;
+$instagram: #e1306c;
+$linkedin: #007bb6;
+$pinterest: #cb2027; //pinterest-p
+$twitter: #00aced;
+$vimeo: #aad450;
+$yelp: #cb0f23;
+$youtube: #bb0000;
+$globe: $brand-success;
+
+.social {
+	//margin: 2rem 0;
+
+	a[class*="social-"] {
+	    text-decoration: none;
+	    line-height: 1;
+	    display: inline-block;
+	    margin: .25rem;
+	    
+	    &:hover {
+		    text-decoration: none;
+	    }
+	}
+	
+	.plain {
+		font-size: 1.5rem;
+	}
+	
+	.plain,
+	.circle-plain {
+		color: tint($text-color, 30);
+		
+		&:hover {
+	        color: $text-color;
+	    }
+	}
+	
+	.circle-brand, 
+	.circle-plain {
+		font-size: 1.25rem;
+		
+		.svg-inline--fa {
+			//override extra margin set on core
+			margin-right: auto;
+		}
+	}
+
+
+//branded circles	
+	.circle-brand.fa-facebook,
+	.circle-brand.fa-facebook-f,
+	.circle-brand.fa-facebook-square {
+		.fa-circle {
+			color: $facebook;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $facebook;
+			}
+		}
+	}
+	
+	.circle-brand.fa-linkedin,
+	.circle-brand.fa-linkedin-in {
+		.fa-circle {
+			color: $linkedin;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $linkedin;
+			}
+		}
+	}
+	
+	.circle-brand.fa-instagram {
+		.fa-circle {
+			color: $instagram;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $instagram;
+			}
+		}		
+	}
+	
+	.circle-brand.fa-twitter,
+	.circle-brand.fa-twitter-square {
+		.fa-circle {
+			color: $twitter;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $twitter;
+			}
+		}	
+	}
+	
+	.circle-brand.fa-pinterest-p,
+	.circle-brand.fa-pinterest {
+		.fa-circle {
+			color: $pinterest;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $pinterest;
+			}
+		}
+	}
+	.circle-brand.fa-globe {
+		.fa-circle {
+			color: $globe;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $globe;
+			}
+		}
+	}
+	.circle-brand.fa-vimeo {
+		.fa-circle {
+			color: $vimeo;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $vimeo;
+			}
+		}
+	}
+	.circle-brand.fa-yelp {
+		.fa-circle {
+			color: $yelp;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $yelp;
+			}
+		}
+	}
+	.circle-brand.fa-youtube {
+		.fa-circle {
+			color: $youtube;
+		}
+		
+		.fa-inverse {
+			color: #fff;
+		}
+		
+		&:hover {
+			.fa-circle {
+				color: $gray-1;
+			}
+			
+			.fa-inverse {
+				color: $youtube;
+			}
+		}
+	}
+
+//branded icons
+	.branded {
+		font-size: 1.5rem;
+		
+		.fa-facebook,
+		.fa-facebook-f,
+		.fa-facebook-square {
+		    color: $facebook;
+		    
+		    &:hover {
+			    color: shade($facebook, 20);
+		    }
+		}
+		
+		.fa-linkedin,
+		.fa-linkedin-in {
+		    color: $linkedin;
+		    
+		    &:hover {
+			    color: shade($linkedin, 20);
+		    }
+		}
+		
+		.fa-instagram {
+		    color: $instagram;
+		    
+		    &:hover {
+			    color: shade($instagram, 20);
+		    }
+		}
+		
+		.fa-pinterest-p {
+		    color: $pinterest;
+		    
+		    &:hover {
+			    color: shade($pinterest, 20);
+		    }
+		}
+		
+		.fa-twitter,
+		.fa-twitter-square {
+		    color: $twitter;
+		    
+		    &:hover {
+			    color: shade($twitter, 20);
+		    }
+		}
+		
+		.fa-yelp {
+		    color: $yelp;
+		    
+		    &:hover {
+			    color: shade($yelp, 20);
+		    }
+		}
+		
+		.fa-vimeo {
+		    color: $vimeo;
+		    
+		    &:hover {
+			    color: shade($vimeo, 20);
+		    }
+		}
+		
+		.fa-globe {
+			color: $globe;
+			
+			&:hover {
+			    color: shade($globe, 20);
+		    }
+		}
+		
+		.fa-youtube {
+		    color: $youtube;
+		    
+		    &:hover {
+			    color: shade($youtube, 20);
+		    }
+		}
+	}
+
+}

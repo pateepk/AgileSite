@@ -1,0 +1,114 @@
+.menu-item {
+	
+	.card_head > div {
+		//add gradient overlay to photo in transform
+		position: relative;
+		background-position: center center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    position: relative;
+	    display: grid;
+	    justify-content: center;
+	    align-items: stretch;
+	    min-height: 250px;
+	}
+	
+	&_pricing {
+		text-align: center;
+		font-family: $sans;
+		font-size: 1rem;
+		
+		padding: .5rem;
+		background: $gray-2;
+	}
+	
+	&_sale-price {
+		margin-right: .5rem;
+		color: $accent-dark;
+		font-weight: bold;
+	}
+	
+	&_sale-price ~ &_price   {
+		text-decoration: line-through;
+	}
+	
+	&_prefix {
+		font-size: 70%;
+	}
+}
+
+// list style with dot leader //////////////////////////////////////////
+.menu-item-list {
+	font-family: $sans;
+	margin-bottom: .5rem;
+		
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		overflow-x: hidden;	
+	
+		li span {
+			background: #fff;
+			padding: 0 .25rem;
+		}
+		
+		li:first-child {
+			&:after {
+				float: left;
+				width: 0;
+				white-space: nowrap;
+				content: ' . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ';
+			}
+		}
+		
+		li:last-child {
+			background: white;
+		}
+		
+		@media (min-width: 768px) {
+			
+			li:first-child {
+				float: left;
+				width: auto;
+			}
+			
+			li:last-child {
+				float: right;
+				width: auto;
+				text-align: right;
+			}
+		}
+	}
+	
+	&_sale-price {
+		color: $accent-dark;
+		font-weight: bold;
+	}
+	
+	&_sale-price ~ &_price   {
+		text-decoration: line-through;
+	}
+	
+	&_prefix {
+		font-size: 70%;
+
+	}
+}
+	
+.menu-group {
+	h4 {
+		margin: 2rem 0 .25rem;
+		text-transform: uppercase;
+		
+		
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}
+
+	
+
+	
+	

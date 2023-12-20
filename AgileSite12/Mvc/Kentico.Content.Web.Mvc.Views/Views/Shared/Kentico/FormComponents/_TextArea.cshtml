@@ -1,0 +1,9 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model TextAreaComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+}
+
+@Html.TextAreaFor(m => m.Value, htmlAttributes)

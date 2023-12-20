@@ -1,0 +1,50 @@
+.feature-box_custom_ff {
+	> div {
+		min-height: 450px;
+		background-repeat: no-repeat;
+		background-position: center bottom;
+		background-size: cover;
+		padding-top: 1rem;
+		border: 1px solid $border;
+		margin-bottom: 1rem;
+		
+		a {
+			color: $text-color;
+			
+			&:hover {
+				text-decoration: none;
+				color: $brand-2;
+			}
+		}
+		
+		.inner {
+			background: white;
+			border: 1px solid $border;
+			text-align: center;
+			margin: 0 1rem;
+			padding: 1rem 1rem 0;
+			
+			.grad-bar {
+				height: 1rem;
+				background: linear-gradient(135deg, #217ECD 0%, #38D8E5 50%, #8AE0EC 80%, #CAF1F1 100%);
+				margin: 1rem -1rem 0;
+
+			}
+		}
+	}
+	
+	@supports (display: grid) {
+		@media (min-width: 520px) {
+			display: grid;
+			grid-gap: 1rem;
+			grid-template-columns: 1fr 1fr;
+			
+			> div {
+				margin-bottom: 0;
+			}
+		}
+		@media (min-width: 768px) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+}

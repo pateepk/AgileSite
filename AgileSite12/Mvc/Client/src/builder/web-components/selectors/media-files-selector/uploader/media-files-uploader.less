@@ -1,0 +1,183 @@
+:host {
+  @import 'src/builder/assets/styles/icon-font.less';
+  @import 'src/builder/assets/styles/generated/mixins.less';
+  @import 'src/builder/assets/styles/generated/type.less';
+  @import 'src/builder/assets/styles/generated/buttons.less';
+  @import 'src/builder/assets/styles/generated/utilities.less';
+
+  .icon-arrow-up-line {    
+    .icon-arrow-up-line();
+  }
+
+  .icon-modal-close {
+    .icon-modal-close();
+  }
+
+  .ktc-uploader-container {
+    margin: 0 @base-unit / 2 @base-unit / 2 0;
+		float: left;
+    height: 160px;
+    width: 160px;
+    text-align: center;
+    position: relative;
+  }
+
+  .ktc-uploader-empty-container {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+
+  .ktc-uploader,  .ktc-uploader * {    
+    box-sizing: border-box;
+  }
+
+  .ktc-uploader {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    color: transparent;    
+  }
+
+  .ktc-uploader.ktc-uploader-disabled {
+    cursor: default;
+  }
+
+  .ktc-uploader-container .ktc-uploader {
+    border: solid 1px @color-gray-150;
+  }
+
+  .ktc-uploader-container .ktc-uploader.dz-drag-hover,
+  .ktc-uploader-empty-container .ktc-uploader.dz-drag-hover,
+  .ktc-uploader-container .ktc-uploader:hover {
+    background-color: @color-gray-150;    
+    border-radius: 2px;
+    z-index: 2;
+  }
+
+  .ktc-uploader-container .ktc-uploader.ktc-uploader-disabled.dz-drag-hover,
+  .ktc-uploader-empty-container .ktc-uploader.ktc-uploader-disabled.dz-drag-hover,
+  .ktc-uploader-container .ktc-uploader.ktc-uploader-disabled:hover {
+    background-color: @color-white;
+  }
+
+  .ktc-uploader .ktc-uploader-message-header {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 2 * @base-unit;
+  }
+
+  .ktc-uploader .ktc-uploader-message {    
+    padding: 10px;
+    font-size: 14px;
+    color: @color-black;
+  }
+
+  .ktc-uploader-container .ktc-uploader-message {
+    position: absolute;
+    top: 50%;    
+    transform: translate(0%, -50%);
+  }
+
+  .ktc-uploader-empty-container .ktc-uploader-message {
+    position: absolute;
+    width: 230px;
+    top: 50%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+  }
+
+  .ktc-uploader-container .ktc-uploader-message .icon-arrow-up-line {
+    font-size: 32px;
+  }
+
+  .ktc-uploader-empty-container .ktc-uploader-message .icon-arrow-up-line {
+    font-size: 64px;
+  }
+
+  .ktc-uploader .ktc-uploader-preview {
+    color: @color-black;    
+    display: inline-block;    
+    padding: 20px;
+    background-color: @color-white;    
+    z-index: 1;    
+
+    .ktc-uploader-preview-container {
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+    }
+  }
+
+  .ktc-uploader-container .ktc-uploader .ktc-uploader-preview {
+    width: 100%;
+    height: 100%;
+    position: relative;    
+  }
+
+  .ktc-uploader-empty-container .ktc-uploader .ktc-uploader-preview {
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    top: 50%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+  }
+
+  .ktc-uploader .ktc-uploader-preview.ktc-uploader-error .ktc-uploader-details {
+    display: none;
+  }
+
+  .ktc-uploader-container .ktc-uploader .ktc-uploader-preview.ktc-uploader-error, 
+  .ktc-uploader-empty-container .ktc-uploader .ktc-uploader-preview.ktc-uploader-error  {
+    cursor: default;
+    color: @color-black;    
+    padding: 20px;
+    max-height: 156px;    
+  }  
+
+  .ktc-uploader .ktc-uploader-preview .ktc-uploader-progress {
+    display: block;
+    height: 15px;
+  }
+
+  .ktc-uploader .ktc-uploader-preview.ktc-uploader-error .ktc-uploader-progress {
+    display: none;
+  }
+
+  .ktc-uploader .ktc-uploader-preview .ktc-uploader-progress .ktc-uploader-upload {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: @color-green-100;
+  }
+
+  .ktc-uploader .ktc-uploader-preview .ktc-uploader-error-message {
+    color: @color-red-100;
+    display: none;
+  }
+
+  .ktc-uploader .ktc-uploader-preview.ktc-uploader-error .ktc-uploader-error-message {
+    display: block;
+  }
+
+  .ktc-uploader .ktc-uploader-preview .ktc-uploader-filename {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+  }
+
+  .ktc-uploader .ktc-uploader-preview .ktc-uploader-error-button {    
+    display: none;
+    margin-top: @base-unit / 2;
+  }
+
+  .ktc-uploader .ktc-uploader-preview.ktc-uploader-error .ktc-uploader-error-button {
+    display: block;
+  }
+}

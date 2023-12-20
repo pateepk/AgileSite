@@ -1,0 +1,261 @@
+.Calendar {
+	margin-bottom: 1rem;
+	
+	table {
+		border-color: $border;
+		width: 100%;
+		
+		//regular items  
+		tr td {
+			padding: .5rem;
+			vertical-align: top;
+			font-family: $sans;
+			font-size: .75rem;
+			text-align: right;
+			height: 80px;
+			
+			br, span {
+				display: none;
+			}
+			
+			.event-link {
+				font-size: .8rem;
+				line-height: 1.1;
+				text-align: center;
+				margin-bottom: .25rem;
+				
+				&:last-child {
+					margin: 0;
+				}
+				
+				span {
+					display: block;
+				}
+				
+				a {
+					color: $text-color;
+					display: block;
+					background: $gray-1;
+					padding: .5rem;
+					text-decoration: none;
+					
+					&:hover {
+						background: $accent-dark;
+						color: $gray-1;
+					}
+				}
+			}   
+		}  
+		
+	
+		//heading
+		tr:first-child td {
+			padding: 0;
+			height: auto;
+			vertical-align: middle;
+
+			table {
+				background: $gray-1;
+				
+				
+				tr td {
+					padding: .5rem;
+					text-align: center;
+					color: $text-color;
+					height: auto;
+					font-family: $serif;
+					font-size: 1.2rem;
+					
+					a {
+						color: $text-color !important;
+						//font-weight: bold;
+					}
+				}
+				
+				//replace text with icon
+				tr td:first-child a {
+					font-size: 0;
+					
+					&:before {
+						@extend %icon-duotone;
+						content: '\f100'; //angle-double-left;
+					}
+					
+					&:after {
+						@extend %icon-duotone;
+						content: '\10f100';
+					}
+					
+					svg {
+						font-size: 1.5rem;
+					}
+					
+					svg:last-child {
+						display: none;
+					}
+				}
+				
+				tr td:last-child a {
+					font-size: 0;
+					
+					&:before {
+						@extend %icon-duotone;
+						content: '\f101'; //angle-double-right;
+					}
+					
+					&:after {
+						@extend %icon-duotone;
+						content: "\10f101";
+					}
+					
+					svg {
+						font-size: 1.5rem;
+					}
+					
+					svg:last-child {
+						display: none;
+					}
+				}
+			}
+		}
+
+		//days of week row
+		tr:nth-child(2) th {
+			text-align: center;
+			padding: .5rem;
+			font-family: $sans;
+			font-size: 1rem;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		display: none;
+		//hide entire calendar if less than 600px wide
+	}
+}
+
+.event-item_grid {
+	font-family: $sans;
+	font-size: .9rem;
+	border: 1px solid $border;
+	margin-bottom: .5rem;
+	position: relative;
+	
+	> div {
+		
+		
+		span {
+			font-size: .7rem;
+			text-transform: uppercase;
+			color: $gray-4;
+			font-weight: 700;
+			display: block;
+		}
+	}
+	
+	@media (min-width: 400px) {
+		font-size: 16px;
+	}
+	
+	@supports (display: grid) {
+		display: grid;
+		grid-gap: 0;
+		grid-template-columns: 150px 1fr;
+		
+		&_icon {
+			position: absolute;
+			right: .25rem;
+			top: -.25rem;
+			
+			svg {
+				color: $gray-2;
+				font-size: 1.8rem;
+			}
+		}
+				
+		&_date {
+			grid-column: 1;
+			grid-row: 1;
+			padding: .125rem .5rem;
+		}
+		
+		&_title {
+			grid-column: 2;
+			grid-row: 1;
+			padding: .125rem .5rem;
+			border-left: 1px solid $border;
+		}
+		
+		&_link {
+			grid-column: 1/3;
+			grid-row: 2;
+			text-align: center;
+			align-self: center;
+			
+			
+			
+			a {
+				color: white;
+				display: block;
+				text-decoration: none;
+				background: $brand-1;
+				padding: .25rem .5rem;
+				
+				&:hover {
+					background: $brand-2;
+				}
+				
+				svg {
+					font-size: 80%;
+				}
+			}
+		}
+		
+/*
+		@media (min-width: 600px) and (max-width: 768px) {
+			grid-template-columns: 1fr 1fr 2fr;
+			
+			&_date {
+				grid-column: 1;
+				grid-row: 1;
+			}
+			
+			&_time {
+				grid-column: 2;
+				grid-row: 1;
+				text-align: left;
+			}
+			
+			&_title {
+				grid-column: 3;
+				grid-row: 1;
+				text-align: left;
+			}
+			
+			&_link {
+				grid-column: 1/5;
+				grid-row: 2;
+			}
+		}
+*/
+	}
+}
+
+
+
+.event-item {
+	border: 1px solid $border;
+	padding: .5rem;
+	font-family: $base-font-family;
+	
+	.title {
+		margin-bottom: .125rem;
+		font-weight: bold;
+	}
+	
+	.date {
+		font-size: .75rem;
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+}

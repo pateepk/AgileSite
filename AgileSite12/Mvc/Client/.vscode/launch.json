@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome",
+      "url": "http://127.0.0.78/DancingGoatMvc/cmsctx/pv/administrator/culture/en-US/wg/7d834da6-05c2-4456-96b9-5e16bc752c45/readonly/0/h/598533640daf5a6c6970735b85897970117a9cc99b1f58b1f047a4c5d59315d0/-/en-us?uh=99c5b3f4d86f6ef30216f74d9c5d95fb1b71d0a2f59a70a65367d12d3a5a0860&editmode=1",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest All",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": ["--runInBand"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": ["${relativeFile}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}

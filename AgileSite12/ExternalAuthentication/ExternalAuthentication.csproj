@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F84FA925-ED92-4472-9248-8A4FAC6FE199}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.ExternalAuthentication</RootNamespace>
+    <AssemblyName>CMS.ExternalAuthentication</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.ExternalAuthentication.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.ExternalAuthentication.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetOpenAuth, Version=4.0.0.11165, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\DotNetOpenAuth.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.6.4.2\lib\net45\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="CMSOpenIDHelper.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverterFactories\EntityAttributeValueConverterFactory.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverterFactories\IEntityAttributeValueConverterFactory.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverters\EntityAttributeValueConverterBase.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverters\EntityBooleanAttributeValueConverter.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverters\EntityCultureAttributeValueConverter.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverters\EntityDateTimeAttributeValueConverter.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverters\EntityGenderAttributeValueConverter.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverters\EntityIntegerAttributeValueConverter.cs" />
+    <Compile Include="Facebook\EntityAttributeValueConverters\EntityTextAttributeValueConverter.cs" />
+    <Compile Include="Facebook\EntityAttributeValueFormatters\EntityAttributeValueFormatter.cs" />
+    <Compile Include="Facebook\EntityAttributeValueFormatters\IEntityAttributeValueFormatter.cs" />
+    <Compile Include="Facebook\EntityMappers\EntityMapper.cs" />
+    <Compile Include="Facebook\EntityMappers\IEntityMapper.cs" />
+    <Compile Include="Facebook\EntityMapping\EntityMapping.cs" />
+    <Compile Include="Facebook\EntityMapping\EntityMappingItem.cs" />
+    <Compile Include="Facebook\EntityMapping\EntityMappingSerializer.cs" />
+    <Compile Include="Facebook\EntityModelProviders\EntityModelProvider.cs" />
+    <Compile Include="Facebook\EntityModel\EntityAttributeModel.cs" />
+    <Compile Include="Facebook\EntityModel\EntityModel.cs" />
+    <Compile Include="Facebook\FacebookAttribute.cs" />
+    <Compile Include="Facebook\FacebookConnectHelper.cs" />
+    <Compile Include="Facebook\FacebookMappingHelper.cs" />
+    <Compile Include="Facebook\FacebookUserProfile.cs" />
+    <Compile Include="Facebook\FacebookUserProfileMappingTriggerEnum.cs" />
+    <Compile Include="Facebook\FacebookUserProvider.cs" />
+    <Compile Include="Facebook\FormInfoProviders\FormInfoProvider.cs" />
+    <Compile Include="Facebook\FormInfoProviders\IFormInfoProvider.cs" />
+    <Compile Include="LinkedIn\LinkedInAccessToken.cs" />
+    <Compile Include="LinkedIn\LinkedInData.cs" />
+    <Compile Include="LinkedIn\ILinkedInData.cs" />
+    <Compile Include="LinkedIn\LinkedInHelper.cs" />
+    <Compile Include="LinkedIn\LinkedInProvider.cs" />
+    <Compile Include="LinkedIn\LinkedInAuthorization.cs" />
+    <Compile Include="LinkedIn\Models\LinkedInDateObject.cs" />
+    <Compile Include="LinkedIn\Models\LinkedInProfile.cs" />
+    <Compile Include="Module\ExternalAuthenticationModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowsLiveID\JsonWebTokenClaims.cs" />
+    <Compile Include="WindowsLiveID\OAuth2AccessTokenData.cs" />
+    <Compile Include="WindowsLiveID\WindowsLiveLogin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755C13-7B45-48EA-8425-CBAD44133A02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{D8BC8F2E-B5CB-472B-A894-3900A96FF456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,96 @@
+@import './generated/variables.less';
+@import './generated/icon-variables.less';
+@import './generated/icon-mixins.less';
+
+@widget-header-height: 2 * @base-unit;
+@section-header-width: 1.8 * @base-unit;
+
+@section-divider-add-button-width: 2.9 * @base-unit;
+@section-divider-side-line-length: 0.75 * @base-unit; // ~12px
+
+@border-width: 1px;
+@border-style: dashed;
+@border-color: @color-gray-130;
+@border-highlighted-color: @color-gray-50;
+// Extend the widget width to include left and right out-lined borders
+@widget-width-including-border: calc(~"100% + "(2 * @border-width));
+
+@pop-up-container-width: 300px;
+@pop-up-padding: 0.5 * @base-unit;
+
+// z-index master list
+@dropzone-z-index: 10040;
+@border-z-index: 9999;
+@active-element-z-index: 10000;
+@widget-zone-add-component: 10001;
+@active-element-addon-z-index: 10010;
+@active-plus-button-z-index: 10020;
+@banned-widget-zone-z-index: 10050;
+@dragged-widget-z-index: 10100;
+@modal-dialog-base-z-index: 10200;
+
+// modal dialogs
+@dialog-min-height: 250px;
+@modal-dialog-header-height: 2.25 * @base-unit;
+@modal-dialog-footer-height: 4 * @base-unit;
+
+// Forms
+@validation-error-color: #d12127;
+
+.triangle() {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: -20px;
+    border-color: inherit;
+    border-width: 10px;
+    pointer-events: none;
+  }
+
+  &[position='center'] {
+    transform: translateX(-50%);
+  }
+
+  &[position='left'] {
+    transform: translateX(-100%) translateX(18px);
+
+    &:before {
+      left: calc(100% - 18px);
+    }
+  }
+
+  &[position='right'] {
+    transform: translateX(-18px);
+
+    &:before {
+      left: 18px;
+    }
+  }
+}
+
+.dialog-line() {
+  content: '';
+  border-bottom: solid @border-width @color-gray-140;
+  width: 100%;
+  display: block;
+}
+
+.ktc-input-checkbox() {
+  .ktc-checkbox {
+    input {
+      &:disabled + input[type="hidden"] + label:before {
+        content: @icon-cb-check-disabled;
+      }
+
+      &:checked + input[type="hidden"] + label::after {
+        content: @icon-cb-check-sign;
+      }
+    }
+  }
+}

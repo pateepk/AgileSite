@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{58EDC0E7-C978-498B-855D-3461D75E0CA7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kentico.Web.Mvc</RootNamespace>
+    <AssemblyName>Kentico.Web.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Output\Debug\MVC\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Output\Debug\MVC\Kentico.Web.Mvc.XML</DocumentationFile>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Output\Release\MVC\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Output\Release\MVC\Kentico.Web.Mvc.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ApplicationBootstrapper.cs" />
+    <Compile Include="ApplicationBuilder.cs" />
+    <Compile Include="ApplicationBuilderExtensions.cs" />
+    <Compile Include="Module\WebMvcModule.cs" />
+    <Compile Include="OutputCache\AntiForgeryExtensions.cs" />
+    <Compile Include="OutputCache\AntiForgeryHelper.cs" />
+    <Compile Include="OutputCache\CacheKeys\BrowserOutputCacheKey.cs" />
+    <Compile Include="OutputCache\CacheKeys\OutputCacheKeyOptionsExtensions.cs" />
+    <Compile Include="OutputCache\CacheKeys\SiteOutputCacheKey.cs" />
+    <Compile Include="OutputCache\CacheKeys\CookieLevelCacheKey.cs" />
+    <Compile Include="OutputCache\OutputCacheKeyHelper.cs" />
+    <Compile Include="OutputCache\CacheKeys\HostOutputCacheKey.cs" />
+    <Compile Include="OutputCache\IOutputCacheKey.cs" />
+    <Compile Include="Cors\Context\CorsContextFactory.cs" />
+    <Compile Include="Cors\Context\CorsRequestContext.cs" />
+    <Compile Include="Cors\Context\CorsResponseContext.cs" />
+    <Compile Include="Cors\CorsConfiguration.cs" />
+    <Compile Include="Cors\CorsConstants.cs" />
+    <Compile Include="Cors\Context\ICorsRequestContext.cs" />
+    <Compile Include="Cors\Context\ICorsResponseContext.cs" />
+    <Compile Include="Cors\KenticoCorsModule.cs" />
+    <Compile Include="DataAnnotationsLocalization\IModelMetadataModifier.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedCompareAttributeAdapter.cs" />
+    <Compile Include="EmbeddedViews\EmbeddedView.cs" />
+    <Compile Include="EmbeddedViews\EmbeddedViewAssembly.cs" />
+    <Compile Include="EmbeddedViews\EmbeddedViewAssemblyAttribute.cs" />
+    <Compile Include="EmbeddedViews\EmbeddedViewBootstrapper.cs" />
+    <Compile Include="EmbeddedViews\EmbeddedViewEngine.cs" />
+    <Compile Include="EmbeddedViews\EmbeddedViewLoader.cs" />
+    <Compile Include="EmbeddedViews\EmbeddedViewMapping.cs" />
+    <Compile Include="FeatureSet.cs" />
+    <Compile Include="HelperMethods\RouteCollectionMapRoutesMethods.cs" />
+    <Compile Include="AjaxHelperExtensions.cs" />
+    <Compile Include="IApplicationBuilder.cs" />
+    <Compile Include="OutputCache\IOutputCacheKeyOptions.cs" />
+    <Compile Include="OutputCache\CacheKeys\UserOutputCacheKey.cs" />
+    <Compile Include="ResponseFilter\ResponseFilter.cs" />
+    <Compile Include="ResponseFilter\ResponseFilterStream.cs" />
+    <Compile Include="RouteCollectionExtensions.cs" />
+    <Compile Include="HttpContextExtensions.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizationHelper.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedDataTypeAttributeAdapter.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedMaxLengthAttributeAdapter.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedMinLengthAttributeAdapter.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedDataAnnotationsModelMetadataProvider.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedRangeAttributeAdapter.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedRegularExpressionAttributeAdapter.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedRequiredAttributeAdapter.cs" />
+    <Compile Include="DataAnnotationsLocalization\LocalizedStringLengthAttributeAdapter.cs" />
+    <Compile Include="IFeatureSet.cs" />
+    <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ExtensionPoint.cs" />
+    <Compile Include="HelperMethods\HtmlHelperResolveUrlsMethods.cs" />
+    <Compile Include="RouteHandlerWrapper.cs" />
+    <Compile Include="Routes\RouteRegistration.cs" />
+    <Compile Include="Routes\SiteCultureConstraint.cs" />
+    <Compile Include="UrlHelperExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+    <None Include="NugetResources\Views\web.config.install.xdt" />
+    <None Include="NugetResources\Views\web.config.uninstall.xdt" />
+    <None Include="NugetResources\web.config.install.xdt" />
+    <None Include="NugetResources\web.config.uninstall.xdt" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AspNet\Platform\AspNet.Platform.csproj">
+      <Project>{508a8d62-9685-4041-8878-e0c772e6686b}</Project>
+      <Name>AspNet.Platform</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Routing.Web\Routing.Web.csproj">
+      <Project>{bd2f25a8-9315-4341-aac3-e9731922ddb2}</Project>
+      <Name>Routing.Web</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"$(ProjectDir)..\..\Scripts\Update-OutputJunctions.cmd" "$(ProjectDir)..\..\" $(Configuration) CMS MVC</PostBuildEvent>
+  </PropertyGroup>
+</Project>

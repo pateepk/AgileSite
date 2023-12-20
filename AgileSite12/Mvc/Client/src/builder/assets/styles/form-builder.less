@@ -1,0 +1,293 @@
+// Core form styles
+@import "./forms.less";
+// Reset
+@import "./generated/normalize.less";
+// Core CSS
+@import (reference) "./generated/icon-variables.less";
+@import (reference) "./generated/icon-mixins.less";
+
+@import "./generated/icon-font-base-class.less";
+@import "./generated/icon-classes.less";
+
+@import "./generated/form-builder.less";
+@import "./generated/alerts.less";
+@import "./generated/header-actions.less";
+
+@icon-cell-width: @base-unit + (2 * (0.625 * @base-unit)) + 8; // icon width + (margin right + margin left) + icon padding =~ 16 + (10 + 10) + 8
+@icon-cell-height: @base-unit * 1.5; // icon height + vertical paddings = 16 + 4 + 4
+@padding-base: @padding-base-horizontal; // ~16px
+@padding-50: @padding-base * 0.5;
+@padding-200: @padding-base * 2;
+@padding-400: @padding-base * 4;
+@right-sidebar-width: 20.625 * @base-unit; // 330px
+@sidebars-combined-width: @nav-tabs-vertical-width + @right-sidebar-width; // 208px + 330px = 538px
+
+.ktc-formbuilder-mvc {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100vh;
+
+  .ktc-form-builder-mvc-form {
+    .ktc-editing-form-design-mode {
+      width: calc(100% - 100px);
+      margin: (2.5 * @base-unit) auto;
+
+      .ktc-form-group {
+        margin-bottom: 0;
+        padding: (0.75 * @base-unit) 0; // ~ 12px 0
+
+        .ktc-editing-form-icon-cell {
+          width: @icon-cell-width;
+          float: left;
+          min-height: @icon-cell-height;
+
+          .ktc-control-icon {
+            color: @color-gray-130;
+            margin: 0 (0.625 * @base-unit); // ~ 0 10px
+          }
+        }
+
+        .ktc-editing-form-label-cell {
+          @media screen and (min-width: @screen-tablet) {
+            width: auto;
+            white-space: nowrap;
+          }
+
+          @media screen and (min-width: @screen-desktop + @sidebars-combined-width) {
+            width: calc((100% / 3) - @icon-cell-width);
+          }
+        }
+
+        .ktc-editing-form-value-cell {
+          @media screen and (min-width: @screen-tablet) {
+            width: 100% * 5 / 6;
+            margin-left: @icon-cell-width;
+
+            div[id*="google-recaptcha-component"] {
+              transform: scale(0.77);
+              transform-origin: 0 0;
+            }
+          }
+
+          @media screen and (min-width: 1440 - @nav-tabs-vertical-width) {
+            div[id*="google-recaptcha-component"] {
+              transform: none;
+              transform-origin: initial;
+            }
+          }
+
+          @media screen and (min-width: @screen-desktop + @sidebars-combined-width) {
+            width: 100% * 2 / 3;
+            margin-left: 0;
+          }
+        }
+      }
+
+      .ktc-editing-form-label {
+        cursor: default;
+      }
+    }
+  }
+}
+
+// Single column section type
+.ktc-editing-form-design-mode .ktc-default-section .ktc-form-group {
+  .ktc-editing-form-label-cell {
+    @media screen and (min-width: @screen-tablet) {
+      width: calc((100% / 3) - @icon-cell-width);
+    }
+
+    @media screen and (min-width: @screen-desktop + @sidebars-combined-width) {
+      width: calc((100% / 6) - @icon-cell-width);
+    }
+  }
+
+  .ktc-editing-form-value-cell {
+    div[id*="google-recaptcha-component"] {
+      transform: initial;
+      transform-origin: initial;
+    }
+
+    @media screen and (min-width: @screen-tablet) {
+      width: 100% * 2 / 3;
+      margin-left: 0;
+    }
+
+    @media screen and (min-width: @screen-desktop + @sidebars-combined-width) {
+      width: 100% * 5 / 6;
+    }
+  }
+}
+
+.ktc-form-builder-validation-error,
+.ktc-field-property .field-validation-error {
+  color: @color-error;
+}
+
+.ktc-form-builder-mvc-invalid-component {
+  color: @color-error;
+
+  strong {
+    color: @color-error;
+  }
+
+  .ktc-error-message {
+    font-style: italic;
+  }
+}
+
+.ktc-input-checkbox();
+
+.ktc-form-builder-visibility-section {
+  .ktc-alert {
+    margin: 0 0 @padding-base;
+  }
+
+  .ktc-custom-visibility-form {
+    background-color: @color-blue-130;
+    padding: @padding-base;
+
+    .ktc-custom-visibility-dropdown-label {
+      padding: 0;
+    }
+  }
+}
+
+.ktc-settings-panel {
+  padding: 0;
+  height: 100%;
+
+  .ktc-settings-content {
+    height: 100%;
+
+    .ktc-form-builder-properties-panel {
+      height: 100%;
+      overflow: hidden;
+
+      .ktc-form-builder-properties-panel-inner {
+        padding: @padding-base;
+      }
+
+      .ktc-form-builder-tabs {
+        height: 100%;
+        margin-top: @margin-50;
+
+        .ktc-form-builder-tabs-nav {
+          overflow: hidden;
+          padding-left: @margin-150;
+
+          .ktc-form-builder-tab-link {
+            float: left;
+            display: block;
+            color: @color-black;
+            text-align: center;
+            padding: 0 @base-unit;
+            line-height: @line-height-200;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+              background-color: @color-gray-150;
+            }
+
+            &.ktc-active {
+              background-color: @body-bg;
+            }
+          }
+        }
+
+        .ktc-form-builder-tab-content {
+          height: calc(100% - @padding-200);
+          margin-left: @margin-50;
+          background-color: @body-bg;
+
+          .ktc-form-builder-tab-content-container {
+            height: calc(100% - @padding-50);
+            overflow-y: auto;
+            position: relative;
+
+            .ktc-form-builder-tab-content-inner {
+              padding: @padding-base;
+
+              .ktc-field-rule-designer {
+                .ktc-rule-row {
+                  background-color: @color-gray-150;
+
+                  &.ktc-edit-rule-row {
+                    background-color: @color-blue-130;
+                  }
+
+                  .ktc-rule-expandable-title {
+                    cursor: pointer;
+                  }
+
+                  &>span {
+                    // if too many validation rules, scrollbar would break the layout
+                    width: @base-unit * 14;
+                    cursor: auto;
+                  }
+                }
+              }
+            }
+
+            .ktc-form-builder-tab-content-header {
+              height: @padding-350;
+              color: @color-gray-50;
+              padding: @padding-base @padding-base @padding-50;
+              display: block;
+              min-height: @padding-350;
+              box-sizing: border-box;
+              word-spacing: -4px;
+            }
+
+            .ktc-form-builder-tab-content-header-shadow {
+              box-shadow: 0 8px 8px -5px @color-gray-130;
+              position: relative;
+              z-index: 11000;
+              display: block !important;
+            }
+
+            .ktc-form-builder-tab-content-inner-for-header {
+              height: calc(100% - (@padding-350 + @padding-base));
+              overflow-y: auto;
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: @padding-350;
+              bottom: 0;
+              padding: @padding-base @padding-base 0;
+
+              &::after {
+                // fix for Firefox, where scrolled to bottom does not respect bottom padding in the scroll area
+                margin: @padding-base;
+                content: "";
+              }
+
+              .ktc-label-property:first-child {
+                padding-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.ktc-field-rule-designer {
+  .ktc-rule-designer-rules {
+    margin-bottom: 0;
+  }
+
+  .ktc-rule-designer-rules>div:last-child {
+    margin-bottom: @base-unit;
+  }
+}
+
+// Fix form builder scrollbar displaying over modal dialog overlay
+.ktc-no-scroll {
+  .ktc-form-builder-mvc-form, .ktc-form-builder-tab-content-inner-for-header {
+    overflow: hidden !important;
+  }
+}

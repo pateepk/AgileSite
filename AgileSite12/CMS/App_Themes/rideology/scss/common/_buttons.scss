@@ -1,0 +1,401 @@
+.btn, .btn-default {
+	display: inline-block;
+	position: relative;
+	outline: none;
+    z-index: 1;
+	
+	font-size: 1rem;
+	line-height: 1;
+	text-decoration: none;
+	
+	padding: .5rem 1.25rem;
+	margin: 0 0 .5rem;
+	
+	border-radius: $input-radius;
+	
+	background: $gray-2;
+	color: $text-color;
+	border: 1px solid shade($gray-2, 10);
+	
+	transition: all .2s linear;
+	    
+    white-space: nowrap;
+    overflow: hidden;
+	
+	&:hover,
+	&:active {
+		color: $text-color;
+		background: shade($gray-2, 10);
+		border-color: white;
+		text-decoration: none;
+		//box-shadow: 2px 4px 6px rgba(black, .3);
+	}
+	
+	svg {
+		font-size: .8rem;
+	}
+	
+	&:focus {
+		outline: none;
+	}
+	
+	+ .btn {
+		margin-left: .5rem; 
+	}
+}
+
+
+//standard button colors
+.btn-brand-1 {
+	background: $brand-1;
+	border-color: shade($brand-1, 10);
+	color: #fff;
+	
+	&:hover {
+		background: shade($brand-1, 10);
+		border-color: white;
+		color: white;
+	}
+}
+
+.btn-brand-2 {
+	background: $brand-2;
+	border-color: #fff;
+	color: #fff;
+	font-weight: 600;
+	
+	&:hover {
+		background: shade($brand-2, 10);
+		border-color: white;
+		color: white;
+	}
+}
+
+
+.btn-accent {
+	background: $accent-dark;
+	border-color: $accent-dark;
+	color: #fff;
+	
+	&:hover {
+		background: shade($accent-dark, 10);
+		border-color: white;
+		color: white;
+	}
+}
+
+.btn-dark {
+	background: $gray-7;
+	color: white;
+	border-color: shade($gray-7, 10);
+		
+	&:hover {
+		background: shade($gray-7, 10);
+		border-color: white;
+		color: white;
+	}
+}
+
+.btn-success {
+	background: $brand-success;
+	border-color: shade($brand-success, 10);
+	color: #fff;
+	
+	&:hover {
+		background: shade($brand-success, 10);
+		border-color: white;
+		color: white;
+	}
+}
+
+.btn-warning {
+	background: $brand-warning;
+	border-color: shade($brand-warning, 10);
+	color: white;
+		
+	&:hover {
+		background: shade($brand-warning, 10);
+		border-color: white;
+		color: white;
+	}
+}
+
+.btn-danger {
+	background: $brand-danger;
+	border-color: shade($brand-danger, 10);
+	color: white;
+	
+	&:hover {
+		background: shade($brand-danger, 10);
+		border-color: white;
+		color: white;
+	}
+}
+
+// ghost buttons --------------------------------------
+.btn-ghost {
+	background: transparent;
+	padding: .5rem 1.5rem;
+	color: $text-color;
+	border-radius: 1rem;
+	border: 1px solid $gray-3;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1;
+	box-shadow: none;
+	
+	&:hover {
+		background: transparent;
+		color: $brand-1;
+		border-color: $brand-1;
+		text-decoration: none;
+	}
+}
+
+.btn-ghost_white {
+	background: transparent;
+	padding: .5rem 1.5rem;
+	color: #fff;
+	border-radius: 1rem;
+	border: 1px solid #fff;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1;
+	box-shadow: none;
+	
+	&:hover {
+		background: transparent;
+		color: $accent-dark;
+		border-color: $accent-dark;
+		text-decoration: none;
+	}
+}
+
+.btn-ghost_blue {
+	background: transparent;
+	padding: .5rem 1.5rem;
+	color: #fff;
+	border-radius: 1rem;
+	border: 1px solid #fff;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1;
+	box-shadow: none;
+	
+	&:hover {
+		background: transparent;
+		color: $brand-2-med;
+		border-color: $brand-2-med;
+		text-decoration: none;
+	}
+}
+
+
+// border buttons --------------------------------------
+.btn-border {
+	background: #fff;
+	color: $text-color;
+	border: 1px solid $gray-3;
+	
+	&:hover {
+		background: $gray-3;
+		color: #fff;
+		border-color: shade($gray-3, 10);
+		box-shadow: none;
+	}
+}
+
+.btn-border.btn-brand-1,
+.btn-primary,
+.registration-form .btn {
+	background: transparent;
+	color: $brand-1;
+	border: 1px solid $brand-1;
+	
+	&:hover {
+		background: $brand-1;
+		color: #fff;
+		border-color: $brand-1;
+	}
+}
+
+.btn-border.btn-brand-2 {
+	background: #fff;
+	color: $brand-2;
+	border: 1px solid $brand-2;
+	
+	&:hover {
+		background: $brand-2;
+		color: #fff;
+		border-color: shade($brand-2, 10);
+	}
+}
+
+
+.btn-border.btn-accent, 
+.logon-password-retrieval-button {
+	background: #fff;
+	color: $accent-dark;
+	border: 1px solid $accent-dark;
+	
+	&:hover {
+		background: $accent-dark;
+		color: #fff;
+		border-color: shade($accent-dark, 10);
+	}
+}
+
+.btn-border.btn-dark {
+	background: #fff;
+	color: $gray-7;
+	border: 1px solid $gray-7;
+	
+	&:hover {
+		background: $gray-7;
+		color: #fff;
+		border-color: shade($gray-7, 10);
+	}
+}
+
+.btn-border.btn-success {
+	background: #fff;
+	color: $brand-success;
+	border: 1px solid $brand-success;
+	
+	&:hover {
+		background: $brand-success;
+		color: #fff;
+		border-color: shade($brand-success, 10);
+	}
+}
+
+.btn-border.btn-warning {
+	background: #fff;
+	color: $brand-warning;
+	border: 1px solid $brand-warning;
+	
+	&:hover {
+		background: $brand-warning;
+		color: #fff;
+		border-color: shade($brand-warning, 10);
+	}
+}
+
+.btn-border.btn-danger {
+	background: #fff;
+	color: $brand-danger;
+	border: 1px solid $brand-danger;
+	
+	&:hover {
+		background: $brand-danger;
+		color: #fff;
+		border-color: shade($brand-danger, 10);
+	}
+}
+
+//animated buttons --------------------------------------
+.btn-animated {
+	border: 1px solid rgba(white, 0.1);
+	
+	&:after {
+		position: absolute;
+		content: "";
+		width: 0;
+		height: 100%;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		background: $gray-7;
+		transition: all 0.3s ease-in-out;
+	}
+	
+	&:hover,
+	&:active {
+		color: $gray-7;
+		
+		&:after {
+			width: 100%;
+			left: 0;
+			background: white;
+		}
+	}
+}
+
+.btn-animated.btn-brand-1 {
+	
+	&:hover {
+		color: $brand-1;
+		border-color: $brand-1;
+	}
+}
+
+.btn-animated.btn-brand-2 {
+	
+	&:hover {
+		color: $brand-2;
+		border-color: $brand-2;
+	}
+}
+
+
+.btn-animated.btn-accent {
+	
+	&:hover {
+		color: $accent-dark;
+		border-color: $accent-dark;
+	}
+}
+
+.btn-animated.btn-dark {
+	
+	&:hover {
+		color: $gray-9;
+		border-color: $gray-9;
+	}
+}
+
+.btn-animated.btn-success {
+	
+	&:hover {
+		color: $brand-success;
+		border-color: $brand-success;
+	}
+}
+
+.btn-animated.btn-warning {
+	
+	&:hover {
+		color: $brand-warning;
+		border-color: $brand-warning;
+	}
+}
+
+.btn-animated.btn-danger {
+	
+	&:hover {
+		color: $brand-danger;
+		border-color: $brand-danger;
+	}
+}
+
+//button sizes --------------------------------------
+.btn.btn-small {
+	font-size: .7rem !important;
+	padding: .25rem .75rem;
+}
+
+.btn.btn-large {
+	font-size: 1.1rem !important;
+	padding: .75rem 1.5rem;
+}
+
+.btn.btn-xl {
+	font-size: 1.25rem;
+	padding: .75rem 1.5rem;
+}
+
+.btn.btn-caps {
+	text-transform: uppercase;
+}
+
+

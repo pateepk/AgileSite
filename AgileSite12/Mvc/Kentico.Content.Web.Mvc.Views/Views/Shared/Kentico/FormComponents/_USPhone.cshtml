@@ -1,0 +1,28 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model USPhoneComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+    var wrapperId = $"wrapper-{Guid.NewGuid()}";
+}
+
+<span id="@wrapperId">
+    @Html.TextBoxFor(m => m.PhoneNumber, htmlAttributes)
+</span>
+
+<script type="text/javascript">
+    (function () {
+        var createMask = function () {
+            var input = document.querySelector("#@wrapperId>input");
+            var im = new Inputmask("@USPhoneProperties.INPUT_MASK");
+            im.mask(input);
+        };
+
+        if (typeof Inputmask != 'undefined') {
+            createMask();
+        } else {
+            document.addEventListener("DOMContentLoaded", createMask);
+        }
+    })();
+</script>

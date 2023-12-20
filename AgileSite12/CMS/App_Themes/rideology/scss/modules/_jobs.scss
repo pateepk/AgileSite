@@ -1,0 +1,22 @@
+.job-item {
+	margin: 0 0 1em;
+	
+	h4 {
+    	margin-bottom: .25rem;
+	}
+}
+
+.job-list {
+	//dl container
+	dt {
+		border-bottom: 1px solid $border;
+		font-size: 1.2rem;
+		margin-top: 1rem;
+		font-family: $serif;
+	}
+	
+	.empty {
+		color: $text-muted;
+		font-style: italic;
+	}
+}

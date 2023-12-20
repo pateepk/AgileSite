@@ -1,0 +1,157 @@
+//
+// Button groups
+// --------------------------------------------------
+
+// Button carets
+//
+// Match the button text color to the arrow/caret for indicating dropdown-ness.
+
+.ktc-caret {
+    .ktc-btn-default & {
+        border-top-color: @btn-default-color;
+    }
+
+    .ktc-btn-primary & {
+        border-top-color: @color-white;
+    }
+}
+
+.ktc-dropup {
+    & .ktc-btn-default .ktc-caret {
+        border-bottom-color: @btn-default-color;
+    }
+
+    .ktc-btn-primary {
+        .ktc-caret {
+            border-bottom-color: @color-white;
+        }
+    }
+}
+
+// Make the div behave like a button
+.ktc-btn-group {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle; // match .ktc-btn alignment given font-size hack above
+    > .ktc-btn {
+        position: relative;
+        float: left;
+        // Bring the "active" button to the front
+        &:hover,
+        &.ktc-active {
+            z-index: @zindex-btn-group-active;
+        }
+
+        &.ktc-active {
+            background: @btn-secondary-bg;
+            color: @btn-secondary-color;
+            box-shadow: @btn-secondary-box-shadow 0 -@btn-shadow-width 0 inset;
+
+            i, .ktc-badge {
+                color: @btn-secondary-color;
+            }
+        }
+
+        &:focus {
+            // Remove focus outline when dropdown JS adds it after closing the menu
+            outline: none;
+        }
+        // No space between buttons in the button group
+        & + .ktc-btn {
+            margin-left: -1px; // Win8 no border fix
+        }
+    }
+}
+
+.ktc-btn-group > .ktc-btn:not(:first-child):not(:last-child):not(.ktc-dropdown-toggle) {
+    border-radius: 0;
+}
+
+// Set corners individual because sometimes a single button can be in a .ktc-btn-group and we need :first-child and :last-child to both match
+.ktc-btn-group > .ktc-btn:first-child {
+    margin-left: 0;
+
+    &:not(:last-child):not(.ktc-dropdown-toggle) {
+        .ktc-border-right-radius(0);
+    }
+}
+// Need .ktc-dropdown-toggle since :last-child doesn't apply given a .ktc-dropdown-menu immediately after it
+.ktc-btn-group > .ktc-btn:last-child:not(:first-child),
+.ktc-btn-group > .ktc-dropdown-toggle:not(:first-child) {
+    .ktc-border-left-radius(0);
+}
+
+// Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
+.ktc-btn-group > .ktc-btn-group {
+    float: left;
+}
+
+    .ktc-btn-group > .ktc-btn-group:not(:first-child):not(:last-child) > .ktc-btn {
+        border-radius: 0;
+    }
+
+    .ktc-btn-group > .ktc-btn-group:first-child {
+        > .ktc-btn:last-child,
+        > .ktc-dropdown-toggle {
+            .ktc-border-right-radius(0);
+        }
+    }
+
+    .ktc-btn-group > .ktc-btn-group:last-child > .ktc-btn:first-child {
+        .ktc-border-left-radius(0);
+    }
+
+// On active and open, don't show outline
+.ktc-btn-group .ktc-dropdown-toggle:active,
+.ktc-btn-group.ktc-open .ktc-dropdown-toggle {
+    outline: 0;
+}
+
+// Line between buttons in btn-group
+.ktc-btn-group > .ktc-btn:not(:last-child):not(.ktc-dropdown-toggle) {
+    border-right: 1px solid @btn-default-border;
+
+    &.ktc-active {
+        border-right: 1px solid @btn-secondary-bg;
+    }
+}
+
+
+// Opened dropdown
+.ktc-btn-group-split.ktc-open > .ktc-btn.ktc-dropdown-toggle {
+    background-color: @btn-default-box-shadow;
+}
+
+// Negative space for dropdown toggle
+.ktc-btn-group > .ktc-btn + .ktc-dropdown-toggle {
+    padding: 0 (@base-unit * 0.5);
+    border-left: 1px solid @btn-default-border; // Win8 no border fix
+}
+
+.ktc-btn-group > .ktc-btn-lg + .ktc-dropdown-toggle {
+    padding: 0 (@base-unit * 0.75);
+}
+
+
+// Checkbox and radio options
+[data-toggle="buttons"] > .ktc-btn > input[type="radio"],
+[data-toggle="buttons"] > .ktc-btn > input[type="checkbox"] {
+    display: none;
+}
+
+
+// Vertical separated buttons
+// ----------------------
+
+.ktc-btns-vertical .ktc-btn {
+    margin-bottom: @base-unit * 0.5;
+    display: block;
+    // No horizontal space between buttons
+    + .ktc-btn {
+        margin-left: 0;
+    }
+    //
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

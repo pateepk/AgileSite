@@ -1,0 +1,73 @@
+.TabControlTable {
+	position: relative;
+	top: 1px;
+
+	a {
+		background: $brand-2;
+		color: white;
+		padding: .5em 1em;
+		display: block;
+		border: 1px solid $border;
+		border-width: 1px 1px 0;
+		border-radius: .25rem .25rem 0 0;
+		margin-right: 2px;
+		
+		&:hover,
+		&:focus {
+			text-decoration: none;
+			background: $brand-2-light;
+			color: $text-color;
+		}
+	}
+	
+	.TabControlLinkSelected {
+		background: white;
+		color: $text-color;
+		
+		&:hover,
+		&:focus {
+			background: white;
+		}
+	}
+	
+	.TabControlSelectedLeft,
+	.TabControlSelectedRight,
+	.TabControlLeft,
+	.TabControlRight {
+		display: none;
+	}
+}
+	
+.TabsContent {
+	border: 1px solid $border;
+	border-radius: 0 .25rem .25rem;
+	padding: 1em;
+	background: white;
+	margin-bottom: 1rem;
+}
+
+//password strength
+.password-strength-text {
+	font-size: .9rem;
+}
+
+.passw-strength-indicator {
+	> div {
+		height: .25rem;
+		width: 90%;
+	}
+	
+	.passw-indicator-weak {
+		background: $brand-danger;
+	}
+	
+	.passw-indicator-acceptable,
+	.passw-indicator-average {
+		background: $brand-info;
+	}
+	
+	.passw-indicator-strong,
+	.passw-indicator-excellent {
+		background: $brand-success;
+	}
+}

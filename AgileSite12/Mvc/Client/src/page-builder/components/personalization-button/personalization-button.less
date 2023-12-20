@@ -1,0 +1,39 @@
+@import 'src/builder/assets/styles/icon-font.less';
+@import 'src/builder/assets/styles/shared.less';
+
+kentico-personalization-button {
+
+  .ktc-widget-header-personalization-wrapper {
+    position: relative;
+
+    .ktc-widget-header-personalization {
+      display: inline-block;
+
+      .ktc-widget-header-icon {
+        i {
+          cursor: pointer;
+          color: @color-white;
+          padding:(0.5 * @base-unit) (0.25 * @base-unit);
+        }
+      }
+
+      kentico-pop-up-container {
+        position: absolute;
+        border-color: transparent transparent @color-blue-70 transparent;
+        top: 41px;
+        left: 50%;
+        z-index: -1;
+
+        .triangle();        
+      }
+
+      .icon-personalisation {
+        .icon-personalisation();
+      }
+
+      .icon-personalisation-variants {
+        .icon-personalisation-variants();
+      }
+    }
+  }
+}

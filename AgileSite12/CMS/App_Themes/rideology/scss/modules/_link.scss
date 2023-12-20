@@ -1,0 +1,19 @@
+.link-item {
+	padding: 1rem;
+	border: 1px solid $border;
+	
+	svg {
+		font-size: 90%;
+		margin-right: .25rem;
+	}
+		
+	&_title {
+		display: block;
+		font-size: 1.12rem;
+		line-height: 1.1;
+		font-weight: 600;
+		margin-bottom: .5rem;
+	}
+	
+}
+

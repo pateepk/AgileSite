@@ -1,0 +1,109 @@
+
+//breadcrumbs ------------------------------------------
+.bread-crumbs {
+    text-align: right;
+    font-size: .75rem;
+    margin: 1rem 0;
+    border-bottom: 1px solid $gray-2;
+    
+    a {
+        color: $gray-5;
+        
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+
+// Pagination -----------------------------------------
+// ----------------------------------------------------
+.pager-control {
+    text-align: center;
+    margin: 1em 0;
+    padding: .5em 0;
+    font-family: $sans;
+    //border-top: 1px solid $border;
+    
+    .svg-inline--fa {
+	    margin: 0;
+	    position: relative;
+    }
+       
+	//text block with count of pages
+    &_count {
+		margin-bottom: .25em;
+    }
+    
+    &_numbers {
+        margin-bottom: .5em;
+    }
+    
+    a,
+    .selected {
+        display: inline-block;
+        padding: .25em .75em;
+        margin: .125rem;
+        border: 1px solid $border;
+        font-size: 20px;
+        //border-radius: .25em;
+        text-decoration: none;
+        
+        background: white;
+        color: $brand-2;
+        margin: 0 .125em;
+        
+        
+        &:hover,
+        &:focus,
+        &:active {
+            background: $brand-2;
+            color: white;
+            text-decoration: none;
+        }
+        
+        svg {
+	        position: relative;
+	        top: .125rem;
+        }
+    }
+    
+    .selected,
+    .selected:hover {
+        color: $gray-1;
+        background: $gray-3;
+    }
+    
+    a.hide-mobile {
+	    display: none;
+    }
+    
+    @media (min-width: 800px) {
+	    a.hide-mobile {
+	    	display: inline-block;
+    	}
+    }
+    
+    @supports(display: grid) {
+	    @media (min-width: 800px) {
+		    display: grid;
+		    grid-template-columns: 200px 1fr;
+		    
+		    a,
+			.selected {
+	        	font-size: 100%;
+	        }
+		    
+	        &_numbers {
+	            text-align: right;
+	            order: 2;
+	        }
+	        
+	        &_count {
+		        text-align: left;
+		        order: 1;
+		        align-self: center;
+	        }
+	    }
+    }
+}

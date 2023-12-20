@@ -1,0 +1,9 @@
+﻿@using Kentico.Forms.Web.Mvc;
+
+@model ComparisonTypeSelectorComponent<StringFieldComparisonTypes>
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+}
+
+@Html.DropDownListFor(m => m.ComparisonType, Model.ComparisonTypes, htmlAttributes)

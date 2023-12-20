@@ -1,0 +1,118 @@
+.ktc-admin-ui {
+  @import 'src/builder/assets/styles/shared.less';
+  @import 'src/builder/assets/styles/icon-font.less';
+
+  kentico-section-header {
+
+    .ktc-section-header {
+
+      background-color: @color-gray-50;
+      box-sizing: border-box;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+      padding: (0.125 * @base-unit) (0.125 * @base-unit);
+
+      i {
+        color: @color-white;
+        padding:(0.5 * @base-unit) (0.25 * @base-unit);
+      }
+
+      .ktc-section-header-drag-icon,
+      .ktc-section-header-bin-icon,
+      .ktc-section-header-layout-icon {
+        display: table-row;
+        padding-right: 0.125 * @base-unit;
+        white-space: nowrap;
+
+        * {
+          cursor: pointer;
+        }
+
+        .icon-dots-vertical {
+          .icon-dots-vertical();
+        }
+
+        .icon-bin {
+          .icon-bin();
+        }
+
+        .icon-l-cols-30-70 {
+          .icon-l-cols-30-70();
+        }
+      }
+
+      .ktc-section-header-drag-icon {
+        i {
+          cursor: move;
+          cursor: grab;
+        }
+      }
+
+      kentico-pop-up-container {
+        position: absolute;
+        top: 0px;
+
+        i {
+          color: @color-gray-50;
+          padding: 0;
+        }
+
+        .triangle();
+
+        &:before {
+          transform: translateX(50%);
+          top: 40px;
+        }
+
+        &:after {
+          z-index: -1;
+          content: '';
+          display: block;
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 11px;
+          transform: translateX(50%);
+          top: 40px;
+        }
+      }
+    }
+
+    // Position the pop up according to the display attribute
+    &[section-type-list-position="left"] {
+      kentico-pop-up-container {
+        right: 10px + @section-header-width;
+
+        &:before {
+          left: 100%;
+          border-color: transparent transparent transparent @color-white;
+        }
+
+        // Another triangle which serves as a bottom border of the triangle above.
+        &:after {
+          margin-left: -11px;
+          left: 100%;
+          border-color: transparent transparent transparent rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+
+    &[section-type-list-position="right"] {
+      kentico-pop-up-container {
+        left: 38px;
+
+        &:before {
+          left: 0;
+          margin-left: -30px;
+          border-color: transparent @color-white transparent transparent;
+        }
+
+        // Another triangle which serves as a bottom border of the triangle above.
+        &:after {
+          margin-left: -32px;
+          border-color: transparent rgba(0, 0, 0, 0.3) transparent transparent;
+        }
+      }
+    }
+  }
+}

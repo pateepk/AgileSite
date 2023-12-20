@@ -1,0 +1,26 @@
+:host{  
+  @import 'src/builder/assets/styles/shared.less';  
+  @import 'src/builder/assets/styles/icon-font.less';
+  @import 'src/builder/assets/styles/generated/type.less';
+  @import 'src/builder/assets/styles/generated/alerts.less';
+  @import 'src/builder/assets/styles/generated/mixins.less';
+  @import 'src/builder/assets/styles/generated/utilities.less';
+
+  .icon-times-circle {
+    .icon-times-circle();
+  }
+
+  .icon-modal-close {
+    .icon-modal-close();
+  }
+
+  .icon-check-circle  {
+    .icon-check-circle();
+  }
+
+  .ktc-messages-placeholder {
+    margin-left: @base-unit;
+    margin-top: @base-unit;
+    position: absolute;
+  }
+}

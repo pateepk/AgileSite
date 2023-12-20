@@ -1,0 +1,46 @@
+@import './common-variant-listing.less';
+
+:host {
+  .ktc-variant-item-list {
+    &.ktc-is-sorting {
+      .ktc-variant-item {
+        &.ktc-is-hovered {
+          background-color: @color-white;
+          .ktc-variant-action-icons {
+            display: none;
+          }
+        }
+
+        &.ktc-variant-item--active {
+          &.ktc-is-hovered {
+            background-color: @variant-item-active-color;
+          }
+        }
+
+        &.sortable-dragging {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    .ktc-variant-item {
+      .ktc-drag-icon {
+        width: @base-unit;
+        display: inline-block;
+        padding: 11px 0 9px @variant-item-drag-handle-left-padding;
+
+        &, i {
+          cursor: move;
+          cursor: grab;
+        }
+      }
+    }
+
+    .sortable-placeholder {
+      display: block;
+      width: @variant-item-width;
+      height: @variant-item-height;
+      background-color: @color-blue-130;
+    }
+  }
+}

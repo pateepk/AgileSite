@@ -1,0 +1,89 @@
+<#@ template debug="false" hostspecific="false" language="C#" linePragmas="false" #>
+<#@ output encoding="UTF-8" #>
+using System;
+using System.Linq;
+
+using CMS.DataEngine;
+
+namespace <#= Namespace #>
+{
+    /// <summary>
+    /// Class providing <see cref="<#= InfoClassName #>"/> management.
+    /// </summary>
+    public <# if (GeneratePartialClass) { #>partial <# } #>class <#= InfoProviderClassName #> : AbstractInfoProvider<<#= InfoClassName #>, <#= InfoProviderClassName #>>
+    {
+        /// <summary>
+        /// Returns all <see cref="<#= InfoClassName #>"/> bindings.
+        /// </summary>
+        public static ObjectQuery<<#= InfoClassName #>> Get<#= InfoClassNamePluralized #>()
+        {
+            return ProviderObject.GetObjectQuery();
+        }
+
+
+        /// <summary>
+        /// Returns <see cref="<#= InfoClassName #>"/> binding structure.
+        /// </summary>
+        /// <param name="<#= LeftVariableName #>Id"><#= LeftObjectName #> ID.</param>
+        /// <param name="<#= RightVariableName #>Id"><#= RightObjectName #> ID.</param>
+        public static <#= InfoClassName #> Get<#= InfoClassName #>(int <#= LeftVariableName #>Id, int <#= RightVariableName #>Id)
+        {
+            return ProviderObject.GetObjectQuery().TopN(1)
+                .WhereEquals("<#= LeftSideColumnName #>", <#= LeftVariableName #>Id)
+                .WhereEquals("<#= RightSideColumnName #>", <#= RightVariableName #>Id)
+                .FirstOrDefault();
+        }
+
+
+        /// <summary>
+        /// Sets specified <see cref="<#= InfoClassName #>"/>.
+        /// </summary>
+        /// <param name="infoObj"><see cref="<#= InfoClassName #>"/> to set.</param>
+        public static void Set<#= InfoClassName #>(<#= InfoClassName #> infoObj)
+        {
+            ProviderObject.SetInfo(infoObj);
+        }
+
+
+        /// <summary>
+        /// Deletes specified <see cref="<#= InfoClassName #>"/> binding.
+        /// </summary>
+        /// <param name="infoObj"><see cref="<#= InfoClassName #>"/> object.</param>
+        public static void Delete<#= InfoClassName #>(<#= InfoClassName #> infoObj)
+        {
+            ProviderObject.DeleteInfo(infoObj);
+        }
+
+
+        /// <summary>
+        /// Deletes <see cref="<#= InfoClassName #>"/> binding.
+        /// </summary>
+        /// <param name="<#= LeftVariableName #>Id"><#= LeftObjectName #> ID.</param>
+        /// <param name="<#= RightVariableName #>Id"><#= RightObjectName #> ID.</param>
+        public static void Remove<#= LeftObjectCodeName #>From<#= RightObjectCodeName #>(int <#= LeftVariableName #>Id, int <#= RightVariableName #>Id)
+        {
+            var infoObj = Get<#= InfoClassName #>(<#= LeftVariableName #>Id, <#= RightVariableName #>Id);
+            if (infoObj != null)
+            {
+                Delete<#= InfoClassName #>(infoObj);
+            }
+        }
+
+
+        /// <summary>
+        /// Creates <see cref="<#= InfoClassName #>"/> binding.
+        /// </summary>
+        /// <param name="<#= LeftVariableName #>Id"><#= LeftObjectName #> ID.</param>
+        /// <param name="<#= RightVariableName #>Id"><#= RightObjectName #> ID.</param>
+        public static void Add<#= LeftObjectCodeName #>To<#= RightObjectCodeName #>(int <#= LeftVariableName #>Id, int <#= RightVariableName #>Id)
+        {
+            // Create new binding
+            var infoObj = new <#= InfoClassName #>();
+            infoObj.<#= LeftSideColumnName #> = <#= LeftVariableName #>Id;
+            infoObj.<#= RightSideColumnName #> = <#= RightVariableName #>Id;
+
+            // Save to the database
+            Set<#= InfoClassName #>(infoObj);
+        }
+    }
+}

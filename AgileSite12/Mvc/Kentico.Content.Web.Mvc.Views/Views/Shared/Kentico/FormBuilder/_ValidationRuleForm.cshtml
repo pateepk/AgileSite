@@ -1,0 +1,38 @@
+@using Kentico.Web.Mvc
+@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+
+@model ValidationRuleForm
+
+@{
+    Guid guid = Guid.NewGuid();
+    string formId = "validationRuleConfigurationFormId-" + guid;
+    string validationRuleConfiguration = "validationRuleConfiguration-" + guid;
+}
+
+<div id="@validationRuleConfiguration">
+
+    @using (Ajax.BeginForm(null, null, null, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.ReplaceWith,
+        UpdateTargetId = validationRuleConfiguration,
+    }, new
+    {
+        @id = formId,
+        @action = Url.Kentico().GetValidateValidationRuleConfigurationUrl(Model.FormComponentInstanceIdentifier, Model.ValidationRuleConfiguration.Identifier, Model.FormId, Model.FieldName),
+    }))
+    {
+        <div class="ktc-form-group">
+            @foreach (var property in Model.FormComponents)
+            {
+                @Html.Kentico().FormField(property, SystemRenderingConfigurations.PropertiesEditorField)
+            }
+        </div>
+
+        @Html.Raw(Html.Kentico().FormBuilderSubmitButton(formId, ResHelper.GetString("general.apply"), Guid.NewGuid()))
+        <button type="reset" onclick="document.dispatchEvent(new CustomEvent('kenticoFormBuilderCloseExpandedValidationRuleConfiguration', {}));" class="ktc-btn ktc-btn-default">@ResHelper.GetString("general.cancel")</button>
+    }
+
+    @Html.Raw(Html.Kentico().NotifyValidationRuleConfigurationValidated(Model, Html.ViewData.ModelState.IsValid))
+</div>

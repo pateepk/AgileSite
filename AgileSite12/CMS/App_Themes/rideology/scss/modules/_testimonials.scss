@@ -1,0 +1,53 @@
+.testimonial {
+	cite {
+		font-size: 1rem;
+		line-height: 1.1;
+	}
+}
+
+.testimonial-card {
+	border: 1px solid $border;
+	padding: .5rem;
+	
+	&_head {
+		text-align: right;
+		background: $gray-3;
+		color: $gray-1;
+		padding: .25rem 1rem;
+		margin: -.5rem -.5rem 0;
+	}
+	
+	&_body {
+		padding: .5rem;
+		font-size: .9rem;
+		height: 12.5rem;
+		overflow-y: auto;
+	}
+	
+	&_foot {
+		text-align: right;
+		padding-top: .5rem;
+		
+		h4 {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.associates-card {
+	border: 1px solid $border;
+	
+	&_head {
+		text-align: center;
+		img {
+			padding: .5rem;
+		}
+	}
+	
+	&_body {
+		padding: .5rem;
+		font-size: .9rem;
+		height: 10.5rem;
+		overflow-y: auto;
+	}
+}

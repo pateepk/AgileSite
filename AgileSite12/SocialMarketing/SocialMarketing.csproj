@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD6A481D-1A77-42A7-918F-7FAA737E750D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.SocialMarketing</RootNamespace>
+    <AssemblyName>CMS.SocialMarketing</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.SocialMarketing.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.SocialMarketing.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.6.4.2\lib\net45\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToTwitter.net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=957107be965c25d9, processorArchitecture=MSIL">
+      <HintPath>..\packages\linqtotwitter.4.0.0\lib\net45\LinqToTwitter.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Actions\LinkedInAction.cs" />
+    <Compile Include="Actions\FacebookAction.cs" />
+    <Compile Include="Facebook\Insights\FacebookInsightsCollectionTask.cs" />
+    <Compile Include="Facebook\Insights\FacebookInsightsCollectionTaskData.cs" />
+    <Compile Include="Facebook\Insights\FacebookInsightsHelper.cs" />
+    <Compile Include="Facebook\Insights\FacebookInsightsParser.cs" />
+    <Compile Include="Facebook\Insights\FacebookInsightsState.cs" />
+    <Compile Include="Facebook\Insights\FacebookInsightsStateItem.cs" />
+    <Compile Include="Facebook\FacebookPostInfo.cs" />
+    <Compile Include="Facebook\FacebookPostInfoProvider.cs" />
+    <Compile Include="Facebook\FacebookHelper.cs" />
+    <Compile Include="Facebook\FacebookPageStructures.cs" />
+    <Compile Include="Facebook\OAuthAccessToken.cs" />
+    <Compile Include="Insights\InsightInfo.cs" />
+    <Compile Include="Insights\InsightInfoProvider.cs" />
+    <Compile Include="LinkedIn\LinkedInCompany.cs" />
+    <Compile Include="LinkedIn\DataStructures\Company.cs" />
+    <Compile Include="LinkedIn\DataStructures\Companies.cs" />
+    <Compile Include="LinkedIn\DataStructures\HistoricalFollowStatistics.cs" />
+    <Compile Include="LinkedIn\DataStructures\HistoricalStatusUpdateStatistics.cs" />
+    <Compile Include="LinkedIn\DataStructures\Statistic.cs" />
+    <Compile Include="LinkedIn\Exceptions\LinkedInApiThrottleLimitException.cs" />
+    <Compile Include="LinkedIn\Exceptions\LinkedInPartialDeleteException.cs" />
+    <Compile Include="LinkedIn\Insights\LinkedInAccountInsightsState.cs" />
+    <Compile Include="LinkedIn\Insights\LinkedInInsightsCollectionTaskData.cs" />
+    <Compile Include="LinkedIn\DataStructures\ApiResponse.cs" />
+    <Compile Include="LinkedIn\DataStructures\Update.cs" />
+    <Compile Include="LinkedIn\Exceptions\LinkedInApiException.cs" />
+    <Compile Include="LinkedIn\Exceptions\LinkedInApiUnauthorizedException.cs" />
+    <Compile Include="LinkedIn\LinkedInApplicationInfo.cs" />
+    <Compile Include="LinkedIn\LinkedInApplicationInfoProvider.cs" />
+    <Compile Include="LinkedIn\LinkedInAccountInfo.cs" />
+    <Compile Include="LinkedIn\LinkedInAccountInfoProvider.cs" />
+    <Compile Include="LinkedIn\DataStructures\Error.cs" />
+    <Compile Include="LinkedIn\DataStructures\Share.cs" />
+    <Compile Include="LinkedIn\DataStructures\Visibility.cs" />
+    <Compile Include="LinkedIn\LinkedInHelper.cs" />
+    <Compile Include="LinkedIn\Insights\LinkedInInsightsHelper.cs" />
+    <Compile Include="LinkedIn\Insights\LinkedInInsightsCollectionTask.cs" />
+    <Compile Include="LinkedIn\LinkedInPostInfo.cs" />
+    <Compile Include="LinkedIn\LinkedInPostInfoProvider.cs" />
+    <Compile Include="LinkedIn\LinkedInSerializer.cs" />
+    <Compile Include="LinkedIn\LinkedInVisibilityCodeEnum.cs" />
+    <Compile Include="Module\SocialMarketingHandlers.cs" />
+    <Compile Include="Shared\SocialMarketingPostPublishingTask.cs" />
+    <Compile Include="Actions\TwitterAction.cs" />
+    <Compile Include="Twitter\Insights\ITwitterRetryPolicyProvider.cs" />
+    <Compile Include="Twitter\Insights\TwitterInsightsCollectionTask.cs" />
+    <Compile Include="Twitter\Insights\TwitterIdentifierRange.cs" />
+    <Compile Include="Twitter\Insights\TwitterRetryPolicyProvider.cs" />
+    <Compile Include="Twitter\TwitterHelper.cs" />
+    <Compile Include="Twitter\TwitterPostInfo.cs" />
+    <Compile Include="Twitter\TwitterPostInfoProvider.cs" />
+    <Compile Include="Twitter\TwitterAccountInfo.cs" />
+    <Compile Include="Twitter\TwitterAccountInfoProvider.cs" />
+    <Compile Include="Twitter\TwitterApplicationInfo.cs" />
+    <Compile Include="Twitter\TwitterApplicationInfoProvider.cs" />
+    <Compile Include="Facebook\FacebookAccountInfo.cs" />
+    <Compile Include="Facebook\FacebookAccountInfoProvider.cs" />
+    <Compile Include="Module\SocialMarketingModule.cs" />
+    <Compile Include="Module\SocialMarketingModuleMetadata.cs" />
+    <Compile Include="Facebook\FacebookApplicationInfo.cs" />
+    <Compile Include="Facebook\FacebookApplicationInfoProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Twitter\TwitterConfiguration.cs" />
+    <Compile Include="URLShortening\BitLyShortener.cs" />
+    <Compile Include="URLShortening\IURLShortener.cs" />
+    <Compile Include="URLShortening\IUrlShortenerHelperEnvironment.cs" />
+    <Compile Include="URLShortening\SocialNetworkTypeEnum.cs" />
+    <Compile Include="URLShortening\TinyURLShorten.cs" />
+    <Compile Include="URLShortening\UrlParser.cs" />
+    <Compile Include="URLShortening\UrlParserMatch.cs" />
+    <Compile Include="URLShortening\URLShortenerHelper.cs" />
+    <Compile Include="URLShortening\URLShortenerHelperEnvironment.cs" />
+    <Compile Include="URLShortening\URLShortenerTypeEnum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{D9B92F71-4497-4050-A75D-0F9C84DFBE6B}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0c4d9649-03df-4f4d-8abb-0fc2b86a8fe4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{C78D0DDE-11B5-4BBA-98C0-756EBB98228A}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{D8BC8F2E-B5CB-472B-A894-3900A96FF456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6BDC71F9-7A04-45DA-8821-1246EC51E3CE}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{f21c925b-3aa1-4139-9706-ba5073527a8f}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAnalytics\WebAnalytics.csproj">
+      <Project>{c2b6b91c-1d58-4531-8893-388960afaa80}</Project>
+      <Name>WebAnalytics</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

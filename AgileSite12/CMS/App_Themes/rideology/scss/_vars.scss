@@ -1,0 +1,123 @@
+// shade/tint mixin
+//------------------------------------
+@function shade($color, $percent) {
+  	@return mix(#000, $color, $percent);
+}
+
+@function tint($color, $percent) {
+  	@return mix(#fff, $color, $percent);
+}
+
+
+// breakpoints
+//------------------------------------
+$small:   			480px;
+$nav:     			900px;
+$mid:     			768px;
+$wide:    			1024px;
+$xtra:    			1200px;
+    
+// color
+// ------------------------------------
+$brand-1:     			#3D7C47 !default; //green
+$brand-1-med:			#B1CBB5 !default;
+$brand-1-light:			#D8E5DA !default;
+$brand-2:   			#186F9E !default; //blue
+$brand-2-med:			#84C2C5 !default;
+$brand-2-light:			#C1E0E2 !default;
+
+$accent:				#E8E8D9 !default; //cream
+$accent-dark:			#FF615B !default; //coral  
+$accent-light:			#E5CC8F !default; //gold
+
+
+$brand-success:     	$brand-1 !default; //green
+$brand-info:       		$brand-2 !default; //blue
+$brand-warning:			$accent-light !default; //yellow - accent-dark
+$brand-danger:      	#B51D1D !default; //red
+
+
+$gray-9:				#080808 !default;
+$gray-8:				#262626 !default;
+$gray-7:				#383838 !default;
+$gray-6:				#585858 !default;
+$gray-5:				#787878 !default;
+$gray-4:				#989898 !default;
+$gray-3:				#bbbbbb !default;
+$gray-2:				#d8d8d8 !default;
+$gray-1:				#ECECEC !default;
+$gray-0:				#F7F7F7 !default;
+
+$bg-color:       		#fff !default;
+$text-color:      		$gray-6 !default;
+$border:		     	$gray-2 !default;
+$text-muted:     		$gray-4 !default;
+
+// typography
+//------------------------------------
+$base-font-family: 		'Rosario', sans-serif !default;
+$sans: 					'Rosario', sans-serif !default;
+$serif:					'Rufina', serif !default;
+$headings-font-family: 	$sans;
+
+//------------------------------------
+// Form Input
+//------------------------------------
+$input-radius: 	        .25rem;
+$input-background:		white;
+
+
+$box-shadow: 	0 1px 3px rgba(0,0,0,0.2);
+
+// extends
+%shad-fade {
+	box-shadow: 0 0 1px rgba(black, .4);
+}
+
+%grad-colors {
+	background: $accent-dark;
+	background-image: linear-gradient(75deg, $accent-dark 0%, $accent-light 40%, $accent-dark 100%);
+}
+
+%plain-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+%fa-icon {
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+}
+
+%icon-duotone {
+	position: relative;
+	padding-left: 1.25rem;
+	
+	&:before,
+	&:after {
+		font-family: "Font Awesome 5 Duotone";
+		font-weight: 900;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 1.25em;
+		text-align: center;
+		display: none;
+	}
+	
+	.icon-duotone::before {
+		color: var(--fa-primary-color, inherit);
+		opacity: 1;
+		opacity: var(--fa-primary-opacity, 1.0);
+	}
+
+	.icon-duotone::after {
+		color: var(--fa-secondary-color, inherit);
+		opacity: var(--fa-secondary-opacity, 0.4);
+	}
+}

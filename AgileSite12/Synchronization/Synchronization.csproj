@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{781F46EB-593F-484B-A1DA-C59B1E13B59D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Synchronization</RootNamespace>
+    <AssemblyName>CMS.Synchronization</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Synchronization.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Synchronization.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Handlers\Staging\StagingChildProcessingTypeEventArgs.cs" />
+    <Compile Include="Handlers\Staging\StagingChildProcessingTypeHandler.cs" />
+    <Compile Include="ISyncClient.cs" />
+    <Compile Include="Handlers\Integration\IntegrationTaskEventArgs.cs" />
+    <Compile Include="Handlers\Integration\IntegrationTaskHandler.cs" />
+    <Compile Include="Handlers\StagingEvents.cs" />
+    <Compile Include="Handlers\Staging\StagingLogTaskHandler.cs" />
+    <Compile Include="Handlers\Staging\StagingLogTaskEventArgs.cs" />
+    <Compile Include="Handlers\Staging\StagingTaskEventArgs.cs" />
+    <Compile Include="Handlers\Staging\StagingTaskHandler.cs" />
+    <Compile Include="Handlers\IntegrationEvents.cs" />
+    <Compile Include="Handlers\Staging\StagingSynchronizationEventArgs.cs" />
+    <Compile Include="Handlers\Staging\StagingSynchronizationHandler.cs" />
+    <Compile Include="ISyncManager.cs" />
+    <Compile Include="ModuleUsageTracking\StagingUsageDataSource.cs" />
+    <Compile Include="ModuleUsageTracking\VersioningUsageDataSource.cs" />
+    <Compile Include="Module\Synchronization.cs" />
+    <Compile Include="Module\VersioningHandlers.cs" />
+    <Compile Include="ObjectQueryRelationshipExtensions.cs" />
+    <Compile Include="ObjectXmlHelper.cs" />
+    <Compile Include="ObjectXmlWriter.cs" />
+    <Compile Include="Staging\StagingTaskGroup\StagingTaskGroupUserInfo.cs" />
+    <Compile Include="Staging\StagingTaskGroup\StagingTaskGroupUserInfoProvider.cs" />
+    <Compile Include="Staging\Tasks\StagingTaskDataBinder.cs" />
+    <Compile Include="Staging\Tasks\StagingTaskUserInfo.cs" />
+    <Compile Include="Staging\Tasks\StagingTaskUserInfoProvider.cs" />
+    <Compile Include="Staging\Tasks\IStagingTaskData.cs" />
+    <Compile Include="Staging\Tasks\StagingTaskData.cs" />
+    <Compile Include="SynchronizationActionContext.cs" />
+    <Compile Include="SynchronizationActionManager.cs" />
+    <Compile Include="Exceptions\ObjectVersioningException.cs" />
+    <Compile Include="Integration\Connectors\AbstractIntegrationConnector.cs" />
+    <Compile Include="Integration\Connectors\AbstractIntegrationSubscription.cs" />
+    <Compile Include="Integration\IntegrationHelper.cs" />
+    <Compile Include="Integration\Enums\IntegrationProcessTypeEnum.cs" />
+    <Compile Include="Integration\Enums\IntegrationProcessResultEnum.cs" />
+    <Compile Include="Integration\IntegrationTasksWorker.cs" />
+    <Compile Include="Integration\Connectors\IntegrationConnectorInfo.cs" />
+    <Compile Include="Integration\Connectors\IntegrationConnectorInfoProvider.cs" />
+    <Compile Include="Integration\Synchronization\IntegrationSynchronizationInfo.cs" />
+    <Compile Include="Integration\Synchronization\IntegrationSynchronizationInfoProvider.cs" />
+    <Compile Include="Integration\Synchronization\IntegrationSyncLogInfo.cs" />
+    <Compile Include="Integration\Synchronization\IntegrationSyncLogInfoProvider.cs" />
+    <Compile Include="Integration\Tasks\IntegrationTaskInfo.cs" />
+    <Compile Include="Integration\Tasks\IntegrationTaskInfoProvider.cs" />
+    <Compile Include="Integration\Tasks\IntegrationTaskListInfo.cs" />
+    <Compile Include="Integration\Enums\TaskDataTypeEnum.cs" />
+    <Compile Include="Integration\Enums\TaskProcessTypeEnum.cs" />
+    <Compile Include="AbstractSynchronizationSettingsExtensionMethods.cs" />
+    <Compile Include="SynchronizationQueueWorker.cs" />
+    <Compile Include="Tasks\ISynchronizationTask.cs" />
+    <Compile Include="Module\SynchronizationModuleMetadata.cs" />
+    <Compile Include="Module\SynchronizationHandlers.cs" />
+    <Compile Include="SynchronizationHelper.cs" />
+    <Compile Include="Module\SynchronizationModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Staging\Servers\ServerAuthenticationEnum.cs" />
+    <Compile Include="Staging\Servers\ServerInfo.cs" />
+    <Compile Include="Staging\Servers\ServerInfoProvider.cs" />
+    <Compile Include="Staging\SynchronizationInfo.cs" />
+    <Compile Include="Staging\SynchronizationInfoProvider.cs" />
+    <Compile Include="Staging\Tasks\StagingTaskInfo.cs" />
+    <Compile Include="Staging\Tasks\StagingTaskInfoProvider.cs" />
+    <Compile Include="Staging\Tasks\TaskParameters.cs" />
+    <Compile Include="Tasks\TaskHelper.cs" />
+    <Compile Include="TranslationXmlWriter.cs" />
+    <Compile Include="Versioning\VersionHistorySettingsHelper.cs" />
+    <Compile Include="Versioning\ObjectVersionHistoryInfo.cs" />
+    <Compile Include="Versioning\ObjectVersionHistoryInfoProvider.cs" />
+    <Compile Include="Versioning\ObjectVersionHistoryListInfo.cs" />
+    <Compile Include="Versioning\ObjectVersionManager.cs" />
+    <Compile Include="SynchronizationAction.cs" />
+    <Compile Include="Staging\StagingTaskGroup\StagingTaskGroupInfo.cs" />
+    <Compile Include="Staging\StagingTaskGroup\StagingTaskGroupInfoProvider.cs" />
+    <Compile Include="Staging\StagingTaskGroup\StagingTaskGroupTaskInfo.cs" />
+    <Compile Include="Staging\StagingTaskGroup\StagingTaskGroupTaskInfoProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0c4d9649-03df-4f4d-8abb-0fc2b86a8fe4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

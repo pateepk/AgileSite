@@ -1,0 +1,67 @@
+@import 'src/builder/assets/styles/shared.less';
+
+kentico-add-component-button {
+  &[is-small="true"] .ktc-component-button {
+    a {
+      padding-left: 11px;
+      padding-right: 11px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+
+      // only top of the button is round at the edges:
+      border-radius: 0px;
+      border-top-left-radius: @border-radius-large;
+      border-top-right-radius: @border-radius-large;
+    }
+  }
+
+  &[is-thin="true"] .ktc-component-button {
+    a {
+      padding-left: 11px;
+      padding-right: 11px;
+      padding-top: 1px;
+      padding-bottom: 1px;
+
+      border-radius: @border-radius-large;
+    }
+  }
+
+  &[is-active="true"],
+  &:hover {
+    .ktc-component-button {
+      opacity: 1;
+    }
+  }
+
+  .ktc-component-button {
+    @import 'src/builder/assets/styles/icon-font.less';
+    opacity: 0.3;
+
+    * {
+      cursor: pointer;
+    }
+
+    a {
+      display: table;
+      border-radius: @border-radius-large;
+      padding: @base-unit * 0.5;
+      text-decoration: none;
+
+      &.ktc-default {
+        background-color: @color-gray-70;
+      }
+
+      &.ktc-primary {
+        background-color: @color-blue-70;
+      }
+
+      .icon-plus {
+        .icon-plus();
+        color: @color-white;
+        font-size: @icon-size-100;
+        font-weight: 700;
+        display: table-cell;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+﻿@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Widgets;
+@using Kentico.Forms.Web.Mvc.Widgets.Internal
+
+@model FormWidgetViewModel
+
+@Html.Kentico().FormInlineSelector(Model)
+
+@using (Html.Kentico().BeginForm(Model))
+{
+    @Html.Kentico().FormFields(Model)
+
+    @Html.Kentico().FormSubmitButton(Model)
+}

@@ -1,0 +1,166 @@
+.DesignMode {
+	.toggle {
+		display: block !important;
+	}
+}
+
+/* MENU TOGGLE ICON */
+.toggle {
+	position: absolute;
+	top: 1.5rem;
+	left: 1rem;
+	height: 2rem;
+	font-size: 1.5rem;
+	
+	@media (min-width: $nav) {
+		display: none;
+	}
+}
+
+header {
+	background: white;
+	padding: 1rem 0;
+	
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		
+		li {
+			display: inline-block;
+			
+			&.accent a {
+				color: $accent-dark;
+			}
+			
+			a {
+				color: $text-color;
+				display: block;
+				padding: .125rem .8rem;
+				font-weight: 700;
+				font-size: .8rem;
+				text-transform: uppercase;
+			}
+		}
+	}
+	
+	.logo {
+		text-align: center;
+		margin-left: 2rem;
+		
+		@media (max-width: 380px) {
+			img {
+				max-width: 200px;
+			}
+		}
+	}
+
+	@media (min-width: $nav) {
+		.container {
+			display: grid;
+			grid-gap: 0;
+			grid-template-columns: 1fr 2fr;
+			align-items: center;
+			
+			
+			.logo {
+				text-align: left;
+				margin-left: 0;
+			}
+			
+			.action-menu {
+				text-align: right;
+			}
+		}
+	}
+
+}
+
+
+.desktop-menu {
+	background: $gray-8;
+	padding: .7rem 0;
+	
+	@media (max-width: 899px) {
+		display: none;
+	}
+	
+	.container {
+		display: grid;
+		grid-template-columns: 1fr 350px;
+		align-items: center;
+		
+		> div {
+			text-align: right;
+		}
+		
+		.searchBox .form-control {
+			//input field
+			max-width: 220px;
+			border: none;
+			background: rgba(white, .2);
+			color: $gray-0;
+			
+			&:focus {
+	            border-bottom: 1px solid rgba($accent-light, .5);
+	            box-shadow: 0 0 1px rgba($accent-light, .9);
+            }
+		}
+		
+		input[type="image"] {
+			position: relative;
+			top: 4px;
+			left: 4px;
+		}
+	}
+}
+
+//custom parts for mobile menu
+#mobile-main-menu {
+	.iconed svg {
+		position: absolute;
+		right: .6rem;
+	}
+	
+	.accent-bg {
+		background: $brand-2;
+		color: white;
+	}
+
+    .accent-dark {   
+	    background: $accent-dark;
+	    color: #fff;
+	    
+	    &:hover {
+		    color: $gray-1;
+	    }
+    }
+}
+
+.close-menu {
+	text-align: center;
+	margin: 1rem 0;
+}
+
+.mobile-sign-out {
+	font-size: 16px;
+	font-weight: 600;
+	background: $accent-light;
+	padding: 13px 20px;
+	
+	a {
+		color: $text-color;
+		display: block;
+		
+		svg {
+			position: absolute;
+			right: -.4rem;
+		}
+		
+		&:hover {
+			text-decoration: none;
+			//color: $gray-1;
+			letter-spacing: 1px;
+		}
+	}
+}

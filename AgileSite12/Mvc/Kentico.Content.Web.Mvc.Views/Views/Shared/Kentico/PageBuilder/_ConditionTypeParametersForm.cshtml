@@ -1,0 +1,16 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+
+
+@model GeneratedFormViewModel
+
+@Html.Kentico().FormComponentsAdminStyles()
+
+@using (Html.BeginForm("Validate", "KenticoConditionTypeParametersForm"))
+{
+    foreach (var property in Model.FormComponents)
+    {
+        @Html.Kentico().FormField(property, SystemRenderingConfigurations.PropertiesEditorField)
+    }
+}

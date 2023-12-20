@@ -1,0 +1,69 @@
+@import 'src/builder/assets/styles/shared.less';
+
+@section-divider-add-button-height: 1.5 * @base-unit;
+
+:host {
+  .ktc-section-divider {
+    position: absolute;
+    left: -@border-width;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    border-bottom: @border-width @border-style @border-color;
+    width: calc(~"100% + "(2 * @border-width));
+    pointer-events: none;
+
+    &:before, &:after {
+      content: '';
+      border-top: @border-style @border-width @border-color;
+      position: absolute;
+      top: 0;
+      height: @border-width;
+      width: @section-divider-side-line-length - @border-width;
+    }
+
+    &:before {
+      left: -@section-divider-side-line-length;
+    }
+
+    &:after {
+      right: -@section-divider-side-line-length;
+    }
+
+    kentico-add-component-button {
+      position: absolute;
+      z-index: @active-element-z-index;
+      display: block;
+      width: @section-divider-add-button-width;
+      margin-left: -(@section-divider-side-line-length + @section-divider-add-button-width);
+      margin-top: -(@section-divider-add-button-height / 2);
+      pointer-events: all;
+    }
+
+    kentico-pop-up-container {
+      border-color: transparent transparent @color-gray-50 transparent;
+    }
+  }
+}
+
+:host(:hover), :host([active="true"]) {
+  .ktc-section-divider {
+    z-index: @active-plus-button-z-index;
+    border-color: @border-highlighted-color;
+    &:before, &:after {
+      border-color: @border-highlighted-color;
+    }
+  }
+}
+
+:host([add-button-position="right"]) {
+  .ktc-section-divider {
+    &:before {
+      content: none;
+    }
+
+    kentico-add-component-button {
+      margin-left: 0;
+    }    
+  }
+}

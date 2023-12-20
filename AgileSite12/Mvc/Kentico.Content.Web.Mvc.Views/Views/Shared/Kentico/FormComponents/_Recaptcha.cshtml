@@ -1,0 +1,48 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model RecaptchaComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+    var safeComponentId = Html.IdFor(x => x.Value).ToString().Replace("-", "_");
+    var renderFunctionName = "renderRecaptcha" + safeComponentId;
+    var recaptchaDivId = "google-recaptcha-" + Html.IdFor(x => x.Value);
+}
+
+
+@if (Model.IsConfigured)
+{
+    <script type="text/javascript">
+        var @renderFunctionName = function () {
+            grecaptcha.render('@recaptchaDivId', {
+                'sitekey': '@Model.PublicKey',
+                'theme': '@Model.Properties.Theme',
+                'size': '@Model.Properties.Layout',
+                'type': '@Model.Properties.Type',
+            });
+        };
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=@Html.Raw(renderFunctionName)&render=explicit&hl=@Model.Language" async defer></script>
+
+    @Html.HiddenFor(m => m.Value, htmlAttributes)
+    <div id="@recaptchaDivId"></div>
+
+    <noscript>
+        <div>
+            <div style="width: 302px; height: 422px; position: relative;">
+                <div style="width: 302px; height: 422px; position: absolute;">
+                    <iframe src="https://www.google.com/recaptcha/api/fallback?k=@Model.PublicKey" style="width: 302px; height: 422px; border-style: none; border: 0; overflow:hidden;"></iframe>
+                </div>
+            </div>
+            <div style="width: 300px; height: 60px; border-style: none; bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px; background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;">
+                <textarea id="noscript-@recaptchaDivId" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;" @UpdatableMvcForm.NOT_OBSERVED_ELEMENT_ATTRIBUTE_NAME></textarea>
+            </div>
+        </div>
+    </noscript>
+}
+else
+{
+    <div class="ktc-form-builder-mvc-invalid-component">
+        <span>@ResHelper.GetString("recaptcha.error.invalidconfiguration")</span>
+    </div>
+}

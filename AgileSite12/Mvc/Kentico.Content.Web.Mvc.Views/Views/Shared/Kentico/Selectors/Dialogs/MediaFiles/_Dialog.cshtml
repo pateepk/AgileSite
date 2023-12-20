@@ -1,0 +1,30 @@
+﻿@using Kentico.Components.Web.Mvc.Dialogs
+@using Kentico.Components.Web.Mvc.Dialogs.Internal
+@using Kentico.Builder.Web.Mvc.Internal
+
+@model KenticoMediaFilesDialogViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    @Html.Kentico().ModalDialogScript()
+    @Html.Kentico().WebComponentsScript()
+    @Html.Kentico().WebComponentsStyle()
+    <link href="@Url.Content("~/Kentico/Content/Selectors/Dialogs/MediaFiles/media-files-selector.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Kentico/Content/Selectors/Dialogs/MediaFiles/media-files-selector.js")" type="text/javascript"></script>
+</head>
+
+<body>
+    <kentico-media-files tree-data-url="@Model.TreeDataEndpointUrl"
+                         data-url="@Model.DataEndpointUrl"
+                         model-data-url="@Model.ModelDataEndpointUrl"
+                         selector-data-url="@Model.LibrariesDataEndpointUrl"
+                         uploader-url="@Model.UploaderEndpointUrl"></kentico-media-files>
+
+    <script type="text/javascript">
+        window.kentico.modalDialog.mediaFilesSelector.dialog._init();
+    </script>
+</body>
+</html>

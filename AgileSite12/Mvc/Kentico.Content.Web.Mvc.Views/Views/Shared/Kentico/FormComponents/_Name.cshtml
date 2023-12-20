@@ -1,0 +1,11 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model NameComponent
+
+@{
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+    htmlAttributes["maxlength"] = Model.MaxLength;
+}
+
+
+@Html.TextBoxFor(m => m.Value, htmlAttributes)

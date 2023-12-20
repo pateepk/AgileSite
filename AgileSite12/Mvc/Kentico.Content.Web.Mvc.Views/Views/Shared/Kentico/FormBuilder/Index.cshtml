@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+
+@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+@model FormBuilderPage
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    @Html.Kentico().FormBuilderStyles()
+    <script>
+        (function () {
+            document.addEventListener('kenticoRenderMarkup', function (evt) {
+                var targetElementId = '#' + evt.detail.targetElementId;
+
+                $(targetElementId).html(evt.detail.markup);
+            });
+        })();
+
+        function shadowFormBuilderPanellHeader(scrollArea) {
+            var shadowClassName = 'ktc-form-builder-tab-content-header-shadow';
+            var headerElement = scrollArea.parentElement.getElementsByClassName('ktc-form-builder-tab-content-header')[0];
+            if (headerElement) {
+                if (scrollArea.scrollTop > 0) {
+                    headerElement.classList.add(shadowClassName);
+                } else {
+                    headerElement.classList.remove(shadowClassName);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+@if (Model.FormsLimitExceeded)
+{
+    <div class="ktc-padding-100">
+        <div class="ktc-alert ktc-alert-warning">
+            <span class="ktc-alert-icon">
+                <i class="icon-exclamation-triangle"></i>
+                <span class="ktc-sr-only">Warning</span>
+            </span>
+            <div class="ktc-alert-label">
+                @ResHelper.GetString("kentico.formbuilder.warning.formslimit")
+            </div>
+        </div>
+    </div>
+}
+
+    <div id="save-message">
+        <save-message>
+            <template slot="saving" slot-scope="scope">
+                <span class="ktc-form-builder-info">@ResHelper.GetString("formbuilder.saving")</span>
+            </template>
+            <template slot="saved" slot-scope="scope">
+                <span class="ktc-form-builder-info">@ResHelper.GetString("formbuilder.saved")</span>
+            </template>
+        </save-message>
+    </div>
+
+    <div class="ktc-formbuilder-mvc">
+        <div class="ktc-form-builder-form ktc-form-builder-mvc-form">
+            <div class="ktc-form-horizontal ktc-editing-form-design-mode">
+                <div data-kentico-default-section="@Kentico.Forms.Web.Mvc.SectionMetadata.DEFAULT_SECTION_TYPE_IDENTIFIER"
+                     data-kentico-editable-area-id="@Kentico.Forms.Web.Mvc.EditableAreaConfiguration.IDENTIFIER"
+                     data-kentico-allowed-widgets="@Model.AvailableFormBuilderComponents"></div>
+                @Html.Kentico().FormBuilderScripts(Model.Id, "editing-panel", "save-message")
+            </div>
+        </div>
+
+        <div id="editing-panel">
+            <div class="ktc-settings-panel">
+                <div class="ktc-settings-content ktc-pnl-edit">
+                    <properties-editor>
+                        <div class="ktc-form-builder-properties-panel-inner">
+                            @Html.Kentico().InfoMessage(new HtmlString(ResHelper.GetString("kentico.formbuilder.mvc.nofieldselected")))
+                        </div>
+                    </properties-editor>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

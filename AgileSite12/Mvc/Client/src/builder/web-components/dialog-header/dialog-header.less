@@ -1,0 +1,100 @@
+@import 'src/builder/assets/styles/icon-font.less';
+@import 'src/builder/assets/styles/shared.less';
+
+.theme(@headerColor, @controlsColor) {
+  .ktc-dialog-header-wrapper {
+    background-color: @headerColor;
+
+    .ktc-dialog-header {
+      .ktc-dialog-header-controls {
+        a {
+          background: @controlsColor;
+
+          i {
+            color: @color-white;
+          }
+
+          &:hover {
+            background: fade(@color-white, 20%);
+          }
+        }
+      }
+    }
+  }
+}
+
+:host {
+  // This ensures that the custom element has correct dimensions
+  display: block;
+
+  .ktc-dialog-header-wrapper {
+    border-bottom: 1px solid @color-gray-140;
+    height: @modal-dialog-header-height;
+
+    .ktc-dialog-header {
+      width: 100%;
+
+      .ktc-dialog-header-back {
+        float: left;
+
+        a {
+          display: table-cell;
+
+          .icon-chevron-left {
+            cursor: pointer;
+            color: @color-white;
+            padding: 0.625 * @base-unit 0.5 * @base-unit 0.5 * @base-unit 0.5 * @base-unit;
+            font-size: 1.125 * @base-unit;
+            .icon-chevron-left();
+          }
+        }
+      }
+
+      .ktc-dialog-header-title {
+        color: @color-white;
+        font-size: @base-unit;
+        line-height: @modal-dialog-header-height;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-left: 10px;
+
+        &.ktc-dialog-header-title--displaced {
+          padding-left: 0;
+        }
+      }
+
+      .ktc-dialog-header-controls {
+        float: right;
+
+        a {
+          display: table-cell;
+
+          i {
+            cursor: pointer;
+            font-size: @icon-size-100;
+            padding: (@base-unit * 0.375);
+            box-sizing: content-box;
+
+            &.icon-modal-close {
+              .icon-modal-close();
+              font-weight: @close-font-weight;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+:host([theme='widget']) {
+  .theme(@color-blue-70, @color-blue-100);
+}
+
+:host([theme='section']) {
+  .theme(@color-gray-50, @color-gray-70);
+}
+
+:host([theme='template']) {
+  .theme(@color-orange-70, @color-orange-80);
+}

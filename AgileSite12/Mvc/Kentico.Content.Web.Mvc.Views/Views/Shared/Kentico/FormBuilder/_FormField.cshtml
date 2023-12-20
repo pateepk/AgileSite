@@ -1,0 +1,31 @@
+﻿@model Kentico.Forms.Web.Mvc.FormComponent
+@using Kentico.Forms.Web.Mvc
+@using Kentico.Forms.Web.Mvc.Internal
+@{
+    var formConfiguration = ViewData.GetFormFieldRenderingConfiguration();
+}
+
+@Html.Kentico().BeginWrappingElement(formConfiguration.RootConfiguration)    
+    @if (formConfiguration.ShowSmartFieldIcon)
+    {
+        @Html.Kentico().BeginWrappingElement(formConfiguration.SmartFieldIconWrapperConfiguration) 
+            @Html.Kentico().SmartFieldIcon(Model, formConfiguration.SmartFieldIconHtmlAttributes)
+        @Html.Kentico().EndWrappingElement(formConfiguration.SmartFieldIconWrapperConfiguration) 
+    }
+
+    @Html.Kentico().BeginWrappingElement(formConfiguration.LabelWrapperConfiguration)      
+        @Html.Kentico().Label(Model, formConfiguration.LabelHtmlAttributes, formConfiguration.ColonAfterLabel)
+    @Html.Kentico().EndWrappingElement(formConfiguration.LabelWrapperConfiguration)
+
+    @Html.Kentico().BeginWrappingElement(formConfiguration.EditorWrapperConfiguration)
+
+        @Html.Kentico().BeginWrappingElement(formConfiguration.ComponentWrapperConfiguration)
+            @Html.Kentico().Editor(Model, formConfiguration.EditorHtmlAttributes)
+            @Html.Kentico().ValidationMessage(Model, formConfiguration.SuppressValidationMessages)            
+        @Html.Kentico().EndWrappingElement(formConfiguration.ComponentWrapperConfiguration)
+
+        @Html.Kentico().WrappedExplanationText(Model.BaseProperties.ExplanationText, formConfiguration.ExplanationTextWrapperConfiguration)
+
+    @Html.Kentico().EndWrappingElement(formConfiguration.EditorWrapperConfiguration)
+
+@Html.Kentico().EndWrappingElement(formConfiguration.RootConfiguration)

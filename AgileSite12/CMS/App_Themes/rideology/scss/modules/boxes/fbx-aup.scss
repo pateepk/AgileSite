@@ -1,0 +1,125 @@
+$accent: $accent-dark;
+
+.fbx-aup {
+	display: grid;
+	grid-gap: .25rem;
+	grid-template-columns: 1fr;
+	margin-bottom: 1rem;
+	
+	> div {
+		background-color: rgba(black, .0);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: relative;
+		
+		&:hover {
+			cursor: pointer;
+		}
+	}
+			
+	.fbx-aup_in {
+		padding: 8em 8vw;
+		background-color: rgba(black, .5);
+	}
+			
+	a.fbx-aup_link {
+		color: inherit;
+		text-decoration: none;
+		display: block;		
+	}
+			
+	.fbx-aup_arrow a {
+		background: $accent;
+		height: 50px;
+		width: 50px;
+		text-align: center;
+		
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		margin-left: -25px;
+		transition: all .4s ease-out;
+		
+		.svg-inline--fa {
+			color: white;
+			font-size: 30px;
+			line-height: 50px;
+			position: relative;
+			top: .5rem;
+		}
+	}
+	
+	.fbx-aup_arrow a, h2, p {
+				
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	
+	h2 {
+		color: white;
+		font-family: $base-font-family;
+		text-transform: uppercase;
+		font-weight: 700;
+		line-height: 1;
+		margin-bottom: 0;
+		
+	}
+	
+	a h2 {
+		color: $accent-dark;
+	}
+	
+	p {
+		color: white;
+		margin-bottom: 0;
+	}
+	
+	@media (min-width: 600px) {
+		grid-template-columns: 1fr 1fr;
+	}
+	
+	//show hidden text when hovering on item
+	@media (min-width: 670px) {
+		> div {	
+			&:hover .fbx-aup_in {
+				opacity: 1;
+				background-color: rgba(black, .7);
+				
+				.fbx-aup_arrow {
+					@include fadeIn(
+						$duration: 1s,
+						$delay: .15s
+					);
+				}
+				
+				h2 {
+					@include slideInLeft(
+						$duration: 1s,
+						$delay: .1s
+					);
+				}
+				
+				p {
+					@include slideInLeft(
+						$duration: 1s,
+						$delay: .2s
+					);
+				}
+			}
+			
+			.fbx-aup_in {
+				opacity: 0;
+				transition: all .4s ease-out;
+				padding: 8em 5vw; //to cover entire block with bg
+				overflow: hidden; // so animations do not slide over other items
+			}
+		}
+	}
+}
+
+
+
+
+

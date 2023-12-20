@@ -1,0 +1,83 @@
+﻿@using Kentico.Web.Mvc
+@using Kentico.Forms.Web.Mvc;
+@using Kentico.Forms.Web.Mvc.Internal;
+
+@model VisibilityConditionForm
+
+@{
+    Guid guid = Guid.NewGuid();
+    string formId = "visibilityConditionFormId-" + guid;
+    string visibilityCondition = "visibilityCondition-" + guid;
+}
+
+<div id="@visibilityCondition">
+
+    @using (Html.Kentico().BeginUpdatableForm(formId, visibilityCondition, 
+        htmlAttributes: new Dictionary<string, object>
+{
+{ "action", Url.Kentico().GetValidateVisibilityConditionConfigurationUrl(Model.FormId, Model.FormFieldName, Model.FormComponentInstanceIdentifier) },
+}))
+    {
+
+        if (Model.AvailableVisibilityConditions.Any())
+        {
+            if (!Model.IsVisibilityConditionValid)
+            {
+                <div class="ktc-alert ktc-alert-warning">
+                    <span class="ktc-alert-icon">
+                        <i class="icon-exclamation-triangle"></i>
+                        <span class="ktc-sr-only">Warning</span>
+                    </span>
+                    <div class="ktc-alert-label">
+                        @ResHelper.GetString("kentico.formbuilder.propertiespanel.visibilityconditions.currentvisibilitycondition.isnotvalid")
+                    </div>
+                </div>
+            }
+
+            <div class="ktc-custom-visibility-form">
+                <div class="ktc-form-group">
+                    <div class="ktc-custom-visibility-dropdown-label ktc-label-property">
+                        @Html.LabelFor(
+                            m => m.SelectedVisibilityConditionIdentifier,
+                            Model.SelectedVisibilityConditionLocalizedLabel,
+                            new { @class = "ktc-control-label" })
+                    </div>
+
+                    <select name="@nameof(Model.SelectedVisibilityConditionIdentifier)" class="ktc-form-control">
+                        <option value="">@ResHelper.GetString("kentico.formbuilder.propertiespanel.visibilityconditions.selectedcondition.placeholder")</option>
+                        @foreach (var item in Model.AvailableVisibilityConditions)
+                        {
+                            <option value="@item.Value" @(item.Selected ? "selected=\"selected\"" : String.Empty)>@item.Text</option>
+                        }
+                    </select>
+
+                    @foreach (var formComponent in Model.FormComponents)
+                    {
+                        @Html.Kentico().FormField(formComponent, SystemRenderingConfigurations.PropertiesEditorField)
+                    }
+                </div>
+                @if (!Model.VisibilityConditionConfiguration?.Identifier?.Equals(NeverVisibleVisibilityCondition.IDENTIFIER, StringComparison.OrdinalIgnoreCase) ?? false)
+                {
+                    @Html.Raw(Html.Kentico().FormBuilderSubmitButton(formId, ResHelper.GetString("general.apply"), Guid.NewGuid()));
+                }
+            </div>
+        }
+        else
+        {
+            <div class="ktc-alert ktc-alert-info">
+                <span class="ktc-alert-icon">
+                    <i class="icon-i-circle"></i>
+                    <span class="ktc-sr-only">Info</span>
+                </span>
+                <div class="ktc-alert-label">
+                    <strong>@ResHelper.GetString("kentico.formbuilder.propertiespanel.visibilityconditions.alertheader")</strong>
+                    <br>
+                    @ResHelper.GetString("kentico.formbuilder.propertiespanel.visibilityconditions.noavailableconditions")
+                </div>
+            </div>
+        }
+
+        @Html.Raw(Html.Kentico().NotifyVisibilityConditionValidated(Model, Html.ViewData.ModelState.IsValid))
+    }
+
+</div>

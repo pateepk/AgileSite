@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CA36A1E6-9385-46AA-A10E-97699E293363}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.DocumentEngine</RootNamespace>
+    <AssemblyName>CMS.DocumentEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.DocumentEngine.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\Output\Release\CMS\CMS.DocumentEngine.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Search, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Search.5.0.3\lib\net452\Microsoft.Azure.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Search.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Search.Common.5.0.3\lib\net452\Microsoft.Azure.Search.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Search.Data, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Search.Data.5.0.3\lib\net452\Microsoft.Azure.Search.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Search.Service, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Search.Service.5.0.3\lib\net452\Microsoft.Azure.Search.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.17\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.18\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=7.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Spatial.7.2.0\lib\portable-net45+win8+wpa81\Microsoft.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Activities\IRatingActivityLogger.cs" />
+    <Compile Include="Activities\RatingActivityInitializer.cs" />
+    <Compile Include="Activities\RatingActivityLogger.cs" />
+    <Compile Include="Attachments\Attachment.cs" />
+    <Compile Include="Attachments\AttachmentBinaryHelper.cs" />
+    <Compile Include="URLs\AlternativeUrlsCopier.cs" />
+    <Compile Include="ContinuousIntegration\ContinuousIntegrationComponentsDataLoader.cs" />
+    <Compile Include="ContinuousIntegration\ContentStagingTaskLogger.cs" />
+    <Compile Include="ContinuousIntegration\ContentStagingTaskCollectionExtensions.cs" />
+    <Compile Include="Data\DocumentClassNameRetriever.cs" />
+    <Compile Include="Data\ComponentsDataLoader.cs" />
+    <Compile Include="Handlers\Document\DocumentEventsInternal.cs" />
+    <Compile Include="Module\WebFarm\TaskData\ClearDocumentFieldsTypeInfosWebFarmTask.cs" />
+    <Compile Include="Module\WebFarm\TaskData\ClearDocumentTypeInfosWebFarmTask.cs" />
+    <Compile Include="Module\WebFarm\TaskData\ClearResolvedClassNamesWebFarmTask.cs" />
+    <Compile Include="Module\WebFarm\TaskData\DeleteAttachmentWebFarmTask.cs" />
+    <Compile Include="Module\WebFarm\TaskData\InvalidateDocumentTypeInfoWebFarmTask.cs" />
+    <Compile Include="Module\WebFarm\TaskData\InvalidateDocumentFieldsTypeInfoWebFarmTask.cs" />
+    <Compile Include="Module\WebFarm\TaskData\UpdateAttachmentWebFarmTask.cs" />
+    <Compile Include="PageBuilder\IPageBuilderConfigurationSourceLoader.cs" />
+    <Compile Include="PageBuilder\ITempPageBuilderWidgetsPropagator.cs" />
+    <Compile Include="PageBuilder\PageBuilderConfigurationSource.cs" />
+    <Compile Include="PageBuilder\PageBuilderConfigurationSourceNativeLoader.cs" />
+    <Compile Include="Templates\PageTemplateConfiguration.cs" />
+    <Compile Include="Templates\PageTemplateConfigurationForEmptyCultureVersionProvider.cs" />
+    <Compile Include="Templates\PageTemplateConfigurationSerializer.cs" />
+    <Compile Include="Resources\IGetAttachmentHandler.cs" />
+    <Compile Include="Synchronization\Internal\LogDocumentChangeCloneArgs.cs" />
+    <Compile Include="Synchronization\Internal\DocumentSynchronizationEvents.cs" />
+    <Compile Include="Synchronization\Internal\LogDocumentChangeCloneHandler.cs" />
+    <Compile Include="Templates\PageTemplateConfigurationInfo.cs" />
+    <Compile Include="Templates\PageTemplateConfigurationInfoProvider.cs" />
+    <Compile Include="Templates\PageTemplateWebServiceUrlProvider.cs" />
+    <Compile Include="URLs\AlternativeUrlConflictChecker.cs" />
+    <Compile Include="URLs\AlternativeUrlValidatorTask.cs" />
+    <Compile Include="URLs\AlternativeUrlHelper.cs" />
+    <Compile Include="URLs\AlternativeUrlInfo.cs" />
+    <Compile Include="URLs\AlternativeUrlInfoProvider.cs" />
+    <Compile Include="Exceptions\InvalidAlternativeUrlException.cs" />
+    <Compile Include="URLs\ExcludedAlternativeURL\ExcludedAlternativeUrlEvaluator.cs" />
+    <Compile Include="URLs\GeneratePreviewLinkEventArgs.cs" />
+    <Compile Include="URLs\GeneratePreviewLinkHandler.cs" />
+    <Compile Include="URLs\NormalizedAlternativeUrl.cs" />
+    <Compile Include="URLs\PreviewLinkGenerator.cs" />
+    <Compile Include="PageBuilder\PageBuilderHelper.cs" />
+    <Compile Include="PageBuilder\TempPageBuilderWidgetsCleaner.cs" />
+    <Compile Include="PageBuilder\TempPageBuilderWidgetsPropagator.cs" />
+    <Compile Include="PageBuilder\TempPageBuilderWidgetsInfo.cs" />
+    <Compile Include="PageBuilder\TempPageBuilderWidgetsInfoProvider.cs" />
+    <Compile Include="Module\DocumentTypeHandlers.cs" />
+    <Compile Include="Module\Search\DocumentSearchablesRetriever.cs" />
+    <Compile Include="Query\QueryExtensions.cs" />
+    <Compile Include="Resources\AttachmentHandlerEvents.cs" />
+    <Compile Include="SearchProviderSQL\SearchProvider.cs" />
+    <Compile Include="Search\CrawlerSearchContentProvider.cs" />
+    <Compile Include="Search\DocumentAttachmentSearchFieldsProvider.cs" />
+    <Compile Include="Attachments\Variants\AttachmentHistoryInfoVariantGenerator.cs" />
+    <Compile Include="Attachments\Variants\Context\AttachmentVariantContext.cs" />
+    <Compile Include="Attachments\Variants\AttachmentInfoVariantGenerator.cs" />
+    <Compile Include="Attachments\Variants\AttachmentVariantGenerator.cs" />
+    <Compile Include="Attachments\Copiers\DocumentAttachmentsCopierBase.cs" />
+    <Compile Include="Attachments\DocumentAttachmentExtensions.cs" />
+    <Compile Include="Attachments\AttachmentSource.cs" />
+    <Compile Include="Attachments\AttachmentInfo.cs" />
+    <Compile Include="Attachments\Collections\DocumentAttachmentCollection.cs" />
+    <Compile Include="Attachments\AttachmentExtensions.cs" />
+    <Compile Include="Attachments\AttachmentInfoProvider.cs" />
+    <Compile Include="Attachments\AttachmentURLProvider.cs" />
+    <Compile Include="Attachments\CMSOutputAttachment.cs" />
+    <Compile Include="Attachments\AttachmentListInfo.cs" />
+    <Compile Include="Attachments\DocumentAttachment.cs" />
+    <Compile Include="Attachments\IAttachment.cs" />
+    <Compile Include="Attachments\Variants\Context\AttachmentVariantContextScope.cs" />
+    <Compile Include="Attachments\Variants\IAttachmentVariantGenerator.cs" />
+    <Compile Include="Attachments\TemporaryAttachmentsCleaner.cs" />
+    <Compile Include="Context\CMSDataContextBase.cs" />
+    <Compile Include="Context\CMSSiteDataContext.cs" />
+    <Compile Include="ContinuousIntegration\DocumentCustomProcessor.cs" />
+    <Compile Include="ContinuousIntegration\ACLCustomProcessor.cs" />
+    <Compile Include="ContinuousIntegration\DocumentFileDeleteJob.cs" />
+    <Compile Include="ContinuousIntegration\DocumentContinuousIntegrationHelper.cs" />
+    <Compile Include="ContinuousIntegration\FileSystemDeleteDocumentsByTypeJob.cs" />
+    <Compile Include="ContinuousIntegration\FileSystemUpsertDocumentsByTypeJob.cs" />
+    <Compile Include="ContinuousIntegration\DocumentFileStoreJob.cs" />
+    <Compile Include="ContinuousIntegration\GetDocumentsEnumerator.cs" />
+    <Compile Include="Data\DocumentFieldDataType.cs" />
+    <Compile Include="Attachments\Collections\CombinedDocumentAttachmentCollection.cs" />
+    <Compile Include="Documents\Copy\DocumentWithVersionsCopier.cs" />
+    <Compile Include="Documents\Copy\DocumentCopier.cs" />
+    <Compile Include="Attachments\Collections\DocumentAttachmentRepository.cs" />
+    <Compile Include="Attachments\Copiers\NewCultureVersionAttachmentsCopier.cs" />
+    <Compile Include="Attachments\Copiers\DocumentAttachmentsCopier.cs" />
+    <Compile Include="Module\VersioningHandlers.cs" />
+    <Compile Include="PageInfo\ExtensionMatcher.cs" />
+    <Compile Include="PageInfo\PageInfoByDocumentAliasesSearcher.cs" />
+    <Compile Include="PageInfo\PageInfoByPathSearcher.cs" />
+    <Compile Include="PageInfo\PageInfoByPermanentPathSearcher.cs" />
+    <Compile Include="PageInfo\PageInfoByWildcardSearcher.cs" />
+    <Compile Include="PageInfo\PageInfoCacheHelper.cs" />
+    <Compile Include="PageInfo\PageInfoDataProvider.cs" />
+    <Compile Include="Module\PageInfoHandlers.cs" />
+    <Compile Include="PageInfo\PathPrefixRemoval.cs" />
+    <Compile Include="Query\Document\IDocumentQueryFilter.cs" />
+    <Compile Include="Search\DocumentCategorySearchFieldsProvider.cs" />
+    <Compile Include="Search\SearchEditableContentProvider.cs" />
+    <Compile Include="Taxonomy\CategoriesDocumentQueryFilter.cs" />
+    <Compile Include="Taxonomy\DocumentTagCreator.cs" />
+    <Compile Include="Taxonomy\DocumentTagHandlers.cs" />
+    <Compile Include="Taxonomy\OriginalStateOfTagsInDocument.cs" />
+    <Compile Include="Taxonomy\TagsDocumentQueryFilter.cs" />
+    <Compile Include="Taxonomy\TaxonomyDocumentQueryExtensions.cs" />
+    <Compile Include="Documents\Compatibility\NodesDataProvider.cs" />
+    <Compile Include="Documents\DocumentDependencyCacheKeysBuilder.cs" />
+    <Compile Include="Documents\DocumentEventLogger.cs" />
+    <Compile Include="Documents\Paths\DocumentPathsConfiguration.cs" />
+    <Compile Include="Documents\Paths\DocumentPathsBuilder.cs" />
+    <Compile Include="Documents\DocumentAliasesGenerator.cs" />
+    <Compile Include="Documents\DocumentConnectedObjects.cs" />
+    <Compile Include="Documents\Paths\DocumentPathsUpdater.cs" />
+    <Compile Include="Documents\Paths\DocumentPathPrefixes.cs" />
+    <Compile Include="Documents\SiteRootCreationSettings.cs" />
+    <Compile Include="DocumentTypes\AllowedChildClasses\AllowedChildClassInfo.cs" />
+    <Compile Include="DocumentTypes\AllowedChildClasses\AllowedChildClassInfoProvider.cs" />
+    <Compile Include="DocumentTypes\DocumentFieldInfoExtensions.cs" />
+    <Compile Include="DocumentTypes\DocumentTypeHelper.cs" />
+    <Compile Include="DocumentTypes\DocumentTypeInfo.cs" />
+    <Compile Include="DocumentTypes\TreeNodeTypeExtensions.cs" />
+    <Compile Include="DocumentTypes\Factories\RegisterDocumentTypeAttribute.cs" />
+    <Compile Include="DocumentTypes\SystemDocumentTypes.cs" />
+    <Compile Include="Enumerations\DocumentSortEnum.cs" />
+    <Compile Include="Enumerations\IconTypeEnum.cs" />
+    <Compile Include="Exceptions\DocumentCultureNotAllowedException.cs" />
+    <Compile Include="Exceptions\DocumentTypeNotExistsException.cs" />
+    <Compile Include="Handlers\Document\DocumentDataEventArgs.cs" />
+    <Compile Include="Handlers\Document\DocumentDataEventHandler.cs" />
+    <Compile Include="Handlers\Document\Attachment\AttachmentSendFileEventArgs.cs" />
+    <Compile Include="Handlers\Document\Mark\DocumentMarkEventArgs.cs" />
+    <Compile Include="Handlers\Document\Mark\DocumentMarkHandler.cs" />
+    <Compile Include="DocumentTypes\Scopes\DocumentTypeScopeClassInfo.cs" />
+    <Compile Include="DocumentTypes\Scopes\DocumentTypeScopeClassInfoProvider.cs" />
+    <Compile Include="DocumentTypes\Scopes\DocumentTypeScopeInfo.cs" />
+    <Compile Include="DocumentTypes\Scopes\DocumentTypeScopeInfoProvider.cs" />
+    <Compile Include="DocumentTypes\Scopes\DocumentTypeScopeResolvers.cs" />
+    <Compile Include="Handlers\Document\Order\DocumentChangeOrderEventArgs.cs" />
+    <Compile Include="Handlers\Document\Order\DocumentChangeOrderHandler.cs" />
+    <Compile Include="Handlers\Document\Order\DocumentSortEventArgs.cs" />
+    <Compile Include="Handlers\Document\Order\DocumentSortHandler.cs" />
+    <Compile Include="Handlers\Document\Rating\DocumentRatingEventArgs.cs" />
+    <Compile Include="Handlers\Document\Rating\DocumentRatingHandler.cs" />
+    <Compile Include="Handlers\Document\Search\DocumentSearchEventArgs.cs" />
+    <Compile Include="Handlers\Document\Search\DocumentSearchHandler.cs" />
+    <Compile Include="Handlers\Document\Security\DocumentSecurityEventArgs.cs" />
+    <Compile Include="Handlers\Document\Security\DocumentSecurityHandler.cs" />
+    <Compile Include="Handlers\Document\Url\PresentationUrlRedirect.cs" />
+    <Compile Include="Lists\GroupPagesListInfo.cs" />
+    <Compile Include="Macros\ContentMembershipMethods.cs" />
+    <Compile Include="ContinuousIntegration\ContinuousIntegrationHandlers.cs" />
+    <Compile Include="ModuleUsageTracking\DocumentEngineUsageDataSource.cs" />
+    <Compile Include="Module\AdhocRelationshipNameHandlers.cs" />
+    <Compile Include="Module\ImportExport\DocumentTypes\DocumentTypeExport.cs" />
+    <Compile Include="Module\ImportExport\DocumentTypes\DocumentTypeImport.cs" />
+    <Compile Include="PageInfo\PageInfoSearchParameters.cs" />
+    <Compile Include="PageInfo\PageInfoResult.cs" />
+    <Compile Include="PageInfo\PageLocationEnum.cs" />
+    <Compile Include="PageInfo\PageSecurityHelper.cs" />
+    <Compile Include="Query\DocumentQueryColumnBuilder.cs" />
+    <Compile Include="Query\IncludeCoupledDataEnum.cs" />
+    <Compile Include="Query\DocumentSystemColumns.cs" />
+    <Compile Include="Query\Document\DocumentQuerySourceHelper.cs" />
+    <Compile Include="Query\Document\DocumentQueryAliases.cs" />
+    <Compile Include="Query\Document\DocumentQuerySourceSettings.cs" />
+    <Compile Include="Resources\GetAttachmentHandler.cs" />
+    <Compile Include="Search\DocumentSearchFieldsProvider.cs" />
+    <Compile Include="Search\DocumentSearchHelper.cs" />
+    <Compile Include="Search\SearchDocumentCreator.cs" />
+    <Compile Include="Security\ACLs\AclItemInfoProvider.cs" />
+    <Compile Include="Settings\MoveDocumentSettings.cs" />
+    <Compile Include="SiteMap\TreeSiteMapNode.cs" />
+    <Compile Include="SiteMap\TreeSiteMapProvider.cs" />
+    <Compile Include="Taxonomy\DocumentCategoryInfo.cs" />
+    <Compile Include="Taxonomy\DocumentCategoryInfoProvider.cs" />
+    <Compile Include="Taxonomy\DocumentTagInfo.cs" />
+    <Compile Include="Taxonomy\DocumentTagInfoProvider.cs" />
+    <Compile Include="Collections\CombinedTreeNodeCollection.cs" />
+    <Compile Include="Collections\TreeNodeCollection.cs" />
+    <Compile Include="Collections\TreeNodeCollectionSettings.cs" />
+    <Compile Include="Collections\TreeNodeRepository.cs" />
+    <Compile Include="ContentPublisher.cs" />
+    <Compile Include="Context\CMSDataContext.cs" />
+    <Compile Include="Context\CSSContainer.cs" />
+    <Compile Include="Documents\DocumentHierarchyHelper.cs" />
+    <Compile Include="Settings\CopyNodeDataSettings.cs" />
+    <Compile Include="Documents\ITreeNodeMethods.cs" />
+    <Compile Include="Documents\TreeNodeMethods.cs" />
+    <Compile Include="DocumentTypes\Factories\DocumentFactory.cs" />
+    <Compile Include="DocumentTypes\Factories\DocumentGenerator.cs" />
+    <Compile Include="DocumentHelper.cs" />
+    <Compile Include="Handlers\Document\PageInfo\PageInfoHandler.cs" />
+    <Compile Include="Handlers\Document\PageInfo\PageInfoEvents.cs" />
+    <Compile Include="Handlers\Document\PageInfo\PageInfoEventArgs.cs" />
+    <Compile Include="Handlers\ImportExport\SimpleDocumentImportHandler.cs" />
+    <Compile Include="Handlers\ImportExport\DocumentsImportEventArgs.cs" />
+    <Compile Include="Handlers\ImportExport\DocumentsImportHandler.cs" />
+    <Compile Include="Macros\ContentTransformationFunctions.cs" />
+    <Compile Include="Macros\ContentMethods.cs" />
+    <Compile Include="Macros\TreeNodeCollectionMethods.cs" />
+    <Compile Include="Module\DocumentHandlers.cs" />
+    <Compile Include="Module\ImportExport\Attachments\AttachmentExport.cs" />
+    <Compile Include="Module\ImportExport\Attachments\AttachmentHistoryExport.cs" />
+    <Compile Include="Module\ImportExport\Attachments\AttachmentImport.cs" />
+    <Compile Include="Module\ImportExport\Attachments\AttachmentHistoryImport.cs" />
+    <Compile Include="Module\ImportExport\ExportSpecialActions.cs" />
+    <Compile Include="Module\ImportExport\DocumentExport.cs" />
+    <Compile Include="Module\ImportExport\DocumentImport.cs" />
+    <Compile Include="Handlers\ImportExport\DocumentsExportEventArgs.cs" />
+    <Compile Include="Handlers\ImportExport\DocumentsExportHandler.cs" />
+    <Compile Include="Handlers\ImportExport\DocumentImportEventArgs.cs" />
+    <Compile Include="Handlers\ImportExport\DocumentImportExportEvents.cs" />
+    <Compile Include="Handlers\ImportExport\DocumentImportHandler.cs" />
+    <Compile Include="Macros\CacheMethods.cs" />
+    <Compile Include="Context\CMSContext.cs" />
+    <Compile Include="Module\ImportExport\ImportSpecialActions.cs" />
+    <Compile Include="Module\Search\DocumentCategorySearchIndexer.cs" />
+    <Compile Include="Context\DocumentContext.cs" />
+    <Compile Include="Module\DocumentEngineModuleMetadata.cs" />
+    <Compile Include="Macros\DocumentMacros.cs" />
+    <Compile Include="Module\Search\DocumentSearchIndexer.cs" />
+    <Compile Include="Module\SiteDeletion.cs" />
+    <Compile Include="Security\DocumentSecurityHelper.cs" />
+    <Compile Include="DocumentTypes\Factories\IDocumentFactory.cs" />
+    <Compile Include="Handlers\Document\Change\BaseDocumentChangeSettings.cs" />
+    <Compile Include="Handlers\Document\Change\LogMultipleDocumentChangeSettings.cs" />
+    <Compile Include="Handlers\Document\Change\LogDocumentChangeEventArgs.cs" />
+    <Compile Include="Handlers\Document\Change\LogDocumentChangeHandler.cs" />
+    <Compile Include="Handlers\Document\Change\LogDocumentChangeSettings.cs" />
+    <Compile Include="Handlers\Workflow\WorkflowActionHandler.cs" />
+    <Compile Include="Module\WebFarm\DocumentSynchronization.cs" />
+    <Compile Include="PageInfo\DomainNotFoundException.cs" />
+    <Compile Include="PageInfo\PageInfo.cs" />
+    <Compile Include="PageInfo\PageInfoProvider.cs" />
+    <Compile Include="PageInfo\PageInfoSource.cs" />
+    <Compile Include="Personalization\PersonalizationInfo.cs" />
+    <Compile Include="Personalization\PersonalizationInfoProvider.cs" />
+    <Compile Include="Security\UserSecurityExtensions.cs" />
+    <Compile Include="Settings\BaseDocumentSettings.cs" />
+    <Compile Include="Settings\NewCultureDocumentSettings.cs" />
+    <Compile Include="Settings\CopyDocumentSettings.cs" />
+    <Compile Include="Settings\DeleteDocumentSettings.cs" />
+    <Compile Include="Taxonomy\DocumentTagUpdater.cs" />
+    <Compile Include="Enumerations\AliasActionModeEnum.cs" />
+    <Compile Include="TypeInfos\TreeNodeTypeInfo.cs" />
+    <Compile Include="URLs\DocumentAliasInfo.cs" />
+    <Compile Include="URLs\DocumentAliasInfoProvider.cs" />
+    <Compile Include="Enumerations\DocumentOrderEnum.cs" />
+    <Compile Include="URLs\DocumentCultureUrl.cs" />
+    <Compile Include="URLs\DocumentURLProvider.cs" />
+    <Compile Include="Documents\NodeSelectionParameters.cs" />
+    <Compile Include="Enumerations\TranslationStatusEnum.cs" />
+    <Compile Include="Documents\TreeNode.cs" />
+    <Compile Include="URLs\DocumentURLProviderDependencies.cs" />
+    <Compile Include="URLs\TreePathUtils.cs" />
+    <Compile Include="Documents\TreeProvider.cs" />
+    <Compile Include="Lists\UserDocumentsListInfo.cs" />
+    <Compile Include="Handlers\Document\Authorization\DocumentAuthorizationEventArgs.cs" />
+    <Compile Include="Handlers\Document\Authorization\DocumentAuthorizationHandler.cs" />
+    <Compile Include="Handlers\Document\DocumentEventArgs.cs" />
+    <Compile Include="Handlers\Document\DocumentEvents.cs" />
+    <Compile Include="Handlers\Document\DocumentHandler.cs" />
+    <Compile Include="Handlers\Workflow\SimpleWorkflowHandler.cs" />
+    <Compile Include="Handlers\Workflow\WorkflowEventArgs.cs" />
+    <Compile Include="Handlers\Workflow\WorkflowEvents.cs" />
+    <Compile Include="Handlers\Workflow\WorkflowHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relationships\RelationshipInfo.cs" />
+    <Compile Include="Relationships\RelationshipInfoProvider.cs" />
+    <Compile Include="Security\ACLs\AclInfo.cs" />
+    <Compile Include="Security\ACLs\AclItemInfo.cs" />
+    <Compile Include="Security\ACLs\AclInfoProvider.cs" />
+    <Compile Include="Enumerations\NodePermissionsEnum.cs" />
+    <Compile Include="Security\TreeSecurityProvider.cs" />
+    <Compile Include="Synchronization\DocumentSynchronizationHelper.cs" />
+    <Compile Include="Module\DocumentEngineModule.cs" />
+    <Compile Include="URLs\UrlOptionsEnum.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryBinarySettings.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryCreator.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryExtensions.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryCopier.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryVersionRemover.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryRemover.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryPublisher.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryInfo.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistoryInfoProvider.cs" />
+    <Compile Include="Query\DocumentColumnLists.cs" />
+    <Compile Include="Versioning\AttachmentHistorySetterContext.cs" />
+    <Compile Include="Versioning\Attachments\AttachmentHistorySetter.cs" />
+    <Compile Include="Versioning\VersionAttachmentInfo.cs" />
+    <Compile Include="Versioning\VersionAttachmentInfoProvider.cs" />
+    <Compile Include="Versioning\VersionHistoryInfo.cs" />
+    <Compile Include="Versioning\VersionHistoryInfoProvider.cs" />
+    <Compile Include="Versioning\VersionManager.cs" />
+    <Compile Include="DocumentActionContext.cs" />
+    <Compile Include="Workflow\Actions\BaseDocumentAction.cs" />
+    <Compile Include="Workflow\Actions\DeleteDocumentAction.cs" />
+    <Compile Include="Workflow\Actions\DocumentPropertyAction.cs" />
+    <Compile Include="Workflow\Actions\LinkDocumentAction.cs" />
+    <Compile Include="Workflow\Actions\CopyDocumentAction.cs" />
+    <Compile Include="Workflow\Actions\MoveDocumentAction.cs" />
+    <Compile Include="Workflow\Actions\DocumentWorkflowAction.cs" />
+    <Compile Include="Workflow\Actions\EmailAction.cs" />
+    <Compile Include="Workflow\Actions\LogAction.cs" />
+    <Compile Include="Workflow\Actions\NotificationEmailsAction.cs" />
+    <Compile Include="Workflow\WorkflowEmailSender.cs" />
+    <Compile Include="Workflow\WorkflowResolvers.cs" />
+    <Compile Include="Workflow\WorkflowTimer.cs" />
+    <Compile Include="Workflow\WorkflowException.cs" />
+    <Compile Include="Workflow\WorkflowManager.cs" />
+    <Compile Include="Enumerations\RelationshipTypeEnum.cs" />
+    <Compile Include="Enumerations\PathTypeEnum.cs" />
+    <Compile Include="Data\DocumentCultureDataInfo.cs" />
+    <Compile Include="Data\DocumentCultureDataInfoProvider.cs" />
+    <Compile Include="Data\DocumentFieldsInfo.cs" />
+    <Compile Include="Data\DocumentFieldsInfoProvider.cs" />
+    <Compile Include="TypeInfos\DocumentFieldsTypeInfo.cs" />
+    <Compile Include="Query\Multi\IMultiDocumentQuery.cs" />
+    <Compile Include="Data\TreeNodeProvider.cs" />
+    <Compile Include="Data\DocumentNodeDataInfo.cs" />
+    <Compile Include="Data\DocumentNodeDataInfoProvider.cs" />
+    <Compile Include="TypeInfos\DynamicTreeNodeTypeInfo.cs" />
+    <Compile Include="Query\Document\IDocumentQuery.cs" />
+    <Compile Include="Query\Multi\MultiDocumentQuery.cs" />
+    <Compile Include="Query\Multi\MultiDocumentQueryBase.cs" />
+    <Compile Include="Query\Document\DocumentQuery.cs" />
+    <Compile Include="Query\Document\DocumentQueryBase.cs" />
+    <Compile Include="Query\Document\DocumentQueryProperties.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Activities\Activities.csproj">
+      <Project>{DC7FDFAA-4C8A-4D6F-8572-AC4F789E2494}</Project>
+      <Name>Activities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ContinuousIntegration\ContinuousIntegration.csproj">
+      <Project>{ac62093f-8421-487d-829c-fb3ab7800376}</Project>
+      <Name>ContinuousIntegration</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceProfiles\DeviceProfiles.csproj">
+      <Project>{6e43ddf3-893d-4915-8828-ef7d40f1396e}</Project>
+      <Name>DeviceProfiles</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6BDC71F9-7A04-45DA-8821-1246EC51E3CE}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ResponsiveImages\ResponsiveImages.csproj">
+      <Project>{9fad4c1e-0aff-4a11-89dc-a238305938b1}</Project>
+      <Name>ResponsiveImages</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Routing.Web\Routing.Web.csproj">
+      <Project>{bd2f25a8-9315-4341-aac3-e9731922ddb2}</Project>
+      <Name>Routing.Web</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search.Azure\Search.Azure.csproj">
+      <Project>{537705DA-CCBE-4525-BF55-B9F0DA5A0DF4}</Project>
+      <Name>Search.Azure</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Synchronization\Synchronization.csproj">
+      <Project>{781f46eb-593f-484b-a1da-c59b1e13b59d}</Project>
+      <Name>Synchronization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Relationships\Relationships.csproj">
+      <Project>{3868fb15-d7e8-4404-96e3-edd5c0ceb670}</Project>
+      <Name>Relationships</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{F21C925B-3AA1-4139-9706-BA5073527A8F}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Taxonomy\Taxonomy.csproj">
+      <Project>{d9a44465-6411-4bd5-9939-25f571deac4e}</Project>
+      <Name>Taxonomy</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
