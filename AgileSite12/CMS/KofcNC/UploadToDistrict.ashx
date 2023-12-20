@@ -1,4 +1,4 @@
-﻿<%@ WebHandler Language="C#" Class="CMSApp.KofcNC.UploadToStateCouncil" %>
+﻿<%@ WebHandler Language="C#" Class="CMSApp.KofcNC.UploadToDistrict" %>
 
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Web;
 namespace CMSApp.KofcNC
 {
     /// <summary>
-    /// Summary description for UploadToStateCouncil
+    /// Summary description for UploadToDistrict
     /// </summary>
     public class UploadToDistrict : Telerik.Web.UI.CloudUploadHandler
     {
