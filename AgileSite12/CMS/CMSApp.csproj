@@ -1195,6 +1195,29 @@
     <Content Include="App_Themes\IntranetPortal\Images\WebpartProperties\rightbottom.png" />
     <Content Include="App_Themes\IntranetPortal\Images\WebpartProperties\righttop.png" />
     <Content Include="App_Themes\IntranetPortal\Skin.css" />
+    <Content Include="App_Themes\kofcNC\assets\css\core.css" />
+    <Content Include="App_Themes\kofcNC\assets\css\core.min.css" />
+    <Content Include="App_Themes\kofcNC\assets\fav\android-chrome-192x192.png" />
+    <Content Include="App_Themes\kofcNC\assets\fav\android-chrome-256x256.png" />
+    <Content Include="App_Themes\kofcNC\assets\fav\apple-touch-icon.png" />
+    <Content Include="App_Themes\kofcNC\assets\fav\browserconfig.xml" />
+    <Content Include="App_Themes\kofcNC\assets\fav\favicon-16x16.png" />
+    <Content Include="App_Themes\kofcNC\assets\fav\favicon-32x32.png" />
+    <Content Include="App_Themes\kofcNC\assets\fav\favicon.ico" />
+    <Content Include="App_Themes\kofcNC\assets\fav\mstile-150x150.png" />
+    <Content Include="App_Themes\kofcNC\assets\fav\safari-pinned-tab.svg" />
+    <Content Include="App_Themes\kofcNC\assets\img\hero-photo.jpg" />
+    <Content Include="App_Themes\kofcNC\assets\img\hero-photo_bak.jpg" />
+    <Content Include="App_Themes\kofcNC\assets\img\kofc-logo_1000w.png" />
+    <Content Include="App_Themes\kofcNC\assets\img\kofc-symbol_180x180.png" />
+    <Content Include="App_Themes\kofcNC\assets\img\kofcNC-logo_1000w.png" />
+    <Content Include="App_Themes\kofcNC\assets\img\kofcNC-logo_800x38.png" />
+    <Content Include="App_Themes\kofcNC\assets\img\kofcnc_logo.svg" />
+    <Content Include="App_Themes\kofcNC\assets\img\kofc_r_hz_cmyk_pos_NC.svg" />
+    <Content Include="App_Themes\kofcNC\assets\img\logo-nckofc%402x.jpg" />
+    <Content Include="App_Themes\kofcNC\assets\img\logo-nckofc.jpg" />
+    <Content Include="App_Themes\kofcNC\assets\img\missing-headshot.jpg" />
+    <Content Include="App_Themes\kofcNC\assets\js\custom.min.js" />
     <Content Include="App_Themes\rideology\assets\css\core.min.css" />
     <Content Include="App_Themes\rideology\assets\img\icon_search.png" />
     <Content Include="App_Themes\rideology\assets\img\logo%402x.png" />
@@ -22705,6 +22728,10 @@
     <Content Include="App_Themes\SlipCash\assets\img\Slip_CASH_logo-01.webp" />
     <Content Include="App_Themes\SlipCash\assets\img\slip_logo.webp" />
     <Content Include="App_Themes\SlipCash\assets\js\custom.min.js.map" />
+    <Content Include="App_Themes\kofcNC\assets\css\core.css.map" />
+    <Content Include="App_Themes\kofcNC\assets\css\core.min.css.map" />
+    <Content Include="App_Themes\kofcNC\assets\fav\site.webmanifest" />
+    <Content Include="App_Themes\kofcNC\assets\js\custom.min.js.map" />
     <None Include="Old_App_WebReferences\WS\WebService.discomap" />
     <None Include="Old_App_WebReferences\WS\WebService.wsdl" />
     <Content Include="CMSAdminControls\web.config" />
@@ -23429,7 +23456,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
