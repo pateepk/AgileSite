@@ -164,11 +164,11 @@ namespace CMSApp.CMSWebParts.WTE.Custom.Modules.FormControl
             var test = ruMain.UploadedFiles;
             if (Form != null)
             {
-                uploader.OnUploadFile += Form.RaiseOnUploadFile;
-                uploader.OnDeleteFile += Form.RaiseOnDeleteFile;
-
+                uploader.OnUploadFile += UploadControl_FileUploaded;
+                uploader.OnDeleteFile += UploadControl_OnFileDeleted;
                 //ruMain.FileUploaded += Form.RaiseOnUploadFile;
             }
+
             // Apply styles
             if (!String.IsNullOrEmpty(ControlStyle))
             {
@@ -363,6 +363,16 @@ namespace CMSApp.CMSWebParts.WTE.Custom.Modules.FormControl
                 ms.Write(imgData, 0, imgData.Length);
                 Context.Cache.Insert(Session.SessionID + "UploadedFile", ms, null, DateTime.Now.AddMinutes(20), TimeSpan.Zero);
             }
+        }
+
+        protected void UploadControl_FileUploaded(object sender, EventArgs e)
+        {
+            Form.RaiseOnUploadFile(sender, e);
+        }
+
+        protected void UploadControl_OnFileDeleted(object sender, EventArgs e)
+        {
+            Form.RaiseOnDeleteFile(sender, e);
         }
 
         #endregion "page events"
