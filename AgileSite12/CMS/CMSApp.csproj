@@ -4915,6 +4915,7 @@
     <Content Include="WTE\UploadToPropConstruction.ashx" />
     <Content Include="WTE\UploadToPropStructure.ashx" />
     <Content Include="web-slipcash.config" />
+    <Content Include="web-kofnc.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CMSAdminControls\UI\SmartTip.ascx.cs">
@@ -23429,7 +23430,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
