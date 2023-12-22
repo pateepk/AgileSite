@@ -18,13 +18,13 @@
                 if (inputtype2 == 'password') {
                     input.attr('type', 'text');
                     if (span != null) {
-                        span.html('<i class="fa-solid fa-eye-slash"></i>');
+                        span.html('<i class="fa-light fa-eye-slash"></i>');
                     }
                 }
                 else {
                     input.attr('type', 'password');
                     if (span != null) {
-                        span.html('<i class="fa-solid fa-eye"></i>');
+                        span.html('<i class="fa-light fa-eye"></i>');
                     }
                 }
             }
@@ -39,8 +39,10 @@
     <cms:PasswordStrength runat="server" ID="passStrength" AllowEmpty="true" /> 
     <div class="ConfirmationSeparator">
     </div>
+    <div class="pw-confirm">
     <cms:LocalizedLabel ID="lblConfirmPassword" runat="server" ResourceString="general.confirmpassword" AssociatedControlID="txtConfirmPassword" EnableViewState="false" Display="false" />
-    <cms:CMSTextBox ID="txtConfirmPassword" runat="server" TextMode="Password" MaxLength="100" /><span style="float:right;" id="stoggleconfirmpw1" onclick="toggleConfirmPassword('txtConfirmPassword','stoggleconfirmpw1');return false;" runat="server"><i class="fa-solid fa-eye"></i></span>
+    <cms:CMSTextBox ID="txtConfirmPassword" runat="server" TextMode="Password" MaxLength="100" /><span class="pw-view" id="stoggleconfirmpw1" onclick="toggleConfirmPassword('txtConfirmPassword','stoggleconfirmpw1');return false;" runat="server"><i class="fa-light fa-eye"></i></span>
+    </div>
     <br />
     <cms:CMSRequiredFieldValidator ID="rfvConfirmPassword" ValidationGroup="ConfirmRegForm" runat="server"
         ControlToValidate="txtConfirmPassword" Display="Dynamic" />

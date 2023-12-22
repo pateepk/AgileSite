@@ -131,7 +131,8 @@ namespace CMSApp.CMSWebParts.WTE.Custom.Modules.FormControl
         {
             get
             {
-                return !(Form is CMSForm);
+                //return !(Form is CMSForm);
+                return !String.IsNullOrWhiteSpace(ValueString);
             }
         }
 
@@ -166,7 +167,6 @@ namespace CMSApp.CMSWebParts.WTE.Custom.Modules.FormControl
             {
                 uploader.OnUploadFile += UploadControl_FileUploaded;
                 uploader.OnDeleteFile += UploadControl_OnFileDeleted;
-                //ruMain.FileUploaded += Form.RaiseOnUploadFile;
             }
 
             // Apply styles

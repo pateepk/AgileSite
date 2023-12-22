@@ -4358,6 +4358,7 @@
     <Content Include="CMSWebParts\WTE\Custom\Modules\UserControls\WTE_MyProfile.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\Modules\UserControls\WTE_ChangePassword.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_PasswordStrength.ascx" />
+    <Content Include="CMSWebParts\WTE\Custom\WTE_LogonForm_new_center.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\WTE_Redirection.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\WTE_MyProfile.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\WTE_MyAccount.ascx" />
@@ -23457,7 +23458,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
