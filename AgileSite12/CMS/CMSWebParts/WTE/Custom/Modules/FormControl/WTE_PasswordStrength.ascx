@@ -21,13 +21,13 @@
                 if (inputtype2 == 'password') {
                     input.attr('type', 'text');
                     if (span != null) {
-                        span.html('<i class="fa-solid fa-eye-slash"></i>');
+                        span.html('<i class="fa-light fa-eye-slash"></i>');
                     }
                 }
                 else {
                     input.attr('type', 'password');
                     if (span != null) {
-                        span.html('<i class="fa-solid fa-eye"></i>');
+                        span.html('<i class="fa-light fa-eye"></i>');
                     }
                 }
             }
@@ -64,7 +64,7 @@
 
             var spn2 = $('#stest2');
             if (spn2 != null) {
-                spn2.html('<i class="fa-solid fa-eye-slash"></i>');
+                spn2.html('<i class="fa-light fa-eye-slash"></i>');
             }
 
             var txtbox = $("testinput1");
@@ -74,7 +74,7 @@
                     txtbox.type = 'text';
                     tboxtype = 'text';
                     if (spn2 != null) {
-                        spn2.html('<i class="fa-solid fa-eye-slash"></i>');
+                        spn2.html('<i class="fa-light fa-eye-slash"></i>');
                     }
                 }
                 else {
@@ -82,7 +82,7 @@
                     txtbox.type = 'password';
                     tboxtype = 'password';
                     if (spn2 != null) {
-                        spn2.html('<i class="fa-solid fa-eye"></i>');
+                        spn2.html('<i class="fa-light fa-eye"></i>');
                     }
                 }
             }
@@ -91,8 +91,8 @@
     </script>
 
 <div class="password-strength">
-    <cms:CMSTextBox runat="server" ID="txtPassword" TextMode="Password"/><span style="float:right;" id="stogglepassword" onclick="togglePassword1('txtPassword','stogglepassword');return false;" runat="server"><i class="fa-solid fa-eye"></i></span>
-    <asp:LinkButton ID="lbtnShowPassword" OnClick="lbtnShowPassword_Clicked" runat="server" Text="click me!" Visible="false"><i class="fa-solid fa-eye"></i></asp:LinkButton>
+    <cms:CMSTextBox runat="server" ID="txtPassword" TextMode="Password"/><span class="pw-view" id="stogglepassword" onclick="togglePassword1('txtPassword','stogglepassword');return false;" runat="server"><i class="fa-light fa-eye"></i></span>
+    <asp:LinkButton ID="lbtnShowPassword" OnClick="lbtnShowPassword_Clicked" runat="server" Text="click me!" Visible="false"><i class="fa-light fa-eye"></i></asp:LinkButton>
     <asp:Label ID="lblRequiredFieldMark" runat="server" Text="" Visible="false" />  
     <div class="password-strength-text">
         <cms:LocalizedLabel runat="server" ID="lblPasswStregth" CssClass="password-strength-hint" ResourceString="Membership.PasswordStrength" />
