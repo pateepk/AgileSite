@@ -71,7 +71,7 @@ html .RadUpload .ruFileWrap {
     <cms:Uploader ID="uploader" runat="server" />
     <asp:Button ID="hdnPostback" CssClass="HiddenButton" runat="server" EnableViewState="false" />
     <div class="demo-container size-wide">
-    <telerik:RadAsyncUpload ID="ruMain" runat="server" RenderMode="Lightweight" Visible="false"
+    <telerik:RadAsyncUpload ID="ruMain" runat="server" RenderMode="Lightweight" Visible="True"
         OnClientFilesUploaded="OnClientFilesUploaded" 
         OnFileUploaded="OnFileUploaded"
         MaxFileSize="2097152"

@@ -12,6 +12,21 @@ namespace CMSApp.CMSWebParts.WTE.Custom.Modules
         private bool mUseDefaultValidationGroup = true;
 
         /// <summary>
+        /// The disabled CSS style
+        /// </summary>
+        public string DisabledStyle
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("DisabledStyle"), "background-color: dimgrey;color: linen;opacity: 0.5;filter: alpha(opacity = 50);");
+            }
+            set
+            {
+                SetValue("DisabledStyle", value);
+            }
+        }
+
+        /// <summary>
         ///  Do we need to lock down the username field.
         /// </summary>
         public bool LockUserNameText
@@ -50,6 +65,11 @@ namespace CMSApp.CMSWebParts.WTE.Custom.Modules
             {
                 base.Enabled = value;
                 txtUserName.Enabled = value;
+                if (!txtUserName.Enabled)
+                {
+                    // override the CSS to make it look disabled
+                    txtUserName.Attributes["Style"] = "background-color: dimgrey;color: linen;opacity: 0.6;filter: alpha(opacity = 60);";
+                }
                 //if (LockUserNameText)
                 //{
                 //    txtUserName.Enabled = value;
@@ -137,6 +157,12 @@ namespace CMSApp.CMSWebParts.WTE.Custom.Modules
             }
 
             txtUserName.Enabled = !LockUserNameText;
+
+            if (!txtUserName.Enabled)
+            {
+                // override the CSS to make it look disabled
+                txtUserName.Attributes["style"] = DisabledStyle;
+            }
 
             CheckRegularExpression = true;
             CheckMinMaxLength = true;
