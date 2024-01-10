@@ -207,51 +207,148 @@
     </div>
 
     <div class="center">
-        <button class="modal-toggle btn btn-dark">add new</button>
+        <button class="modal-toggle btn btn-dark" onclick="toggleAddNew('99999',true);">add new</button>
     </div>
-    <script>
-        // Quick & dirty toggle to demonstrate modal toggle behavior
-        $('.modal-toggle').on('click', function (e) {
-            e.preventDefault();
-            $('.modal').toggleClass('is-visible');
-        });
-    </script>
 
+    <div class="center m-b-2  ">
+<div id="div_team_100" name="div_team_100">
+  <a id='lnkPreview_100' href="https://slipcash.agilesite.com/$banana1" class="people-pay__btn" name='lnkPreview_100'>banana1</a>
+  <input id="txtHandle_100" type="text" placeholder="enter handle" name="txtHandle_100"/>
+  <a id='lnkUpdate_100'  class="" title="Update" href="#" onclick="doSaveAssociatedAccount('100', event);" name='lnkUpdate_100'>
+    <i class="fa-sharp fa-solid fa-circle-check"></i>
+  </a>
+  <a id='lnkEdit_100'  class="" title="Edit" href="#" onclick="doEditAssociatedAccount('100', event);" name='lnkEdit_100'>
+    <i class="fa-duotone fa-user-pen"></i>
+  </a>
+  <a id='lnkEnable_100' class="" title="Disable" href="#" onclick="doEnableAssociatedAccount('100', 'false', event);" name='lnkEnable_100'>
+    <i class="fa-solid fa-user-large-slash"></i>
+  </a>
+  <a id='lnkDelete_100' class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('100', event);" name='lnkDelete_100'>
+     <i class="fa-sharp fa-regular fa-trash"></i>
+  </a>
+</div>
+    <div id="div_team_9999" name="div_team_9999">
+        <a id='lnkPreview_9999' class="people-pay__btn" href="https://slipcash.agilesite.com/$Add New" name='lnkPreview_9999'>Add New</a>
+        <input id="txtHandle_9999" type="text" placeholder="enter handle" name="txtHandle_9999" />
+        <a id='lnkUpdate_9999' class="" title="Update" href="#" onclick="doSaveAssociatedAccount('9999', event);" name='lnkUpdate_9999'>
+            <i class="fa-sharp fa-solid fa-circle-check"></i>
+        </a>
+        <a id='lnkEdit_9999' class="" title="Edit" href="#" onclick="doEditAssociatedAccount('9999', event);" name='lnkEdit_9999'>
+            <i class="fa-duotone fa-user-pen"></i>
+        </a>
+        <a id='lnkEnable_9999' class="" title="Disable" href="#" onclick="doEnableAssociatedAccount('9999', 'false', event)" name='lnkEnable_9999'>
+            <i class="fa-solid fa-user-large-slash"></i>
+        </a>
+        <a id='lnkDelete_9999' class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('9999', event);" name='lnkDelete_9999'>
+            <i class="fa-sharp fa-regular fa-trash"></i>
+        </a>
+    </div>
+    <div class="center">
+        <button class="btn btn-dark" onclick="toggleAddNew('9999','true', event);">add new</button>
+    </div>
 </div>
 
-
-<div id="divManageAction" class="filter-box" runat="server" visible="false">
-    <div class="inline-form-group">
-        <select id="ddlManageAction" name="ddlManageAction" class="select-css">
-            <option value="">--none--</option>
-            <option value="enable">enable</option>
-            <option value="disable">disable</option>
-        </select>
-    </div>
-    <div class="inline-form-group">
-        <label for="chkManageSelectAll">select all:</label><input type="checkbox" id="chkManageSelectAll" onchange="chkManageSelectAll_checkchanged();return false;" title="select all" />
-    </div>
-    <div class="inline-form-group">
-        <button onclick="btnPerformMultipleManageAction_Clicked();return false;" class="btn-admin btn-admin-dark">Submit</button>
-    </div>
-</div>
-
-<div id="divUpdateAction" class="filter-box" runat="server" visible="false">
-    <div class="inline-form-group">
-        <select id="ddlCompanyAssignmentAction" name="ddlCompanyAssignmentAction" class="select-css">
-            <option value="">--none--</option>
-            <option value="assign">save</option>
-        </select>
-    </div>
-    <div class="inline-form-group">
-        <label for="chkCompanyAssignmentSelectAll">select all:</label><input type="checkbox" id="chkCompanyAssignmentSelectAll" onchange="chkCompanyAssignmentSelectAll_checkchanged();return false;" title="select all" />
-    </div>
-    <div class="inline-form-group">
-        <button onclick="btnPerformMultipleCompanyAssignmentAction_Clicked();return false;" class="btn-admin btn-admin-dark">Submit</button>
-    </div>
 </div>
 
 <script type="text/javascript">
+
+    var flag = false;
+
+    $(document).ready(function () {
+        if (flag == false) {
+            // hide on the input
+            $('input[type=text][id*=' + 'txtHandle' + ']').each(function () {
+                var id = this.id;
+                var name = this.name;
+                if (name != 'txtHandle_9999' && name != 'txtHandle_9999') {
+                    setControlVisibility(name, 'false');
+                }
+            });
+
+            // hide all the check button
+            $('a[id*=' + 'lnkUpdate' + ']').each(function () {
+                var id = this.id;
+                var name = this.name;
+                if (name != 'lnkUpdate_9999' && name != 'lnkUpdate_9999') {
+                    setControlVisibility(name, 'false');
+                }
+            });
+
+            // hide the "add new items"
+
+            // test section
+            setControlVisibility('div_team_9999', 'false');
+            setControlVisibility('lnkEdit_9999', 'false');
+            setControlVisibility('lnkDelete_9999', 'false');
+            setControlVisibility('lnkEnable_9999', 'false');
+
+            // live section
+            setControlVisibility('div_team_99999', 'false');
+            setControlVisibility('lnkEdit_99999', 'false');
+            setControlVisibility('lnkDelete_99999', 'false');
+            setControlVisibility('lnkEnable_99999', 'false');
+
+            flag = true;
+        }
+    });
+
+    // do save
+    function doSaveAssociatedAccount(name, e) {
+        // call the save function and refresh the page...
+        if (e != null) {
+            e.preventDefault();
+        }
+        toggleTextBox(name, 'false'); // hide the text box
+        setControlVisibility('lnkUpdate_' + name, 'false'); // hide the update button
+        PerformSingleSaveAction(name);
+    }
+
+    // show the text box.
+    function doEditAssociatedAccount(name, e) {
+        if (e != null) {
+            e.preventDefault();
+        }
+        toggleTextBox(name, 'true'); // show the text box
+        setControlVisibility('lnkUpdate_' + name, 'true'); // show the "check" icon
+    }
+
+    function doEnableAssociatedAccount(name, enable, e) {
+        if (e != null) {
+            e.preventDefault();
+        }
+        var action = 'enable'
+        if (enable == 'true') {
+            action = 'enable';
+        }
+        else {
+            action = 'disable';
+        }
+        PerformSingleSaveAction(name, action);
+    }
+
+    function doDeleteAssociatedAccount(name, e) {
+        if (e != null) {
+            e.preventDefault();
+        }
+        PerformSingleSaveAction(name, 'delete');
+    }
+
+    // Show/Hide add new section
+    function toggleAddNew(name, show, e) {
+        if (e != null) {
+            e.preventDefault();
+        }
+        var fullname = 'div_team_' + name;
+        setControlVisibility(fullname, show); // show the add new div
+        toggleTextBox(name, 'true'); // show the text box
+        setControlVisibility('lnkUpdate_' + name, 'true'); // show the "check" icon
+    }
+
+    // toggle input textbox visibility
+    function toggleTextBox(name, show) {
+        var fullname = 'txtHandle_' + name;
+        setControlVisibility(fullname, show);
+    }
 
     function saveNew_Clicked() {
         PerformSaveAction('addnew', 'hdnrow', 'hdnPostbackUrl')
@@ -259,6 +356,84 @@
 
     function savebutton_Clicked() {
         PerformSavePayProfileAction('ddlManageActionTest', 'hdnrow', 'hdnPostbackUrl')
+    }
+
+    if (typeof PerformSingleSaveAction !== 'function' || typeof PerformSingleSaveAction === 'undefined') {
+        // perform the selected action
+        function PerformSingleSaveAction(name, action, postbackUrlName) {
+
+            var postbackUrl = getControlValue(postbackUrlName);
+            postbackUrl = window.location.href.split("?")[0];
+
+            if (typeof (action) == 'undefined') {
+                action = 'update';
+            }
+
+            if (typeof (postbackUrl) == 'undefined' || postbackUrl == '') {
+                return false; // we can't proceed no postback url defined
+            }
+
+            if (typeof (action) == 'undefined' || action == '') {
+                return false; // we can't proceed no action defined
+            }
+
+            //{"Action":"test",
+            //"AccountData":
+            //[
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //]
+            //}
+
+            var selectedid = "";
+            if (selectedid.length > 0) {
+                selectedid += ",";
+            }
+            var itemid = getControlValue('hdnitemid_' + name);
+            var memberuserid = getControlValue('hdnmemberuserid_' + name);
+            var memberid = getControlValue('hdnmemberid_' + name);
+            var memberhandle = getControlValue('hdnmemberhandle_' + name);
+            var associateduserid = getControlValue('hdnassociateduserid_' + name);
+            var associatedmemberid = getControlValue('hdnassociatedmemberid_' + name);
+            var associatedmemberhandle = getControlValue('txtHandle_' + name);
+            var isenabled = getControlValue('hdnisenabled_' + name);
+
+            if (action == 'enable') {
+                isenabled = true;
+            }
+            else if (action == 'disable') {
+                isenabled = false;
+            }
+
+            var assignmentdata = '{"AssociatedAccountID":"' + itemid
+                + '","MemberUserID":"' + memberuserid
+                + '","MemberID":"' + memberid
+                + '","MemberHandle":"' + memberhandle
+                + '","AssociatedUserID":"' + associateduserid
+                + '","AssociatedMemberID":"' + associatedmemberid
+                + '","AssociatedMemberHandle":"' + associatedmemberhandle
+                + '","IsEnabled":"' + isenabled + '"}';
+            selectedid += assignmentdata;
+
+            if (selectedid.length > 0) {
+                if (action == 'enable' || action == 'disable' || action == 'delete') {
+                    // do confirmation.
+                    var actionstring = 'Are you sure you want to ' + action + ' this team member?'
+                    if (!confirm(actionstring)) {
+                        return false;
+                    }
+                }
+
+                // submit the payload
+                var payload = '{"Action":"' + action + '","AccountData":[' + selectedid + ']}';
+                var transResponse = JSON.parse(payload);
+                RedirectAndPostJSON(postbackUrl, transResponse);
+                return true;
+            }
+
+            return false;
+        }
     }
 
     if (typeof PerformSaveAction !== 'function' || typeof PerformSaveAction === 'undefined') {
@@ -283,9 +458,9 @@
             //{"Action":"test",
             //"AccountData":
             //[
-            //{"UserPaymentMethodID":"1", "PaymentTypeID":"1", "MemberID": "1", "PaymentLink":"1", "UserID":"1", "IsEnabled":"true" },
-            //{"UserPaymentMethodID":"", "PaymentTypeID":"1", "MemberID": "1", "PaymentLink":"1"  "UserID":"1","IsEnabled":"true" },
-            //{"UserPaymentMethodID":"1", "PaymentTypeID":"1", "MemberID": "1", "PaymentLink":"1" "UserID":"1","IsEnabled":"true" }
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
             //]
             //}
 
@@ -305,7 +480,14 @@
                 var associatedmemberid = getControlValue('hdnassociatedmemberid_' + id);
                 var associateduserhandle = getControlValue('input_' + id);
                 var isenabled = getControlValue('hdnisenabled_' + id);
-                var assignmentdata = '{"AssociatedAccountID":"' + itemid + '","MemberUserID":"' + memberuserid + '","MemberID":"' + memberid + '","MemberHandle":"' + memberhandle + '","AssociatedUserID":"' + associateduserid + '","AssociatedMemberID":"' + associatedmemberid + '","AssociatedMemberHandle":"' + associatedmemberhandle + '","IsEnabled":"' + isenabled + '"}';
+                var assignmentdata = '{"AssociatedAccountID":"' + itemid 
+                + '","MemberUserID":"' + memberuserid 
+                + '","MemberID":"' + memberid 
+                + '","MemberHandle":"' + memberhandle 
+                + '","AssociatedUserID":"' + associateduserid 
+                + '","AssociatedMemberID":"' + associatedmemberid 
+                + '","AssociatedMemberHandle":"' + associatedmemberhandle 
+                + '","IsEnabled":"' + isenabled + '"}';
                 selectedid += assignmentdata;
             });
 
@@ -435,6 +617,29 @@
             }
         }
     }
+
+    if (typeof setControlVisibility !== 'function' || typeof setControlVisibility === 'undefined') {
+        // show or hide control
+        setControlVisibility = function setControlVisibility(name, show) {
+            var n = "#" + name;
+
+            if (typeof (show) == 'undefined' || show == '') {
+                show = 'true';
+            }
+
+            if ($(n) != null) {
+                if (show == 'true') {
+                    $(n).show();
+                    $(n).css('visibility', 'visible');
+                }
+                else {
+                    $(n).hide();
+                    $(n).css('visibility', 'hidden');
+                }
+            }
+        }
+    }
+
 </script>
 
 <script type="text/javascript">
