@@ -7,29 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMSApp.CMSWebParts.WTE.Slipcash
+namespace CMSApp.CMSWebParts.WTE.Custom.Modules.FormControl
 {
 
 
-    public partial class Slipcash_Manage_Associated_Account
+    public partial class WTE_TextBoxControl
     {
 
         /// <summary>
-        /// lblMsg control.
+        /// txtText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsg;
-
-        /// <summary>
-        /// divtest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtest;
+        protected global::CMS.Base.Web.UI.CMSTextBox txtText;
     }
 }

@@ -4347,6 +4347,7 @@
     <Content Include="CMSWebParts\Ecommerce\CustomerCompanyDetails.ascx" />
     <Content Include="CMSWebParts\Ecommerce\CustomerEditAddress.ascx" />
     <Content Include="CMSWebParts\Ecommerce\PayPal\PaymentExecution.ascx" />
+    <Content Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_TextBoxControl.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_PasswordConfirmator.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_FormPassword.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_UserName.ascx" />
@@ -4358,6 +4359,7 @@
     <Content Include="CMSWebParts\WTE\Custom\Modules\UserControls\WTE_MyProfile.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\Modules\UserControls\WTE_ChangePassword.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_PasswordStrength.ascx" />
+    <Content Include="CMSWebParts\WTE\Custom\WTE_CustomRegistrationForm.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\WTE_LogonForm_new_center.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\WTE_Redirection.ascx" />
     <Content Include="CMSWebParts\WTE\Custom\WTE_MyProfile.ascx" />
@@ -4977,6 +4979,13 @@
     <Compile Include="CMSWebParts\CustomTables\CustomTableInputEdit.ascx.designer.cs">
       <DependentUpon>CustomTableInputEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_TextBoxControl.ascx.cs">
+      <DependentUpon>WTE_TextBoxControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_TextBoxControl.ascx.designer.cs">
+      <DependentUpon>WTE_TextBoxControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_PasswordConfirmator.ascx.cs">
       <DependentUpon>WTE_PasswordConfirmator.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5053,6 +5062,13 @@
     </Compile>
     <Compile Include="CMSWebParts\WTE\Custom\Modules\FormControl\WTE_PasswordStrength.ascx.designer.cs">
       <DependentUpon>WTE_PasswordStrength.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CMSWebParts\WTE\Custom\WTE_CustomRegistrationForm.ascx.cs">
+      <DependentUpon>WTE_CustomRegistrationForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMSWebParts\WTE\Custom\WTE_CustomRegistrationForm.ascx.designer.cs">
+      <DependentUpon>WTE_CustomRegistrationForm.ascx</DependentUpon>
     </Compile>
     <Compile Include="CMSWebParts\WTE\Custom\WTE_Redirection.ascx.cs">
       <DependentUpon>WTE_Redirection.ascx</DependentUpon>

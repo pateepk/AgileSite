@@ -36,6 +36,7 @@ using CMS.WinServiceEngine;
 
 using Newtonsoft.Json;
 using System.Runtime.Serialization.Json;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace CMSApp.CMSWebParts.WTE.Slipcash
 {
@@ -54,7 +55,7 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
         {
             public string AssociatedAccountID { get; set; }
 
-            public string MemberUserID{ get; set; }
+            public string MemberUserID { get; set; }
 
             public string MemberID { get; set; }
 
@@ -66,7 +67,7 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
 
             public string AssociatedMemberHandle { get; set; }
 
-            public bool? IsEnabled { get; set; }
+            public string IsEnabled { get; set; }
         }
 
         /// <summary>
@@ -80,7 +81,6 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
             public string Action { get; set; }
 
             public List<AssociatedAccountData> AccountData { get; set; }
-
         }
 
         #endregion "Custom Classes"
@@ -352,11 +352,12 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
         {
             get
             {
-                return GetStringProperty("ActiveColumnKey", "IsActive");
+                return !String.IsNullOrWhiteSpace(IsEnabledColumnKey) ? IsEnabledColumnKey : GetStringProperty("ActiveColumnKey", "IsActive");
             }
             set
             {
                 this.SetValue("ActiveColumnKey", value);
+                IsEnabledColumnKey = value;
             }
         }
 
@@ -379,7 +380,7 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
 
         #region "Column Mapping"
 
-        #region "Associated Accounts" 
+        #region "Associated Accounts"
 
         /// <summary>
         /// UserID ID column key
@@ -441,8 +442,6 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
             }
         }
 
-
-
         /// <summary>
         /// MemberHandle column
         /// </summary>
@@ -459,7 +458,7 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
         }
 
         /// <summary>
-        /// AssociatedUserID 
+        /// AssociatedUserID
         /// </summary>
         public string AssociatedUserIDColumnKey
         {
@@ -476,17 +475,17 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
         /// <summary>
         /// AssociatedUserHandle
         /// </summary>
-        public string AssociatedUserHandleColumnKey
+        public string AssociatedMemberHandleColumnKey
         {
             get
             {
-                return GetStringProperty("AssociatedUserHandleColumnKey", "AssociatedUserHandle");
+                return GetStringProperty("AssociatedMemberHandleColumnKey", "AssociatedMemberHandle");
             }
             set
             {
-                this.SetValue("AssociatedUserHandleColumnKey", value);
+                this.SetValue("AssociatedMemberHandleColumnKey", value);
             }
-        } 
+        }
 
         /// <summary>
         /// AssociatedMemberID
@@ -518,10 +517,9 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
             }
         }
 
-        #endregion
+        #endregion "Associated Accounts"
 
-        #endregion
-
+        #endregion "Column Mapping"
 
         #endregion "Properties"
 
@@ -537,26 +535,12 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
             if (IsVisible)
             {
                 // set everything to hide
-                divManageAction.Visible = false;
-                divUpdateAction.Visible = false;
                 divtest.Visible = false;
 
                 if (ShowGUI)
                 {
                     switch (ManageMode)
                     {
-                        case "manage":
-                            {
-                                divManageAction.Visible = true;
-                            }
-                            break;
-
-                        case "update":
-                            {
-                                divUpdateAction.Visible = true;
-                            }
-                            break;
-
                         default:
                             {
                                 if (IsDebugMode)
@@ -601,14 +585,9 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
             switch (ManageMode)
             {
                 case "manage":
-                    {
-                        success = ProcessUpdatePaymentProfile();
-                        // for now, need to build "active/inactive function
-                    }
-                    break;
                 case "update":
                     {
-                        success = ProcessUpdatePaymentProfile();
+                        success = ProcessUpdateAssociatedAccount();
                     }
                     break;
 
@@ -624,7 +603,7 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
         /// <summary>
         /// Process update payment profile
         /// </summary>
-        protected bool ProcessUpdatePaymentProfile()
+        protected bool ProcessUpdateAssociatedAccount()
         {
             bool success = false;
             string redirectURL = String.Empty;
@@ -643,11 +622,11 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
 
                     // get the list here.
                     string tempMessage = String.Empty;
-                    List<AssociatedAccountData> paymentData = managedata.AccountData;
+                    List<AssociatedAccountData> accountData = managedata.AccountData;
 
-                    if (paymentData != null && paymentData.Count > 0)
+                    if (accountData != null && accountData.Count > 0)
                     {
-                        foreach (AssociatedAccountData pdata in paymentData)
+                        foreach (AssociatedAccountData pdata in accountData)
                         {
                             debugMessage += tempMessage;
 
@@ -656,7 +635,17 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
                                 case "update":
                                 case "save":
                                 case "insert":
-                                    success = SaveUserPaymentMethod(pdata, out tempMessage);
+                                    success = SaveAssociatedAccount(pdata, out tempMessage);
+                                    break;
+
+                                case "enable":
+                                    success = EnabledAssociatedAccount(pdata, true, out tempMessage);
+                                    break;
+                                case "disable":
+                                    success = EnabledAssociatedAccount(pdata, false, out tempMessage);
+                                    break;
+                                case "delete":
+                                    success = DeleteAssociatedAccount(pdata, out tempMessage);
                                     break;
 
                                 default:
@@ -703,48 +692,79 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
         /// <param name="p_data"></param>
         /// <param name="p_message"></param>
         /// <returns></returns>
-        public bool SaveUserPaymentMethod(AssociatedAccountData p_data, out string p_message)
+        public bool SaveAssociatedAccount(AssociatedAccountData p_data, out string p_message)
         {
             bool ret = false;
+            p_message = String.Empty;
 
-        //public string AssociatedAccountID { get; set; }
-
-        //public string MemberUserID { get; set; }
-
-        //public string MemberID { get; set; }
-
-        //public string MemberHandle { get; set; }
-
-        //public string AssociatedUserID { get; set; }
-
-        //public string AssociatedUserHandle { get; set; }
-
-        //public bool? IsEnabled { get; set; }
-
-        CustomTableItem item = GetCustomTableItem(p_data.AssociatedAccountID, out p_message);
+            CustomTableItem item = GetCustomTableItem(p_data.AssociatedAccountID, out p_message);
             if (item != null)
             {
                 SetCustomTableItemValue(item, MemberIDColumnKey, GetInt(p_data.MemberID));
-                //SetCustomTableItemValue(item, PaymentTypeIDColumnKey, GetInt(p_data.PaymentTypeID));
-                //SetCustomTableItemValue(item, PaymentLinkColumnKey, GetString(p_data.PaymentLink));
-                SetCustomTableItemValue(item, IsEnabledColumnKey, true); // always enabled for now.
-                //SetCustomTableItemValue(item, UserIDColumnKey, null); // we do not have this column "yet"
+                SetCustomTableItemValue(item, MemberUserIDColumnKey, GetInt(p_data.MemberUserID));
+                SetCustomTableItemValue(item, MemberHandleColumnKey, GetString(p_data.MemberHandle));
+                SetCustomTableItemValue(item, AssociatedUserIDColumnKey, GetString(p_data.AssociatedUserID));
+                SetCustomTableItemValue(item, AssociatedMemberHandleColumnKey, GetString(p_data.AssociatedMemberHandle));
+                SetCustomTableItemValue(item, MemberHandleColumnKey, GetString(p_data.MemberHandle));
+                SetCustomTableItemValue(item, IsEnabledColumnKey, GetBool(p_data.IsEnabled)); // always enabled for now.
+                SetCustomTableItemValue(item, UserIDColumnKey, null); // we do not have this column "yet"?
                 item.Update();
             }
             else
             {
                 item = CreateCustomTableItem(out p_message);
                 SetCustomTableItemValue(item, MemberIDColumnKey, GetInt(p_data.MemberID));
-                //SetCustomTableItemValue(item, PaymentTypeIDColumnKey, GetInt(p_data.PaymentTypeID));
-                //SetCustomTableItemValue(item, PaymentLinkColumnKey, GetString(p_data.PaymentLink));
-                SetCustomTableItemValue(item, IsEnabledColumnKey, true); // always enabled for now.
-                //SetCustomTableItemValue(item, UserIDColumnKey, null); // we do not have this column "yet"
+                SetCustomTableItemValue(item, MemberUserIDColumnKey, GetInt(p_data.MemberUserID));
+                SetCustomTableItemValue(item, MemberHandleColumnKey, GetString(p_data.MemberHandle));
+                SetCustomTableItemValue(item, AssociatedUserIDColumnKey, GetString(p_data.AssociatedUserID));
+                SetCustomTableItemValue(item, AssociatedMemberHandleColumnKey, GetString(p_data.AssociatedMemberHandle));
+                SetCustomTableItemValue(item, MemberHandleColumnKey, GetString(p_data.MemberHandle));
+                //SetCustomTableItemValue(item, IsEnabledColumnKey, GetBool(p_data.IsEnabled)); // always enabled for now.
+                SetCustomTableItemValue(item, IsEnabledColumnKey, true); // always enabled when we create a brand new one.
+                SetCustomTableItemValue(item, UserIDColumnKey, null); // we do not have this column "yet"?
                 item.Insert();
             }
 
             return ret;
         }
 
+        /// <summary>
+        /// Enabled/Disabled the team member
+        /// </summary>
+        /// <param name="p_data"></param>
+        /// <param name="p_message"></param>
+        /// <returns></returns>
+        public bool EnabledAssociatedAccount(AssociatedAccountData p_data, bool p_enabled, out string p_message)
+        {
+            bool ret = false;
+            p_message = String.Empty;
+            CustomTableItem item = GetCustomTableItem(p_data.AssociatedAccountID, out p_message);
+            if (item != null)
+            {
+                // update it.
+                EnableItem(item, p_enabled, out ret, out p_message);
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// Delete the association
+        /// </summary>
+        /// <param name="p_data"></param>
+        /// <param name="p_message"></param>
+        /// <returns></returns>
+        public bool DeleteAssociatedAccount(AssociatedAccountData p_data, out string p_message)
+        {
+            bool ret = false;
+            p_message = String.Empty;
+            CustomTableItem item = GetCustomTableItem(p_data.AssociatedAccountID, out p_message);
+            if (item != null)
+            {
+                //delete it
+                DeleteItem(item, out ret, out p_message);
+            }
+            return ret;
+        }
 
         #region "Custom Table Operations"
 
@@ -1059,7 +1079,7 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
             //ShowConfirmation(GetString("Administration-System.ClearCacheSuccess"));
         }
 
-        #endregion
+        #endregion "agilesite"
 
         #region "Session helper"
 
@@ -1220,7 +1240,7 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
             }
 
             // clean it up
-            if (String.IsNullOrWhiteSpace(ret))
+            if (String.IsNullOrWhiteSpace(ret) || ret == "undefined")
             {
                 ret = p_default;
             }
@@ -2006,15 +2026,17 @@ namespace CMSApp.CMSWebParts.WTE.Slipcash
                 //var t3 = JsonConvert.DeserializeObject<IDictionary<string, object>>(jsonString);
                 //var t4 = JsonConvert.DeserializeObject<UserManageData>(jsonString);
 
+                string errormessage = String.Empty;
                 try
                 {
                     ret = JsonConvert.DeserializeObject<T>(jsonString);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    errormessage = " error: " + ex.Message;
                     ret = p_default;
                 }
-                System.Diagnostics.Debug.WriteLine(jsonString);
+                System.Diagnostics.Debug.WriteLine(jsonString + errormessage);
             }
             return ret;
         }
