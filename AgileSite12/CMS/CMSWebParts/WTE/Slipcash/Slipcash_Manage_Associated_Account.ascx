@@ -285,41 +285,68 @@
             z-index: 99999
         }
 </style>
-<div class="center m-b-2  ">
-    <div id="div_team_100" name="div_team_100">
-        <a id='lnkPreview_100' href="https://slipcash.agilesite.com/$banana1" class="people-pay__btn" name='lnkPreview_100'>banana1</a>
-        <input id="txtHandle_100" type="text" placeholder="enter handle" name="txtHandle_100" onkeyup="checkHandle('100', event);" />
-        <a id='lnkUpdate_100' class="" title="Update" href="#" onclick="doSaveAssociatedAccount('100', event);" name='lnkUpdate_100' autocomplete="on">
-            <i class="fa-sharp fa-solid fa-circle-check"></i>
+<div class="center m-b-2">
+    <div id='div_team_100' name='div_team_100' class="form-group form-group_team-member">
+        <label for="lnkPreview_100"><a id="lnkPreview_100" href="https://slipcash.agilesite.com/$<%# Eval("[DisplayAssociatedHandle]") %>" class="people-pay__btn" name="lnkPreview_100"><%# Eval("[DisplayAssociatedHandle]") %></a></label>
+        <input id="txtHandle_100" type="text" placeholder="enter handle" name="txtHandle_100" value='<%# Eval("[AssociatedHandle]") %>' onkeyup="checkHandle('100', event);" />
+        <a id="lnkUpdate_100" title="Update" href="#" onclick="doSaveAssociatedAccount('100', event);" name="lnkUpdate_100">
+            <i class="fa-sharp fa-solid fa-circle-check"></i>Save
         </a>
-        <a id='lnkEdit_100' class="" title="Edit" href="#" onclick="doEditAssociatedAccount('100', event);" name='lnkEdit_100'>
-            <i class="fa-duotone fa-user-pen"></i>
+        <a id="lnkCancel_100" title="Cancel" href="#" onclick="doCancelSaveAssociatedAccount('100', event);" name="lnkCancel_100">
+            <i class="fa-sharp fa-solid fa-circle-x"></i>Cancel
         </a>
-        <a id='lnkEnable_100' class="" title="Disable" href="#" onclick="doEnableAssociatedAccount('100', 'false', event);" name='lnkEnable_100'>
-            <i class="fa-solid fa-user-large-slash"></i>
-        </a>
-        <a id='lnkDelete_100' class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('100', event);" name='lnkDelete_100'>
-            <i class="fa-sharp fa-regular fa-trash"></i>
-        </a>
+        <div class="ui-icons">
+            <a id="lnkEdit_100" title="Edit" href="#" onclick="doEditAssociatedAccount('100', event);" name="lnkEdit_100">
+                <i class="fa-duotone fa-user-pen"></i>
+            </a>
+            <a id="lnkEnable_100" class="" title="Enable" href="#" onclick="doEnableAssociatedAccount('100', 'true', event);" name="lnkEnable_100">
+                <i class="fa-solid fa-user-large-slash"></i>
+            </a>
+            <a id="lnkDelete_100" class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('100', event);" name="lnkDelete_100">
+                <i class="fa-sharp fa-regular fa-trash"></i>
+            </a>
+        </div>
+        <input type='hidden' id='hdnrow_100' value='100' />
+        <input type='hidden' id='hdnitemid_100' value='<%# Eval("[AssociatedAccountID]") %>' />
+        <input type='hidden' id='hdnmemberuserid_100' value='<%# Eval("[MemberUserID]") %>' />
+        <input type='hidden' id='hdnmemberid_100' value='<%# Eval("[MemberID]") %>' />
+        <input type='hidden' id='hdnmemberhandle_100' value='<%# Eval("[MemberHandle]") %>' />
+        <input type='hidden' id='hdnassociateduserid_100' value='<%# Eval("[AssociatedUserID]") %>' />
+        <input type='hidden' id='associatedmemberid_100' value='<%# Eval("[AssociatedMemberID]") %>' />
+        <input type='hidden' id='hdnassociatedmemberhandle_100' value='<%# Eval("[AssociatedHandle]") %>' />
+        <input type='hidden' id='hdnisenabled_100' value='<%# Eval("[IsEnabled]") %>' />
     </div>
     <div id='div_validationmsg_100'></div>
-    <div id="div_team_9999" name="div_team_9999">
-        <a id='lnkPreview_9999' class="people-pay__btn" href="https://slipcash.agilesite.com/$Add New" name='lnkPreview_9999'>Add New</a>
-        <input id="txtHandle_9999" type="text" placeholder="enter handle" name="txtHandle_9999" onkeyup="checkHandle('9999', event);" autocomplete="on" />
-        <a id='lnkUpdate_9999' class="" title="Update" href="#" onclick="doSaveAssociatedAccount('9999', event);" name='lnkUpdate_9999'>
-            <i class="fa-sharp fa-solid fa-circle-check"></i>
+    <div id='div_team_9999' name='div_team_9999' class="form-group form-group_team-member">
+        <label for="lnkPreview_9999"><a id="lnkPreview_9999" href="https://slipcash.agilesite.com/$<%# Eval("[DisplayAssociatedHandle]") %>" class="people-pay__btn" name="lnkPreview_9999"><%# Eval("[DisplayAssociatedHandle]") %></a></label>
+        <input id="txtHandle_9999" type="text" placeholder="enter handle" name="txtHandle_9999" value='<%# Eval("[AssociatedHandle]") %>' onkeyup="checkHandle('100', event);" />
+        <a id="lnkUpdate_9999" title="Update" href="#" onclick="doSaveAssociatedAccount('100', event);" name="lnkUpdate_9999">
+            <i class="fa-sharp fa-solid fa-circle-check"></i>Save
         </a>
-        <a id='lnkEdit_9999' class="" title="Edit" href="#" onclick="doEditAssociatedAccount('9999', event);" name='lnkEdit_9999'>
-            <i class="fa-duotone fa-user-pen"></i>
+        <a id="lnkCancel_9999" title="Cancel" href="#" onclick="doCancelSaveAssociatedAccount('100', event);" name="lnkCancel_9999">
+            <i class="fa-sharp fa-solid fa-circle-x"></i>Cancel
         </a>
-        <a id='lnkEnable_9999' class="" title="Disable" href="#" onclick="doEnableAssociatedAccount('9999', 'false', event)" name='lnkEnable_9999'>
-            <i class="fa-solid fa-user-large-slash"></i>
-        </a>
-        <a id='lnkDelete_9999' class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('9999', event);" name='lnkDelete_9999'>
-            <i class="fa-sharp fa-regular fa-trash"></i>
-        </a>
+        <div class="ui-icons">
+            <a id="lnkEdit_9999" title="Edit" href="#" onclick="doEditAssociatedAccount('100', event);" name="lnkEdit_9999">
+                <i class="fa-duotone fa-user-pen"></i>
+            </a>
+            <a id="lnkEnable_9999" class="" title="Enable" href="#" onclick="doEnableAssociatedAccount('100', 'true', event);" name="lnkEnable_9999">
+                <i class="fa-solid fa-user-large-slash"></i>
+            </a>
+            <a id="lnkDelete_9999" class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('100', event);" name="lnkDelete_9999">
+                <i class="fa-sharp fa-regular fa-trash"></i>
+            </a>
+        </div>
+        <input type='hidden' id='hdnrow_9999' value='100' />
+        <input type='hidden' id='hdnitemid_9999' value='<%# Eval("[AssociatedAccountID]") %>' />
+        <input type='hidden' id='hdnmemberuserid_9999' value='<%# Eval("[MemberUserID]") %>' />
+        <input type='hidden' id='hdnmemberid_9999' value='<%# Eval("[MemberID]") %>' />
+        <input type='hidden' id='hdnmemberhandle_9999' value='<%# Eval("[MemberHandle]") %>' />
+        <input type='hidden' id='hdnassociateduserid_9999' value='<%# Eval("[AssociatedUserID]") %>' />
+        <input type='hidden' id='associatedmemberid_9999' value='<%# Eval("[AssociatedMemberID]") %>' />
+        <input type='hidden' id='hdnassociatedmemberhandle_9999' value='<%# Eval("[AssociatedHandle]") %>' />
+        <input type='hidden' id='hdnisenabled_9999' value='<%# Eval("[IsEnabled]") %>' />
     </div>
-
     <div id='div_validationmsg_9999'></div>
     <div class="center">
         <button class="btn btn-dark" onclick="toggleAddNew('9999','true', event);">add new</button>
@@ -327,41 +354,7 @@
 </div>
 
 
-<div id='div_team_<%# Eval("[DisplayOrder]") %>' name='div_team_<%# Eval("[DisplayOrder]") %>' class="form-group form-group_team-member">
-  <label for="lnkPreview_<%# Eval("[DisplayOrder]") %>"><a id="lnkPreview_<%# Eval("[DisplayOrder]") %>" href="https://slipcash.agilesite.com/$<%# Eval("[DisplayAssociatedHandle]") %>" class="people-pay__btn" name="lnkPreview_<%# Eval("[DisplayOrder]") %>"><%# Eval("[DisplayAssociatedHandle]") %></a></label>
-  <input id="txtHandle_<%# Eval("[DisplayOrder]") %>" type="text" placeholder="enter handle" name="txtHandle_<%# Eval("[DisplayOrder]") %>" value='<%# Eval("[AssociatedHandle]") %>' onkeyup="checkHandle('<%# Eval("[DisplayOrder]") %>', event);"/>
-     <a id="lnkUpdate_<%# Eval("[DisplayOrder]") %>" title="Update" href="#" onclick="doSaveAssociatedAccount('<%# Eval("[DisplayOrder]") %>', event);" name="lnkUpdate_<%# Eval("[DisplayOrder]") %>">
-	<i class="fa-sharp fa-solid fa-circle-check"></i> Save
-  </a>
-  <a id="lnkCancel_<%# Eval("[DisplayOrder]") %>" title="Cancel" href="#" onclick="doCancelSaveAssociatedAccount('<%# Eval("[DisplayOrder]") %>', event);" name="lnkCancel_<%# Eval("[DisplayOrder]") %>">
-	<i class="fa-sharp fa-solid fa-circle-x"></i> Cancel
-  </a>
-  <div class="ui-icons">
-  <a id="lnkEdit_<%# Eval("[DisplayOrder]") %>" title="Edit" href="#" onclick="doEditAssociatedAccount('<%# Eval("[DisplayOrder]") %>', event);" name="lnkEdit_<%# Eval("[DisplayOrder]") %>">
-	<i class="fa-duotone fa-user-pen"></i>
-  </a>
-    <a id="lnkEnable_<%# Eval("[DisplayOrder]") %>" class="" title="<%# IfCompare(Eval("IsEnabled"), "0", "Disable", "Enable")%>" href="#" onclick="doEnableAssociatedAccount('<%# Eval("[DisplayOrder]") %>', '<%# IfCompare(Eval("IsEnabled"), "0", "false", "true")%>', event);" name="lnkEnable_<%# Eval("[DisplayOrder]") %>">
-	<i class="<%# IfCompare(Eval("IsEnabled"), "0", "fa-solid fa-user-large-slash", "fa-solid fa-user-large")%>"></i>
-    </a>
-    <a id="lnkDelete_<%# Eval("[DisplayOrder]") %>" class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('<%# Eval("[DisplayOrder]") %>', event);" name="lnkDelete_<%# Eval("[DisplayOrder]") %>">
-	 <i class="fa-sharp fa-regular fa-trash"></i>
-  </a>
-  </div>
-  <input type='hidden' id='hdnrow_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[DisplayOrder]") %>' />
-  <input type='hidden' id='hdnitemid_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[AssociatedAccountID]") %>' />
-  <input type='hidden' id='hdnmemberuserid_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[MemberUserID]") %>' />
-  <input type='hidden' id='hdnmemberid_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[MemberID]") %>' />
-  <input type='hidden' id='hdnmemberhandle_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[MemberHandle]") %>' />
-  <input type='hidden' id='hdnassociateduserid_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[AssociatedUserID]") %>' />
-  <input type='hidden' id='associatedmemberid_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[AssociatedMemberID]") %>' />
-  <input type='hidden' id='hdnassociatedmemberhandle_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[AssociatedHandle]") %>' />
-  <input type='hidden' id='hdnisenabled_<%# Eval("[DisplayOrder]") %>' value='<%# Eval("[IsEnabled]") %>' />
-</div>
-<div id='div_validationmsg_<%# Eval("[DisplayOrder]") %>'></div>
-
-
 <script type="text/javascript">
-
     var flag = false;
     var debounceTimer;
 
