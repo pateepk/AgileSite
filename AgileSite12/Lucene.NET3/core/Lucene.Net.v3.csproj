@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
 
  Licensed to the Apache Software Foundation (ASF) under one
@@ -31,7 +31,7 @@
     <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <Framework>$(TargetFrameworkVersion.Replace("v", "NET").Replace(".", ""))</Framework>
     <OutputPath>..\..\Output\Debug\CMS\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>

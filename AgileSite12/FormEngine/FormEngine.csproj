@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
@@ -25,7 +25,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <SignAssembly>true</SignAssembly>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -90,9 +90,6 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
@@ -170,10 +167,11 @@
       <LastGenOutput>ContentItemTemplate.cs</LastGenOutput>
       <CustomToolNamespace>CMS.FormEngine</CustomToolNamespace>
     </Content>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

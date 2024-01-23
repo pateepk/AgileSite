@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -16,7 +16,7 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -160,6 +160,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="CMS.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

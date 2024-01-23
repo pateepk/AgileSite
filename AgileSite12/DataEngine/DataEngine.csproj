@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
@@ -25,7 +25,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <SignAssembly>true</SignAssembly>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -91,9 +91,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Base\Base.csproj">
       <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
       <Name>Base</Name>
@@ -104,8 +101,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -659,6 +656,7 @@
       <LastGenOutput>BindingInfoTemplate.cs</LastGenOutput>
       <CustomToolNamespace>CMS.DataEngine.Generators</CustomToolNamespace>
     </Content>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
