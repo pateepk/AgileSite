@@ -377,7 +377,7 @@ namespace CMS.ContinuousIntegration.Internal
                 if (!deserializationResult.FailedFields.Any() && (typeDependsOn != null))
                 {
                     var notRequiredDependencies = typeDependsOn.Where(x => x.DependencyType == ObjectDependencyEnum.NotRequired)
-                        .Select(x => x.DependencyColumn).ToHashSet(StringComparer.OrdinalIgnoreCase);
+                        .Select(x => x.DependencyColumn).ToHashSetCollection(StringComparer.InvariantCultureIgnoreCase);
                     if (deserializationResult.FailedMappings.All(x => notRequiredDependencies.Contains(x.FieldName)))
                     {
                         try
@@ -464,7 +464,7 @@ namespace CMS.ContinuousIntegration.Internal
                 String.Join(FIELD_SEPARATOR, failedObjects.Select(obj => String.Format("{0}({1})", obj.CodeName, obj.ObjectType))));
             
             // Get failed object types which are not included in repository config
-            var excludedObjectTypes = failedObjects.Select(obj => obj.ObjectType).Except(repositoryConfiguration.ObjectTypes).ToHashSet(StringComparer.Ordinal);
+            var excludedObjectTypes = failedObjects.Select(obj => obj.ObjectType).Except(repositoryConfiguration.ObjectTypes).ToHashSetCollection(StringComparer.Ordinal);
             if (excludedObjectTypes.Count > 0)
             {
                 var excludedMessage = String.Format(ResHelper.GetAPIString("ci.deserialization.notincludedobjecttypes", "The following related object types are currently not included: {0}."), 

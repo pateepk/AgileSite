@@ -476,7 +476,7 @@ namespace CMS.TranslationServices
 
         private IList<string> GetCanceledTickets(IEnumerable<string> submissionsTickets)
         {
-            var tickets = submissionsTickets.ToHashSet(StringComparer.OrdinalIgnoreCase);
+            var tickets = submissionsTickets.ToHashSetCollection(StringComparer.OrdinalIgnoreCase);
             var cancelledSubmissionsTickets = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             int counter;
 

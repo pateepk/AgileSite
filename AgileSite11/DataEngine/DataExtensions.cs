@@ -18,6 +18,23 @@ namespace CMS.DataEngine
     /// </summary>
     public static class DataExtensions
     {
+        #region "hack for getting v11 to build with .net 4.8.1"
+
+        /// <summary>
+        /// Converts the list of objects to a hash set of distinct values
+        /// </summary>
+        /// <param name="objects">List of objects to convert</param>
+        /// <param name="comparer">Comparer</param>
+        /// <remarks>
+        /// This API supports the framework infrastructure and is not intended to be used directly from your code.
+        /// </remarks>
+        public static HashSet<T> ToHashSetCollection<T>(this IEnumerable<T> objects, IEqualityComparer<T> comparer = null)
+        {
+            return new HashSet<T>(objects, comparer);
+        }
+
+        #endregion 
+
         #region "Collections and objects"
 
         /// <summary>

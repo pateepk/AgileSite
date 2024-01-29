@@ -176,7 +176,7 @@ namespace CMS.Modules
             return GetNuGetModules()
                 .Where(module => !initializableModules.ContainsKey(module.Name) || !InstallableModulesState.VersionsMatch(module.Version, initializableModules[module.Name]))
                 .Select(x => x.Name)
-                .ToHashSet(StringComparer.InvariantCultureIgnoreCase);
+                .ToHashSetCollection(StringComparer.InvariantCultureIgnoreCase);
         }
 
 

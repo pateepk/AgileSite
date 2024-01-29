@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NHG_C {
-    
-    
-    public partial class BlueKey_CMSWebParts_NeighborhoodSearch_MoveInFilter_TR {
-        
+namespace NHG_C
+{
+
+
+    public partial class BlueKey_CMSWebParts_NeighborhoodSearch_MoveInFilter_TR
+    {
+
         /// <summary>
         /// updPanelFilters control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPanelFilters;
-        
+
         /// <summary>
         /// hfLowValue control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfLowValue;
-        
+
         /// <summary>
         /// hfHighValue control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfHighValue;
-        
+
         /// <summary>
         /// ddArea control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddArea;
-        
+
         /// <summary>
         /// ddCounty control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddCounty;
-        
+
         /// <summary>
         /// ddCity control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddCity;
-        
+
         /// <summary>
         /// ddNeighborhood control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddNeighborhood;
-        
+
         /// <summary>
         /// ddBuilder control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddBuilder;
-        
+
         /// <summary>
         /// ddType control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddType;
-        
+
         /// <summary>
         /// ddSqFt control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddSqFt;
-        
+
         /// <summary>
         /// ddBedrooms control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddBedrooms;
-        
+
         /// <summary>
         /// ddDebugLabel control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ddDebugLabel;
-        
+
         /// <summary>
         /// btnFilter control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnFilter;
-        
+
         /// <summary>
         /// btnClearFilters control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnClearFilters;
-        
+
         /// <summary>
         /// editableFinePrint control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CMS.DocumentEngine.Web.UI.CMSEditableRegion editableFinePrint;
-        
+
         /// <summary>
         /// ltlShowingCount control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace NHG_C {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlShowingCount;
-        
+
         /// <summary>
         /// ltlTotalCount control.
         /// </summary>

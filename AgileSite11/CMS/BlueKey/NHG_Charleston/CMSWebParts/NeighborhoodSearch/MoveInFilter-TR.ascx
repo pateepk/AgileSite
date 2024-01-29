@@ -3,57 +3,57 @@
 
 
 <script type="text/javascript">
-function getLocationPosition(e, n) {
-    var i = new google.maps.LatLng(e, n);
-    return  i;
-}
+    function getLocationPosition(e, n) {
+        var i = new google.maps.LatLng(e, n);
+        return i;
+    }
 
-function addNewNeighborhood(o, e, n, i) {
-    if (null != e) {
-        var g = new google.maps.InfoWindow({
+    function addNewNeighborhood(o, e, n, i) {
+        if (null != e) {
+            var g = new google.maps.InfoWindow({
                 content: n
             }),
-            h = new google.maps.Marker({
-                map: map,
-                position: e,
-                title: o,
-                icon: i
-            });
-        google.maps.event.addListener(h, "click", function() {
-            g.open(map, h)
-        })
+                h = new google.maps.Marker({
+                    map: map,
+                    position: e,
+                    title: o,
+                    icon: i
+                });
+            google.maps.event.addListener(h, "click", function () {
+                g.open(map, h)
+            })
+        }
     }
-}
 
-function populateMoveinFilterMap(o) {
-    var e = [],
-        n = [],
-        i = o;
-    j.each(o, function(n, i) {
-        -1 === j.inArray(o, n.neighborhoodId) && e.push({
-            neighborhoodId: i.neighborhoodId,
-            neighborhood: i.neighborhood
-        })
-    });
-    for (var g = 0; g < e.length; g++) {
-        var h = [];
-        j.each(i, function(o, n) {
-            n.neighborhoodId === e[g].neighborhoodId && h.push(n.listing)
-        }), i = j.grep(i, function(o, n) {
-            return o.neighborhoodId != e[g].neighborhoodId
-        }), h.length > 0 && n.push({
-            neighborhoodId: e[g].neighborhoodId,
-            neighborhood: e[g].neighborhood,
-            listings: h
+    function populateMoveinFilterMap(o) {
+        var e = [],
+            n = [],
+            i = o;
+        j.each(o, function (n, i) {
+            -1 === j.inArray(o, n.neighborhoodId) && e.push({
+                neighborhoodId: i.neighborhoodId,
+                neighborhood: i.neighborhood
+            })
+        });
+        for (var g = 0; g < e.length; g++) {
+            var h = [];
+            j.each(i, function (o, n) {
+                n.neighborhoodId === e[g].neighborhoodId && h.push(n.listing)
+            }), i = j.grep(i, function (o, n) {
+                return o.neighborhoodId != e[g].neighborhoodId
+            }), h.length > 0 && n.push({
+                neighborhoodId: e[g].neighborhoodId,
+                neighborhood: e[g].neighborhood,
+                listings: h
+            })
+        }
+        j.each(n, function (o, e) {
+            for (var n = "<ul style='list-style-type: none;'>", i = 0; i < e.listings.length; i++) n += "<li>Lot " + e.listings[i].listingLot + "</li>";
+            n += "</ul>";
+            var g = getLocationPosition(e.neighborhood.neighborhoodLatitude, e.neighborhood.neighborhoodLongitude);
+            addNewNeighborhood(e.neighborhood.neighborhoodName, g, "<div style='height: 100px'><a href=" + e.neighborhood.neighborhoodUrl + ">" + e.neighborhood.neighborhoodName + "</a>" + n + "<a href='https://maps.google.com/maps?daddr=" + g + "' target='_blank'>Get Directions</a></div>", e.neighborhood.neighborhoodIcon + ".png")
         })
     }
-    j.each(n, function(o, e) {
-        for (var n = "<ul style='list-style-type: none;'>", i = 0; i < e.listings.length; i++) n += "<li>Lot " + e.listings[i].listingLot + "</li>";
-        n += "</ul>";
-        var g = getLocationPosition(e.neighborhood.neighborhoodLatitude, e.neighborhood.neighborhoodLongitude);
-        addNewNeighborhood(e.neighborhood.neighborhoodName, g, "<div style='height: 100px'><a href=" + e.neighborhood.neighborhoodUrl + ">" + e.neighborhood.neighborhoodName + "</a>" + n + "<a href='https://maps.google.com/maps?daddr=" + g + "' target='_blank'>Get Directions</a></div>", e.neighborhood.neighborhoodIcon + ".png")
-    })
-}
 
 
 
@@ -63,10 +63,10 @@ function populateMoveinFilterMap(o) {
 
 
 <script type="text/javascript">
-  
 
 
-  
+
+
 
     var latlng = new google.maps.LatLng(36.1004549, -79.9738076);
 
@@ -78,10 +78,10 @@ function populateMoveinFilterMap(o) {
 
     var map = new google.maps.Map(document.getElementById("google_map"), myOptions);
 
-	
-	
 
-  
+
+
+
 </script>
 
 
@@ -143,7 +143,7 @@ function populateMoveinFilterMap(o) {
                             j("#hfLowValue").val(ui.values[0]);
                         }
 
-                        
+
                         if (ui.values[1] == 999) {
                             j("#hfHighValue").val(100000);
                         }
@@ -158,7 +158,7 @@ function populateMoveinFilterMap(o) {
             j(".highValue span").text(j("#slider-range").slider("values", 1));
         }
     });
-    
+
     function getUrlVars() {
         var vars = [], hash;
         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');

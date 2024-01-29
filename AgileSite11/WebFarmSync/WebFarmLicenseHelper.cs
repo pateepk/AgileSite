@@ -196,7 +196,7 @@ namespace CMS.WebFarmSync
                                                         .ToList()
                                                         .Where(lki => lki.ValidationResult == LicenseValidationEnum.Valid)
                                                         .Select(lki => lki.Domain)
-                                                        .ToHashSet(StringComparer.InvariantCultureIgnoreCase);
+                                                        .ToHashSetCollection(StringComparer.InvariantCultureIgnoreCase);
 
             if (cacheSettings.Cached)
             {

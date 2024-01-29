@@ -985,7 +985,7 @@ namespace CMS.Synchronization
             }
 
             var dependencyColumnNames = GetSelfDependencyColumnNames(typeInfo)
-                .ToHashSet(StringComparer.InvariantCultureIgnoreCase);
+                .ToHashSetCollection(StringComparer.InvariantCultureIgnoreCase);
 
             // If there is no dependency column to compare the post processing cannot be used
             if (!dependencyColumnNames.Any())
