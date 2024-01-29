@@ -871,7 +871,7 @@ namespace CMS.UIControls
 
             var actionNames = actions.Actions.OfType<Action>()
                 .Select(action => action.Name)
-                .ToHashSet(StringComparer.InvariantCultureIgnoreCase);
+                .ToHashSetCollection(StringComparer.InvariantCultureIgnoreCase);
 
             return actionNames.Contains("#move") && !actionNames.Contains("#moveup") && !actionNames.Contains("#movedown");
         }
