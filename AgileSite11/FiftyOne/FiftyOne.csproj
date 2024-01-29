@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FiftyOne.Foundation</RootNamespace>
     <AssemblyName>FiftyOne.Foundation</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>PDA.ico</ApplicationIcon>
     <SignAssembly>true</SignAssembly>
