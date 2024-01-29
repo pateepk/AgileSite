@@ -1,0 +1,1521 @@
+
+#region "Usings"
+
+using System.Web;
+using System.IO;
+using System.Web.SessionState;
+using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Drawing;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.Configuration;
+using System.Reflection;
+using System.Diagnostics;
+using System.Web.Security;
+using System.Text.RegularExpressions;
+using System.Security.Principal;
+
+using CMS.GlobalEventHelper;
+using CMS.URLRewritingEngine;
+using CMS.CMSHelper;
+using CMS.CMSOutputFilter;
+using CMS.Scheduler;
+using CMS.SettingsProvider;
+using CMS.SiteProvider;
+using CMS.EventLog;
+using CMS.EmailEngine;
+using CMS.GlobalHelper;
+using CMS.PortalEngine;
+using CMS.DataEngine;
+using CMS.VirtualPathHelper;
+using CMS.WebFarmSyncHelper;
+using CMS.WebAnalytics;
+using CMS.LicenseProvider;
+using CMS.WebFarmSync;
+using CMS.UIControls;
+using CMS.OutputFilter;
+
+#endregion
+
+/// <summary>
+/// Application methods
+/// </summary>
+public class Global : System.Web.HttpApplication
+{
+    #region "Variables"
+
+    #region "System data (do not modify)"
+
+    /// <summary>
+    /// Application version, do not change
+    /// </summary>
+    /// const string APP_VERSION = "5.5R2";
+
+    #endregion
+
+    private static DateTime mApplicationStart = DateTime.Now;
+    private static DateTime mApplicationStartFinished = DateTime.MinValue;
+
+    private static bool firstEndRequestAfterStart = true;
+
+    private static bool? mApplicationInitialized = null;
+
+    private static object mLock = new object();
+
+    /// <summary>
+    /// Windows identity
+    /// </summary>
+    private static WindowsIdentity mWindowsIdentity = null;
+
+    #endregion
+
+
+    #region "Properties"
+
+    /// <summary>
+    /// Date and time of the application start.
+    /// </summary>
+    public static DateTime ApplicationStart
+    {
+        get
+        {
+            return mApplicationStart;
+        }
+    }
+
+
+    /// <summary>
+    /// Date and time when the application start (initialization) finished its execution
+    /// </summary>
+    public static DateTime ApplicationStartFinished
+    {
+        get
+        {
+            return mApplicationStartFinished;
+        }
+    }
+
+
+    /// <summary>
+    /// Application initialized
+    /// </summary>
+    public static bool ApplicationInitialized
+    {
+        get
+        {
+            if (mApplicationInitialized == null)
+            {
+                mApplicationInitialized = false;
+            }
+
+            return mApplicationInitialized.Value;
+        }
+    }
+
+    #endregion
+
+
+    #region "Application events"
+
+    /// <summary>
+    /// Application start event handler
+    /// </summary>
+    public void Application_Start(object sender, EventArgs e)
+    {
+        ModuleEntry.RegisterModule("CMS.BannerManagement", "CMS.BannerManagement", "CMS.OnlineMarketing.BannerManagementModule", false);
+#if DEBUG
+        // Set debug mode
+        SystemHelper.IsWebProjectDebug = true;
+#endif
+    }
+
+
+    /// <summary>
+    /// Application error event handler
+    /// </summary>
+    public void Application_Error(object sender, EventArgs e)
+    {
+        CMSApplication.BeforeAplicationError(sender, e);
+
+        // Log the error
+        LogLastApplicationError();
+
+        CMSApplication.AfterApplicationError(sender, e);
+    }
+
+
+    /// <summary>
+    /// Application end event handler
+    /// </summary>
+    public void Application_End(object sender, EventArgs e)
+    {
+        CMSApplication.BeforeAplicationEnd(sender, e);
+
+        try
+        {
+            // Log the application end
+            LogApplicationEnd();
+
+            // Delete temporary directory which is used for excel file creation
+            DataHelper.DeleteExcelTempDirectory();
+        }
+        catch
+        {
+        }
+
+        CMSApplication.AfterApplicationEnd(sender, e);
+    }
+
+    #endregion
+
+
+    #region "Session events"
+
+    /// <summary>
+    /// Session start event handler
+    /// </summary>
+    public void Session_Start(object sender, EventArgs e)
+    {
+        DebugHelper.SetContext("Session_Start");
+        CMSSession.BeforeSessionStart(sender, e);
+
+        if (SqlHelperClass.IsConnectionStringInitialized)
+        {
+            string siteName = CMSContext.CurrentSiteName;
+
+            // If path was rewritten log session
+            if (URLRewriter.CurrentStatus == URLRewritingResultEnum.PathRewritten)
+            {
+                // Add sesssion to the session manager
+                if (SessionManager.OnlineUsersEnabled && !UrlHelper.IsExcludedSystem(URLRewriter.CurrentRelativePath))
+                {
+                    SessionManager.UpdateCurrentSession(null);
+                }
+            }
+
+            if (siteName != "")
+            {
+                // Process the URL referrer data
+                ProcessReferrer(siteName);
+
+                // Initialize the current visit status
+                if (AnalyticsHelper.AnalyticsEnabled(siteName))
+                {
+                    InitializeVisitStatus();
+                }
+
+                // If authentication mode is Windows, set user UI culture
+                if (RequestHelper.IsWindowsAuthentication() && UserInfoProvider.IsAuthenticated())
+                {
+                    UserInfo currentUser = CMSContext.CurrentUser;
+                    if (!currentUser.IsPublic())
+                    {
+                        UserInfoProvider.SetPreferredCultures(currentUser);
+                    }
+                }
+            }
+        }
+
+        // Count the session
+        RequestHelper.TotalSessions++;
+
+        CMSSession.AfterSessionStart(sender, e);
+        DebugHelper.ReleaseContext();
+    }
+
+
+    /// <summary>
+    /// Session end event handler
+    /// </summary>
+    public void Session_End(object sender, EventArgs e)
+    {
+        CMSSession.BeforeSessionEnd(sender, e);
+
+        if (SqlHelperClass.IsConnectionStringInitialized)
+        {
+            // Removes expired sessions
+            if (SessionManager.OnlineUsersEnabled)
+            {
+                SessionManager.RemoveExpiredSessions();
+            }
+        }
+
+        CMSSession.AfterSessionEnd(sender, e);
+    }
+
+    #endregion
+
+    #region "Request events"
+    
+    protected bool ShouldRedirectAll()
+    {
+		//string url = System.Web.HttpContext.Current.Request.ServerVariables["SERVER_NAME"].ToLower();
+		//return !(url.Contains("bluekeyinc") || url.Contains("triadnewhomeguide") || url.Contains("newhomeguides"));
+        return false;
+    }
+
+    protected bool ShouldRedirectOne()
+    {
+		//string url = System.Web.HttpContext.Current.Request.ServerVariables["SERVER_NAME"].ToLower();
+		//return (url.Contains("newhomeguides"));
+        return false;
+    }
+
+    public void Application_BeginRequest(object sender, EventArgs e)
+    {
+        //site redirection
+        //everything non-matching goes to triadnewhomeguide.com
+        if (ShouldRedirectAll())
+        {
+			HttpContext.Current.Response.Status = "301 Moved Permanently";
+			HttpContext.Current.Response.AddHeader("Location", "http://triadnewhomeguide.com");
+        }
+
+		// This site has a dedicated redirect         
+        if (ShouldRedirectOne())
+        {
+			HttpContext.Current.Response.Status = "301 Moved Permanently";
+			HttpContext.Current.Response.AddHeader("Location", "http://triadnewhomeguide.com/New-Home-Guides.aspx");
+        }
+    
+    
+        // Check the application validity
+        LicenseHelper.CheckValidity();
+
+        // Enable request debugging
+
+        // Application start events
+        FirstRequestInitialization(sender, e);
+
+        CMSRequest.BeforeBeginRequest(sender, e);
+
+        // Check if Database installation needed
+        if (InstallerFunctions.InstallRedirect())
+        {
+            return;
+        }
+
+        // Enable debugging
+        SetInitialDebug();
+
+        CMSRequest.AfterBeginRequest(sender, e);
+    }
+
+
+    /// <summary>
+    /// Request authentication handler
+    /// </summary>
+    public void Application_AuthenticateRequest(object sender, EventArgs e)
+    {
+        CMSRequest.BeforeAuthenticateRequest(sender, e);
+
+        CMSRequest.AfterAuthenticateRequest(sender, e);
+    }
+
+
+    /// <summary>
+    /// Request authorization handler
+    /// </summary>
+    public void Application_AuthorizeRequest(object sender, EventArgs e)
+    {
+        RequestHelper.LogRequestOperation("AuthorizeRequest", null, 0);
+        DebugHelper.SetContext("AuthorizeRequest");
+        CMSRequest.BeforeAuthorizeRequest(sender, e);
+
+        // Check the excluded status
+        string relativePath = URLRewriter.CurrentRelativePath;
+        ExcludedSystemEnum excludedEnum = UrlHelper.IsExcludedSystemEnum(relativePath);
+
+        // Set flag to output filter for cms dialogs
+        if (excludedEnum == ExcludedSystemEnum.CMSDialog)
+        {
+            OutputFilter.UseFormActionWithCurrentURL = true;
+        }
+
+
+        ViewModeOnDemand viewMode = new ViewModeOnDemand();
+        SiteNameOnDemand siteName = new SiteNameOnDemand();
+
+        // Try to send the output from the cache without URL rewriting
+        if (SendOutputFromCache(relativePath, excludedEnum, viewMode, siteName))
+        {
+            return;
+        }
+
+        // Perform the URL rewriting
+        RewriteUrl(relativePath, excludedEnum, viewMode, siteName);
+
+        CMSRequest.AfterAuthorizeRequest(sender, e);
+        DebugHelper.ReleaseContext();
+    }
+
+
+    /// <summary>
+    /// Acquire request state event handler
+    /// </summary>
+    public void Application_AcquireRequestState(object sender, EventArgs e)
+    {
+        RequestHelper.LogRequestOperation("AcquireRequestState", null, 0);
+        DebugHelper.SetContext("AcquireRequestState");
+        CMSRequest.BeforeAcquireRequestState(sender, e);
+
+        // Check the page security
+        CheckSecurity();
+
+        CMSRequest.AfterAcquireRequestState(sender, e);
+        DebugHelper.ReleaseContext();
+    }
+
+
+    /// <summary>
+    /// End request event handler
+    /// </summary>
+    protected void Application_EndRequest(Object sender, EventArgs e)
+    {
+        RequestHelper.LogRequestOperation("EndRequest", HttpContext.Current.Response.Status.ToString(), 0);
+        DebugHelper.SetContext("EndRequest");
+        CMSRequest.BeforeEndRequest(sender, e);
+
+        // Register the debug logs
+        if (CMSFunctions.AnyDebugEnabled)
+        {
+            RequestHelper.LogRequestValues(true, true, true);
+            DebugHelper.RegisterLogs();
+        }
+
+        // If not using automatic scheduler, run scheduler from the request
+        if (SqlHelperClass.IsConnectionStringInitialized)
+        {
+            // Restore the response cookies if fullpage caching is set
+            if ((URLRewriter.CurrentOutputCache > 0) && (URLRewriter.CurrentStatus != URLRewritingResultEnum.GetFile))
+            {
+                CookieHelper.RestoreResponseCookies();
+            }
+
+            // Additional tasks within first request end
+            if (firstEndRequestAfterStart)
+            {
+                firstEndRequestAfterStart = false;
+
+                // Re-initialize tasks which were stopped by application end
+                SchedulingExecutor.ReInitCorruptedTasks();
+                ModuleCommands.NewsletterClearEmailsSendingStatus();
+                EmailInfoProvider.ResetSendingStatus();
+
+                // Process synchronization tasks
+                WebSyncHelper.ProcessMyTasks();
+
+                // Send all the remaining queued e-mails
+                SendNewsletterEmails();
+
+                // Run smart search 
+                SearchTaskInfoProvider.ProcessTasks();
+            }
+            else
+            {
+                // Attempt to run the scheduler
+                if (!RequestHelper.IsAsyncPostback())
+                {
+                    RunScheduler();
+                }
+            }
+
+            // Log page view
+            if (RequestHelper.LogPageView)
+            {
+                string siteName = CMSContext.CurrentSiteName;
+                PageInfo currentPage = CMSContext.CurrentPageInfo;
+                UserInfo currentUser = CMSContext.CurrentUser;
+
+                if (AnalyticsHelper.AnalyticsEnabled(siteName) && !AnalyticsHelper.IsURLExcluded(siteName, currentPage.NodeAliasPath) && !AnalyticsHelper.IsIPExcluded(siteName, HttpContext.Current.Request.UserHostAddress) && !AnalyticsHelper.IsSearchEngineExcluded(siteName))
+                {
+                    // Log page view
+                    if (AnalyticsHelper.TrackPageViewsEnabled(siteName))
+                    {
+                        HitLogProvider.LogHit(HitLogProvider.PAGE_VIEWS, siteName, currentUser.PreferredCultureCode, currentPage.NodeAliasPath, currentPage.NodeId);
+                    }
+
+                    // Log aggregated view
+                    if (QueryHelper.Contains("feed") && AnalyticsHelper.TrackAggregatedViewsEnabled(siteName))
+                    {
+                        HitLogProvider.LogHit(HitLogProvider.AGGREGATED_VIEWS, siteName, currentUser.PreferredCultureCode, currentPage.NodeAliasPath, currentPage.NodeId);
+                    }
+                }
+            }
+
+            // Run web farm updater if it is required within current request
+            WebSyncHelper.SynchronizeWebFarm();
+
+        }
+
+        CMSRequest.AfterEndRequest(sender, e);
+
+        // Write SQL query log
+        DebugHelper.ReleaseContext();
+        ConnectionHelper.WriteRequestLog();
+        SecurityHelper.WriteRequestLog();
+    }
+
+    #endregion
+
+
+    #region "Overriden methods"
+
+    /// <summary>
+    /// Custom cache parameters processing
+    /// </summary>
+    public override string GetVaryByCustomString(HttpContext context, string custom)
+    {
+        if ((HttpContext.Current == null) || (context == null))
+        {
+            return "";
+        }
+
+        // Do not cache on postback
+        if (UrlHelper.IsPostback())
+        {
+            Response.Cache.SetNoStore();
+            return Guid.NewGuid().ToString();
+        }
+
+        PageInfo currentPage = CMSContext.CurrentPageInfo;
+        string result = null;
+
+        // Cache control
+        if ((currentPage != null) && !custom.StartsWith("control;"))
+        {
+            // Check page caching minutes
+            int cacheMinutes = currentPage.NodeCacheMinutes;
+            if (cacheMinutes <= 0)
+            {
+                Response.Cache.SetNoStore();
+                return Guid.NewGuid().ToString();
+            }
+        }
+
+        SiteNameOnDemand siteName = new SiteNameOnDemand();
+        ViewModeOnDemand viewMode = new ViewModeOnDemand();
+
+        // Parse the custom parameters
+        string contextString = CMSContext.GetContextCacheString(custom, viewMode, siteName);
+        if (contextString == null)
+        {
+            // Do not cache
+            Response.Cache.SetNoStore();
+            return Guid.NewGuid().ToString();
+        }
+        else
+        {
+            result = "cached" + contextString;
+        }
+
+        return result.ToLower();
+    }
+
+    #endregion
+
+
+    #region "Methods"
+
+    /// <summary>
+    /// Attempts to send the output of the page from the cache
+    /// </summary>
+    /// <param name="relativePath">Relative path</param>
+    /// <param name="excludedEnum">Excluded page status</param>
+    /// <param name="viewMode">View mode</param>
+    /// <param name="siteName">Site name</param>
+    private static bool SendOutputFromCache(string relativePath, ExcludedSystemEnum excludedEnum, ViewModeOnDemand viewMode, SiteNameOnDemand siteName)
+    {
+        if (OutputFilter.UseOutputFilterCache && ((excludedEnum == ExcludedSystemEnum.NotExcluded) || (excludedEnum == ExcludedSystemEnum.Handler404)))
+        {
+            if (relativePath.StartsWith("/getfile/", StringComparison.CurrentCultureIgnoreCase) ||
+                relativePath.StartsWith("/getmetafile/", StringComparison.CurrentCultureIgnoreCase) ||
+                relativePath.StartsWith("/getmediafile/", StringComparison.CurrentCultureIgnoreCase) ||
+                relativePath.StartsWith(URLRewriter.PREFIX_GETATTACHMENT, StringComparison.CurrentCultureIgnoreCase) ||
+                relativePath.StartsWith(URLRewriter.PREFIX_CMS_GETATTACHMENT, StringComparison.CurrentCultureIgnoreCase) ||
+                relativePath.StartsWith("/trackback/", StringComparison.CurrentCultureIgnoreCase))
+            {
+                // Do nothing for special paths
+            }
+            else
+            {
+                // Ensure the culture
+                PreferredCultureOnDemand culture = new PreferredCultureOnDemand();
+                URLRewriter.ValidateCulture(siteName.Value, culture, null);
+
+                // Try to get result from the cache
+                CMSCachedOutput output = null;
+                if (OutputFilter.SendOutputFromCache(viewMode, siteName, out output))
+                {
+                    switch (output.Status)
+                    {
+                        // Document page
+                        case URLRewritingResultEnum.PathRewritten:
+                            {
+                                // Log the visitor
+                                LogVisitor(siteName);
+
+                                // Log campaign for alias document
+                                if (!String.IsNullOrEmpty(output.DocumentAliasCampaign))
+                                {
+                                    AnalyticsHelper.SetCampaign(output.DocumentAliasCampaign, siteName.Value, output.AliasPath);
+                                }
+                                // Log campaign
+                                if (!String.IsNullOrEmpty(output.DocumentCampaign))
+                                {
+                                    AnalyticsHelper.SetCampaign(output.DocumentCampaign, siteName.Value, output.AliasPath);
+                                }
+                                // Log campaign from context 
+                                string urlCampaign = AnalyticsHelper.CurrentCampaign(siteName.Value);
+                                if (!String.IsNullOrEmpty(urlCampaign))
+                                {
+                                    AnalyticsHelper.SetCampaign(urlCampaign, siteName.Value, output.AliasPath);
+                                }
+                            }
+                            break;
+                    }
+
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+    /// <summary>
+    /// Rewrites the URL and performs all operations required after URL rewriting
+    /// </summary>
+    /// <param name="relativePath">Relative path</param>
+    /// <param name="excludedEnum">Excluded page status</param>
+    /// <param name="viewMode">View mode</param>
+    /// <param name="siteName">Site name</param>
+    private static void RewriteUrl(string relativePath, ExcludedSystemEnum excludedEnum, ViewModeOnDemand viewMode, SiteNameOnDemand siteName)
+    {
+        bool checkParameters = true;
+
+        URLRewritingResultEnum status = URLRewriter.RewriteUrl(relativePath, excludedEnum, siteName, viewMode);
+        switch (status)
+        {
+            // Document page
+            case URLRewritingResultEnum.PathRewritten:
+                {
+                    if (viewMode.Value == ViewModeEnum.LiveSite)
+                    {
+                        // Check parameters
+                        if (CheckParameters.AllowCheck)
+                        {
+                            string aliasPath = CMSContext.CurrentAliasPath;
+                            CheckParameters.CheckPath(aliasPath);
+                        }
+
+                        // Log the visitor
+                        LogVisitor(siteName);
+
+                        // Log conversions
+                        PageInfo pi = CMSContext.CurrentPageInfo;
+                        if (pi != null)
+                        {
+                            // Log campaign for alias document
+                            if (!String.IsNullOrEmpty(pi.DocumentAliasCampaign))
+                            {
+                                AnalyticsHelper.SetCampaign(pi.DocumentAliasCampaign, siteName.Value, pi.NodeAliasPath);
+                            }
+                            // Log campaign
+                            if (!String.IsNullOrEmpty(pi.DocumentCampaign))
+                            {
+                                AnalyticsHelper.SetCampaign(pi.DocumentCampaign, siteName.Value, pi.NodeAliasPath);
+                            }
+                            // Log campaign stored in context
+                            string urlCampaign = AnalyticsHelper.CurrentCampaign(siteName.Value);
+                            if (!String.IsNullOrEmpty(urlCampaign))
+                            {
+                                AnalyticsHelper.SetCampaign(urlCampaign, siteName.Value, pi.NodeAliasPath);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (DocumentBase.UseFullClientCache)
+                        {
+                            // Not live site, apply additional URL filtering
+                            OutputFilter filter = OutputFilter.EnsureOutputFilter();
+                            filter.OnAfterFiltering += new OutputFilter.CustomFilterHandler(DocumentBase.AddNoClientCacheParameters);
+                        }
+                    }
+
+                    // Apply output filter
+                    OutputFilter.ApplyOutputFilter = true;
+
+                    // Enable GZip if supported
+                    if (RequestHelper.AllowGZip)
+                    {
+                        RequestHelper.UseGZip = RequestHelper.IsGZipSupported();
+                    }
+
+                    // Count page request
+                    RequestHelper.TotalPageRequests++;
+                }
+                break;
+
+            // Get file script
+            case URLRewritingResultEnum.GetFile:
+                {
+                    // Set the debugging
+                    if (CMSFunctions.AnyDebugEnabled)
+                    {
+                        RequestSettings settings = RequestSettings.Current;
+
+                        settings.DebugSQLQueries = (SqlHelperClass.DebugQueries && ((viewMode.Value == ViewModeEnum.LiveSite) || SqlHelperClass.DebugAllQueries));
+                        settings.DebugCache = (CacheHelper.DebugCache && ((viewMode.Value == ViewModeEnum.LiveSite) || CacheHelper.DebugAllCaches));
+                        settings.DebugSecurity = (SecurityHelper.DebugSecurity && ((viewMode.Value == ViewModeEnum.LiveSite) || SecurityHelper.DebugAllSecurity));
+                        settings.DebugRequest = (RequestHelper.DebugRequests && ((viewMode.Value == ViewModeEnum.LiveSite) || RequestHelper.DebugAllRequests));
+                        settings.DebugSecurity = (SecurityHelper.DebugSecurity && ((viewMode.Value == ViewModeEnum.LiveSite) || SecurityHelper.DebugAllSecurity));
+                        settings.DebugMacros = (MacroResolver.DebugMacros && ((viewMode.Value == ViewModeEnum.LiveSite) || MacroResolver.DebugAllMacros));
+                        settings.DebugWebFarm = (WebSyncHelperClass.DebugWebFarm && ((viewMode.Value == ViewModeEnum.LiveSite) || WebSyncHelperClass.DebugAllWebFarm));
+                    }
+
+                    // Count GetFile request
+                    RequestHelper.TotalGetFileRequests++;
+                }
+                break;
+
+            // Page not found - Log hit
+            case URLRewritingResultEnum.PageNotFound:
+                {
+                    // Log page not found
+                    LogPageNotFound(siteName);
+
+                    // Count page not found
+                    RequestHelper.TotalPageNotFoundRequests++;
+
+                    // If exist redirect this page to not found url
+                    RedirectToPageNotFound(siteName);
+                }
+                break;
+
+            // Not a page
+            case URLRewritingResultEnum.NotPage:
+            case URLRewritingResultEnum.Unknown:
+                {
+                    if (excludedEnum != ExcludedSystemEnum.WebDAV)
+                    {
+                        // Do not debug non page requests
+                        if (CMSFunctions.AnyDebugEnabled)
+                        {
+                            RequestSettings settings = RequestSettings.Current;
+
+                            settings.DebugSQLQueries = false;
+                            settings.DebugCache = false;
+                            settings.DebugOutput = false;
+                            settings.DebugRequest = false;
+                            settings.DebugSecurity = false;
+                            settings.DebugMacros = false;
+                            settings.DebugWebFarm = false;
+                        }
+                    }
+                    // Count not page
+                    RequestHelper.TotalNonPageRequests++;
+
+                    checkParameters = false;
+                }
+                break;
+
+            // System page
+            case URLRewritingResultEnum.SystemPage:
+                // Enable GZip if supported
+                if (RequestHelper.AllowGZip)
+                {
+                    RequestHelper.UseGZip = RequestHelper.IsGZipSupported();
+                }
+
+                // Count the system page
+                RequestHelper.TotalSystemPageRequests++;
+                break;
+
+            default:
+                {
+                    // Set debugging for request
+                    if (CMSFunctions.AnyDebugEnabled)
+                    {
+                        RequestSettings settings = RequestSettings.Current;
+
+                        settings.DebugSQLQueries = (SqlHelperClass.DebugQueries && SqlHelperClass.DebugAllQueries);
+                        settings.DebugCache = (CacheHelper.DebugCache && CacheHelper.DebugAllCaches);
+                        settings.DebugSecurity = (SecurityHelper.DebugSecurity && SecurityHelper.DebugAllSecurity);
+                        settings.DebugOutput = (OutputHelper.DebugOutput && OutputHelper.DebugAllOutputs);
+                        settings.DebugRequest = (RequestHelper.DebugRequests && RequestHelper.DebugAllRequests);
+                        settings.DebugMacros = (MacroResolver.DebugMacros && MacroResolver.DebugAllMacros);
+                        settings.DebugWebFarm = (WebSyncHelperClass.DebugWebFarm && WebSyncHelperClass.DebugAllWebFarm);
+                    }
+
+                    // Count non page
+                    RequestHelper.TotalNonPageRequests++;
+                }
+                break;
+        }
+
+        // Check parameters of the processing page
+        if (checkParameters)
+        {
+            CheckParameters.CheckPage(HttpContext.Current.Request.Url.LocalPath);
+        }
+    }
+
+
+    /// <summary>
+    /// Performs the application initialization on the first request
+    /// </summary>
+    private void FirstRequestInitialization(object sender, EventArgs e)
+    {
+        if (ApplicationInitialized)
+        {
+            return;
+        }
+
+        // Initialize application in a locked context
+        lock (mLock)
+        {
+            if (ApplicationInitialized)
+            {
+                return;
+            }
+
+            // Remember date and time of the application start
+            mApplicationStart = DateTime.Now;
+
+            mWindowsIdentity = WindowsIdentity.GetCurrent();
+
+            ViewModeOnDemand viewMode = new ViewModeOnDemand();
+
+            // Log application start
+            if (CMSFunctions.AnyDebugEnabled)
+            {
+                RequestSettings settings = RequestSettings.Current;
+                bool liveSite = (viewMode.Value == ViewModeEnum.LiveSite);
+
+                settings.DebugRequest = RequestHelper.DebugRequests && liveSite;
+                RequestHelper.LogRequestOperation("BeforeApplicationStart", null, 0);
+
+                settings.DebugSQLQueries = SqlHelperClass.DebugQueries && liveSite;
+                settings.DebugCache = CacheHelper.DebugCache && liveSite;
+                settings.DebugSecurity = SecurityHelper.DebugSecurity && liveSite;
+                settings.DebugMacros = MacroResolver.DebugMacros && liveSite;
+                settings.DebugWebFarm = WebSyncHelperClass.DebugWebFarm && liveSite;
+
+                DebugHelper.SetContext("App_Start");
+            }
+
+            CMSApplication.BeforeAplicationStart(sender, e);
+            CMSCustom.Init();
+
+            //ConnectionHelper.UseContextConnection = true;
+            //CacheHelper.CacheItemPriority = System.Web.Caching.CacheItemPriority.NotRemovable;
+            if (SqlHelperClass.IsConnectionStringInitialized)
+            {
+                using (CMSConnectionScope scope = new CMSConnectionScope())
+                {
+                    // Use single open connection for the application start
+                    GeneralConnection conn = (GeneralConnection)scope.Connection;
+                    bool closeConnection = true;
+                    try
+                    {
+                        // Open the connection
+                        conn.Open();
+                        closeConnection = true;
+
+                        // Initialize the environment
+                        CMSFunctions.Init();
+
+                        // Update the system !! IMPORTANT - must be first
+                        UpgradeProcedure.Update(conn);
+
+                        try
+                        {
+                            // Write "Application start" event to the event log
+                            EventLogProvider ev = new EventLogProvider(conn);
+
+                            ev.DeleteOlderLogs = false;
+                            ev.LogEvent("I", DateTime.Now, "Application_Start", "STARTAPP", 0, null, 0, "", null, "", 0, HTTPHelper.GetAbsoluteUri());
+                        }
+                        catch
+                        {
+                            // can't write to log, do not process any code
+                        }
+
+                        // Delete memory synchronization tasks
+                        WebSyncHelper.DeleteMemorySynchronizationTasks();
+
+                        // Wait until initialization is complete
+                        CMSFunctions.WaitForInitialization();
+                    }
+                    finally
+                    {
+                        // Close the connection
+                        if (closeConnection)
+                        {
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Register virtual path provider
+                if (ValidationHelper.GetBoolean(SettingsHelper.AppSettings["CMSUseVirtualPathProvider"], true))
+                {
+                    CMS.VirtualPathHelper.VirtualPathHelper.RegisterVirtualPathProvider();
+                }
+            }
+
+            CMSApplication.AfterApplicationStart(sender, e);
+            DebugHelper.ReleaseContext();
+
+            // Log when the overall application start finished its execution
+            mApplicationStartFinished = DateTime.Now;
+            mApplicationInitialized = true;
+
+            RequestHelper.LogRequestOperation("AfterApplicationStart", null, 0);
+        }
+    }
+
+
+    /// <summary>
+    /// Checks the request security and path
+    /// </summary>
+    private void CheckSecurity()
+    {
+        // Process only for content pages
+        URLRewritingResultEnum status = URLRewriter.CurrentStatus;
+        if (status == URLRewritingResultEnum.PathRewritten)
+        {
+            // Check page security
+            if (HttpContext.Current.Session != null)
+            {
+                string siteName = SiteInfoProvider.CurrentSiteName;
+
+
+                #region "Check Banned IPs"
+
+                // Process banned IPs
+                if ((siteName != "") && BannedIPInfoProvider.IsBannedIPEnabled(siteName))
+                {
+                    DateTime lastCheck = ValidationHelper.GetDateTime(SessionHelper.GetValue("CMSBannedLastCheck"), DateTimeHelper.ZERO_TIME);
+                    bool banned = false;
+
+                    // Check if there wasn't change in banned IP settings
+                    if (lastCheck <= BannedIPInfoProvider.LastChange)
+                    {
+                        if (!BannedIPInfoProvider.IsAllowed(siteName, BanControlEnum.Complete))
+                        {
+                            SessionHelper.SetValue("CMSBanned", true);
+                            banned = true;
+                        }
+                        else
+                        {
+                            SessionHelper.Remove("CMSBanned");
+                        }
+
+                        //Update timestamp
+                        SessionHelper.SetValue("CMSBannedLastCheck", DateTime.Now);
+                    }
+                    else
+                    {
+                        banned = (SessionHelper.GetValue("CMSBanned") != null);
+                    }
+
+                    // Check if this session was banned
+                    if (banned)
+                    {
+                        BannedIPInfoProvider.BanRedirect(siteName);
+                    }
+                }
+
+                #endregion
+
+
+                #region "Check path"
+
+                string relativePath = HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath.ToLower();
+                relativePath = relativePath.Remove(0, 1); //'~/path' -> '/path'
+
+                string customExcludedPaths = "";
+
+                // Get Custom excluded Urls path
+                if (siteName != "")
+                {
+                    customExcludedPaths = SettingsKeyProvider.GetStringValue(siteName + ".CMSExcludedURLs");
+                }
+
+                string aliasPath = CMSContext.CurrentAliasPath;
+                PageInfo currentPageInfo = CMSContext.CurrentPageInfo;
+
+                if ((currentPageInfo != null) && (aliasPath != currentPageInfo.NodeAliasPath))
+                {
+                    // Set alias path to root if current page info is root page info
+                    if (currentPageInfo.NodeAliasPath == "/")
+                    {
+                        CMSContext.CurrentAliasPath = "/";
+                    }
+                    // Display nothing if current alias path is not equal to page info alias path
+                    else
+                    {
+                        CMSContext.CurrentPageInfo = null;
+                        currentPageInfo = CMSContext.CurrentPageInfo;
+                    }
+                }
+
+                ViewModeEnum viewMode = PortalContext.ViewMode;
+                if (currentPageInfo != null)
+                {
+                    // Check SSL Require
+                    URLRewriter.RequestSecurePage(currentPageInfo, true, viewMode, siteName);
+
+                    // Check secured areas
+                    URLRewriter.CheckSecuredAreas(siteName, currentPageInfo, true, viewMode);
+
+                    // Check permissions
+                    URLRewriter.CheckPermissions(siteName, currentPageInfo, true);
+                }
+
+                // Check default alias path
+                if ((aliasPath == "/") && (viewMode == ViewModeEnum.LiveSite))
+                {
+                    string defaultAliasPath = SettingsKeyProvider.GetStringValue(siteName + ".CMSDefaultAliasPath");
+                    string lowerDefaultAliasPath = defaultAliasPath.ToLower();
+                    if ((defaultAliasPath != "") && (lowerDefaultAliasPath != aliasPath.ToLower()))
+                    {
+                        if (lowerDefaultAliasPath == "/default")
+                        {
+                            // Special case - default
+                            CMSContext.CurrentAliasPath = defaultAliasPath;
+                        }
+                        else
+                        {
+                            // Redirect to the new path
+                            UrlHelper.Redirect(CMSContext.GetUrl(defaultAliasPath));
+                        }
+                    }
+                }
+
+                #endregion
+
+
+                // Update current session
+                if (SessionManager.OnlineUsersEnabled && !UrlHelper.IsExcludedSystem(URLRewriter.CurrentRelativePath))
+                {
+                    SessionManager.UpdateCurrentSession(siteName);
+                }
+            }
+
+            // Extend the expiration of the authentication cookie if required
+            if (!UserInfoProvider.UseSessionCookies && (HttpContext.Current != null) && (HttpContext.Current.Session != null))
+            {
+                CookieHelper.ChangeCookieExpiration(FormsAuthentication.FormsCookieName, DateTime.Now.AddMinutes(Session.Timeout), true);
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Logs the site visitor
+    /// </summary>
+    /// <param name="siteName">Site name</param>
+    private static void LogVisitor(SiteNameOnDemand siteName)
+    {
+        if ((siteName.Value != "") && AnalyticsHelper.AnalyticsEnabled(siteName.Value))
+        {
+            string ip = HttpContext.Current.Request.UserHostAddress;
+
+            // Get user status
+            VisitorStatusEnum currentStatus = CMSContext.CurrentVisitStatus;
+
+            // If visitors smart checking is enabled and visitor from given IP is new
+            if (currentStatus == VisitorStatusEnum.Unknown)
+            {
+                bool userVisited = AnalyticsHelper.IPHasVisited(ip, siteName.Value);
+                // Log IP as visited
+                if (AnalyticsHelper.SlidingIPExpiration || !userVisited)
+                {
+                    AnalyticsHelper.LogIPVisit(ip, siteName.Value);
+                }
+
+                // Set visitor status
+                if (!userVisited)
+                {
+                    currentStatus = VisitorStatusEnum.FirstVisit;
+                    CMSContext.CurrentVisitStatus = VisitorStatusEnum.FirstVisit;
+                }
+            }
+
+            switch (currentStatus)
+            {
+                case VisitorStatusEnum.FirstVisit:
+
+                    CMSContext.CurrentVisitStatus = VisitorStatusEnum.MoreVisits;
+
+                    // Check overall visitor status
+                    switch (CMSContext.VisitorStatus)
+                    {
+                        case VisitorStatusEnum.Unknown:
+                            {
+                                // First visit
+                                CMSContext.VisitorStatus = VisitorStatusEnum.FirstVisit;
+
+                                //string ip = HttpContext.Current.Request.UserHostAddress;
+                                if (!AnalyticsHelper.IsIPExcluded(siteName.Value, ip) && !AnalyticsHelper.IsSearchEngineExcluded(siteName.Value))
+                                {
+                                    // Log first visitor
+                                    if (AnalyticsHelper.TrackVisitsEnabled(siteName.Value))
+                                    {
+                                        HitLogProvider.LogHit(HitLogProvider.VISITORS_FIRST, siteName.Value, null, siteName.Value, 0);
+                                    }
+
+                                    // Log browser
+                                    if (AnalyticsHelper.TrackBrowserTypesEnabled(siteName.Value))
+                                    {
+                                        string browser = BrowserHelper.GetBrowser();
+                                        if (browser != null)
+                                        {
+                                            HitLogProvider.LogHit(HitLogProvider.BROWSER_TYPE, siteName.Value, null, browser, 0);
+                                        }
+                                    }
+
+                                    // Log country
+                                    if (AnalyticsHelper.TrackCountriesEnabled(siteName.Value))
+                                    {
+                                        string countryName = IP2CountryHelper.GetCountryByIp(ip);
+                                        if (!String.IsNullOrEmpty(countryName))
+                                        {
+                                            HitLogProvider.LogHit(HitLogProvider.COUNTRIES, siteName.Value, null, countryName, 0);
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+
+                        case VisitorStatusEnum.FirstVisit:
+                        case VisitorStatusEnum.MoreVisits:
+                            {
+                                // Next user visit
+                                CMSContext.VisitorStatus = VisitorStatusEnum.MoreVisits;
+
+                                //string ip = HttpContext.Current.Request.UserHostAddress;
+                                if (!AnalyticsHelper.IsIPExcluded(siteName.Value, ip) && !AnalyticsHelper.IsSearchEngineExcluded(siteName.Value))
+                                {
+                                    if (AnalyticsHelper.TrackVisitsEnabled(siteName.Value))
+                                    {
+                                        HitLogProvider.LogHit(HitLogProvider.VISITORS_RETURNING, siteName.Value, null, siteName.Value, 0);
+                                    }
+                                    if (AnalyticsHelper.TrackBrowserTypesEnabled(siteName.Value))
+                                    {
+                                        string browser = BrowserHelper.GetBrowser();
+                                        if (browser != null)
+                                        {
+                                            HitLogProvider.LogHit(HitLogProvider.BROWSER_TYPE, siteName.Value, null, browser, 0);
+                                        }
+                                    }
+                                    if (AnalyticsHelper.TrackCountriesEnabled(siteName.Value))
+                                    {
+                                        string countryName = IP2CountryHelper.GetCountryByIp(ip);
+                                        if (!String.IsNullOrEmpty(countryName))
+                                        {
+                                            HitLogProvider.LogHit(HitLogProvider.COUNTRIES, siteName.Value, null, countryName, 0);
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+
+                        //case VisitorStatusEnum.MoreVisits:
+                        //    // Do nothing, already visited
+                        //    break;
+                    }
+                    break;
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Logs the page not found
+    /// </summary>
+    /// <param name="siteName">Site name</param>
+    private static void LogPageNotFound(SiteNameOnDemand siteName)
+    {
+        string ip = HttpContext.Current.Request.UserHostAddress;
+        if (AnalyticsHelper.AnalyticsEnabled(siteName.Value) && AnalyticsHelper.TrackInvalidPagesEnabled(siteName.Value) && !AnalyticsHelper.IsIPExcluded(siteName.Value, ip) && !AnalyticsHelper.IsSearchEngineExcluded(siteName.Value))
+        {
+            string url = UrlHelper.RemoveQuery(URLRewriter.CurrentURL);
+            HitLogProvider.LogHit(HitLogProvider.PAGE_NOT_FOUND, siteName.Value, CMSContext.PreferredCultureCode, url, 0);
+        }
+    }
+
+
+    /// <summary>
+    /// Redirects the user to page not found URL
+    /// </summary>
+    /// <param name="siteName">Site name</param>
+    private static void RedirectToPageNotFound(SiteNameOnDemand siteName)
+    {
+        string notFoundUrl = ValidationHelper.GetString(SettingsKeyProvider.GetStringValue(siteName.Value + ".CMSPageNotFoundUrl"), "");
+        if (notFoundUrl != "")
+        {
+            // Get relative path
+            string relativePath = UrlHelper.GetVirtualPath(UrlHelper.CurrentURL);
+            // relative path must be defined
+            if (!String.IsNullOrEmpty(relativePath))
+            {
+                if (relativePath.StartsWith("~/"))
+                {
+                    relativePath = relativePath.Substring(1); //'~/path' -> '/path'
+                }
+
+                // Check aspx pages
+                if (relativePath.EndsWith(".aspx", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    // Get physical path
+                    string physicalPath = UrlHelper.WebApplicationPhysicalPath + relativePath.Replace('/', '\\');
+                    // Do not show page not found page if file exists
+                    if (File.Exists(physicalPath))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            HttpContext currentContext = HttpContext.Current;
+            if (currentContext != null)
+            {
+                // Resolve url if starts with "~/"
+                if (notFoundUrl.StartsWith("~/"))
+                {
+                    notFoundUrl = UrlHelper.ResolveUrl(notFoundUrl);
+                }
+
+                // Check if path is excluded (excluded paths)
+                string customExcludedPaths = "";
+                if (siteName.Value != "")
+                {
+                    customExcludedPaths = SettingsKeyProvider.GetStringValue(siteName.Value + ".CMSExcludedURLs");
+                }
+
+                // For excluded path use path rewrite
+                if (UrlHelper.IsExcluded(UrlHelper.RemoveApplicationPath(notFoundUrl), customExcludedPaths))
+                {
+                    string query = "aspxerrorpath=" + URLRewriter.CurrentURL;
+
+                    // Process the query
+                    int queryIndex = notFoundUrl.IndexOf("?");
+                    if (queryIndex >= 0)
+                    {
+                        // Move the query to the query information and append the error path
+                        query = notFoundUrl.Substring(queryIndex + 1) + "&" + query;
+                        notFoundUrl = notFoundUrl.Substring(0, queryIndex);
+                    }
+
+                    // Rewrite to destination path
+                    currentContext.RewritePath(notFoundUrl, currentContext.Request.PathInfo, query);
+                    currentContext.Response.StatusCode = 404;
+                }
+                // For not excluded page(portal engine or full URLs) use redirect - cannot do rewrite to portal page
+                else
+                {
+                    // Try to show PageNotFound.aspx at first (to maintain 404 response for crawlers)
+                    string pageNotFoundPage = "~/CMSMessages/PageNotFound.aspx";
+                    string physicalPath = UrlHelper.WebApplicationPhysicalPath + pageNotFoundPage.Substring(1).Replace('/', '\\');
+
+                    // Use javascript redirect trick trough PageNotFound.aspx
+                    if (File.Exists(physicalPath))
+                    {
+                        string queryString = "aspxerrorpath=" + URLRewriter.CurrentURL + "&pagenotfoundpath=1";
+                        currentContext.RewritePath(pageNotFoundPage, currentContext.Request.PathInfo, queryString);
+                    }
+                    else
+                    {
+                        // Use 301 redirect if there is no other choice
+                        UrlHelper.Redirect(notFoundUrl, true, siteName.Value);
+                    }
+                }
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Attempts to run the scheduler request
+    /// </summary>
+    private static void RunScheduler()
+    {
+        // Process scheduler only on content or system pages
+        switch (URLRewriter.CurrentStatus)
+        {
+            case URLRewritingResultEnum.PathRewritten:
+            case URLRewritingResultEnum.SystemPage:
+                // Run scheduler - Do not run on first request to provide faster application start
+                string siteName = CMSContext.CurrentSiteName;
+                if (siteName != "")
+                {
+                    if (SchedulingHelper.UseAutomaticScheduler)
+                    {
+                        // Ensure the active timer running in an asynchronous thread
+                        SchedulingTimer timer = SchedulingTimer.EnsureTimer(siteName, true);
+                        if (SchedulingTimer.RunSchedulerImmediately)
+                        {
+                            timer.ExecuteAsync();
+                        }
+                    }
+                    else
+                    {
+                        // --- Default scheduler settings
+                        // If scheduler run request acquired, run the actions
+                        bool runScheduler = SchedulingTimer.RequestRun(siteName) || SchedulingTimer.RunSchedulerImmediately;
+                        if (runScheduler)
+                        {
+                            if (SchedulingHelper.RunSchedulerWithinRequest)
+                            {
+                                // --- Default scheduler settings
+                                try
+                                {
+                                    try
+                                    {
+                                        // Flush the output
+                                        HttpContext.Current.Response.Flush();
+                                    }
+                                    // Do not display closed host exception
+                                    catch
+                                    {
+                                    }
+
+                                    // Run scheduler actively within the request                                    
+                                    SchedulingExecutor.ExecuteScheduledTasks(siteName, WebSyncHelperClass.ServerName);
+                                }
+                                catch (Exception ex)
+                                {
+                                    EventLogProvider.LogException("Scheduler", "ExecuteScheduledTasks", ex);
+                                }
+                            }
+                            else
+                            {
+                                // Get passive timer and execute
+                                SchedulingTimer timer = SchedulingTimer.EnsureTimer(siteName, false);
+                                timer.ExecuteAsync();
+                            }
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
+
+    /// <summary>
+    /// Requests sending of the newsletter e-mails
+    /// </summary>
+    private static void SendNewsletterEmails()
+    {
+        // Check if the newsletter is allowed
+        string domain = DataHelper.GetNotEmpty(UrlHelper.GetCurrentDomain(), "");
+        if (domain != "")
+        {
+            if (LicenseHelper.CheckFeature(UrlHelper.GetCurrentDomain(), FeatureEnum.Newsletters))
+            {
+                ModuleCommands.NewsletterSendAllEmails(false);
+            }
+        }
+
+        // Collect unnecessary data
+        GC.Collect();
+    }
+
+
+    /// <summary>
+    /// Logs the last application error
+    /// </summary>
+    private static void LogLastApplicationError()
+    {
+        if (SqlHelperClass.IsConnectionStringInitialized)
+        {
+            if (HttpContext.Current != null)
+            {
+                Exception ex = HttpContext.Current.Server.GetLastError();
+                if (ex != null)
+                {
+                    // Log request operation
+                    RequestHelper.LogRequestOperation("OnError", ex.Message, 0);
+
+                    // Impersonation context
+                    WindowsImpersonationContext ctx = null;
+
+                    try
+                    {
+                        // Impersonate current thread
+                        ctx = mWindowsIdentity.Impersonate();
+
+                        // Run custom exception event handler
+                        if (SettingsKeyProvider.UseCustomHandlers)
+                        {
+                            EventHelper.GetExceptionHandler().OnException(HttpContext.Current.Server.GetLastError());
+                        }
+
+                        // Get the lowest exception
+                        while (ex.InnerException != null)
+                        {
+                            ex = ex.InnerException;
+                        }
+
+                        // Write error to Event log
+                        try
+                        {
+                            EventLogProvider eProvider = new EventLogProvider();
+                            eProvider.LogEvent("E", DateTime.Now, "Application_Error", "EXCEPTION", CMSContext.CurrentUser != null ? CMSContext.CurrentUser.UserID : 0, CMSContext.CurrentUser != null ? CMSContext.CurrentUser.UserName : "", CMSContext.CurrentDocument != null ? CMSContext.CurrentDocument.NodeID : 0, CMSContext.CurrentDocument != null ? CMSContext.CurrentDocument.DocumentName : "", HTTPHelper.GetUserHostAddress(), EventLogProvider.GetExceptionLogMessage(ex), CMSContext.CurrentSite != null ? CMSContext.CurrentSite.SiteID : 0, HTTPHelper.GetAbsoluteUri());
+                        }
+                        catch
+                        {
+                            // can't write to log, do not process any code
+                        }
+                    }
+                    finally
+                    {
+                        if (ctx != null)
+                        {
+                            ctx.Undo();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Logs the application end
+    /// </summary>
+    private static void LogApplicationEnd()
+    {
+        EventLogProvider eventLog = new EventLogProvider();
+
+        // Get the shutdown reason
+        System.Web.HttpRuntime runtime = (System.Web.HttpRuntime)typeof(System.Web.HttpRuntime).InvokeMember("_theRuntime", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.GetField, null, null, null);
+        if (runtime != null)
+        {
+            string shutDownMessage = Convert.ToString(runtime.GetType().InvokeMember("_shutDownMessage", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField, null, runtime, null));
+            string shutDownStack = Convert.ToString(runtime.GetType().InvokeMember("_shutDownStack", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField, null, runtime, null));
+            StackTrace stack = new StackTrace();
+            string callStack = stack.ToString();
+            string logMessage = "Message: " + shutDownMessage + "<br />\nShutdown stack: " + shutDownStack + "<br />\nCall stack: " + callStack;
+            eventLog.LogEvent("W", DateTime.Now, "Application_End", "ENDAPP", 0, HTTPHelper.GetUserName(), 0, "", null, logMessage, 0, null);
+        }
+        else
+        {
+            eventLog.LogEvent("W", DateTime.Now, "Application_End", "ENDAPP", 0, HTTPHelper.GetUserName(), 0, "", null, "", 0, null);
+        }
+    }
+
+
+    /// <summary>
+    /// Processes the current URL referrer data
+    /// </summary>
+    /// <param name="siteName">Site name</param>
+    private static void ProcessReferrer(string siteName)
+    {
+        // Prepare data
+        Uri referrer = HttpContext.Current.Request.UrlReferrer;
+        if ((referrer != null) && (CMSContext.ViewMode == ViewModeEnum.LiveSite))
+        {
+            if (!referrer.AbsoluteUri.StartsWith("/") && !referrer.IsLoopback && (referrer.Host.ToLower() != HttpContext.Current.Request.Url.Host))
+            {
+                // Check other site domains
+                SiteInfo rsi = SiteInfoProvider.GetRunningSiteInfo(referrer.Host, UrlHelper.GetApplicationPath());
+                if ((rsi == null) || (rsi.SiteName != siteName))
+                {
+                    string path = UrlHelper.RemoveQuery(referrer.AbsoluteUri);
+
+                    // Save the referrer value
+                    CMSContext.CurrentUser.URLReferrer = path;
+
+                    // Log referral
+                    string ip = HttpContext.Current.Request.UserHostAddress;
+                    if (AnalyticsHelper.AnalyticsEnabled(siteName) && AnalyticsHelper.TrackReferralsEnabled(siteName) && !AnalyticsHelper.IsIPExcluded(siteName, ip) && !AnalyticsHelper.IsSearchEngineExcluded(siteName))
+                    {
+                        HitLogProvider.LogHit(HitLogProvider.URL_REFERRALS, siteName, null, path, 0);
+                    }
+                }
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Initializes the current visit status
+    /// </summary>
+    private static void InitializeVisitStatus()
+    {
+        // Initialize current visit status
+        switch (CMSContext.CurrentVisitStatus)
+        {
+            case VisitorStatusEnum.Unknown:
+                // First today's visit
+                CMSContext.CurrentVisitStatus = VisitorStatusEnum.FirstVisit;
+                break;
+
+            case VisitorStatusEnum.FirstVisit:
+            case VisitorStatusEnum.MoreVisits:
+                // More today's visits, keep the status
+                break;
+        }
+    }
+
+
+    /// <summary>
+    /// Sets the initial debugging settings
+    /// </summary>
+    private static void SetInitialDebug()
+    {
+        if (CMSFunctions.AnyDebugEnabled)
+        {
+            // Prepare the context values
+            ViewModeOnDemand viewMode = new ViewModeOnDemand();
+            RequestSettingsOnDemand settings = new RequestSettingsOnDemand();
+
+            // Set request debugging
+            if (RequestHelper.DebugRequests)
+            {
+                settings.Value.DebugRequest = RequestHelper.DebugAllRequests || (viewMode.Value == ViewModeEnum.LiveSite);
+                RequestHelper.LogRequestOperation("BeginRequest", null, 0);
+            }
+            if (SqlHelperClass.DebugQueries)
+            {
+                settings.Value.DebugSQLQueries = SqlHelperClass.DebugAllQueries || (viewMode.Value == ViewModeEnum.LiveSite);
+            }
+            if (CacheHelper.DebugCache)
+            {
+                settings.Value.DebugCache = CacheHelper.DebugAllCaches || (viewMode.Value == ViewModeEnum.LiveSite);
+            }
+            if (SecurityHelper.DebugSecurity)
+            {
+                settings.Value.DebugSecurity = SecurityHelper.DebugAllSecurity || (viewMode.Value == ViewModeEnum.LiveSite);
+            }
+            if (MacroResolver.DebugMacros)
+            {
+                settings.Value.DebugMacros = MacroResolver.DebugAllMacros || (viewMode.Value == ViewModeEnum.LiveSite);
+            }
+            if (OutputHelper.DebugOutput)
+            {
+                settings.Value.DebugOutput = OutputHelper.DebugAllOutputs || (viewMode.Value == ViewModeEnum.LiveSite);
+            }
+            if (WebSyncHelperClass.DebugWebFarm)
+            {
+                settings.Value.DebugWebFarm = WebSyncHelperClass.DebugAllWebFarm || (viewMode.Value == ViewModeEnum.LiveSite);
+            }
+        }
+    }
+
+    #endregion
+}
+

@@ -1,0 +1,158 @@
+footer {
+	background: $gray-ex-dark;
+	font-family: $font-stack2;
+	font-size: $font-xs;
+	text-align: center;
+	padding: 45px 0 0;
+	color: $text-light;
+	clear: both;
+
+	@media #{$md} {
+		text-align: left;
+		font-size: $font-xs - 0.4;
+		padding: 45px 0;
+	}
+
+	@media #{$xl} {
+		font-size: $font-xs - 0.2;
+	}
+
+	a, a:visited {
+		color: $text-light;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	p {
+		margin: 0;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		&:after {
+			@extend .clearfix;
+		}
+	}
+
+	li {
+		font-weight: 700;
+		text-transform: uppercase;
+		margin: 0 0 1.2em;
+
+		@media #{$sm} {
+			display: inline-block;
+			margin: 0 25px 1.2em;
+		}
+
+		@media #{$md} {
+			margin: 0 2% 0 0;
+			width: 12%;
+			float: left;
+		}
+
+		a, a:visited {
+			color: $text-light;
+			display: block;
+
+			@media #{$md} {
+				color: #fff;
+				padding: 0 0 5px;
+				border-bottom: 1px solid $text-light;
+				margin: 0 0 0.8em;
+			}
+		}
+
+		ul {
+			display: none;
+
+			@media #{$md} {
+				display: inline-block;
+				float: none;
+				margin: 0;
+				width: 100%;
+			}
+		}
+
+		li {
+			text-transform: none;
+			font-weight: 400;
+			display: block;
+			width: 100%;
+			float: none;
+
+			a, a:visited {
+				color: $text-light;
+
+				@media #{$md} {
+					border: none;
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+
+.footerLeft {
+	margin: 0 0 3em;
+
+	@media #{$md} {
+		@include span(10 no-gutter);
+	}
+}
+
+.footerRight {
+	margin: 0 0 3em;
+
+	@media #{$md} {
+		@include span(2 last);
+		text-align: center;
+		padding: 15px 0 0;
+	}
+}
+
+.footerBottom {
+	clear: both;
+}
+
+.footerLogo {
+	display: inline-block;
+	height: 45px;
+	width: auto;
+	margin: 0 11px;
+
+	@media #{$md} {
+		margin: 0 auto 2em;
+		display: block;
+		height: 65px;
+	}
+}
+
+.footerCredit {
+	margin: 0 0 3em;
+
+	@media #{$md} {
+		@include span(9 last);
+		margin-bottom: 0;
+	}
+
+	a, a:visited {
+		text-decoration: underline;
+	}
+
+	a.bkCredit,
+	a:visited.bkCredit {
+		text-decoration: none;
+	}
+}
+
+.footerSocial {
+	
+	@media #{$md} {
+		@include span(3);
+	}
+}

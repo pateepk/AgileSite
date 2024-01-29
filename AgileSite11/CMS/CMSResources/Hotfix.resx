@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="recaptcha.error.missing-input-secret" xml:space="preserve">
+    <value>The secret parameter is missing.</value>
+  </data>
+  <data name="recaptcha.error.invalid-input-secret" xml:space="preserve">
+    <value>The secret parameter is invalid or malformed.</value>
+  </data>
+  <data name="recaptcha.error.missing-input-response" xml:space="preserve">
+    <value>The response parameter is missing.</value>
+  </data>
+  <data name="recaptcha.error.invalid-input-response" xml:space="preserve">
+    <value>The response parameter is invalid or malformed.</value>
+  </data>
+  <data name="recaptcha.error.bad-request" xml:space="preserve">
+    <value>The request is invalid or malformed.</value>
+  </data>
+  <data name="recaptcha.error.timeout-or-duplicate" xml:space="preserve">
+    <value>reCAPTCHA timeout or the reCAPTCHA is duplicated in the same form.</value>
+  </data>
+  <data name="recaptcha.error.invalidconfiguration" xml:space="preserve">
+    <value>reCAPTCHA needs to be configured with a site and secret key.</value>
+  </data>
+  <data name="recaptcha.error.serverunavailable" xml:space="preserve">
+    <value>The reCAPTCHA server is unavailable.</value>
+  </data>
+  <data name="settingskey.cmscaptcha.description" xml:space="preserve">
+    <value>The default CAPTCHA control that should be used for CAPTCHA verification throughout the system - in web parts and for the &lt;strong&gt;Security code&lt;/strong&gt; form control. The following four types of controls are available:
+
+&lt;strong&gt;Logic CAPTCHA&lt;/strong&gt; - requires answering a logical question .
+&lt;strong&gt;Simple CAPTCHA&lt;/strong&gt; - requires re-typing of a string displayed in an image .
+&lt;strong&gt;Text CAPTCHA&lt;/strong&gt; - requires re-typing of a string into multiple fields.
+&lt;strong&gt;reCAPTCHA&lt;/strong&gt; - requires the user to click a checkbox indicating the user is not a robot. This will either pass the user immediately (with No CAPTCHA) or challenge them to validate whether or not they are human.
+&lt;br/&gt;The behavior of these form controls throughout the system can be changed by modifying the settings of the individual controls.</value>
+  </data>
+  <data name="settingskey.recaptchaprivateapikey" xml:space="preserve">
+    <value>reCAPTCHA secret key</value>
+  </data>
+  <data name="settingskey.recaptchaprivateapikey.description" xml:space="preserve">
+    <value>The secret API key for the site where you want to use reCAPTCHA. &lt;br /&gt;&lt;br /&gt; You can get your API keys at &lt;strong&gt;https://www.google.com/recaptcha/admin&lt;/strong&gt;.</value>
+  </data>
+  <data name="settingskey.recaptchapublicapikey" xml:space="preserve">
+    <value>reCAPTCHA site key</value>
+  </data>
+  <data name="settingskey.recaptchapublicapikey.description" xml:space="preserve">
+    <value>The site API key for the site where you want to use reCAPTCHA.&lt;br /&gt;&lt;br /&gt; You can get your API keys at &lt;strong&gt;https://www.google.com/recaptcha/admin&lt;/strong&gt;.</value>
+  </data>
+  <data name="dialogs.content.listinginfo" xml:space="preserve">
+    <value>This is the full listing of children of the '{0}' page. {1} to return to the original listing.</value>
+  </data>
+  <data name="sm.facebook.account.msg.pageaccesstokenfail" xml:space="preserve">
+    <value>Failed to authorize access to the Facebook page. Please make sure that the Facebook page ID is correct and you are an administrator of that page.</value>
+  </data>
+  <data name="sm.facebook.account.msg.pageidexists" xml:space="preserve">
+    <value>The Facebook page with the specified ID already exists.</value>
+  </data>
+  <data name="sm.facebook.account.msg.pageidnotset" xml:space="preserve">
+    <value>Please enter a valid Facebook page ID first. Only numeric characters are allowed.</value>
+  </data>
+  <data name="sm.facebook.accounts.accesstoken.description" xml:space="preserve">
+    <value>When you enter a Facebook page ID you can authorize access to the page. It allows your site to post content onto the page. The access can be authorized only by the page owner.</value>
+  </data>
+  <data name="sm.facebook.accounts.pageid" xml:space="preserve">
+    <value>Facebook page ID</value>
+  </data>
+  <data name="sm.facebook.accounts.pageid.description" xml:space="preserve">
+    <value>The ID of a Facebook page where the content will be posted. You can find it on the "About" tab of your Facebook page.</value>
+  </data>
+  <data name="sm.facebook.accounts.msg.pageidnotnumericstring" xml:space="preserve">
+    <value>Please enter a valid Facebook page ID. Only numeric characters are allowed.</value>
+  </data>
+</root>

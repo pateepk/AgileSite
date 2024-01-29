@@ -1,0 +1,30 @@
+﻿Generating X509 cert:
+
+if you have git for windows install there is a version of Open ssl here:
+C:\Program Files\Git\usr\bin\openssl.exe
+
+convert .pfx to pem file (private key only)
+eg. openssl pkcs12 -in .\trainingnetwork.pfx -out .\trainingnetwork.pem -nocerts
+
+Generating X509
+convert .pfx to pem with only public key
+eg. openssl pkcs12 -in .\trainingnetwork.pfx -out .\trainingnetwork.pub.pem -nokeys
+convert pem to crt (X509)
+eg. openssl x509 -outform der -in .\trainingnetwork.pub.pem -out .\trainingnetwork.pub.crt
+
+openssl pkcs12 -in .\2022-trainingnetworknow.pfx -out .\2022-trainingnetworknow.private.pem -nocerts
+openssl pkcs12 -in .\2022-trainingnetworknow.pfx -out .\2022-trainingnetworknow.pub.pem -nokeys
+openssl pkcs12 -in .\2022-trainingnetworknow.pfx -out .\2022-trainingnetworknow-full.pem 
+openssl x509 -outform der -in .\2022-trainingnetworknow.pub.pem -out .\2022-trainingnetworknow.pub.crt
+
+
+openssl pkcs12 -in .\2023-agilesite-com.pfx -out .\2023-agilesite-com.private.pem -nocerts
+openssl pkcs12 -in .\2023-agilesite-com.pfx -out .\2023-agilesite-com.pub.pem -nokeys
+openssl pkcs12 -in .\2023-agilesite-com.pfx -out .\2023-agilesite-com-full.pem 
+openssl x509 -outform der -in .\2023-agilesite-com.pub.pem -out .\2023-agilesite-com.pub.crt
+
+
+openssl pkcs12 -in .\2023-learn.streamery.co.pfx -out .\2023-learn.streamery.co.private.pem -nocerts
+openssl pkcs12 -in .\2023-learn.streamery.co.pfx -out .\2023-learn.streamery.co.pub.pem -nokeys
+openssl pkcs12 -in .\2023-learn.streamery.co.pfx -out .\2023-learn.streamery.co-full.pem 
+openssl x509 -outform der -in .\2023-learn.streamery.co.pub.pem -out .\2023-learn.streamery.co.pub.crt

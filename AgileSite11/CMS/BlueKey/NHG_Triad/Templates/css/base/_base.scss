@@ -1,0 +1,191 @@
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-top: 0;
+}
+
+html {
+	font-size: 59.5%;
+	height: 100%;
+
+	@media #{$sm} {
+		font-size: 59.5%;
+	}
+
+	@media #{$md} {
+		font-size: 62.5%;
+	}
+
+	@media #{$lg} {
+		font-size: 62.5%;
+	}
+}
+
+body {
+	background: $gray-ex-light;
+	color: $text-med;
+	font-size: $font-base;
+	line-height: $line-height-base;
+	font-family: $font-stack;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: none;
+	max-width: 100%;
+}
+
+ul ul,
+ol ul,
+ol ul,
+ol ol {
+	margin-top: 0.4em;
+	margin-bottom: 0.4em;
+}
+
+li {
+	margin-bottom: 0.4em;
+	line-height: $line-height-compact;
+}
+
+p,
+ul,
+ol {
+	margin-bottom: 1.6em;
+}
+
+a, a:visited {
+	color: $accent1;
+	text-decoration: none;
+}
+
+a:hover, a:visited:hover {
+	color: $accent1-dark;
+	text-decoration: underline;
+}
+
+h1,
+.h1 {
+	margin: 0 0 0.2em;
+	font-family: $font-stack3;
+	color: $primary;
+	font-weight: 700;
+	font-size: 3rem;
+	line-height: $line-height-compact;
+	text-transform: uppercase;
+
+	@media #{$md} {
+		font-size: 4rem;
+	}
+
+	@media #{$lg} {
+		font-size: 5rem;
+	}
+}
+
+h2,
+.h2 {
+	margin: 0 0 0.2em;
+	font-family: $font-stack2;
+	color: $accent1;
+	font-weight: 400;
+	font-size: 2.6rem;
+	line-height: $line-height-compact;
+
+	@media #{$md} {
+		font-size: 3rem;
+	}
+
+	@media #{$lg} {
+		font-size: 3.4rem;
+	}
+}
+
+h3,
+.h3 {
+	margin: 0 0 0.2em;
+	font-family: $font-stack2;
+	text-transform: uppercase;
+	font-size: 1.6rem;
+	color: $primary;
+	line-height: $line-height-compact;
+
+	@media #{$md} {
+		font-size: 1.8rem;
+	}
+
+	@media #{$lg} {
+		font-size: 2rem;
+	}
+}
+
+h4,
+.h4 {
+	margin: 0 0 0.2em;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1.6rem;
+	line-height: $line-height-compact;
+}
+
+.text-xs {
+	font-size: $font-xs;
+}
+
+.text-sm {
+	font-size: $font-sm;
+}
+
+.text-lg {
+	font-size: $font-lg;
+}
+
+.text-xl {
+	font-size: $font-xl;
+}
+
+.text-dark {
+	color: $text-dark;
+}
+
+.text-light {
+	color: $text-light;
+}
+
+.text-ex-light {
+	color: $text-ex-light;
+}
+
+.line-height-compact {
+	line-height: $line-height-compact;
+}
+
+.line-height-wide {
+	line-height: $line-height-wide;
+}
+
+.line-height-wider {
+	line-height: $line-height-wider;
+}
+
+.fontStack2 {
+	font-family: $font-stack2;
+}
+
+.fontStack3 {
+	font-family: $font-stack3;
+}
+
+.fontStack4 {
+	font-family: $font-stack4;
+}
+
+.clearfix {
+	content: "";
+	display: table;
+	clear: both;	
+}

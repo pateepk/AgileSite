@@ -1,0 +1,108 @@
+<#@ template debug="false" hostspecific="false" language="C#" linePragmas="false" #>
+<#@ output encoding="UTF-8" #>
+using System;
+using System.Data;
+
+using CMS.Base;
+using CMS.DataEngine;
+using CMS.Helpers;
+<# if (IsSiteObject) { #>
+using CMS.SiteProvider;
+<# } #>
+
+namespace <#= Namespace #>
+{    
+    /// <summary>
+    /// Class providing <see cref="<#= InfoClassName #>"/> management.
+    /// </summary>
+    public <# if (GeneratePartialClass) { #>partial <# } #>class <#= InfoProviderClassName #> : AbstractInfoProvider<<#= InfoClassName #>, <#= InfoProviderClassName #>>
+    {
+        /// <summary>
+        /// Creates an instance of <see cref="<#= InfoProviderClassName #>"/>.
+        /// </summary>
+        public <#= InfoProviderClassName #>()
+<# if (UseHashtables) { #>
+            : base(<#= InfoClassName #>.TYPEINFO, new HashtableSettings { <#= UseIdHashtable ? "ID = " + UseIdHashtable.ToString().ToLowerInvariant() + ", " : "" #><#= UseNameHashtable ? "Name = " + UseNameHashtable.ToString().ToLowerInvariant() + ", " : "" #><#= UseGuidHashtable ? "GUID = " + UseNameHashtable.ToString().ToLowerInvariant() + ", " : "" #>Load = LoadHashtableEnum.None })
+<# } else { #>
+            : base(<#= InfoClassName #>.TYPEINFO)
+<# } #>
+        {
+        }
+
+
+        /// <summary>
+        /// Returns a query for all the <see cref="<#= InfoClassName #>"/> objects.
+        /// </summary>
+        public static ObjectQuery<<#= InfoClassName #>> Get<#= InfoClassNamePluralized #>()
+        {
+            return ProviderObject.GetObjectQuery();
+        }
+
+
+        /// <summary>
+        /// Returns <see cref="<#= InfoClassName #>"/> with specified ID.
+        /// </summary>
+        /// <param name="id"><see cref="<#= InfoClassName #>"/> ID.</param>
+        public static <#= InfoClassName #> Get<#= InfoClassName #>(int id)
+        {
+            return ProviderObject.GetInfoById(id<# if (UseIdHashtable) { #>, true<# } #>);
+        }
+<# if (HasCodeNameColumn) { #>
+<# if (IsSiteObject) { #>
+
+
+        /// <summary>
+        /// Returns <see cref="<#= InfoClassName #>"/> with specified name.
+        /// </summary>
+        /// <param name="name"><see cref="<#= InfoClassName #>"/> name.</param>
+        /// <param name="siteName">Site name.</param>
+        public static <#= InfoClassName #> Get<#= InfoClassName #>(string name, string siteName)
+        {
+            return ProviderObject.GetInfoByCodeName(name, SiteInfoProvider.GetSiteID(siteName)<# if (UseNameHashtable) { #>, true<# } #>);
+        }
+<# } else { #>
+
+
+        /// <summary>
+        /// Returns <see cref="<#= InfoClassName #>"/> with specified name.
+        /// </summary>
+        /// <param name="name"><see cref="<#= InfoClassName #>"/> name.</param>
+        public static <#= InfoClassName #> Get<#= InfoClassName #>(string name)
+        {
+            return ProviderObject.GetInfoByCodeName(name<# if (UseNameHashtable) { #>, true<# } #>);
+        }
+<# } #>
+<# } #>
+
+
+        /// <summary>
+        /// Sets (updates or inserts) specified <see cref="<#= InfoClassName #>"/>.
+        /// </summary>
+        /// <param name="infoObj"><see cref="<#= InfoClassName #>"/> to be set.</param>
+        public static void Set<#= InfoClassName #>(<#= InfoClassName #> infoObj)
+        {
+            ProviderObject.SetInfo(infoObj);
+        }
+
+
+        /// <summary>
+        /// Deletes specified <see cref="<#= InfoClassName #>"/>.
+        /// </summary>
+        /// <param name="infoObj"><see cref="<#= InfoClassName #>"/> to be deleted.</param>
+        public static void Delete<#= InfoClassName #>(<#= InfoClassName #> infoObj)
+        {
+            ProviderObject.DeleteInfo(infoObj);
+        }
+
+
+        /// <summary>
+        /// Deletes <see cref="<#= InfoClassName #>"/> with specified ID.
+        /// </summary>
+        /// <param name="id"><see cref="<#= InfoClassName #>"/> ID.</param>
+        public static void Delete<#= InfoClassName #>(int id)
+        {
+            <#= InfoClassName #> infoObj = Get<#= InfoClassName #>(id);
+            Delete<#= InfoClassName #>(infoObj);
+        }
+    }
+}

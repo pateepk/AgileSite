@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71A95F61-5A1D-42D2-AA36-071A2D201754}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.FormEngine.Web.UI</RootNamespace>
+    <AssemblyName>CMS.FormEngine.Web.UI</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.FormEngine.Web.UI.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\Output\Release\CMS\CMS.FormEngine.Web.UI.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Elements\FormControl.cs" />
+    <Compile Include="Elements\FormCategoryHeading.cs" />
+    <Compile Include="Extenders\SelectCMSVersionExtender.cs" />
+    <Compile Include="Filters\FilterForm.cs" />
+    <Compile Include="Filters\IFilterControl.cs" />
+    <Compile Include="FormControls\ListFormControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\SecurityCode.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\TextBoxControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\TextFilterControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUserControlLoader.cs" />
+    <Compile Include="FormControls\FieldMacroRuleDesigner.cs" />
+    <Compile Include="FormControls\FieldActions.cs" />
+    <Compile Include="Filters\FilterFormControlWrapper.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\FormControlMacroContainer.cs" />
+    <Compile Include="FormControls\FormEngineVisibilityControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\Html5InputFormControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\LocalizableFormEngineUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\OptionsDesigner.cs" />
+    <Compile Include="FormControls\SqlQueryEnum.cs" />
+    <Compile Include="Forms\AbstractBasicForm.cs" />
+    <Compile Include="Forms\Activities\CustomTableFormSubmitActivityInitializer.cs" />
+    <Compile Include="Forms\FormLayout\StyleConfiguration\AbstractFormStyleConfiguration.cs" />
+    <Compile Include="Forms\FormLayout\StyleConfiguration\BasicFormDefaultStyle.cs" />
+    <Compile Include="Forms\FormLayout\StyleConfiguration\IFormStyleConfiguration.cs" />
+    <Compile Include="Forms\FormLayout\StyleConfiguration\SingleTableLayoutStyle.cs" />
+    <Compile Include="Forms\FormLayout\StyleConfiguration\TablePerCategoryLayoutStyle.cs" />
+    <Compile Include="Forms\FormLayout\StyleConfiguration\FieldSetLayoutStyle.cs" />
+    <Compile Include="Forms\FormLayout\DefaultLayout\AbstractTableDefaultLayout.cs" />
+    <Compile Include="Forms\FormLayout\StyleConfiguration\DivLayoutStyle.cs" />
+    <Compile Include="Forms\FormLayout\StyleConfiguration\UIFormDefaultStyle.cs" />
+    <Compile Include="Forms\FormLayout\FieldCreationArgs.cs" />
+    <Compile Include="Forms\FormLayout\DefaultLayout\DivDefaultLayout.cs" />
+    <Compile Include="Forms\ObjectOrderEnum.cs" />
+    <Compile Include="Forms\FormMacroContainer.cs" />
+    <Compile Include="Forms\FormLayout\CMSAbstractFormLayout.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Macros\_Generated\Providers\FormUserControlInfoMethods.cs" />
+    <Compile Include="Managers\CMSAbstractManager.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Documents\CMSDocumentManager.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControlsHelper.cs" />
+    <Compile Include="Documents\AttachmentsControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\CaptchaEnum.cs" />
+    <Compile Include="Elements\FormCategory.cs" />
+    <Compile Include="Elements\FormErrorMessageLabel.cs" />
+    <Compile Include="Elements\FormInfoMessageLabel.cs" />
+    <Compile Include="FormControls\CollapsibleImage.cs" />
+    <Compile Include="FormControls\ReadOnlyFormEngineUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\ControlValidation\DataTypeIntegrity.cs" />
+    <Compile Include="Forms\ControlValidation\FormControlValidation.cs" />
+    <Compile Include="FormControls\FieldLayoutEnum.cs" />
+    <Compile Include="FormControls\Base\FormEngineUserControlEventArgs.cs" />
+    <Compile Include="Elements\FormSubmit.cs" />
+    <Compile Include="Elements\FormSubmitButton.cs" />
+    <Compile Include="Elements\FormErrorLabel.cs" />
+    <Compile Include="Elements\FormField.cs" />
+    <Compile Include="Elements\FormLabel.cs" />
+    <Compile Include="FormControls\Base\SqlFormControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\BasicForm.cs" />
+    <Compile Include="Forms\CMSForm.cs" />
+    <Compile Include="Forms\CustomTableForm.cs" />
+    <Compile Include="Forms\DataForm.cs" />
+    <Compile Include="FormControls\EditingFormControl.cs">
+    </Compile>
+    <Compile Include="FormControls\FormControlError.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\Base\FormEngineUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormControls\Base\FormEngineWebControl.cs" />
+    <Compile Include="FormControls\Base\IFormControl.cs" />
+    <Compile Include="Forms\Events\ControlRegistrationEventArgs.cs" />
+    <Compile Include="Forms\FormLayout\DefaultLayout\AbstractDefaultLayout.cs" />
+    <Compile Include="Forms\FormLayout\DefaultLayout\FieldSetDefaultLayout.cs" />
+    <Compile Include="Forms\FormLayout\DefaultLayout\SingleTableDefaultLayout.cs" />
+    <Compile Include="Forms\FormLayout\DefaultLayout\TablePerCategoryDefaultLayout.cs" />
+    <Compile Include="Forms\FormLayout\LayoutForm.cs" />
+    <Compile Include="Forms\FormLayout\AbstractLayout.cs" />
+    <Compile Include="Forms\FormLayout\LayoutTemplate.cs" />
+    <Compile Include="Forms\FormTypeEnum.cs" />
+    <Compile Include="Forms\SecurityCheck.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Managers\CMSObjectManager.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Automation\CMSAutomationManager.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FormEngineWebUIModule.cs" />
+    <Compile Include="Module\FormEngineWebUIResolvers.cs" />
+    <Compile Include="Module\FormEngineWebUISynchronization.cs" />
+    <Compile Include="Module\FormEngineWebUITaskType.cs" />
+    <Compile Include="UI\IUIContextManager.cs" />
+    <Compile Include="UI\UIContext.cs" />
+    <Compile Include="UI\UIContextData.cs" />
+    <Compile Include="UI\UIContextEventArgs.cs" />
+    <Compile Include="UI\UIContextHelper.cs" />
+    <Compile Include="UI\UIContextSecure.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecialFields\SpecialField.cs" />
+    <Compile Include="SpecialFields\SpecialFieldMacro.cs" />
+    <Compile Include="SpecialFields\SpecialFieldsDefinition.cs" />
+    <Compile Include="SpecialFields\SpecialFieldValue.cs" />
+    <Compile Include="WebUIExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="CMS.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Activities\Activities.csproj">
+      <Project>{DC7FDFAA-4C8A-4D6F-8572-AC4F789E2494}</Project>
+      <Name>Activities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Automation\Automation.csproj">
+      <Project>{D78A0F88-323C-47BA-9E69-50FDF6EFCFCA}</Project>
+      <Name>Automation</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Web.UI\Base.Web.UI.csproj">
+      <Project>{aab21685-08cb-42d6-b70f-cafb766c0903}</Project>
+      <Name>Base.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceProfiles\DeviceProfiles.csproj">
+      <Project>{6e43ddf3-893d-4915-8828-ef7d40f1396e}</Project>
+      <Name>DeviceProfiles</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization.Web.UI\Globalization.Web.UI.csproj">
+      <Project>{212db99a-6e9f-4947-a34b-c6b799d63338}</Project>
+      <Name>Globalization.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Synchronization\Synchronization.csproj">
+      <Project>{781f46eb-593f-484b-a1da-c59b1e13b59d}</Project>
+      <Name>Synchronization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomTables\CustomTables.csproj">
+      <Project>{AC9C8173-831E-4CF6-B68D-23620865F819}</Project>
+      <Name>CustomTables</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Protection\Protection.csproj">
+      <Project>{bd8679f6-9bc7-48ea-8dce-f244bc328ba8}</Project>
+      <Name>Protection</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

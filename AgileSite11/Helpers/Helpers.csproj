@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Helpers</RootNamespace>
+    <AssemblyName>CMS.Helpers</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Helpers.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Helpers.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Caching\CacheDebug.cs" />
+    <Compile Include="Caching\CacheOperation.cs" />
+    <Compile Include="Caching\ProtectedCache\ProtectedCache.cs" />
+    <Compile Include="Caching\ProtectedCache\ProtectedCacheHelper.cs" />
+    <Compile Include="Caching\ProtectedCache\ProtectedCache_1.cs" />
+    <Compile Include="Context\Cookies\CurrentCookieLevelProvider.cs" />
+    <Compile Include="Context\Cookies\ICurrentCookieLevelProvider.cs" />
+    <Compile Include="Context\Request\DefaultCrawlerChecker.cs" />
+    <Compile Include="Context\Request\ICrawlerChecker.cs" />
+    <Compile Include="Context\Request\InvalidVirtualContextException.cs" />
+    <Compile Include="Context\Request\QueryHelper.cs" />
+    <Compile Include="Context\Request\RequestContext.cs" />
+    <Compile Include="Context\Request\RequestDebug.cs" />
+    <Compile Include="Angular\AngularContext.cs" />
+    <Compile Include="Context\Storage\PersistentStorageManager.cs" />
+    <Compile Include="Context\AdministrationUrlHelper.cs" />
+    <Compile Include="Enumerations\TextCompareOperatorEnum.cs" />
+    <Compile Include="Data\Enums\FilesLocationTypeEnum.cs" />
+    <Compile Include="Data\Handlers\AbstractOutputFile.cs" />
+    <Compile Include="Data\Handlers\CMSOutputResource.cs" />
+    <Compile Include="Data\Handlers\ResponseDataSender.cs" />
+    <Compile Include="Data\IReadOnlyFlag.cs" />
+    <Compile Include="Data\Validation\HashSettings.cs" />
+    <Compile Include="Debug\Trackable.cs" />
+    <Compile Include="Debug\TrackedSection.cs" />
+    <Compile Include="Documentation\DocumentationHelper.cs" />
+    <Compile Include="Enumerations\Attributes\EnumCategoryAttribute.cs" />
+    <Compile Include="Globalization\DefaultCultureService.cs" />
+    <Compile Include="Globalization\ICultureService.cs" />
+    <Compile Include="Handlers\ComponentEvents.cs" />
+    <Compile Include="HttpHandlers\Interfaces\IGetAttachmentHandler.cs" />
+    <Compile Include="JsonConverters\ResourceStringConverter.cs" />
+    <Compile Include="Markup\BBCode\DiscussionActionEnum.cs" />
+    <Compile Include="Markup\BBCode\DiscussionMacroHelper.cs" />
+    <Compile Include="Markup\BBCode\DiscussionMacroResolver.cs" />
+    <Compile Include="Markup\CSS\CssHelper.cs" />
+    <Compile Include="Markup\CSS\CssLinkHelper.cs" />
+    <Compile Include="Markup\HTML\HTMLHelper.cs" />
+    <Compile Include="Markup\WebLanguagesContext.cs" />
+    <Compile Include="Markup\XML\FormattedXmlWriter.cs" />
+    <Compile Include="Markup\XML\XElementExtensions.cs" />
+    <Compile Include="Markup\XML\XmlData.cs" />
+    <Compile Include="Markup\XML\XmlExtensions.cs" />
+    <Compile Include="Module\HelpersHandlers.cs" />
+    <Compile Include="Projects\AzureHelper.cs" />
+    <Compile Include="Caching\CacheSettings.cs" />
+    <Compile Include="Caching\CacheSynchronization.cs" />
+    <Compile Include="Caching\Dependencies\CacheDependencyCallback.cs" />
+    <Compile Include="Caching\CachedSection.cs" />
+    <Compile Include="Caching\Containers\CacheItemContainer.cs" />
+    <Compile Include="Caching\Dependencies\ICacheDependencyCallback.cs" />
+    <Compile Include="Caching\Containers\IPersistentCacheItem.cs" />
+    <Compile Include="Caching\Containers\PersistentCacheItem.cs" />
+    <Compile Include="Compare\Enums\ComparisonStatusEnum.cs" />
+    <Compile Include="Compare\Enums\ComparisonTextPartSortByEnum.cs" />
+    <Compile Include="Compare\Enums\DiffStatusEnum.cs" />
+    <Compile Include="Compare\Enums\TextComparisonModeEnum.cs" />
+    <Compile Include="Compare\Enums\TextComparisonTypeEnum.cs" />
+    <Compile Include="Compare\HTML\HTMLTextHelper.cs" />
+    <Compile Include="Compare\Text\ComparisonTextPart.cs" />
+    <Compile Include="Compare\Text\DiffTextPart.cs" />
+    <Compile Include="Compare\Text\TextData.cs" />
+    <Compile Include="Compare\Text\TextDataComparator.cs" />
+    <Compile Include="Compare\Text\TextDiffList.cs" />
+    <Compile Include="Compare\Text\TextPart.cs" />
+    <Compile Include="Configuration\UniGraph\Connection.cs" />
+    <Compile Include="Configuration\UniGraph\Graph.cs" />
+    <Compile Include="Configuration\UniGraph\Node.cs" />
+    <Compile Include="Configuration\UniGraph\NodeSourcePointsLimits.cs" />
+    <Compile Include="Configuration\UniGraph\Enums\NodeTypeEnum.cs" />
+    <Compile Include="Configuration\UniGraph\SourcePoint.cs" />
+    <Compile Include="Configuration\UniGraph\SourcePointTypeEnum.cs" />
+    <Compile Include="Context\Cookies\CookieLevel.cs" />
+    <Compile Include="Context\Cookies\CookieName.cs" />
+    <Compile Include="Context\Cookies\CookieSettings.cs" />
+    <Compile Include="Context\Request\CMSHttpContext.cs" />
+    <Compile Include="Context\Storage\AbstractStockHelper.cs" />
+    <Compile Include="Context\Storage\RequestStockItemName.cs" />
+    <Compile Include="Context\Request\RequestStatusEnum.cs" />
+    <Compile Include="Context\Request\VirtualContext.cs" />
+    <Compile Include="Module\HelpersModuleMetadata.cs" />
+    <Compile Include="Projects\ProjectHelper.cs" />
+    <Compile Include="Projects\SystemHelper.cs" />
+    <Compile Include="Security\DateTimeUrlFormatter.cs" />
+    <Compile Include="Security\Debug\SecurityDebug.cs" />
+    <Compile Include="Security\XFrameOptionsExcludedPathDetector.cs" />
+    <Compile Include="Text\CutTextEnum.cs" />
+    <Compile Include="Text\TextNormalizationSettings.cs" />
+    <Compile Include="WebFarm\CacheTasks.cs" />
+    <Compile Include="WebFarm\CacheTaskType.cs" />
+    <Compile Include="WebFarm\WebFarmHelper.cs" />
+    <Compile Include="Module\HelpersModule.cs" />
+    <Compile Include="Data\ContainerCustomData.cs" />
+    <Compile Include="Data\ConversionService.cs" />
+    <Compile Include="Data\Enums\FileSizeUnitsEnum.cs" />
+    <Compile Include="Data\FilterState.cs" />
+    <Compile Include="Data\ObjectParameters.cs" />
+    <Compile Include="Compare\ObjectArrayComparerOfT.cs" />
+    <Compile Include="Data\Enums\DataExportFormatEnum.cs" />
+    <Compile Include="Data\NoDataException.cs" />
+    <Compile Include="Enumerations\CaseRedirectEnum.cs" />
+    <Compile Include="Caching\Dependencies\CMSCacheDependency.cs" />
+    <Compile Include="Enumerations\ContentCodingEnum.cs" />
+    <Compile Include="Context\ContextHelper.cs" />
+    <Compile Include="Context\Request\BrowserHelper.cs" />
+    <Compile Include="Enumerations\Attributes\EnumOrderAttribute.cs" />
+    <Compile Include="Enumerations\Attributes\EnumDefaultValueAttribute.cs" />
+    <Compile Include="Enumerations\EnumHelper.cs" />
+    <Compile Include="Enumerations\Attributes\EnumStringRepresentationAttribute.cs" />
+    <Compile Include="Enumerations\EnumStringRepresentationExtensions.cs" />
+    <Compile Include="Enumerations\ObjectLifeTimeEnum.cs" />
+    <Compile Include="Enumerations\SplitModeEnum.cs" />
+    <Compile Include="Enumerations\UserAgentEnum.cs" />
+    <Compile Include="Enumerations\DocumentMarkEnum.cs" />
+    <Compile Include="Enumerations\ExcludedSystemEnum.cs" />
+    <Compile Include="Caching\Dependencies\CacheDependencyList.cs" />
+    <Compile Include="Enumerations\IEArchitectureEnum.cs" />
+    <Compile Include="Enumerations\TrailingSlashEnum.cs" />
+    <Compile Include="Context\Storage\WindowHelper.cs" />
+    <Compile Include="Data\DummyItem.cs" />
+    <Compile Include="Compare\ObjectArrayComparer.cs" />
+    <Compile Include="Enumerations\ValidityEnum.cs" />
+    <Compile Include="HelpersExtensions.cs" />
+    <Compile Include="Globalization\PreferredCultureOnDemand.cs" />
+    <Compile Include="Globalization\ResHelper.cs" />
+    <Compile Include="Markup\HTML\ConvertTableEnum.cs" />
+    <Compile Include="Markup\HTML\FixXHTMLSettings.cs" />
+    <Compile Include="Text\FormattedText.cs" />
+    <Compile Include="Text\LoremIpsumGenerator.cs" />
+    <Compile Include="Media\Images\ImageHelper.cs" />
+    <Compile Include="Media\Images\ImageResizeEnum.cs" />
+    <Compile Include="Data\RegexHelper.cs" />
+    <Compile Include="Markup\AJAXHelper.cs" />
+    <Compile Include="Caching\CacheHelper.cs" />
+    <Compile Include="Context\Cookies\CookieHelper.cs" />
+    <Compile Include="Context\AttachmentHelper.cs" />
+    <Compile Include="Context\Request\RequestHelper.cs" />
+    <Compile Include="Data\UserDataInfo.cs" />
+    <Compile Include="Data\CustomData.cs" />
+    <Compile Include="Globalization\DateTimeHelper.cs" />
+    <Compile Include="Context\FileHelper.cs" />
+    <Compile Include="Context\Request\HTTPHelper.cs" />
+    <Compile Include="Globalization\CultureHelper.cs" />
+    <Compile Include="Data\DataHelper.cs" />
+    <Compile Include="Data\EncryptionHelper.cs" />
+    <Compile Include="Data\Handlers\MimeTypeHelper.cs" />
+    <Compile Include="Context\Storage\PersistentStorageHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Context\Storage\RegistryHelper.cs" />
+    <Compile Include="Context\Storage\RequestStockHelper.cs" />
+    <Compile Include="Context\Storage\SessionHelper.cs" />
+    <Compile Include="Text\TextHelper.cs" />
+    <Compile Include="Context\Request\UrlHelper.cs" />
+    <Compile Include="Data\Validation\ValidationHelper.cs" />
+    <Compile Include="Data\Validation\Validator.cs" />
+    <Compile Include="Markup\XML\XmlHelper.cs" />
+    <Compile Include="Security\HashValidationSalts.cs" />
+    <Compile Include="Security\OptInApprovalResultEnum.cs" />
+    <Compile Include="Security\SecurityAccessEnum.cs" />
+    <Compile Include="Security\SecurityHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Markup\XML\XmlHelper.NamespaceColonReplace.xslt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -65,9 +65,6 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Mobile" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WTE.Communication">
-      <HintPath>..\..\..\Common\WTE_Communication\dlls\WTE.Communication.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="braintree_recure.aspx" />
@@ -438,12 +435,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\WTE_Helpers\WTE.csproj">
-      <Project>{1e9b5865-0002-4f2a-b8a8-38bc8fd3831d}</Project>
-      <Name>WTE</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

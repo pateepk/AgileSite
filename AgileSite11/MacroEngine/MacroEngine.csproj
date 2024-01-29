@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C78D0DDE-11B5-4BBA-98C0-756EBB98228A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.MacroEngine</RootNamespace>
+    <AssemblyName>CMS.MacroEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.MacroEngine.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.MacroEngine.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Containers\DataContainerCollection.cs" />
+    <Compile Include="Containers\DateTimeContainer.cs" />
+    <Compile Include="Containers\DictionaryContainer.cs" />
+    <Compile Include="Containers\FlattenEnumerable.cs" />
+    <Compile Include="Containers\NamedDataContainer.cs" />
+    <Compile Include="Containers\TimeSpanContainer.cs" />
+    <Compile Include="Debug\DebugContainer.cs" />
+    <Compile Include="Debug\DebugMethods.cs" />
+    <Compile Include="Evaluation\EvaluationParameters.cs" />
+    <Compile Include="Evaluation\MacroParameterNameAttribute.cs" />
+    <Compile Include="Identities\MacroIdentityOption.cs" />
+    <Compile Include="Identities\UserMacroIdentityHelper.cs" />
+    <Compile Include="Identities\UserMacroIdentityInfo.cs" />
+    <Compile Include="Identities\UserMacroIdentityInfoProvider.cs" />
+    <Compile Include="Interfaces\IMacroNamespace.cs" />
+    <Compile Include="Interfaces\MacroResolverStorage.cs" />
+    <Compile Include="Interfaces\IMacroResolver.cs" />
+    <Compile Include="MacroExtensions\Implementation\CacheMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\ConvertMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\DebugSettingsFields.cs" />
+    <Compile Include="MacroExtensions\Implementation\DebugSettingsMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\ObjectAttachmentCategoriesFields.cs" />
+    <Compile Include="MacroExtensions\Implementation\ObjectMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\EnumMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\HierarchicalObjectMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\SimpleDataContainerMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\UtilMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\InfoObjectCollectionMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\EnumerableMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\DateTimeStaticFields.cs" />
+    <Compile Include="MacroExtensions\Implementation\DateTimeStaticMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\DateTimeMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\SystemMethods.cs" />
+    <Compile Include="MacroExtensions\General\MacroExtensionContainer.cs" />
+    <Compile Include="MacroExtensions\General\MacroFieldContainer.cs" />
+    <Compile Include="MacroExtensions\General\MacroMethodContainer.cs" />
+    <Compile Include="Methods\MacroMethodParamAttribute.cs" />
+    <Compile Include="Methods\MacroMethodAttribute.cs" />
+    <Compile Include="Module\MacroContext.cs" />
+    <Compile Include="Module\MacroHandlers.cs" />
+    <Compile Include="Module\MacroModuleMetadata.cs" />
+    <Compile Include="Namespaces\ObjectAttachmentsNamespace.cs" />
+    <Compile Include="Namespaces\ConvertNamespace.cs" />
+    <Compile Include="Namespaces\DebugNamespace.cs" />
+    <Compile Include="Namespaces\EnumsNamespace.cs" />
+    <Compile Include="Namespaces\MacroNamespace.cs" />
+    <Compile Include="Namespaces\RegisterMacroNamespaceAttribute.cs" />
+    <Compile Include="Namespaces\UtilNamespace.cs" />
+    <Compile Include="Namespaces\DateTimeNamespace.cs" />
+    <Compile Include="Namespaces\StringNamespace.cs" />
+    <Compile Include="MacroExtensions\Implementation\StringStaticFields.cs" />
+    <Compile Include="MacroExtensions\Implementation\StringStaticMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\SystemFields.cs" />
+    <Compile Include="Namespaces\SystemNamespace.cs" />
+    <Compile Include="MacroExtensions\Implementation\StringMethods.cs" />
+    <Compile Include="Interfaces\IMacroInvisible.cs" />
+    <Compile Include="Processing\IMacroProcessingParameters.cs" />
+    <Compile Include="Processing\MacroProcessingParameters.cs" />
+    <Compile Include="ResolverStorage\ResolverDefinition.cs" />
+    <Compile Include="Resolver\ResolveExpressionSettings.cs" />
+    <Compile Include="Resolver\MacroStaticSettings.cs" />
+    <Compile Include="Containers\CustomMacroContainer.cs" />
+    <Compile Include="Resolver\MacroDebug.cs" />
+    <Compile Include="MacroExtensions\General\MacroExtension.cs" />
+    <Compile Include="MacroExtensions\General\MacroField.cs" />
+    <Compile Include="Security\MacroSecurityProcessor.cs" />
+    <Compile Include="Evaluation\EvaluationContext.cs" />
+    <Compile Include="Evaluation\EvaluationResult.cs" />
+    <Compile Include="Evaluation\MacroCommand.cs" />
+    <Compile Include="Evaluation\ExpressionEvaluator.cs" />
+    <Compile Include="Evaluation\MacroLambdaExpression.cs" />
+    <Compile Include="Exceptions\EvaluationException.cs" />
+    <Compile Include="Exceptions\EvaluationTimeoutException.cs" />
+    <Compile Include="Exceptions\LexicalAnalysisException.cs" />
+    <Compile Include="Exceptions\MacroException.cs" />
+    <Compile Include="Exceptions\MethodNotFoundException.cs" />
+    <Compile Include="Exceptions\ParsingException.cs" />
+    <Compile Include="Exceptions\SyntacticAnalysisException.cs" />
+    <Compile Include="Expressions\ElementType.cs" />
+    <Compile Include="Expressions\ExpressionType.cs" />
+    <Compile Include="Expressions\MacroElement.cs" />
+    <Compile Include="Expressions\MacroExpression.cs" />
+    <Compile Include="Resolver\MacroSettings.cs" />
+    <Compile Include="Resolver\MacroEventArgs.cs" />
+    <Compile Include="Processing\MacroProcessor.cs" />
+    <Compile Include="MacroExtensions\Implementation\MathFields.cs" />
+    <Compile Include="Namespaces\MathNamespace.cs" />
+    <Compile Include="Containers\PathMacroContainer.cs" />
+    <Compile Include="Resolver\MacroResolver.cs" />
+    <Compile Include="Processing\MacroProcessingContext.cs" />
+    <Compile Include="MacroExtensions\General\MacroMethod.cs" />
+    <Compile Include="MacroExtensions\General\MacroMethodParam.cs" />
+    <Compile Include="Methods\MacroMethods.cs" />
+    <Compile Include="MacroExtensions\Implementation\MathMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\MacroRuleInfo.cs" />
+    <Compile Include="Rules\MacroRuleInfoProvider.cs" />
+    <Compile Include="Module\MacroModule.cs" />
+    <Compile Include="Rules\MacroRuleParameter.cs" />
+    <Compile Include="Rules\MacroRuleTree.cs" />
+    <Compile Include="Security\MacroSecurityEventArgs.cs" />
+    <Compile Include="Identities\MacroIdentityInfo.cs" />
+    <Compile Include="Identities\MacroIdentityInfoProvider.cs" />
+    <Compile Include="Wrappers\ReadOnlyMacroObjectWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
