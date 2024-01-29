@@ -1,0 +1,44 @@
+Instruction to set up for Agilesite development
+-----------------------------------------------
+
+
+Instructions for using Kentico CMS source code with existing project:
+---------------------------------------------------------------------
+
+1. Start Visual Studio 2010.
+2. Click File -> Open -> Project/Solution. Locate CMSSolution.sln file on the disk and open it.
+3. When You are asked for the password, enter: smc8fgt
+4. Delete the web project CMS from the solution
+5. Click File -> Add -> Existing web site and locate the folder with your Kentico CMS deployed web site.
+6. Remove all references in the CMS web project and add references to the source code project. You need to choose adding Project references, not references to DLLs.
+7. Rebuild the solution.
+
+
+
+Instructions for using Kentico CMS as a new web project: 
+--------------------------------------------------------
+
+1. Start Visual Studio 2010.
+2. Click File -> Open -> Project/Solution. Locate CMSSolution.sln file on the disk and open it.
+3. When You are asked for the password, enter: smc8fgt
+4. Rebuild the solution
+5. Use the CMS project just like regular Kentico CMS project
+
+Instruction for signing a the CMS.pfx file, in Windows 7 64bit if above failed.
+-------------------------------------------------------------------------------
+1. Open Command prompt in adminstrator mode
+2. Navigate to the location of the CMS.pfx file
+3. run the folowing command:
+
+CES: run this one and use pwd smc8fgt:
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\sn.exe"  -i CMS.pfx VS_KEY_074B0C09AE4F07E7
+
+old: "c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\NETFX 4.0 Tools\x64"\sn.exe -i CMS.pfx VS_KEY_964619483A464427
+
+
+note: 
+a. there may be several version of sn.exe on your machine, this one works for me. You might have to locate it first, full path is required.
+b. VS_KEY_XXXXXXXXXXXXXXXX 
+
+
+4. enter password when prompted.

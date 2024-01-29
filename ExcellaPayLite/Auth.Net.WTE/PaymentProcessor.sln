@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentProcessor", "PaymentProcessor\PaymentProcessor.csproj", "{FC624557-8BBC-4130-B2EA-896AAA75A55F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTE", "..\..\Common\WTE_Helpers\WTE.csproj", "{1E9B5865-0002-4F2A-B8A8-38BC8FD3831D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTE", "..\..\WTE_Helpers\WTE.csproj", "{1E9B5865-0002-4F2A-B8A8-38BC8FD3831D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
