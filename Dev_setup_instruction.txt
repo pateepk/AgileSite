@@ -41,4 +41,8 @@ a. there may be several version of sn.exe on your machine, this one works for me
 b. VS_KEY_XXXXXXXXXXXXXXXX 
 
 
-4. enter password when prompted.
+4. enter password when prompted. (smc8fgt)
+
+windows 11  with 4.8 installed: "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64"\sn.exe -i CMS.pfx <VS KEY provided in error message in VS>
+eg. "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64"\sn.exe -i CMS.pfx VS_KEY_3E13F3EF7635A845
+
