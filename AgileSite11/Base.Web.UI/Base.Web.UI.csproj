@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AAB21685-08CB-42D6-B70F-CAFB766C0903}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Base.Web.UI</RootNamespace>
+    <AssemblyName>CMS.Base.Web.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Base.Web.UI.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Base.Web.UI.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Abstract\AbstractRatingControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Abstract\AbstractUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Abstract\InlineUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminControls\UserSmartTipDismissalManager.cs" />
+    <Compile Include="Advanced\ControlExtender.cs" />
+    <Compile Include="Advanced\Discussion\BBEditor.cs" />
+    <Compile Include="Advanced\Discussion\DiscussionButtons.cs" />
+    <Compile Include="Advanced\LayoutPanel.cs" />
+    <Compile Include="Advanced\LinkItemTemplate.cs" />
+    <Compile Include="Advanced\PageExtender.cs" />
+    <Compile Include="Advanced\RTLFix.cs" />
+    <Compile Include="Advanced\ScrollPanel.cs" />
+    <Compile Include="Advanced\TextComparison.cs" />
+    <Compile Include="Advanced\Upload\CMSFileUpload.cs" />
+    <Compile Include="Advanced\Upload\IUploaderControl.cs" />
+    <Compile Include="Advanced\Upload\TemporaryUploadsCleaner.cs" />
+    <Compile Include="Advanced\Upload\Uploader.cs" />
+    <Compile Include="Advanced\Upload\UploaderHelper.cs" />
+    <Compile Include="Advanced\Upload\UploadHelper.cs" />
+    <Compile Include="ClientLocalization\ClientLocalizationProvider.cs" />
+    <Compile Include="ClientLocalization\IClientLocalizationProvider.cs" />
+    <Compile Include="ApiControllers\ISelectorController.cs" />
+    <Compile Include="ApiControllers\SmartTipController.cs" />
+    <Compile Include="ApiControllers\ViewModels\BaseSelectorViewModel.cs" />
+    <Compile Include="Automation\Actions\NextStepAction.cs" />
+    <Compile Include="Automation\Actions\PreviousStepAction.cs" />
+    <Compile Include="Automation\AutomationManagerEventArgs.cs" />
+    <Compile Include="BaseControls\CMSDynamicWebControl.cs" />
+    <Compile Include="BaseControls\CMSWebControl.cs" />
+    <Compile Include="BaseControls\Containers\ActionContainer.cs" />
+    <Compile Include="BaseControls\Containers\CMSPanel.cs" />
+    <Compile Include="BaseControls\Containers\CMSPlaceholder.cs" />
+    <Compile Include="BaseControls\Containers\CMSWizard.cs" />
+    <Compile Include="BaseControls\ExceptionReport.cs" />
+    <Compile Include="BaseControls\Validators\CMSRangeValidator.cs" />
+    <Compile Include="BaseControls\Validators\CMSRegularExpressionValidator.cs" />
+    <Compile Include="BaseControls\Validators\CMSRequiredFieldValidator.cs" />
+    <Compile Include="BaseControls\Viewers\UICalendar.cs" />
+    <Compile Include="BaseControls\Viewers\UIDataGrid.cs" />
+    <Compile Include="BaseControls\Viewers\UIDataList.cs" />
+    <Compile Include="BaseControls\Viewers\UIGridView.cs" />
+    <Compile Include="BaseControls\Viewers\UIRepeater.cs" />
+    <Compile Include="BaseControls\Viewers\UITreeView.cs" />
+    <Compile Include="Compare\HTML\HTMLTextDiffList.cs" />
+    <Compile Include="Configuration\CommentAction.cs" />
+    <Compile Include="Configuration\CustomizeAction.cs" />
+    <Compile Include="Configuration\DeleteAction.cs" />
+    <Compile Include="Configuration\HeaderAction.cs" />
+    <Compile Include="Configuration\NavigationItem.cs" />
+    <Compile Include="Configuration\SaveAction.cs" />
+    <Compile Include="ContextMenu\CMSContextMenuControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContextMenu\Components\ContextMenuButton.cs" />
+    <Compile Include="ContextMenu\Components\ContextMenuItem.cs" />
+    <Compile Include="ContextMenu\Components\ContextMenuSeparator.cs" />
+    <Compile Include="ContextMenu\ContextMenu.cs" />
+    <Compile Include="ContextMenu\ContextMenuContainer.cs" />
+    <Compile Include="ContextMenu\Specific\GroupMenuContainer.cs" />
+    <Compile Include="ContextMenu\Specific\UserMenuContainer.cs" />
+    <Compile Include="Context\Request\PageContext.cs" />
+    <Compile Include="Context\Request\UrlResolver.cs" />
+    <Compile Include="Context\UIHelper.cs" />
+    <Compile Include="ControlDefinition.cs" />
+    <Compile Include="ControlsExtensions.cs" />
+    <Compile Include="ControlsHelper.cs" />
+    <Compile Include="Dialogs\CMSDialogHelper.cs" />
+    <Compile Include="Dialogs\DialogViewModeEnum.cs" />
+    <Compile Include="Dialogs\IDialogControl.cs" />
+    <Compile Include="Dialogs\Media\AvailableGroupsEnum.cs" />
+    <Compile Include="Dialogs\Media\AvailableLibrariesEnum.cs" />
+    <Compile Include="Dialogs\Media\AvailableSitesEnum.cs" />
+    <Compile Include="Dialogs\Media\DialogConfiguration.cs" />
+    <Compile Include="Dialogs\Media\DialogParameters.cs" />
+    <Compile Include="Dialogs\Media\FileSystemDialogConfiguration.cs" />
+    <Compile Include="Dialogs\Media\MediaItem.cs" />
+    <Compile Include="Dialogs\Media\MediaSource.cs" />
+    <Compile Include="Dialogs\Media\MediaSourceEnum.cs" />
+    <Compile Include="Dialogs\ModalPopupDialog.cs" />
+    <Compile Include="Dialogs\OutputFormatEnum.cs" />
+    <Compile Include="Dialogs\SelectableContentEnum.cs" />
+    <Compile Include="Dialogs\SelectablePageTypeEnum.cs" />
+    <Compile Include="Documents\Actions\DocumentApproveAction.cs" />
+    <Compile Include="Documents\Actions\DocumentArchiveAction.cs" />
+    <Compile Include="Documents\Actions\DocumentCheckInAction.cs" />
+    <Compile Include="Documents\Actions\DocumentCheckOutAction.cs" />
+    <Compile Include="Documents\Actions\DocumentPublishAction.cs" />
+    <Compile Include="Documents\Actions\DocumentRejectAction.cs" />
+    <Compile Include="Documents\Actions\DocumentUndoCheckOutAction.cs" />
+    <Compile Include="Documents\CMSDocumentPanel.cs" />
+    <Compile Include="Documents\CMSInfoPanel.cs" />
+    <Compile Include="Documents\DocumentComponentEvents.cs" />
+    <Compile Include="Documents\Events\DocumentManagerEventArgs.cs" />
+    <Compile Include="Documents\Events\SimpleDocumentManagerEventArgs.cs" />
+    <Compile Include="Documents\ICMSDocumentManager.cs" />
+    <Compile Include="DragAndDrop\DragAndDropDesigner.cs" />
+    <Compile Include="DragAndDrop\DragAndDropExtender.cs" />
+    <Compile Include="DragAndDrop\EmptyScript.cs" />
+    <Compile Include="DragAndDrop\FloatingBehaviorDesigner.cs" />
+    <Compile Include="DragAndDrop\FloatingBehaviorExtender.cs" />
+    <Compile Include="Enumerations\FontIconSizeEnum.cs" />
+    <Compile Include="Enums\EnumDisplayTypeEnum.cs" />
+    <Compile Include="Enums\FormModeEnum.cs" />
+    <Compile Include="Enums\MessageTypeEnum.cs" />
+    <Compile Include="Enums\ScriptExecutionModeEnum.cs" />
+    <Compile Include="Events\ControlEvents.cs" />
+    <Compile Include="Events\HeaderActionControlCreatedEventArgs.cs" />
+    <Compile Include="Events\HeaderActionControlCreatedHandler.cs" />
+    <Compile Include="Events\Managers\ManagerEventArgs.cs" />
+    <Compile Include="Events\Managers\SimpleManagerEventArgs.cs" />
+    <Compile Include="Events\Managers\SimpleObjectManagerEventArgs.cs" />
+    <Compile Include="Events\StepEventArgs.cs" />
+    <Compile Include="ExtendedControls\AJAX\CMSUpdatePanel.cs" />
+    <Compile Include="ExtendedControls\AJAX\CMSUpdateProgress.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\CMSAccessibleButton.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\CMSButton.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\CMSButtonAction.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\CMSButtonActionClickedEventArgs.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\CMSButtonGroup.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\CMSButtonGroupAction.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\CMSGridActionButton.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\MultiButton\CMSMoreOptionsButton.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\MultiButton\CMSMultiButtonBase.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\MultiButton\CMSSelectableToggleButton.cs" />
+    <Compile Include="ExtendedControls\Basic\Buttons\MultiButton\CMSToggleButton.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSAccessibleLinkButton.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSCheckBox.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSCheckBoxList.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSDropDownList.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSIcon.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSImage.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSImageButton.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSListBox.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSRadioButton.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSRadioButtonList.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSTextArea.cs" />
+    <Compile Include="ExtendedControls\Basic\CMSTextBox.cs" />
+    <Compile Include="ExtendedControls\Basic\ExtendedDropDownList.cs" />
+    <Compile Include="ExtendedControls\Basic\ExtendedListBox.cs" />
+    <Compile Include="ExtendedControls\Basic\ExtendedTextArea.cs" />
+    <Compile Include="ExtendedControls\Basic\ResolvedLiteral.cs" />
+    <Compile Include="ExtendedControls\ContextMenuPlaceHolder.cs" />
+    <Compile Include="ExtendedControls\DateTime\AbstractDateTimePicker.cs" />
+    <Compile Include="ExtendedControls\DateTime\CMSCustomCalendarControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExtendedControls\DateTime\DateTimePicker.cs" />
+    <Compile Include="ExtendedControls\DateTime\RangeDateTimePicker.cs" />
+    <Compile Include="ExtendedControls\EditorModeEnum.cs" />
+    <Compile Include="ExtendedControls\InlineEditingTextBox.cs" />
+    <Compile Include="ExtendedControls\LanguageEnum.cs" />
+    <Compile Include="ExtendedControls\SecurityPanel.cs" />
+    <Compile Include="ExtendedControls\Tag.cs" />
+    <Compile Include="ExtendedControls\UI\AlertLabel.cs" />
+    <Compile Include="ExtendedControls\UI\HeaderActions.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExtendedControls\UI\MessagesPlaceHolder.cs" />
+    <Compile Include="Handlers\DialogHandlers.cs" />
+    <Compile Include="Handlers\GetMediaDataEventArgs.cs" />
+    <Compile Include="Handlers\GetMediaDataHandler.cs" />
+    <Compile Include="Interfaces\ICMSObjectManager.cs" />
+    <Compile Include="Interfaces\ICMSPage.cs" />
+    <Compile Include="Interfaces\IDataControl.cs" />
+    <Compile Include="Interfaces\IEnsureChildControls.cs" />
+    <Compile Include="Interfaces\IExceptionHandler.cs" />
+    <Compile Include="Interfaces\IExtensibleEditMenu.cs" />
+    <Compile Include="Interfaces\IInputControl.cs" />
+    <Compile Include="Interfaces\IObjectEditMenu.cs" />
+    <Compile Include="Interfaces\IObjectEditPanel.cs" />
+    <Compile Include="Interfaces\IShortID.cs" />
+    <Compile Include="Interfaces\IStopProcessing.cs" />
+    <Compile Include="JQuery\JQueryTab.cs" />
+    <Compile Include="JQuery\JQueryTabCollection.cs" />
+    <Compile Include="JQuery\JQueryTabContainer.cs" />
+    <Compile Include="JQuery\jQueryTabEnums.cs" />
+    <Compile Include="JsonConverters\URLConverter.cs" />
+    <Compile Include="ListControlExtensions.cs" />
+    <Compile Include="LocalizedControls\General\ControlsLocalization.cs" />
+    <Compile Include="LocalizedControls\General\IResourcePrefixManager.cs" />
+    <Compile Include="LocalizedControls\LocalizedButton.cs" />
+    <Compile Include="LocalizedControls\LocalizedCheckBox.cs" />
+    <Compile Include="LocalizedControls\LocalizedCheckBoxList.cs" />
+    <Compile Include="LocalizedControls\LocalizedCopyToClipboardButton.cs" />
+    <Compile Include="LocalizedControls\LocalizedDropDownList.cs" />
+    <Compile Include="LocalizedControls\LocalizedHeading.cs" />
+    <Compile Include="LocalizedControls\LocalizedHidden.cs" />
+    <Compile Include="LocalizedControls\LocalizedHyperlink.cs" />
+    <Compile Include="LocalizedControls\LocalizedLabel.cs" />
+    <Compile Include="LocalizedControls\LocalizedLinkButton.cs" />
+    <Compile Include="LocalizedControls\LocalizedLiteral.cs" />
+    <Compile Include="LocalizedControls\LocalizedRadioButton.cs" />
+    <Compile Include="LocalizedControls\LocalizedRadioButtonList.cs" />
+    <Compile Include="Macros\BaseMacroMethods.cs" />
+    <Compile Include="Macros\UIMacroMethods.cs" />
+    <Compile Include="Macros\SystemUINamespace.cs" />
+    <Compile Include="Markup\HTML\ScriptHelper.cs" />
+    <Compile Include="Media\AudioVideoParameters.cs" />
+    <Compile Include="Media\Images\IconParameters.cs" />
+    <Compile Include="Media\Images\ImageParameters.cs" />
+    <Compile Include="Media\MediaHelper.cs" />
+    <Compile Include="Media\MediaTypeEnum.cs" />
+    <Compile Include="Media\YouTubeVideoParameters.cs" />
+    <Compile Include="Metadata\ControlContext.cs" />
+    <Compile Include="Metadata\IControlContextManager.cs" />
+    <Compile Include="Metadata\Property.cs" />
+    <Compile Include="Context\BaseControlsContext.cs" />
+    <Compile Include="ObjectTypeGraph\DefaultObjectTypeGraphService.cs" />
+    <Compile Include="ObjectTypeGraph\GraphDataClasses\GraphData.cs" />
+    <Compile Include="ObjectTypeGraph\GraphDataClasses\GraphEdge.cs" />
+    <Compile Include="ObjectTypeGraph\GraphDataClasses\GraphNode.cs" />
+    <Compile Include="ObjectTypeGraph\IObjectTypeGraphService.cs" />
+    <Compile Include="ObjectTypeGraph\ObjectTypeGraphBuilder.cs" />
+    <Compile Include="ObjectTypeGraph\ObjectTypeGraphController.cs" />
+    <Compile Include="ObjectTypeGraph\ObjectTypeGraphScopeEnum.cs" />
+    <Compile Include="Resources\CSS\CssRegistration.cs" />
+    <Compile Include="Markup\HTML\PageExtensions.cs" />
+    <Compile Include="PageElement.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\CSS\CMSCssSettings.cs" />
+    <Compile Include="Resources\CSS\ModuleCssRegistration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Automation\Automation.csproj">
+      <Project>{d78a0f88-323c-47ba-9e69-50fdf6efcfca}</Project>
+      <Name>Automation</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{ca36a1e6-9385-46aa-a10e-97699e293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7f74d14a-c101-457e-94b0-1df57a619c84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization.Web.UI\Globalization.Web.UI.csproj">
+      <Project>{212db99a-6e9f-4947-a34b-c6b799d63338}</Project>
+      <Name>Globalization.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{D9B92F71-4497-4050-A75D-0F9C84DFBE6B}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0c4d9649-03df-4f4d-8abb-0fc2b86a8fe4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3c35f9b3-fa34-4910-bdf6-bfdb27a2cb99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{f21c925b-3aa1-4139-9706-ba5073527a8f}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApi\WebApi.csproj">
+      <Project>{6FD3628D-D76F-40B9-9412-E230D7E950B4}</Project>
+      <Name>WebApi</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4db5-9f3e-c683edb20bca}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DragAndDrop\Empty.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

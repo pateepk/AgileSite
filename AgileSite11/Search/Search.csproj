@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F2EE2A3-4D9C-4C9B-96CC-4414656301F2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Search</RootNamespace>
+    <AssemblyName>CMS.Search</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Search.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Search.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Handlers\SearchEvents.cs" />
+    <Compile Include="Handlers\SearchEventArgs.cs" />
+    <Compile Include="Handlers\SearchHandler.cs" />
+    <Compile Include="Handlers\SearchTaskCreationEventArgs.cs" />
+    <Compile Include="Handlers\SearchTaskCreationHandler.cs" />
+    <Compile Include="Macros\SearchMacroMethods.cs" />
+    <Compile Include="Module\SearchContext.cs" />
+    <Compile Include="Module\ImportExport\ExportSpecialActions.cs" />
+    <Compile Include="Module\ImportExport\ImportSpecialActions.cs" />
+    <Compile Include="Module\SearchModuleMetadata.cs" />
+    <Compile Include="Module\SearchSynchronization.cs" />
+    <Compile Include="Module\SearchModule.cs" />
+    <Compile Include="Module\SearchHandlers.cs" />
+    <Compile Include="Module\SearchTaskType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchExtensions.cs" />
+    <Compile Include="SmartSearch\AbstractSearchValueConverter.cs" />
+    <Compile Include="SmartSearch\Conditions\DocumentSearchCondition.cs" />
+    <Compile Include="SmartSearch\Enums\SearchModeEnum.cs" />
+    <Compile Include="SmartSearch\Enums\SearchScopeEnum.cs" />
+    <Compile Include="SmartSearch\Events\CreateDefaultSearchSettingsEventArgs.cs" />
+    <Compile Include="SmartSearch\Events\CreateDefaultSearchSettingsHandler.cs" />
+    <Compile Include="SmartSearch\Exceptions\SearchException.cs" />
+    <Compile Include="SmartSearch\Exceptions\SearchIndexException.cs" />
+    <Compile Include="SmartSearch\FileLock.cs" />
+    <Compile Include="SmartSearch\Indexers\TextExtraction\ExtractionContext.cs" />
+    <Compile Include="SmartSearch\Indexers\TextExtraction\ISearchTextExtractor.cs" />
+    <Compile Include="SmartSearch\Indexers\TextExtraction\SearchTextExtractorManager.cs" />
+    <Compile Include="SmartSearch\Indexes\IIndexStatistics.cs" />
+    <Compile Include="SmartSearch\Indexes\IIndexStatisticsProvider.cs" />
+    <Compile Include="SmartSearch\Indexes\IndexStatisticsProviders.cs" />
+    <Compile Include="SmartSearch\Indexes\LuceneIndexStatistics.cs" />
+    <Compile Include="SmartSearch\Indexes\LuceneIndexStatisticsProvider.cs" />
+    <Compile Include="SmartSearch\Indexes\SearchIndexInfoExtensions.cs" />
+    <Compile Include="SmartSearch\Interfaces\IIndexSearcher.cs" />
+    <Compile Include="SmartSearch\Interfaces\IIndexWriter.cs" />
+    <Compile Include="SmartSearch\Interfaces\ILuceneSearchDocument.cs" />
+    <Compile Include="SmartSearch\Interfaces\ISearchAnalyzer.cs" />
+    <Compile Include="SmartSearch\Interfaces\ISearchFilter.cs" />
+    <Compile Include="SmartSearch\Interfaces\ISearchHits.cs" />
+    <Compile Include="SmartSearch\Interfaces\ISearchManager.cs" />
+    <Compile Include="SmartSearch\Indexes\SearchIndexProvider.cs" />
+    <Compile Include="SmartSearch\Interfaces\ISearchProvider.cs" />
+    <Compile Include="SmartSearch\Conditions\SearchCondition.cs" />
+    <Compile Include="SmartSearch\Fields\SearchFields.cs" />
+    <Compile Include="SmartSearch\ISearchCrawler.cs" />
+    <Compile Include="SmartSearch\LuceneSearchDocumentHelper.cs" />
+    <Compile Include="SmartSearch\SearchUtilities\SearchablesRetriever.cs" />
+    <Compile Include="SmartSearch\SearchUtilities\SearchablesRetrievers.cs" />
+    <Compile Include="SmartSearch\SearchUtilities\IndexLogger.cs" />
+    <Compile Include="SmartSearch\SearchManager.cs" />
+    <Compile Include="SmartSearch\AbstractSearchSyntaxHelper.cs" />
+    <Compile Include="SmartSearch\Security\DocumentFilterSearchResultsParameters.cs" />
+    <Compile Include="SmartSearch\Security\SearchResults.cs" />
+    <Compile Include="SmartSearch\ISearchFilterable.cs" />
+    <Compile Include="SmartSearch\Enums\SearchFilterModeEnum.cs" />
+    <Compile Include="SmartSearch\Indexers\CustomSearchIndexer.cs" />
+    <Compile Include="SmartSearch\Indexers\SearchIndexer.cs" />
+    <Compile Include="SmartSearch\Interfaces\ICustomSearchIndex.cs" />
+    <Compile Include="SmartSearch\Enums\IndexStatusEnum.cs" />
+    <Compile Include="SmartSearch\Indexes\Cultures\SearchIndexCultureInfo.cs" />
+    <Compile Include="SmartSearch\Indexes\Cultures\SearchIndexCultureInfoProvider.cs" />
+    <Compile Include="SmartSearch\Indexes\SearchIndexInfo.cs" />
+    <Compile Include="SmartSearch\Indexes\SearchIndexInfoProvider.cs" />
+    <Compile Include="SmartSearch\Indexes\Sites\SearchIndexSiteInfo.cs" />
+    <Compile Include="SmartSearch\Indexes\Sites\SearchIndexSiteInfoProvider.cs" />
+    <Compile Include="SmartSearch\Enums\ClauseTypeEnum.cs" />
+    <Compile Include="SmartSearch\Enums\SearchOptionsEnum.cs" />
+    <Compile Include="SmartSearch\Search\SearchParameters.cs" />
+    <Compile Include="SmartSearch\Search\SearchQueryClauses.cs" />
+    <Compile Include="SmartSearch\SearchCrawler.cs" />
+    <Compile Include="SmartSearch\SearchHelper.cs" />
+    <Compile Include="SmartSearch\Indexers\SearchIndexers.cs" />
+    <Compile Include="SmartSearch\Tasks\SearchTaskCreationParameters.cs" />
+    <Compile Include="SmartSearch\Tasks\SearchTaskInfo.cs" />
+    <Compile Include="SmartSearch\Tasks\SearchTaskInfoProvider.cs" />
+    <Compile Include="SmartSearch\Enums\SearchTaskStatusEnum.cs" />
+    <Compile Include="SmartSearch\Enums\SearchTaskTypeEnum.cs" />
+    <Compile Include="_Generated\SmartSearch\SearchSyntaxHelper\ISearchSyntaxHelper.cs" />
+    <Compile Include="_Generated\SmartSearch\SearchSyntaxHelper\SearchSyntaxHelper.wrapper.cs" />
+    <Compile Include="_Generated\SmartSearch\SearchValueConverter\ISearchValueConverter.cs" />
+    <Compile Include="_Generated\SmartSearch\SearchValueConverter\SearchValueConverter.wrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContinuousIntegration\ContinuousIntegration.csproj">
+      <Project>{ac62093f-8421-487d-829c-fb3ab7800376}</Project>
+      <Name>ContinuousIntegration</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7f74d14a-c101-457e-94b0-1df57a619c84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFarmSync\WebFarmSync.csproj">
+      <Project>{b428927b-b248-4428-ba1c-38fc6c2d8bcd}</Project>
+      <Name>WebFarmSync</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

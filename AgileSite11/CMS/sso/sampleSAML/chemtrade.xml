@@ -1,0 +1,59 @@
+﻿<samlp:Response ID="_319d3df1-6107-4065-8a13-25f004efc160" Version="2.0" IssueInstant="2021-06-15T13:50:16.777Z" Destination="https://trainingnetworknow.com/sso/sso_mychemtrade.aspx" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">http://chetorfs01.chemtradelogistics.com/adfs/services/trust</Issuer>
+  <samlp:Status>
+    <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+  </samlp:Status>
+  <Assertion ID="_30644ee0-85da-44ed-86df-cbe44ab39552" IssueInstant="2021-06-15T13:50:16.777Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+    <Issuer>http://chetorfs01.chemtradelogistics.com/adfs/services/trust</Issuer>
+    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+      <ds:SignedInfo>
+        <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+        <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+        <ds:Reference URI="#_30644ee0-85da-44ed-86df-cbe44ab39552">
+          <ds:Transforms>
+            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </ds:Transforms>
+          <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <ds:DigestValue>yNEdIBFKx91wFn6r7+cCCtOX6zT+0dWDwgGw4O4fRKI=</ds:DigestValue>
+        </ds:Reference>
+      </ds:SignedInfo>
+      <ds:SignatureValue>lBlkHUjh1Y2rHLqvVb4fIlsVuWrfQHUYZGJpALPPO4PN5vWRqIOb/W0jBqL6kFG8kISFUZrZVS8SeDNHu/YOcds/LjiJD871SfjeBujGxphVOYdH5rDm7ej8HTPGl1qfe9cMN242CjgxRolCgo/+ojDYPLh/h1FSENSb9yENELFSj2xmYaf29OSgout4zmKB3C6aoR6iRzPHHyjzJA64jmaFPsSShYBhymnZi3e5bA3SP/YBvI0sZQiw68VoUw7KP+V93Yd+UsF6iEzC3WUcsy4jA4hhMpYzc52irRR+zeh2RfjZuH4GMJGBC6Pc24g1ewoP+JDTX7GkoYcWoidrjA==</ds:SignatureValue>
+      <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>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</ds:X509Certificate>
+        </ds:X509Data>
+      </KeyInfo>
+    </ds:Signature>
+    <Subject>
+      <NameID>MThompson@chemtradelogistics.com</NameID>
+      <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <SubjectConfirmationData NotOnOrAfter="2021-06-15T13:55:16.777Z" Recipient="https://trainingnetworknow.com/sso/sso_mychemtrade.aspx" />
+      </SubjectConfirmation>
+    </Subject>
+    <Conditions NotBefore="2021-06-15T13:50:16.496Z" NotOnOrAfter="2021-06-15T14:50:16.496Z">
+      <AudienceRestriction>
+        <Audience>https://www.trainingnetworknow.com/sso/sso_mychemtrade.aspx</Audience>
+      </AudienceRestriction>
+    </Conditions>
+    <AttributeStatement>
+      <Attribute Name="CompanyID">
+        <AttributeValue>5051</AttributeValue>
+      </Attribute>
+      <Attribute Name="email">
+        <AttributeValue>MThompson@chemtradelogistics.com</AttributeValue>
+      </Attribute>
+      <Attribute Name="FullName">
+        <AttributeValue>Mark Thompson</AttributeValue>
+      </Attribute>
+      <Attribute Name="NameID">
+        <AttributeValue>MThompson@chemtradelogistics.com</AttributeValue>
+      </Attribute>
+    </AttributeStatement>
+    <AuthnStatement AuthnInstant="2021-06-15T13:50:16.215Z" SessionIndex="_30644ee0-85da-44ed-86df-cbe44ab39552">
+      <AuthnContext>
+        <AuthnContextClassRef>urn:federation:authentication:windows</AuthnContextClassRef>
+      </AuthnContext>
+    </AuthnStatement>
+  </Assertion>
+</samlp:Response>

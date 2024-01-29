@@ -1,0 +1,49 @@
+@import "susy";
+@import "base/_normalize.scss";
+@import "helpers/_variables.scss";
+@import "helpers/_mixins.scss";
+@import "base/_base.scss";
+@import "components/_components.scss";
+
+@import "components/_styleguide.scss";
+
+@import "layout/_header.scss";
+@import "layout/_footer.scss";
+@import "layout/_navigation.scss";
+@import "layout/_available-homes-list.scss";
+
+@import "pages/_index.scss";
+@import "pages/_interior.scss";
+@import "pages/_move-in-ready.scss";
+@import "pages/_builders.scss";
+@import "pages/_neighborhoods.scss";
+@import "pages/_available-homes.scss";
+
+.wide {
+	width: 100%;
+	max-width: 1800px;
+	margin: 0 auto;
+	overflow: hidden;
+	background: #fff;
+	box-shadow: 0 0 4px rgba(#000, 0.4);
+	position: relative;
+}
+
+.wrapper {
+	@include container();
+	@include wrapper-padding;
+	position: relative;	
+	margin: 0 auto;
+	width: 100%;
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+.row {
+
+	&:after {
+		@extend .clearfix;
+	}
+}

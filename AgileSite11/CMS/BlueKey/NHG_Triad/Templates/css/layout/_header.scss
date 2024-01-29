@@ -1,0 +1,154 @@
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+header {
+	z-index: 101;
+	
+	@media #{$md} {
+		background: rgba(#fff, 0.8);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+/* ==========================================================================
+   MENU TOGGLE
+   ========================================================================== */
+.menuToggle {
+	cursor: pointer;
+	position: absolute;
+	right: 15px;
+	top: 74px;
+	color: #fff;
+	font-size: 40px;
+
+	@media #{$md} {
+		display: none;
+	}
+
+	&:after {
+		content: "\f0c9";
+		font-family: FontAwesome;
+	}
+}
+
+/* ==========================================================================
+   TOP SEARCH
+   ========================================================================== */
+.headerSearch {
+	background: #fff;
+
+	@media #{$md} {
+		float: right;
+		background: #fff;
+		margin: 15px 15px 0 13px;
+	}
+
+	@media #{$lg} {
+		@include post(1);
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+
+	input[type="text"] {
+		border: none;
+		border-radius: 0;
+		background: transparent; 
+		appearance: none;
+		@include span(10 no-gutter);
+		height: 60px;
+		line-height: 60px;
+		padding: 0 35px;
+		font-family: $font-stack2;
+		font-size: 2.4rem;
+
+		@media #{$md} {
+			height: 35px;
+			line-height: 35px;
+			font-size: $font-xs;
+			padding: 0 11px;
+			width: 160px;
+			border: 1px solid $gray-med;
+			border-right: 0;
+		}
+	}
+
+	input[type="submit"] {
+		border: none;
+		border-radius: 0;
+		background: url('../images/iconSearch.png') 50% 50% no-repeat;
+		background-size: auto 30px;
+		appearance: none;
+		@include span(2 wide last);
+		height: 60px;
+		text-indent: -9999px;
+
+		@media #{$md} {
+			height: 35px;
+			width: 35px;
+			background: $gray-ex-dark url('../images/iconSearch2.png') 50% 50% no-repeat;
+			background-size: auto 15px;
+		}
+
+		&:hover {
+
+			@media #{$md} {
+				background: $gray-dark url('../images/iconSearch2.png') 50% 50% no-repeat;
+				background-size: auto 15px;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
+.logo {
+	background: $primary;
+	padding: 13px 0 13px 15px;
+
+	@media #{$md} {
+		@include span(4 no-gutter);
+		text-align: center;
+		padding: 21px;
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+
+	img {
+		width: 220px;
+		height: auto;
+
+		@media #{$lg} {
+			height: 62px;
+			width: auto;
+		}
+
+		@media #{$lg} {
+			height: 72px;
+		}
+	}
+}
+
+/* ==========================================================================
+   TOP SOCIAL 
+   ========================================================================== */
+.topSocial {
+	display: none;
+
+	@media #{$md} {
+		display: block;
+		float: right;
+		margin: 15px 0 0;
+	}
+}

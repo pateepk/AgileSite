@@ -1,0 +1,24 @@
+/*************************************************************
+
+WRAPPER PADDING
+
+*************************************************************/
+@mixin wrapper-padding {
+	padding-left: 15px;
+	padding-right: 15px;
+
+	@media #{$sm} {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+
+	@media #{$md} {
+		padding-left: 45px;
+		padding-right: 45px;
+	}
+
+	@media #{$xl} {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6D2B98E3-85D8-4E1E-AE3F-7642A4571F8D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.SalesForce</RootNamespace>
+    <AssemblyName>CMS.SalesForce</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.SalesForce.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\Output\Release\CMS\CMS.SalesForce.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AttributeValueConverter\AttributeValueConverterBase.cs" />
+    <Compile Include="AttributeValueConverter\AttributeValueConverterFactory.cs" />
+    <Compile Include="AttributeValueConverter\AttributeValueConverterFactoryEntry.cs" />
+    <Compile Include="AttributeValueConverter\BooleanAttributeValueConverter.cs" />
+    <Compile Include="AttributeValueConverter\DateTimeAttributeValueConverter.cs" />
+    <Compile Include="AttributeValueConverter\DoubleAttributeValueConverter.cs" />
+    <Compile Include="AttributeValueConverter\IntegerAttributeValueConverter.cs" />
+    <Compile Include="AttributeValueConverter\StringAttributeValueConverter.cs" />
+    <Compile Include="Authentication\ConfigurationSessionProvider.cs" />
+    <Compile Include="Authentication\ISessionProvider.cs" />
+    <Compile Include="Authentication\OrganizationCredentials.cs" />
+    <Compile Include="Authentication\PasswordSessionProvider.cs" />
+    <Compile Include="Authentication\RefreshTokenSessionProvider.cs" />
+    <Compile Include="Authentication\SalesForceAuthorizationHelper.cs" />
+    <Compile Include="Authentication\Session.cs" />
+    <Compile Include="Automation\AutomationHelper.cs" />
+    <Compile Include="Automation\ReplicateLeadAction.cs" />
+    <Compile Include="Automation\ReplicateLeadCommand.cs" />
+    <Compile Include="Automation\ReplicateLeadCommandResultEnum.cs" />
+    <Compile Include="Client\AttributeModel\EntityAttributeModel.cs" />
+    <Compile Include="Client\AttributeModel\EntityBinaryAttributeModel.cs" />
+    <Compile Include="Client\AttributeModel\EntityBooleanAttributeModel.cs" />
+    <Compile Include="Client\AttributeModel\EntityDateTimeAttributeModel.cs" />
+    <Compile Include="Client\AttributeModel\EntityDoubleAttributeModel.cs" />
+    <Compile Include="Client\AttributeModel\EntityIntegerAttributeModel.cs" />
+    <Compile Include="Client\AttributeModel\EntityMultiPicklistAttributeModel.cs" />
+    <Compile Include="Client\AttributeModel\EntityStringAttributeModel.cs" />
+    <Compile Include="Client\AttributeModel\PicklistEntry.cs" />
+    <Compile Include="Client\Command\CreateEntitiesCommand.cs" />
+    <Compile Include="Client\Command\DeleteEntitiesCommand.cs" />
+    <Compile Include="Client\Command\DescribeEntitiesCommand.cs" />
+    <Compile Include="Client\Command\DescribeEntityCommand.cs" />
+    <Compile Include="Client\Command\SalesForceClientCommand.cs" />
+    <Compile Include="Client\Command\SelectEntitiesCommand.cs" />
+    <Compile Include="Client\Command\SelectMoreEntitiesCommand.cs" />
+    <Compile Include="Client\Command\UpdateEntitiesCommand.cs" />
+    <Compile Include="Client\Command\UpsertEntitiesCommand.cs" />
+    <Compile Include="Client\Entity.cs" />
+    <Compile Include="Client\EntityAttribute.cs" />
+    <Compile Include="Client\EntityAttributeValueType.cs" />
+    <Compile Include="Client\EntityModel.cs" />
+    <Compile Include="Client\EntitySerializer.cs" />
+    <Compile Include="Client\Error.cs" />
+    <Compile Include="Client\Result\CreateEntityResult.cs" />
+    <Compile Include="Client\Result\DeleteEntityResult.cs" />
+    <Compile Include="Client\Result\GetDeletedEntitiesResult.cs" />
+    <Compile Include="Client\Result\GetDeletedEntitiesResultItem.cs" />
+    <Compile Include="Client\Result\GetUpdatedEntitiesResult.cs" />
+    <Compile Include="Client\Result\IEntityCommandResult.cs" />
+    <Compile Include="Client\Result\SelectEntitiesResult.cs" />
+    <Compile Include="Client\Result\UpdateEntityResult.cs" />
+    <Compile Include="Client\Result\UpsertEntityResult.cs" />
+    <Compile Include="Client\SalesForceClient.cs" />
+    <Compile Include="Client\SalesForceClientException.cs" />
+    <Compile Include="Client\SalesForceClientOptions.cs" />
+    <Compile Include="Client\StatusCode.cs" />
+    <Compile Include="Handlers\AuthorizationSetupHandler.cs" />
+    <Compile Include="LeadReplication\ContactFormInfoProvider.cs" />
+    <Compile Include="LeadReplication\ContactMapper.cs" />
+    <Compile Include="LeadReplication\DatabaseOperations\DisableContactReplicationDatabaseOperation.cs" />
+    <Compile Include="LeadReplication\DatabaseOperations\SetContactChainLeadDatabaseOperation.cs" />
+    <Compile Include="LeadReplication\DatabaseOperations\SetContactLeadDatabaseOperation.cs" />
+    <Compile Include="LeadReplication\DatabaseOperations\SetContactReplicationDateTimeDatabaseOperation.cs" />
+    <Compile Include="LeadReplication\DatabaseOperations\SuspendContactReplicationDatabaseOperation.cs" />
+    <Compile Include="LeadReplication\LeadReplicationContext.cs" />
+    <Compile Include="LeadReplication\LeadReplicationDataProvider.cs" />
+    <Compile Include="LeadReplication\LeadReplicationEngine.cs" />
+    <Compile Include="LeadReplication\LeadReplicationEngineHost.cs" />
+    <Compile Include="LeadReplication\LeadReplicationHelper.cs" />
+    <Compile Include="LeadReplication\LeadReplicationTask.cs" />
+    <Compile Include="Mapping\Mapping.cs" />
+    <Compile Include="Mapping\MappingItem.cs" />
+    <Compile Include="Mapping\MappingItemSourceTypeEnum.cs" />
+    <Compile Include="Mapping\MappingSerializer.cs" />
+    <Compile Include="Module\SalesForceHandlers.cs" />
+    <Compile Include="Module\SalesForceModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Replication\DatabaseOperationRecorder.cs" />
+    <Compile Include="Replication\EntityOperationEnum.cs" />
+    <Compile Include="Replication\IDatabaseOperation.cs" />
+    <Compile Include="Replication\IRunnable.cs" />
+    <Compile Include="Replication\ISalesForceClientProvider.cs" />
+    <Compile Include="Replication\Mapper.cs" />
+    <Compile Include="Replication\ReplicationLog.cs" />
+    <Compile Include="Replication\SalesForceReplicationException.cs" />
+    <Compile Include="Replication\SingletonScopeSalesForceClientProvider.cs" />
+    <Compile Include="RestContract\AuthorizxationError.cs" />
+    <Compile Include="RestContract\GetAuthenticationTokensResponse.cs" />
+    <Compile Include="RestContract\Identity.cs" />
+    <Compile Include="RestContract\UrlFormats.cs" />
+    <Compile Include="SalesForceException.cs" />
+    <Compile Include="SalesForceReplicationTask.cs" />
+    <Compile Include="SalesForceUsageDataSource.cs" />
+    <Compile Include="Service References\WebServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+    <None Include="packages.config" />
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DebuggingInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DeleteResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DescribeDataCategoryGroupResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DescribeDataCategoryGroupStructureResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DescribeGlobalResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DescribeLayoutResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DescribeSObjectResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DescribeSoftphoneLayoutResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.DescribeTabSetResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.EmptyRecycleBinResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.GetDeletedResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.GetServerTimestampResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.GetUpdatedResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.GetUserInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.InvalidateSessionsResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.LeadConvertResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.LoginResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.MergeResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.ProcessResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.QueryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.ResetPasswordResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.SaveResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.SearchResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.SendEmailResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.SetPasswordResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.sObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.UndeleteResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\CMS.SalesForce.WebServiceClient.UpsertResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebServiceClient\Schema.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WebServiceClient\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebServiceClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebServiceClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Automation\Automation.csproj">
+      <Project>{d78a0f88-323c-47ba-9e69-50fdf6efcfca}</Project>
+      <Name>Automation</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManagement\ContactManagement.csproj">
+      <Project>{77bdffcb-2aea-4b58-b7da-a1b69a1e7f22}</Project>
+      <Name>ContactManagement</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineMarketing\OnlineMarketing.csproj">
+      <Project>{a687ff7a-9726-4c43-8a28-0e6c5f7cdae3}</Project>
+      <Name>OnlineMarketing</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{F21C925B-3AA1-4139-9706-BA5073527A8F}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

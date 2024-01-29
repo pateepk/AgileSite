@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.WorldTradeEnterprise.com/webservices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.WorldTradeEnterprise.com/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.WorldTradeEnterprise.com/webservices">
+      <s:element name="HealthCheck">
+        <s:complexType />
+      </s:element>
+      <s:element name="HealthCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HealthCheckResult" type="tns:ResponseInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ServiceAuthHeader" type="tns:ServiceAuthHeader" />
+      <s:complexType name="ServiceAuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="SendEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="toAddresses" type="tns:ArrayOfAddress" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromAddress" type="tns:Address" />
+            <s:element minOccurs="0" maxOccurs="1" name="ccAddresses" type="tns:ArrayOfAddress" />
+            <s:element minOccurs="0" maxOccurs="1" name="bccAddresses" type="tns:ArrayOfAddress" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailSubject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailBody" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isHTMLBody" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Address" type="tns:Address" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendEmailResult" type="tns:ResponseInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmailWithAttachment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addresses" type="tns:Addresses" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailSubject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailBody" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isHTMLBody" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="attachments" type="tns:ArrayOfAttachmentType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Addresses">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FromAddress" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToAddresses" type="tns:ArrayOfAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="CCAddresses" type="tns:ArrayOfAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="BCCAddresses" type="tns:ArrayOfAddress" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReplyToAddress" type="tns:Address" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAttachmentType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AttachmentType" type="tns:AttachmentType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AttachmentType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Filename" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="Encoding" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MimeFlags" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendEmailWithAttachmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendEmailWithAttachmentResult" type="tns:ResponseInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ToPhoneNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SMSMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMSMessageResult" type="tns:ResponseInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFaxMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxFromName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFaxMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendFaxMessageResult" type="tns:ResponseInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFormattedFaxMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxFromName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxFormat" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFormattedFaxMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendFormattedFaxMessageResult" type="tns:ResponseInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HealthCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:HealthCheck" />
+  </wsdl:message>
+  <wsdl:message name="HealthCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:HealthCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="HealthCheckServiceAuthHeader">
+    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEmail" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailServiceAuthHeader">
+    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailWithAttachmentSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEmailWithAttachment" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailWithAttachmentSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEmailWithAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailWithAttachmentServiceAuthHeader">
+    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMSMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSMessageServiceAuthHeader">
+    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendFaxMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendFaxMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendFaxMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendFaxMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendFaxMessageServiceAuthHeader">
+    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendFormattedFaxMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendFormattedFaxMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendFormattedFaxMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendFormattedFaxMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendFormattedFaxMessageServiceAuthHeader">
+    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
+  </wsdl:message>
+  <wsdl:portType name="CommunicationAppWebServiceSoap">
+    <wsdl:operation name="HealthCheck">
+      <wsdl:input message="tns:HealthCheckSoapIn" />
+      <wsdl:output message="tns:HealthCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <wsdl:input message="tns:SendEmailSoapIn" />
+      <wsdl:output message="tns:SendEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailWithAttachment">
+      <wsdl:input message="tns:SendEmailWithAttachmentSoapIn" />
+      <wsdl:output message="tns:SendEmailWithAttachmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSMessage">
+      <wsdl:input message="tns:SendSMSMessageSoapIn" />
+      <wsdl:output message="tns:SendSMSMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFaxMessage">
+      <wsdl:input message="tns:SendFaxMessageSoapIn" />
+      <wsdl:output message="tns:SendFaxMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFormattedFaxMessage">
+      <wsdl:input message="tns:SendFormattedFaxMessageSoapIn" />
+      <wsdl:output message="tns:SendFormattedFaxMessageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CommunicationAppWebServiceSoap" type="tns:CommunicationAppWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HealthCheck">
+      <soap:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/HealthCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:HealthCheckServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendEmailServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailWithAttachment">
+      <soap:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendEmailWithAttachment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendEmailWithAttachmentServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSMessage">
+      <soap:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendSMSMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendSMSMessageServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFaxMessage">
+      <soap:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendFaxMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendFaxMessageServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFormattedFaxMessage">
+      <soap:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendFormattedFaxMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendFormattedFaxMessageServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CommunicationAppWebServiceSoap12" type="tns:CommunicationAppWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HealthCheck">
+      <soap12:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/HealthCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:HealthCheckServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap12:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendEmailServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailWithAttachment">
+      <soap12:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendEmailWithAttachment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendEmailWithAttachmentServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSMessage">
+      <soap12:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendSMSMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendSMSMessageServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFaxMessage">
+      <soap12:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendFaxMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendFaxMessageServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFormattedFaxMessage">
+      <soap12:operation soapAction="http://www.WorldTradeEnterprise.com/webservices/SendFormattedFaxMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendFormattedFaxMessageServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CommunicationAppWebService">
+    <wsdl:port name="CommunicationAppWebServiceSoap" binding="tns:CommunicationAppWebServiceSoap">
+      <soap:address location="http://10.100.0.244:8082/CommunicationWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CommunicationAppWebServiceSoap12" binding="tns:CommunicationAppWebServiceSoap12">
+      <soap12:address location="http://10.100.0.244:8082/CommunicationWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

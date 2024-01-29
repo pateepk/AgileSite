@@ -1,0 +1,74 @@
+﻿<samlp:Response ID="_b844cafd-8643-4190-b2dd-cd9580222731" Version="2.0" IssueInstant="2021-06-24T17:23:59.459Z" Destination="https://www.trainingnetworknow.com/sso/sso_mychemtrade.aspx" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://sts.windows.net/6edd428a-991b-4422-a586-a66144def53a/</Issuer>
+  <samlp:Status>
+    <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+  </samlp:Status>
+  <Assertion ID="_e510f926-5cc1-420e-bd16-266091876c01" IssueInstant="2021-06-24T17:23:59.429Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+    <Issuer>https://sts.windows.net/6edd428a-991b-4422-a586-a66144def53a/</Issuer>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+        <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+        <Reference URI="#_e510f926-5cc1-420e-bd16-266091876c01">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <DigestValue>3m/S1QBRhTeJAepdrXLN3PpfasUI8QHTVtEFoC63Ozw=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>h69519Rh63aL0n8XWOIQ9nD5o+6CGNqzADaNGOWS79P60ifYqqzBtuBicW549tXHfcaWlUt7O/5sNnEYJROAAVXk32ba4ou8l1bodIXkshVGjHsB4Xb/lJOxCy8K19LZcJ++ZaILPg7rCWLgnZyehluYW3TAe/bwXrlq2TOzqFiTZYHTzWlgMj+26ytR61LQwIryr7YqFI9N77rLleIhPfLskvDMdWq3/bkORfFyt/pe8rks2wRHbH+VahHcCrKKjVCTlsNWRFw1YJlsTOzfrLyFDmSNMaciJhGZxR9KgSMfYZNMK9rtQCNHwlIjbC9/Qn140AYoyEr6jbKknGn/oA==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>MIIC8DCCAdigAwIBAgIQHTKEFFWLiIhABrJj7FBBZjANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMTA2MTEwMTIyNTNaFw0yNDA2MTEwMTIyNTNaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr5jmUn/0e19DEf0PtHnMUN9Vejx9MKIcj28z1NTdKgbjZ3O3th6p+c2mSrbGkSiaZdmWUTjrSUDagUiDSVsEUvk/5q/dRWJhjb24X/oRHOHmKpaWvbwfS74IMYlUUaTF9RlRlYPFJ5SIjUi7WsOqbv0i6giK2gbvvJrz/3OuuFTltPdsJOuU0ct/q29mWRLIH+YrVw9l/REGMIj4ivhzaY64nStOEQMm64K1IqoK6bzZ5qYH+m4OZpzMMq+oWeEvRUB5vNqKqOL6JmSTRe4FqrxNxikVeUMqHsXuMVLK9czPD7ipVgqib74pWG3kNIAPzesH9RpKfVJxpmzdtB0B2QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQA06N2he7SAunEwLP/tbG+OAV2mFue3ASw3yvZ7vEFlooLGU50Xur1/MD3KtbDNDS5Ph/Ps/FsbWB68/QFwjQ/OPJDNWgHZUixDy8A0cCBJXcURY9HjJhMn2bwSJvy0F+tabACFY+EAb6sB59Bfi90T3SxRIXCXiK7HNAS89blDVx5h9bUL/XZP/TrCkJF7KBqh9rmIW4cGUw0Xa7cgb+js97DIVZRJlWB6P7q42QbcbpRnEADP2x0xoeCGYaM5u+LIyTI4ObKoKn7tf7MAgNF27puL3qhmIYNskE9LM+BQAw4IoU5M8YmorHz6pb/ye1JsgCr/HuQ11nknN+ikvahI</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+    <Subject>
+      <NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress">pateep@wte.net</NameID>
+      <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <SubjectConfirmationData NotOnOrAfter="2021-06-24T18:23:59.244Z" Recipient="https://www.trainingnetworknow.com/sso/sso_mychemtrade.aspx" />
+      </SubjectConfirmation>
+    </Subject>
+    <Conditions NotBefore="2021-06-24T17:18:59.244Z" NotOnOrAfter="2021-06-24T18:23:59.244Z">
+      <AudienceRestriction>
+        <Audience>spn:eec19dd8-9c15-4355-8a84-0e1ded2cb1b9</Audience>
+      </AudienceRestriction>
+    </Conditions>
+    <AttributeStatement>
+      <Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">
+        <AttributeValue>6edd428a-991b-4422-a586-a66144def53a</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">
+        <AttributeValue>12692dc7-6c6e-48e8-89a9-3c0df76cb99e</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.microsoft.com/identity/claims/displayname">
+        <AttributeValue>Pateep Kitbamrung</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.microsoft.com/identity/claims/identityprovider">
+        <AttributeValue>https://sts.windows.net/6edd428a-991b-4422-a586-a66144def53a/</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.microsoft.com/claims/authnmethodsreferences">
+        <AttributeValue>http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">
+        <AttributeValue>Pateep</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">
+        <AttributeValue>Kitbamrung</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress">
+        <AttributeValue>pateep@wte.net</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">
+        <AttributeValue>pateep@wte.net</AttributeValue>
+      </Attribute>
+    </AttributeStatement>
+    <AuthnStatement AuthnInstant="2021-06-01T13:39:56.881Z" SessionIndex="_e510f926-5cc1-420e-bd16-266091876c01">
+      <AuthnContext>
+        <AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:Password</AuthnContextClassRef>
+      </AuthnContext>
+    </AuthnStatement>
+  </Assertion>
+</samlp:Response>

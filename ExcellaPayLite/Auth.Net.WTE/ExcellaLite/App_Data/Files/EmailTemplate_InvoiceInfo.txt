@@ -1,0 +1,21 @@
+﻿WTE Invoice
+Invoice Number: {0}
+CustNum: {1}
+Status: {2}
+Project: {3}
+Due Date: {4}
+Terms: {5}
+Document: {6}
+Invoice Date: {7}
+Invoice Total: {8}
+Amount Paid: {9}
+Amount In Transit: {10}
+Amount Due: {11}
+
+For detail invoice, please visit this link:
+
+{12}
+
+
+billing department
+WTE Solutions

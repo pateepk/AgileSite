@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C333C520-6F02-4C22-B1CF-33D6E4599CA7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Ecommerce</RootNamespace>
+    <AssemblyName>CMS.Ecommerce</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Ecommerce.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Ecommerce.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.8.0.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.8.0\lib\net451\PayPal.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ActivityLogging\EcommerceActivityLogger.cs" />
+    <Compile Include="ActivityLogging\ProductAddedToShoppingCartActivityInitializer.cs" />
+    <Compile Include="ActivityLogging\ProductAddedToWishlistActivityInitializer.cs" />
+    <Compile Include="ActivityLogging\ProductRemovedFromShoppingCartActivityInitializer.cs" />
+    <Compile Include="ActivityLogging\PurchaseActivityInitializer.cs" />
+    <Compile Include="ActivityLogging\PurchasedProductActivityInitializer.cs" />
+    <Compile Include="ActivityLogging\ActivityTrackingHelper.cs" />
+    <Compile Include="Calculation\IShoppingCartCalculationFactory.cs" />
+    <Compile Include="Calculation\Logging\ICalculatorLoggingService.cs" />
+    <Compile Include="Calculation\Logging\EmptyCalculatorLoggingService.cs" />
+    <Compile Include="Calculation\ShoppingCartCalculationFactory.cs" />
+    <Compile Include="Calculation\Step\CalculatorData.cs" />
+    <Compile Include="Calculation\Step\OrderDiscountsCalculator.cs" />
+    <Compile Include="Configuration\Brands\BrandInfo.cs" />
+    <Compile Include="Configuration\Brands\BrandInfoProvider.cs" />
+    <Compile Include="Configuration\Collections\CollectionInfo.cs" />
+    <Compile Include="Configuration\Collections\CollectionInfoProvider.cs" />
+    <Compile Include="Configuration\Shipping\IShippingPriceCalculator.cs" />
+    <Compile Include="Configuration\Shipping\IShippingPriceCalculatorFactory.cs" />
+    <Compile Include="Configuration\Shipping\IShippingPriceService.cs" />
+    <Compile Include="Configuration\Shipping\ShippingPriceCalculatorFactory.cs" />
+    <Compile Include="Configuration\Shipping\ShippingPrices.cs" />
+    <Compile Include="Configuration\Shipping\ShippingPriceService.cs" />
+    <Compile Include="Customers\AddressContactDataMapper.cs" />
+    <Compile Include="Customers\DefaultCustomerRegistrationRepository.cs" />
+    <Compile Include="Customers\DefaultCustomerRegistrationRepositoryFactory.cs" />
+    <Compile Include="Customers\ICustomerRegistrationRepository.cs" />
+    <Compile Include="Customers\ICustomerRegistrationRepositoryFactory.cs" />
+    <Compile Include="Discounts\AbstractCartItemDiscountSource.cs" />
+    <Compile Include="Discounts\Coupons\CodeUniquenessChecker.cs" />
+    <Compile Include="Discounts\Coupons\CouponCode.cs" />
+    <Compile Include="Discounts\Coupons\CouponCodeApplicationStatusEnum.cs" />
+    <Compile Include="Discounts\Coupons\CouponCodeCollection.cs" />
+    <Compile Include="Discounts\Coupons\CouponGeneratorConfig.cs" />
+    <Compile Include="Discounts\Coupons\GiftCardCouponCodeInfo.cs" />
+    <Compile Include="Discounts\Coupons\GiftCardCouponCodeInfoProvider.cs" />
+    <Compile Include="Discounts\Coupons\ICodeUniquenessChecker.cs" />
+    <Compile Include="Discounts\Coupons\ICouponCode.cs" />
+    <Compile Include="Discounts\Coupons\ICouponCodeApplication.cs" />
+    <Compile Include="Discounts\Coupons\ICouponCodeCollection.cs" />
+    <Compile Include="Discounts\Coupons\IReadOnlyCouponCodeCollection.cs" />
+    <Compile Include="Discounts\GiftCards\GiftCardInfo.cs" />
+    <Compile Include="Discounts\GiftCards\GiftCardInfoProvider.cs" />
+    <Compile Include="Discounts\IDiscountInfo.cs" />
+    <Compile Include="Discounts\MultiBuy\IMultiBuyDiscountsEvaluator.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountBrandInfo.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountBrandInfoProvider.cs" />
+    <Compile Include="Discounts\MultiBuy\MultibuyDiscountCollectionInfo.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountCollectionInfoProvider.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountTreeInfo.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountTreeInfoProvider.cs" />
+    <Compile Include="Discounts\MultiBuy\Services\IMultiBuyDiscountsService.cs" />
+    <Compile Include="Calculation\Step\IShoppingCartCalculator.cs" />
+    <Compile Include="Calculation\Result\CalculationResult.cs" />
+    <Compile Include="Calculation\IShoppingCartAdapterService.cs" />
+    <Compile Include="Calculation\Request\CalculationRequest.cs" />
+    <Compile Include="Calculation\Request\CalculationRequestItem.cs" />
+    <Compile Include="Calculation\Request\CalculationRequestItemOption.cs" />
+    <Compile Include="Calculation\Result\CalculationResultItem.cs" />
+    <Compile Include="Calculation\ShoppingCartAdapterService.cs" />
+    <Compile Include="Discounts\MultiBuy\Services\MultiBuyDiscountsService.cs" />
+    <Compile Include="Calculation\Step\OtherPaymentsCalculator.cs" />
+    <Compile Include="Calculation\Step\CartItemDiscountCalculator.cs" />
+    <Compile Include="Calculation\Step\ShippingCalculator.cs" />
+    <Compile Include="Calculation\Step\TaxCalculator.cs" />
+    <Compile Include="Calculation\Step\UnitPriceCalculator.cs" />
+    <Compile Include="Calculation\Step\ShoppingCartCalculatorCollection.cs" />
+    <Compile Include="Calculation\Step\TotalValuesCalculator.cs" />
+    <Compile Include="Checkout\CheckoutProcessEnum.cs" />
+    <Compile Include="Checkout\CheckoutProcessInfo.cs" />
+    <Compile Include="Checkout\CheckoutProcessStepInfo.cs" />
+    <Compile Include="Configuration\Currencies\ISiteMainCurrencySource.cs" />
+    <Compile Include="Configuration\Currencies\SiteMainCurrencySource.cs" />
+    <Compile Include="Discounts\DiscountRestrictionHelper.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyItem.cs" />
+    <Compile Include="Discounts\MultiBuy\Services\IMultiBuyDiscountSource.cs" />
+    <Compile Include="Discounts\MultiBuy\Services\MultiBuyDiscountSource.cs" />
+    <Compile Include="Discounts\Services\FixedDiscountApplication.cs" />
+    <Compile Include="Discounts\Services\IDiscount.cs" />
+    <Compile Include="Discounts\Services\IOrderDiscountSource.cs" />
+    <Compile Include="Discounts\Services\IProductCouponService.cs" />
+    <Compile Include="Discounts\Services\IShippingDiscountSource.cs" />
+    <Compile Include="Discounts\Services\OrderDiscountSource.cs" />
+    <Compile Include="Discounts\Services\PercentageDiscount.cs" />
+    <Compile Include="Discounts\Services\ProductCouponService.cs" />
+    <Compile Include="Discounts\Services\ShippingDiscountSource.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\Address.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\CreateTransactionResponse.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\CreditCard.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\MainMessagesResultCode.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\Customer.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\Error.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\ErrorResponse.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\Message.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\MainMessage.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\MainMessages.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\Order.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\ResponseResult.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\TransactionResponse.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\TransactionResponseCode.cs" />
+    <Compile Include="Gateways\AuthorizeNetParameters.cs" />
+    <Compile Include="Gateways\CMSAuthorizeNetProvider.cs" />
+    <Compile Include="Gateways\CMSCreditPaymentProvider.cs" />
+    <Compile Include="Gateways\CMSPaymentGatewayProvider.cs" />
+    <Compile Include="Gateways\CMSPayPalProvider.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\CreateTransactionRequest.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\MerchantAuthentication.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\Payment.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\TransactionRequest.cs" />
+    <Compile Include="Gateways\AuthorizeNetDataContracts\TransactionType.cs" />
+    <Compile Include="Gateways\GatewayExtensions.cs" />
+    <Compile Include="Gateways\IDelayedPaymentGatewayProvider.cs" />
+    <Compile Include="Gateways\IDirectPaymentGatewayProvider.cs" />
+    <Compile Include="Gateways\IPaymentGatewayProcessor.cs" />
+    <Compile Include="Gateways\IPaymentGatewayProvider.cs" />
+    <Compile Include="Gateways\IPayPalContextProvider.cs" />
+    <Compile Include="Gateways\PaymentGatewayProcessor.cs" />
+    <Compile Include="Gateways\PayPalContextProvider.cs" />
+    <Compile Include="GoogleIntegration\GtmData.cs" />
+    <Compile Include="GoogleIntegration\GtmDataHelper.cs" />
+    <Compile Include="GoogleIntegration\GtmOrderHelper.cs" />
+    <Compile Include="GoogleIntegration\GtmProductHelper.cs" />
+    <Compile Include="GoogleIntegration\OrderItemInfoData.cs" />
+    <Compile Include="GoogleIntegration\GtmPropertiesMerger.cs" />
+    <Compile Include="Macros\CalculatorDataMethods.cs" />
+    <Compile Include="Discounts\Services\CatalogDiscountSource.cs" />
+    <Compile Include="Macros\CustomerMethods.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartCouponCodeInfo.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartCouponCodeInfoProvider.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartLine.cs" />
+    <Compile Include="Orders\SummaryItem.cs" />
+    <Compile Include="Orders\ValuesSummary.cs" />
+    <Compile Include="OtherPayments\GiftCardApplication.cs" />
+    <Compile Include="OtherPayments\GiftCardSource.cs" />
+    <Compile Include="OtherPayments\IGiftCardSource.cs" />
+    <Compile Include="OtherPayments\OtherPaymentApplication.cs" />
+    <Compile Include="Products\Sections\IProductSectionProvider.cs" />
+    <Compile Include="Products\Sections\ProductSectionProvider.cs" />
+    <Compile Include="Products\Services\CatalogPriceCalculator.cs" />
+    <Compile Include="Products\Services\CatalogPriceCalculatorFactory.cs" />
+    <Compile Include="Products\Services\CatalogTaxCalculator.cs" />
+    <Compile Include="Products\Services\CatalogTaxCalculatorFactory.cs" />
+    <Compile Include="Discounts\Services\DiscountCollection.cs" />
+    <Compile Include="Discounts\Services\ICatalogDiscountSource.cs" />
+    <Compile Include="Products\Services\ICatalogPriceCalculatorFactory.cs" />
+    <Compile Include="Products\Services\ICatalogTaxCalculator.cs" />
+    <Compile Include="Products\Services\ICatalogTaxCalculatorFactory.cs" />
+    <Compile Include="Discounts\Services\IProductCouponSource.cs" />
+    <Compile Include="Discounts\Services\IProductDiscountSource.cs" />
+    <Compile Include="Discounts\Services\IVolumeDiscountSource.cs" />
+    <Compile Include="Products\Services\ProductCatalogPrices.cs" />
+    <Compile Include="Products\Services\ICatalogPriceCalculator.cs" />
+    <Compile Include="Products\Services\ISKUPriceSource.cs" />
+    <Compile Include="Products\Services\ISKUPriceSourceFactory.cs" />
+    <Compile Include="Discounts\Services\ProductCouponSource.cs" />
+    <Compile Include="Discounts\Services\ProductDiscountSource.cs" />
+    <Compile Include="Products\Services\SKUPriceSource.cs" />
+    <Compile Include="Products\Services\SKUPriceSourceFactory.cs" />
+    <Compile Include="Discounts\Services\VolumeDiscountSource.cs" />
+    <Compile Include="Products\SKUMembershipListInfo.cs" />
+    <Compile Include="Rounding\DefaultRoundingService.cs" />
+    <Compile Include="Rounding\DefaultRoundingServiceFactory.cs" />
+    <Compile Include="Rounding\IRoundingServiceFactory.cs" />
+    <Compile Include="Rounding\IRoundingService.cs" />
+    <Compile Include="Configuration\ExchangeRates\CurrencyConverter.cs" />
+    <Compile Include="Configuration\ExchangeRates\DefaultCurrencyConverterFactory.cs" />
+    <Compile Include="Configuration\ExchangeRates\DefaultCurrencyConverter.cs" />
+    <Compile Include="Configuration\ExchangeRates\ICurrencyConverter.cs" />
+    <Compile Include="Configuration\ExchangeRates\ICurrencyConverterFactory.cs" />
+    <Compile Include="Configuration\ExchangeRates\InvalidCurrencyConversionException.cs" />
+    <Compile Include="Configuration\Shipping\Carriers\CarrierInfo.cs" />
+    <Compile Include="Configuration\Shipping\Carriers\CarrierInfoProvider.cs" />
+    <Compile Include="Configuration\Shipping\Carriers\DefaultCarrierProvider.cs" />
+    <Compile Include="Configuration\Shipping\Carriers\ICarrierProvider.cs" />
+    <Compile Include="Configuration\Shipping\Delivery.cs" />
+    <Compile Include="Configuration\Shipping\DefaultDeliveryBuilder.cs" />
+    <Compile Include="Configuration\Shipping\DeliveryItem.cs" />
+    <Compile Include="Configuration\Shipping\IDeliveryBuilder.cs" />
+    <Compile Include="Configuration\Taxes\Services\Estimation\ITaxAddressService.cs" />
+    <Compile Include="Configuration\Taxes\Services\Calculation\ITaxCalculationServiceFactory.cs" />
+    <Compile Include="Configuration\Taxes\Services\Calculation\DefaultTaxCalculationService.cs" />
+    <Compile Include="Configuration\Taxes\Services\Estimation\ITaxAddressServiceFactory.cs" />
+    <Compile Include="Configuration\Taxes\Services\Estimation\TaxAddressService.cs" />
+    <Compile Include="Configuration\Taxes\Services\Calculation\TaxCalculationParameters.cs" />
+    <Compile Include="Configuration\Taxes\Services\Calculation\TaxCalculationRequest.cs" />
+    <Compile Include="Configuration\Taxes\Services\Calculation\TaxCalculationResult.cs" />
+    <Compile Include="Configuration\Taxes\Services\Calculation\DefaultTaxCalculationServiceFactory.cs" />
+    <Compile Include="Configuration\Taxes\Services\Calculation\TaxItem.cs" />
+    <Compile Include="Configuration\Taxes\Services\CountryStateTaxRateSource.cs" />
+    <Compile Include="Configuration\Taxes\CustomerTaxClass.cs" />
+    <Compile Include="Configuration\Taxes\Services\CustomerTaxClassService.cs" />
+    <Compile Include="Configuration\Taxes\Services\Estimation\DefaultTaxEstimationService.cs" />
+    <Compile Include="Configuration\Taxes\Services\Estimation\TaxAddressServiceFactory.cs" />
+    <Compile Include="Configuration\Taxes\Services\ICountryStateTaxRateSource.cs" />
+    <Compile Include="Configuration\Taxes\Services\ICustomerTaxClassService.cs" />
+    <Compile Include="Configuration\Taxes\Services\Calculation\ITaxCalculationService.cs" />
+    <Compile Include="Configuration\Taxes\Services\Estimation\ITaxEstimationService.cs" />
+    <Compile Include="Configuration\Taxes\Services\TaxClassService.cs" />
+    <Compile Include="Configuration\Taxes\Services\ITaxClassService.cs" />
+    <Compile Include="Configuration\Taxes\Services\Estimation\TaxEstimationParameters.cs" />
+    <Compile Include="Customers\CustomerPreferences.cs" />
+    <Compile Include="Customers\DefaultCustomerPreferencesProvider.cs" />
+    <Compile Include="Customers\ICustomerPreferencesProvider.cs" />
+    <Compile Include="Discounts\Coupons\BaseCouponCodeInfoProvider.cs" />
+    <Compile Include="Discounts\Coupons\CouponCodeInfo.cs" />
+    <Compile Include="Discounts\Coupons\CouponCodeInfoProvider.cs" />
+    <Compile Include="Discounts\Coupons\MultiBuyCouponCodeInfo.cs" />
+    <Compile Include="Discounts\Coupons\MultiBuyCouponCodeInfoProvider.cs" />
+    <Compile Include="Discounts\Coupons\RandomCodeGenerator.cs" />
+    <Compile Include="Discounts\DiscountApplicationEnum.cs" />
+    <Compile Include="Discounts\DiscountCustomerEnum.cs" />
+    <Compile Include="Discounts\DiscountInfo.cs" />
+    <Compile Include="Discounts\DiscountInfoProvider.cs" />
+    <Compile Include="Discounts\DiscountsFilterBase.cs" />
+    <Compile Include="Discounts\DiscountsParameters.cs" />
+    <Compile Include="Discounts\DiscountStatusEnum.cs" />
+    <Compile Include="Discounts\DiscountTypeEnum.cs" />
+    <Compile Include="Discounts\IConditionalDiscount.cs" />
+    <Compile Include="Discounts\CartDiscountsFilter.cs" />
+    <Compile Include="Discounts\MultiBuy\IMultiBuyDiscount.cs" />
+    <Compile Include="Discounts\MultiBuy\IMultiBuyDiscountsApplicator.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscount.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountDepartmentInfo.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountDepartmentInfoProvider.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountsAutoAdder.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountsEvaluator.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountInfo.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountInfoProvider.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountSKUInfo.cs" />
+    <Compile Include="Discounts\MultiBuy\MultiBuyDiscountSKUInfoProvider.cs" />
+    <Compile Include="Discounts\ProductDiscountsFilter.cs" />
+    <Compile Include="Documents\SKUTreeNodeFactory.cs" />
+    <Compile Include="Events\OrderPaidEventArgs.cs" />
+    <Compile Include="Events\OrderPaidHandler.cs" />
+    <Compile Include="Events\EcommerceEvents.cs" />
+    <Compile Include="Events\NewOrderCreatedEventArgs.cs" />
+    <Compile Include="Events\NewOrderCreatedHandler.cs" />
+    <Compile Include="IAddress.cs" />
+    <Compile Include="IPrioritizable.cs" />
+    <Compile Include="Macros\DepartmentMethods.cs" />
+    <Compile Include="Macros\MultiBuyDiscountMethods.cs" />
+    <Compile Include="Macros\OptionCategoryMethods.cs" />
+    <Compile Include="Macros\ShippingOptionMethods.cs" />
+    <Compile Include="Macros\ShoppingCartMethods.cs" />
+    <Compile Include="Macros\SKUMethods.cs" />
+    <Compile Include="ModuleUsageTracking\EcommerceUsageDataSource.cs" />
+    <Compile Include="Module\Contexts\ECommerceActionContext.cs" />
+    <Compile Include="Module\Contexts\ECommerceContext.cs" />
+    <Compile Include="Module\ECommerceModuleMetadata.cs" />
+    <Compile Include="Macros\EcommerceResolvers.cs" />
+    <Compile Include="Module\ECommerceModule.cs" />
+    <Compile Include="EcommercePermissions.cs" />
+    <Compile Include="ECommerceSettings.cs" />
+    <Compile Include="Customers\AddressInfo.cs" />
+    <Compile Include="Customers\AddressInfoProvider.cs" />
+    <Compile Include="Configuration\Settings\ApplyTaxBasedOnEnum.cs" />
+    <Compile Include="Module\Handlers\ContactHandlers.cs" />
+    <Compile Include="Module\Handlers\ConversionHandlers.cs" />
+    <Compile Include="Module\Handlers\DocumentHandlers.cs" />
+    <Compile Include="Module\Handlers\MacroEngineHandlers.cs" />
+    <Compile Include="Module\Handlers\MembershipHandlers.cs" />
+    <Compile Include="Module\ImportExport\SKUImport.cs" />
+    <Compile Include="Module\ImportExport\ExportSpecialActions.cs" />
+    <Compile Include="Module\ImportExport\ImportSpecialActions.cs" />
+    <Compile Include="Orders\OrderAddressInfo.cs" />
+    <Compile Include="Orders\OrderAddressInfoProvider.cs" />
+    <Compile Include="Orders\ShoppingCart\Evaluation\DefaultShoppingCartEvaluator.cs" />
+    <Compile Include="Orders\ShoppingCart\CartItemChecker\DefaultItemChecker.cs" />
+    <Compile Include="Orders\ShoppingCart\CartItemChecker\ICartItemChecker.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\CookieShoppingCartClientStorage.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\CurrentShoppingCartService.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\IShoppingCartSession.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\ShoppingCartCache.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\ShoppingCartSession.cs" />
+    <Compile Include="Orders\ShoppingCart\DefaultShoppingCartFactory.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\ICurrentShoppingCartService.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\IShoppingCartCache.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\IShoppingCartClientStorage.cs" />
+    <Compile Include="Orders\ShoppingCart\IShoppingCartFactory.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\ICurrentShoppingCartStrategy.cs" />
+    <Compile Include="Orders\ShoppingCart\Current\CurrentShoppingCartStrategy.cs" />
+    <Compile Include="Orders\ShoppingCart\DefaultShoppingCartRepository.cs" />
+    <Compile Include="Orders\ShoppingCart\Evaluation\IShoppingCartEvaluator.cs" />
+    <Compile Include="Orders\ShoppingCart\IShoppingCartRepository.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartFactory.cs" />
+    <Compile Include="Discounts\Services\IDiscountApplicator.cs" />
+    <Compile Include="Products\Services\IProductPricingService.cs" />
+    <Compile Include="Discounts\Services\IProductDiscountService.cs" />
+    <Compile Include="Discounts\Services\DiscountApplicator.cs" />
+    <Compile Include="Products\Services\PriceParameters.cs" />
+    <Compile Include="Discounts\Services\ProductDiscountService.cs" />
+    <Compile Include="Products\Services\ProductPricingService.cs" />
+    <Compile Include="Products\Services\ProductPrices.cs" />
+    <Compile Include="Products\SKUListInfo.cs" />
+    <Compile Include="Products\Options\ProductAttributeSet.cs" />
+    <Compile Include="Products\Options\ProductVariant.cs" />
+    <Compile Include="Products\Options\VariantHelper.cs" />
+    <Compile Include="Products\Options\VariantOptionInfo.cs" />
+    <Compile Include="Products\Options\VariantOptionInfoProvider.cs" />
+    <Compile Include="Products\ProductListInfo.cs" />
+    <Compile Include="Products\TrackInventoryTypeEnum.cs" />
+    <Compile Include="Products\Types\BundleInventoryTypeEnum.cs" />
+    <Compile Include="Products\Options\OptionCategoryTypeEnum.cs" />
+    <Compile Include="Configuration\Settings\ProductsTreeModeEnum.cs" />
+    <Compile Include="Products\Types\SKUProductTypeEnum.cs" />
+    <Compile Include="Customers\OrdersCollection.cs" />
+    <Compile Include="Orders\Items\OrderItemSKUFileInfo.cs" />
+    <Compile Include="Orders\Items\OrderItemSKUFileInfoProvider.cs" />
+    <Compile Include="Configuration\Shipping\Carriers\ShippingCostInfo.cs" />
+    <Compile Include="Configuration\Shipping\Carriers\ShippingCostInfoProvider.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartCheckResult.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartItemCheckResult.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartItemParameters.cs" />
+    <Compile Include="Products\Types\BundleInfo.cs" />
+    <Compile Include="Products\Types\BundleInfoProvider.cs" />
+    <Compile Include="Products\Options\OptionCategoryListInfo.cs" />
+    <Compile Include="Products\ProductHelper.cs" />
+    <Compile Include="Products\Types\SKUFileInfo.cs" />
+    <Compile Include="Products\Types\SKUFileInfoProvider.cs" />
+    <Compile Include="Products\Options\SKUAllowedOptionInfo.cs" />
+    <Compile Include="Products\Options\SKUAllowedOptionInfoProvider.cs" />
+    <Compile Include="Products\WishlistItemInfo.cs" />
+    <Compile Include="Products\WishlistItemInfoProvider.cs" />
+    <Compile Include="Payments\AuthorizeNetPaymentResultInfo.cs" />
+    <Compile Include="Customers\CreditEventInfo.cs" />
+    <Compile Include="Customers\CreditEventInfoProvider.cs" />
+    <Compile Include="Configuration\Currencies\CurrencyInfo.cs" />
+    <Compile Include="Configuration\Currencies\CurrencyInfoProvider.cs" />
+    <Compile Include="Customers\CustomerInfo.cs" />
+    <Compile Include="Customers\CustomerInfoProvider.cs" />
+    <Compile Include="Configuration\Departments\DepartmentInfo.cs" />
+    <Compile Include="Configuration\Departments\DepartmentInfoProvider.cs" />
+    <Compile Include="ECommerceHelper.cs" />
+    <Compile Include="Configuration\ExchangeRates\ExchangeRateInfo.cs" />
+    <Compile Include="Configuration\ExchangeRates\ExchangeRateInfoProvider.cs" />
+    <Compile Include="Configuration\ExchangeRates\ExchangeTableInfo.cs" />
+    <Compile Include="Configuration\ExchangeRates\ExchangeTableInfoProvider.cs" />
+    <Compile Include="Configuration\Statuses\InternalStatusInfo.cs" />
+    <Compile Include="Configuration\Statuses\InternalStatusInfoProvider.cs" />
+    <Compile Include="Configuration\Manufacturers\ManufacturerInfo.cs" />
+    <Compile Include="Configuration\Manufacturers\ManufacturerInfoProvider.cs" />
+    <Compile Include="Products\Options\OptionCategoryInfo.cs" />
+    <Compile Include="Products\Options\OptionCategoryInfoProvider.cs" />
+    <Compile Include="Products\Options\OptionCategorySelectionTypeEnum.cs" />
+    <Compile Include="Orders\OrderInfo.cs" />
+    <Compile Include="Orders\OrderInfoProvider.cs" />
+    <Compile Include="Orders\Items\OrderItemInfo.cs" />
+    <Compile Include="Orders\Items\OrderItemInfoProvider.cs" />
+    <Compile Include="Configuration\Statuses\OrderStatusInfo.cs" />
+    <Compile Include="Configuration\Statuses\OrderStatusInfoProvider.cs" />
+    <Compile Include="Orders\History\OrderStatusUserInfo.cs" />
+    <Compile Include="Orders\History\OrderStatusUserInfoProvider.cs" />
+    <Compile Include="Configuration\Payment\PaymentOptionInfo.cs" />
+    <Compile Include="Configuration\Payment\PaymentOptionInfoProvider.cs" />
+    <Compile Include="Payments\PaymentResultInfo.cs" />
+    <Compile Include="Payments\PaymentResultItemInfo.cs" />
+    <Compile Include="Payments\PayPalPaymentResultInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Configuration\Statuses\PublicStatusInfo.cs" />
+    <Compile Include="Configuration\Statuses\PublicStatusInfoProvider.cs" />
+    <Compile Include="Configuration\Shipping\ShippingOptions\ShippingOptionInfo.cs" />
+    <Compile Include="Configuration\Shipping\ShippingOptions\ShippingOptionInfoProvider.cs" />
+    <Compile Include="Scheduler\AbandonedShoppingCartActivityInitializer.cs" />
+    <Compile Include="Scheduler\EProductReminder.cs" />
+    <Compile Include="Scheduler\MarkCartAbandoned.cs" />
+    <Compile Include="Scheduler\ShoppingCartCleaner.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartInfo.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartInfoProvider.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartItemInfo.cs" />
+    <Compile Include="Orders\ShoppingCart\ShoppingCartItemInfoProvider.cs" />
+    <Compile Include="Products\SKUInfo.cs" />
+    <Compile Include="Products\SKUInfoProvider.cs" />
+    <Compile Include="Products\Options\SKUOptionCategoryInfo.cs" />
+    <Compile Include="Products\Options\SKUOptionCategoryInfoProvider.cs" />
+    <Compile Include="Configuration\Suppliers\SupplierInfo.cs" />
+    <Compile Include="Configuration\Suppliers\SupplierInfoProvider.cs" />
+    <Compile Include="Configuration\Taxes\TaxClassCountryInfo.cs" />
+    <Compile Include="Configuration\Taxes\TaxClassCountryInfoProvider.cs" />
+    <Compile Include="Configuration\Taxes\TaxClassInfo.cs" />
+    <Compile Include="Configuration\Taxes\TaxClassInfoProvider.cs" />
+    <Compile Include="Configuration\Taxes\TaxClassStateInfo.cs" />
+    <Compile Include="Configuration\Taxes\TaxClassStateInfoProvider.cs" />
+    <Compile Include="Discounts\Volume\VolumeDiscountInfo.cs" />
+    <Compile Include="Discounts\Volume\VolumeDiscountInfoProvider.cs" />
+    <Compile Include="Documents\SKUTreeNode.cs" />
+    <Compile Include="Settings\DefaultSettingService.cs" />
+    <Compile Include="Settings\DefaultSettingsServiceFactory.cs" />
+    <Compile Include="Settings\ISettingService.cs" />
+    <Compile Include="Settings\ISettingsServiceFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Activities.Loggers\Activities.Loggers.csproj">
+      <Project>{a39ca7f6-8ecf-4bb0-9dae-88cc86f0191d}</Project>
+      <Name>Activities.Loggers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Activities\Activities.csproj">
+      <Project>{DC7FDFAA-4C8A-4D6F-8572-AC4F789E2494}</Project>
+      <Name>Activities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManagement\ContactManagement.csproj">
+      <Project>{77BDFFCB-2AEA-4B58-B7DA-A1B69A1E7F22}</Project>
+      <Name>ContactManagement</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Synchronization\Synchronization.csproj">
+      <Project>{781f46eb-593f-484b-a1da-c59b1e13b59d}</Project>
+      <Name>Synchronization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EmailEngine\EmailEngine.csproj">
+      <Project>{F4E4C255-DD0D-4AB8-985B-B20B36E5B6EE}</Project>
+      <Name>EmailEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169ad9d-510c-4196-9a44-bc1bcb957dfb}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{F21C925B-3AA1-4139-9706-BA5073527A8F}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAnalytics\WebAnalytics.csproj">
+      <Project>{C2B6B91C-1D58-4531-8893-388960AFAA80}</Project>
+      <Name>WebAnalytics</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gateways\AuthorizeNetDataContracts\PartialAmount.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

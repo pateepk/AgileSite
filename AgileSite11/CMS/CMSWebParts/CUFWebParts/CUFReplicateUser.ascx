@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CUFReplicateUser.ascx.cs" Inherits="CMSApp.CMSWebParts.CUFWebParts.CUFReplicateUser" %>
+<asp:Label ID="lblMsg" runat="server" EnableViewState="true" />

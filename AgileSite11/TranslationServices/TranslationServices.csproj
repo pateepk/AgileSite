@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AD9DFFE4-6D2E-4A58-926C-FAC519964D3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.TranslationServices</RootNamespace>
+    <AssemblyName>CMS.TranslationServices</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.TranslationServices.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\Output\Release\CMS\CMS.TranslationServices.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GlobalLink.Connect, Version=4.18.2.0, Culture=neutral, PublicKeyToken=946d606070618fd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\GlobalLink.Connect.4.18.3.1\lib\net46\GlobalLink.Connect.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Enumerations\TranslationCultureMappingDirectionEnum.cs" />
+    <Compile Include="Exceptions\TargetDocumentNotExistsException.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Handlers\CreateSubmissionItemHandler.cs" />
+    <Compile Include="Handlers\ProcessTranslationHandler.cs" />
+    <Compile Include="Handlers\CreateSubmissionItemEventArgs.cs" />
+    <Compile Include="Handlers\TranslationEvents.cs" />
+    <Compile Include="Handlers\TranslationCultureMappingHandler.cs" />
+    <Compile Include="Handlers\ProcessTranslationEventArgs.cs" />
+    <Compile Include="Handlers\TranslationCultureMappingEventArgs.cs" />
+    <Compile Include="HumanTranslators\EmailTranslationService.cs" />
+    <Compile Include="HumanTranslators\ManualTranslationService.cs" />
+    <Compile Include="HumanTranslators\TranslationsComService.cs" />
+    <Compile Include="HumanTranslators\HumanTranslationService.cs" />
+    <Compile Include="MachineTranslators\AzureAuthTokenClient.cs" />
+    <Compile Include="MachineTranslators\MicrosoftTranslatorService.cs" />
+    <Compile Include="MachineTranslators\GoogleTranslatorService.cs" />
+    <Compile Include="MachineTranslators\MachineTranslationService.cs" />
+    <Compile Include="Macros\TranslationServicesMethods.cs" />
+    <Compile Include="Macros\TranslationServicesTransformationFunctions.cs" />
+    <Compile Include="Macros\TranslationServicesTreeNodeMethods.cs" />
+    <Compile Include="Module\ImportExport\ImportSpecialActions.cs" />
+    <Compile Include="Module\TranslationServicesHandlers.cs" />
+    <Compile Include="Module\TranslationServicesModuleMetadata.cs" />
+    <Compile Include="Module\TranslationServicesResolvers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaseTranslationService.cs" />
+    <Compile Include="Module\TranslationServicesModule.cs" />
+    <Compile Include="Services\TranslationServiceHelper.cs" />
+    <Compile Include="Services\TranslationServiceInfo.cs" />
+    <Compile Include="Services\TranslationServiceInfoProvider.cs" />
+    <Compile Include="Submissions\TranslationPriorityEnum.cs" />
+    <Compile Include="Submissions\TranslationSettings.cs" />
+    <Compile Include="HumanTranslators\TranslationsScheduledTask.cs" />
+    <Compile Include="Submissions\TranslationStatusEnum.cs" />
+    <Compile Include="Submissions\TranslationSubmissionInfo.cs" />
+    <Compile Include="Submissions\TranslationSubmissionInfoProvider.cs" />
+    <Compile Include="Submissions\TranslationSubmissionItemInfo.cs" />
+    <Compile Include="Submissions\TranslationSubmissionItemInfoProvider.cs" />
+    <Compile Include="Workflow\ImportTranslationAction.cs" />
+    <Compile Include="Workflow\SendForTranslationAction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceProfiles\DeviceProfiles.csproj">
+      <Project>{6e43ddf3-893d-4915-8828-ef7d40f1396e}</Project>
+      <Name>DeviceProfiles</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EmailEngine\EmailEngine.csproj">
+      <Project>{F4E4C255-DD0D-4AB8-985B-B20B36E5B6EE}</Project>
+      <Name>EmailEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524DF-119D-4D51-898A-BDFEBB2A56BD}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003C67F-4B92-47BC-9117-CEA7429F929E}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{F21C925B-3AA1-4139-9706-BA5073527A8F}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

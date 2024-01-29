@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F727A11A-CCBA-4D0F-B619-CAAEC43865F9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PaymentProcessor.Web.Applications</RootNamespace>
+    <AssemblyName>PaymentProcessor.Web.Applications</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppManager.cs" />
+    <Compile Include="AppSettings.cs" />
+    <Compile Include="BaseControl.cs" />
+    <Compile Include="BaseMaster.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="DataParameter.cs" />
+    <Compile Include="EmailManager.cs" />
+    <Compile Include="EncryptionManager.cs" />
+    <Compile Include="ErrorManager.cs" />
+    <Compile Include="Global.asax.cs" />
+    <Compile Include="PayTrace\PayTraceCustomerData.cs" />
+    <Compile Include="PayTrace\PayTraceRecurringPaymentData.cs" />
+    <Compile Include="PayTrace\PayTraceRequestData.cs" />
+    <Compile Include="PayTrace\PayTraceResponseData.cs" />
+    <Compile Include="PayTrace\PayTraceServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicEnum.cs" />
+    <Compile Include="RequestManager.cs" />
+    <Compile Include="SQLDataPayTrace.cs" />
+    <Compile Include="SQLData.cs" />
+    <Compile Include="structures\DRspActivityHistory_GetByID.cs" />
+    <Compile Include="structures\DRspActivityHistory_Insert.cs" />
+    <Compile Include="structures\DRspActivityHistory_Select.cs" />
+    <Compile Include="structures\DRspAnnouncement_Delete.cs" />
+    <Compile Include="structures\DRspAnnouncement_GetByKeywords.cs" />
+    <Compile Include="structures\DRspAnnouncement_Insert.cs" />
+    <Compile Include="structures\DRspAppSettings_GetByID.cs" />
+    <Compile Include="structures\DRspAppSettings_GetByKeywords.cs" />
+    <Compile Include="structures\DRspAppSettings_Insert.cs" />
+    <Compile Include="structures\DRspAppSettings_Update.cs" />
+    <Compile Include="structures\DRspAppTask_Get.cs" />
+    <Compile Include="structures\DRspAppTask_Select.cs" />
+    <Compile Include="structures\DRspAppTask_StopByAppTaskID.cs" />
+    <Compile Include="structures\DRspAppTask_UpdateLastExecuted.cs" />
+    <Compile Include="structures\DRspCheckIfSPNameCanBeExecuted.cs" />
+    <Compile Include="structures\DRspDocumentIdentification_GetByKeyword.cs" />
+    <Compile Include="structures\DRspDocumentUserComment_GetByDocumentID.cs" />
+    <Compile Include="structures\DRspDocumentUserComment_InsertByClaimID.cs" />
+    <Compile Include="structures\DRspDocumentUserComment_InsertByDocumentID.cs" />
+    <Compile Include="structures\DRspEmailLog_Insert.cs" />
+    <Compile Include="structures\DRspEmailOutgoing_GetNotSent.cs" />
+    <Compile Include="structures\DRspEmailOutgoing_UpdateToSent.cs" />
+    <Compile Include="structures\DRspForgotPasswordRequest_GetByKeys.cs" />
+    <Compile Include="structures\DRspForgotPasswordRequest_Insert.cs" />
+    <Compile Include="structures\DRspFTPLog_Insert.cs" />
+    <Compile Include="structures\DRspFTPPush_GetByAccountOwner.cs" />
+    <Compile Include="structures\DRspFTPPush_GetFTPPushID.cs" />
+    <Compile Include="structures\DRspReportAccess_GetByReportID.cs" />
+    <Compile Include="structures\DRspReportAccess_GetByUserID.cs" />
+    <Compile Include="structures\DRspReportAccess_Update.cs" />
+    <Compile Include="structures\DRspReportParameter_GetByReportID.cs" />
+    <Compile Include="structures\DRspReports_GetByKeywords.cs" />
+    <Compile Include="structures\DRspReports_GetReports.cs" />
+    <Compile Include="structures\DRspReport_GetByReportID.cs" />
+    <Compile Include="structures\DRspReport_Update.cs" />
+    <Compile Include="structures\DRspRequestLogs_Insert.cs" />
+    <Compile Include="structures\DRspTask_ColumnTableInfo.cs" />
+    <Compile Include="structures\DRspToolLog_Insert.cs" />
+    <Compile Include="structures\DRspToolLog_SelectByToolID.cs" />
+    <Compile Include="structures\DRspTool_GetByID.cs" />
+    <Compile Include="structures\DRspTool_Select.cs" />
+    <Compile Include="structures\DRspUploadFile_GetByID.cs" />
+    <Compile Include="structures\DRspUploadFile_GetByKeywords.cs" />
+    <Compile Include="structures\DRspUploadFile_GetByUserID.cs" />
+    <Compile Include="structures\DRspUploadFile_GetMyPGN.cs" />
+    <Compile Include="structures\DRspUploadFile_Insert.cs" />
+    <Compile Include="structures\DRspUploadFile_UpdateStatus.cs" />
+    <Compile Include="structures\DRspUserSettings_DeleteByUserIDAndName.cs" />
+    <Compile Include="structures\DRspUserSettings_GetAllDefaults.cs" />
+    <Compile Include="structures\DRspUserSettings_GetByUserID.cs" />
+    <Compile Include="structures\DRspUserSettings_Insert.cs" />
+    <Compile Include="structures\DRspUserSettings_UpdateByUserID.cs" />
+    <Compile Include="structures\DRspUsersRoles_DeleteByLoginID.cs" />
+    <Compile Include="structures\DRspUsersRoles_InsertByLoginID.cs" />
+    <Compile Include="structures\DRspUsers_GetAdministrators.cs" />
+    <Compile Include="structures\DRspUsers_GetByCustNum.cs" />
+    <Compile Include="structures\DRspUsers_GetByLoginID.cs" />
+    <Compile Include="structures\DRspUsers_GetByRole.cs" />
+    <Compile Include="structures\DRspUsers_Select.cs" />
+    <Compile Include="structures\DRspUserTournament_GetByTournamentID.cs" />
+    <Compile Include="structures\DRspUser_AuthorizeExternalLogin.cs" />
+    <Compile Include="structures\DRspUser_AuthorizeExternalLogout.cs" />
+    <Compile Include="structures\DRspUser_CheckLoginID.cs" />
+    <Compile Include="structures\DRspUser_GetByEmail.cs" />
+    <Compile Include="structures\DRspUser_GetByGUID.cs" />
+    <Compile Include="structures\DRspUser_GetByID.cs" />
+    <Compile Include="structures\DRspUser_GetByLoginID.cs" />
+    <Compile Include="structures\DRspUser_GetOrRegisterByEmail.cs" />
+    <Compile Include="structures\DRspUser_Insert.cs" />
+    <Compile Include="structures\DRspUser_Update.cs" />
+    <Compile Include="structures\DRspUser_UpdatePassword.cs" />
+    <Compile Include="structures\DRspUSStates_Select.cs" />
+    <Compile Include="structures\DRspWebErrorLogs_Insert.cs" />
+    <Compile Include="structures\DRspWebErrorLogs_Select.cs" />
+    <Compile Include="structures\DRspWebsitesRestart_Insert.cs" />
+    <Compile Include="structures\DRspWebsites_GetByID.cs" />
+    <Compile Include="structures\DRspWebsites_SetUpgrade.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_Archive.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_GetByUserID.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_GetCustNum.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_InsertItem.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_items_Delete.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_items_Fail.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_items_GetByInvoiceID.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_items_GetByInvoiceItemID.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_items_UpdateToPaid.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_notes_GetAllNotes.cs" />
+    <Compile Include="structures\DRspWTE_excellalite_invoices_notes_InsertItem.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_CheckTransactions_GetByUserGUID.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_CheckTransactions_GetForThanks.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_CheckTransactions_Insert.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_CheckTransactions_UpdateAfterPost.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_CMS_User_GetByUserGUID.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_custom_egivings_Get.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_custom_egiving_Events_Get.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_custom_egiving_Events_UpdateNumber_of_Tickets.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_DirectTransactions_Events_GetByUserGUID.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_DirectTransactions_Events_GetForThanks.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_DirectTransactions_Events_Insert.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_DirectTransactions_Events_UpdateAfterPost.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_DirectTransactions_GetByUserGUID.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_DirectTransactions_GetForThanks.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_DirectTransactions_Insert.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_DirectTransactions_UpdateAfterPost.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_PayTraceCustomerExport_Insert.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_PayTraceRequestResponse_InsertRequest.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_PayTraceRequestResponse_UpdateResponse.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_Delete.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_GetByRecurringTransactionID.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_GetByUserGUID.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_GetForThanks.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_Insert.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_UpdateAfterCustomerProfile.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_UpdateCustomerInfo.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_UpdateNext.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_UpdateRecurringID.cs" />
+    <Compile Include="structures\PayTrace\DRspTA_RecurringTransactions_UpdateRecurringInfo.cs" />
+    <Compile Include="SV.cs" />
+    <Compile Include="TableReaderBase.cs" />
+    <Compile Include="UserManager.cs" />
+    <Compile Include="Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ReferencesDLL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\WTE_Communication\WTE.Communication\WTE.Communication.csproj">
+      <Project>{2091171d-c807-4664-883f-cc0fc59c602a}</Project>
+      <Name>WTE.Communication</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

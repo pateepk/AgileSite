@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D8BC8F2E-B5CB-472B-A894-3900A96FF456}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Membership</RootNamespace>
+    <AssemblyName>CMS.Membership</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Membership.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Membership.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Authentication\AuthenticationHelper.cs" />
+    <Compile Include="Authentication\Enums\AuthenticationResultEnum.cs" />
+    <Compile Include="Authentication\AuthenticationService.cs" />
+    <Compile Include="Authentication\Enums\AuthenticationSourceEnum.cs" />
+    <Compile Include="Authentication\CurrentUser\CurrentUserFields.cs" />
+    <Compile Include="Authentication\CurrentUser\CurrentUserInfo.cs" />
+    <Compile Include="Authentication\MFAuthentication\Base32.cs" />
+    <Compile Include="Authentication\MFAuthentication\HmacFactories.cs" />
+    <Compile Include="Authentication\MFAuthentication\MFAuthenticationHelper.cs" />
+    <Compile Include="Authentication\MFAuthentication\Totp.cs" />
+    <Compile Include="Authentication\SignOutRequestHandler.cs" />
+    <Compile Include="Authentication\OpenID\OpenIDUserInfo.cs" />
+    <Compile Include="Authentication\OpenID\OpenIDUserInfoProvider.cs" />
+    <Compile Include="Authentication\Enums\ResetPasswordResultEnum.cs" />
+    <Compile Include="Authentication\WinAuth\IWindowsTokenRoleService.cs" />
+    <Compile Include="Authentication\WinAuth\WindowsTokenRoleService.cs" />
+    <Compile Include="Authentication\WinAuth\WindowsUserCookieHelper.cs" />
+    <Compile Include="Avatars\AvatarInfo.cs" />
+    <Compile Include="Avatars\AvatarInfoProvider.cs" />
+    <Compile Include="Avatars\AvatarTypeEnum.cs" />
+    <Compile Include="Avatars\CMSOutputAvatar.cs" />
+    <Compile Include="Avatars\DefaultAvatarTypeEnum.cs" />
+    <Compile Include="Badges\ActivityPointsEnum.cs" />
+    <Compile Include="Badges\BadgeInfo.cs" />
+    <Compile Include="Badges\BadgeInfoProvider.cs" />
+    <Compile Include="Handlers\Authentication\AuthenticationRequestEventArgs.cs" />
+    <Compile Include="Handlers\Authentication\AuthenticationRequestHandler.cs" />
+    <Compile Include="Handlers\Authentication\SignOutEventArgs.cs" />
+    <Compile Include="Handlers\Authentication\SignOutHandler.cs" />
+    <Compile Include="Handlers\Session\SessionEventArgs.cs" />
+    <Compile Include="Handlers\Session\SessionHandler.cs" />
+    <Compile Include="Impersonation\ImpersonationCookieData.cs" />
+    <Compile Include="Impersonation\ImpersonationHelper.cs" />
+    <Compile Include="Macros\MembershipMethods.cs" />
+    <Compile Include="ModuleUsageTracking\MembershipUsageDataSource.cs" />
+    <Compile Include="Module\ImportExport\AvatarExport.cs" />
+    <Compile Include="Module\ImportExport\AvatarImport.cs" />
+    <Compile Include="Module\ImportExport\ExportSpecialActions.cs" />
+    <Compile Include="Module\ImportExport\ImportSpecialActions.cs" />
+    <Compile Include="Module\MembershipCounters.cs" />
+    <Compile Include="Module\MembershipModuleMetadata.cs" />
+    <Compile Include="Module\MembershipResolvers.cs" />
+    <Compile Include="Module\MembershipHandlers.cs" />
+    <Compile Include="Module\WebFarm\MembershipSynchronization.cs" />
+    <Compile Include="Module\WebFarm\MembershipTaskType.cs" />
+    <Compile Include="Module\MembershipContext.cs" />
+    <Compile Include="Handlers\Authentication\AuthenticationEventArgs.cs" />
+    <Compile Include="Handlers\Authentication\AuthenticationHandler.cs" />
+    <Compile Include="Handlers\Authorization\AuthorizationEventArgs.cs" />
+    <Compile Include="Handlers\Authorization\AuthorizationHandler.cs" />
+    <Compile Include="Handlers\SecurityEvents.cs" />
+    <Compile Include="Module\UserSearchIndexer.cs" />
+    <Compile Include="OnlineUsers\OnlineUserHelper.cs" />
+    <Compile Include="OnlineUsers\OnlineUserInfo.cs" />
+    <Compile Include="OnlineUsers\OnlineUserInfoProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Memberships\MembershipInfo.cs" />
+    <Compile Include="Memberships\MembershipInfoProvider.cs" />
+    <Compile Include="Memberships\MembershipListInfo.cs" />
+    <Compile Include="Memberships\MembershipRoleInfo.cs" />
+    <Compile Include="Memberships\MembershipRoleInfoProvider.cs" />
+    <Compile Include="Memberships\MembershipUserInfo.cs" />
+    <Compile Include="Memberships\MembershipUserInfoProvider.cs" />
+    <Compile Include="Roles\RoleInfo.cs" />
+    <Compile Include="Roles\RoleInfoProvider.cs" />
+    <Compile Include="Roles\UserRoleInfo.cs" />
+    <Compile Include="Roles\UserRoleInfoProvider.cs" />
+    <Compile Include="Roles\UserRoleListInfo.cs" />
+    <Compile Include="Security\UserSecurityHelper.cs" />
+    <Compile Include="Module\MembershipModule.cs" />
+    <Compile Include="Roles\RoleName.cs" />
+    <Compile Include="Sessions\Caching\SessionDatabaseUpdater.cs" />
+    <Compile Include="Sessions\Caching\SessionsCachingActionEnum.cs" />
+    <Compile Include="Sessions\ConcurrentDictionaryExtensions.cs" />
+    <Compile Include="Sessions\SessionEvents.cs" />
+    <Compile Include="Sessions\SessionInfo.cs" />
+    <Compile Include="Sessions\SessionManager.cs" />
+    <Compile Include="Sessions\Caching\SessionsCachingAction.cs" />
+    <Compile Include="Sessions\Caching\SessionsCachingWorker.cs" />
+    <Compile Include="Sessions\SessionsInfo.cs" />
+    <Compile Include="Sessions\Synchronization\SessionSynchronization.cs" />
+    <Compile Include="Sessions\Synchronization\SessionTaskType.cs" />
+    <Compile Include="Tasks\DeleteNonActivatedUser.cs" />
+    <Compile Include="Tasks\MembershipReminder.cs" />
+    <Compile Include="Tasks\RemoveExpiredSessions.cs" />
+    <Compile Include="Tasks\UpdateDatabaseSession.cs" />
+    <Compile Include="Users\Enums\FriendshipStatusEnum.cs" />
+    <Compile Include="Users\ExternalLogin\ExternalLoginInfo.cs" />
+    <Compile Include="Users\ExternalLogin\ExternalLoginInfoProvider.cs" />
+    <Compile Include="Users\Settings\UserSettingsInfo.cs" />
+    <Compile Include="Users\Settings\UserSettingsInfoProvider.cs" />
+    <Compile Include="Users\Settings\UserSettingsRoleListInfo.cs" />
+    <Compile Include="Users\Enums\UserAccountLockEnum.cs" />
+    <Compile Include="Users\UserCultures\UserCultureInfo.cs" />
+    <Compile Include="Users\UserCultures\UserCultureInfoProvider.cs" />
+    <Compile Include="Users\Enums\UserGenderEnum.cs" />
+    <Compile Include="Users\UserInfo.cs" />
+    <Compile Include="Users\UserInfoProvider.cs" />
+    <Compile Include="Users\UserListInfo.cs" />
+    <Compile Include="Users\UserSecurityCollections.cs" />
+    <Compile Include="Users\UserSites\UserSiteInfo.cs" />
+    <Compile Include="Users\UserSites\UserSiteInfoProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EmailEngine\EmailEngine.csproj">
+      <Project>{f4e4c255-dd0d-4ab8-985b-b20b36e5b6ee}</Project>
+      <Name>EmailEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7f74d14a-c101-457e-94b0-1df57a619c84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\HealthMonitoring\HealthMonitoring.csproj">
+      <Project>{81E6F73E-5CA4-4FC0-9FC0-A508AFAEE05D}</Project>
+      <Name>HealthMonitoring</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{ae25cc54-d7ab-4efe-8a85-6be0b336be59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0c4d9649-03df-4f4d-8abb-0fc2b86a8fe4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Protection\Protection.csproj">
+      <Project>{bd8679f6-9bc7-48ea-8dce-f244bc328ba8}</Project>
+      <Name>Protection</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{f21c925b-3aa1-4139-9706-ba5073527a8f}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Synchronization\Synchronization.csproj">
+      <Project>{781f46eb-593f-484b-a1da-c59b1e13b59d}</Project>
+      <Name>Synchronization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
