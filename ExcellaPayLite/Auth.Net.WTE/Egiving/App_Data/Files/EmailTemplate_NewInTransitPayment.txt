@@ -1,0 +1,12 @@
+﻿There is a new payment coming for invoice: {0}
+
+Payment Item:
+Item ID: {1}
+Amount: {2}
+Payment Date: {3}
+Requested by User: {4}
+Email: {5}
+Requested from IP address: {6}
+
+Below is the information about the whole invoice:
+

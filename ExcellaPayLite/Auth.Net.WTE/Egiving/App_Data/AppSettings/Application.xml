@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AppSettings>
+  <Data>
+    <Type>Application</Type>
+    <Name>ApplicationName</Name>
+    <Value Value="EGivings" />
+    <Notes>Payment Processor</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>EmailServer</Name>
+    <Value Value="mail1.pointshop.com"  />
+    <Notes>Mail server</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>Email_NetworkCredential_Username</Name>
+    <Value Value="jseeley@wte.net"  CanBeEdited="True"  />
+    <Notes>Email / username at to send email</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>Email_NetworkCredential_Password</Name>
+    <Value Value="IjOCAcQq5UG8eMwL6GTy5Q~~" IsEncrypted="True" />
+    <Notes>Email / username at to send email</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>EmailServerPort</Name>
+    <Value Value="25"  />
+    <Notes>Port number for ongoing email</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>IsOutgoingEmailLog</Name>
+    <Value Value="True"  />
+    <Notes>If yes, we save all outgoing email on email manager to database table</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>OutgoingEmailFrom</Name>
+    <Value Value="chacha@wte.net" />
+    <Notes>For generic email sender, we use this email</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>IncomingEmailToFromPublic</Name>
+    <Value Value="chacha@wte.net"  />
+    <Notes>For generic email to, we use this email</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>OutgoingEmailFromDisplayName</Name>
+    <Value Value="Chacha Nugroho"  />
+    <Notes>For generic email sender, we use this email</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>DevelopmentEmail</Name>
+    <Value Value="chacha@wte.net"  />
+    <Notes>This is just for development. For developer, put your email here with your machine name.</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>BillingEmail</Name>
+    <Value Value="billing@wte.net"  />
+    <Notes>On development, all emails still going to DevelopmentEmail.</Notes>
+  </Data>  
+  <Data>
+    <Type>Application</Type>
+    <Name>ErrorPageURL</Name>
+    <Value Value="Generic/ErrorPage/?errorNumber={0}&amp;errorMessage={1}" />
+    <Notes></Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>IsRecordActivityUserLoginLogout</Name>
+    <Value Value="True"  />
+    <Notes></Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>EmailTemplate_NewInTransitPayment</Name>
+    <Value IsFile="True" Value="EmailTemplate_NewInTransitPayment.txt"  />
+    <Notes>This is a email template from local file. If it is editable, the content can be edit from the website, but not the file.</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>EmailTemplate_BackdoorLink</Name>
+    <Value IsFile="True" Value="EmailTemplate_BackdoorLink.txt"  />
+    <Notes>This is a email template from local file. If it is editable, the content can be edit from the website, but not the file.</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>EmailTemplate_PaymentDecline</Name>
+    <Value IsFile="True" Value="EmailTemplate_PaymentDecline.txt"  />
+    <Notes>This is a email template from local file. If it is editable, the content can be edit from the website, but not the file.</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>EmailTemplate_PaymentPaid</Name>
+    <Value IsFile="True" Value="EmailTemplate_PaymentPaid.txt"  />
+    <Notes>This is a email template from local file. If it is editable, the content can be edit from the website, but not the file.</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>EmailTemplate_InvoiceInfo</Name>
+    <Value IsFile="True" Value="EmailTemplate_InvoiceInfo.txt"  />
+    <Notes>This is a email template from local file. If it is editable, the content can be edit from the website, but not the file.</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>IsEmailManagerUsingWTECommunication</Name>
+    <Value Value="True"  />
+    <Notes>If this is true, sending email will use WTE Communication webservice below. If false, SMTP server,port,username may needed.</Notes>
+  </Data> 
+  <Data>
+    <Type>Application</Type>
+    <Name>CommunicationWSURL</Name>
+    <Value Value="http://10.100.0.244:8082/CommunicationWebService.asmx"  />
+    <Notes></Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>CommunicationWSUser</Name>
+    <Value Value="ExcellaLite"  />
+    <Notes></Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>CommunicationWSPassword</Name>
+    <Value Value="lDWusNmYQV2TN7+rNOFBl5d8HVmbUt6U"  IsEncrypted="True" />
+    <Notes></Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>PayTraceURL24</Name>
+    <Value Value="https://paytrace.com/api/default.pay"  />
+    <Notes>PayTraceURL for siteID 24, tanner</Notes>
+  </Data>
+   <Data>
+    <Type>Application</Type>
+    <Name>PayTraceURL30</Name>
+    <Value Value="https://paytrace.com/api/default.pay"  />
+    <Notes>PayTraceURL for siteID 30, demo</Notes>
+  </Data> 
+  <Data>
+    <Type>Application</Type>
+    <Name>PayTraceUsername24</Name>
+    <Value Value="wtesolutions"  />
+    <Notes>PayTraceUsername for SiteID 24, tanner</Notes>
+  </Data> 
+   <Data>
+    <Type>Application</Type>
+    <Name>PayTracePassword24</Name>
+    <Value Value="Paytrac39"  />
+     <Notes>PayTracePassword for SiteID 24, tanner</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>PayTraceUsername30</Name>
+    <Value Value="demo123"  />
+    <Notes>PayTraceUsername for SiteID 30, demo</Notes>
+  </Data>
+  <Data>
+    <Type>Application</Type>
+    <Name>PayTracePassword30</Name>
+    <Value Value="demo123"  />
+    <Notes>PayTracePassword for SiteID 30, demo</Notes>
+  </Data>
+</AppSettings>  
