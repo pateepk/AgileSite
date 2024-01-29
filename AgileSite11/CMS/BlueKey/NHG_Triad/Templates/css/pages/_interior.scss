@@ -1,0 +1,518 @@
+/* ==========================================================================
+   SUB BANNER
+   ========================================================================== */
+.subBanner {
+	position: relative;
+	border-bottom: 1px solid #fff;
+	max-height: 390px;
+
+	@media #{$md} {
+		border: none;
+	}
+
+	&::after {
+		content: "";
+		display: block;
+		padding: 0 0 35%;
+	}
+
+	&.flexible {
+		padding: 0 0 1px;
+		max-height: 900px;
+
+		&:after {
+
+			@media #{$md} {
+				padding: 0;
+			}
+		}
+	}
+
+	h1 {
+		color: #fff;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		text-shadow: 1px 1px 4px rgba(#000, 0.4);
+		text-transform: uppercase;
+
+		@media #{$sm} {
+			font-size: 5rem;
+		}
+
+		@media #{$md} {
+			position: relative;
+			top: auto;
+			left: auto;
+			padding: 280px 0 0;
+			margin: 0 auto 0.8em;
+			-webkit-transform: translate(0,0);
+			-ms-transform: translate(0,0);
+			transform: translate(0,0);
+			max-width: 1100px;
+		}
+
+		@media #{$lg} {
+			padding: 335px 0 0;
+			margin: 0 auto calc(0.8em + 100px);
+		}
+
+		span {
+			display: block;
+			font-weight: 400;
+			text-transform: none;
+			font-size: 0.75em;
+		}
+	}
+}
+
+/* ==========================================================================
+   INTERIOR CONTAINER
+   ========================================================================== */
+.interiorContainer {
+	background: url('../images/gridBg.png');
+	position: relative;
+
+	@media #{$md} {
+		background: #fff;
+	}
+
+	&.white {
+		background: #fff;
+	}
+
+	&.alt {
+		
+		@media #{$lg} {
+			margin-top: -100px;
+			@include span(10);
+			@include pre(1);
+		}
+	}
+}
+
+/* ==========================================================================
+   CRUMBS
+   ========================================================================== */
+.crumbContainer {
+
+	@media #{$md} {
+		background: $primary;
+		color: #fff;
+		padding: 13px 45px;
+		margin: 0 0 2em;
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+
+	.wrapper {
+		padding: 0;
+	}
+
+	a, a:visited {
+		color: #fff;
+	}
+
+	.alt & {
+
+		@media #{$md} {
+			background: $gray-dark;
+			padding: 2px 45px;
+		}
+	}
+}
+
+.crumbs {
+	font-size: $font-xs;
+	background: $gray-med;
+	color: #fff;
+	padding: 11px 15px;
+	font-family: $font-stack2;
+
+	@media #{$md} {
+		background: transparent;
+		width: 48%;
+		float: left;
+		padding: 0;
+		margin: 4px 0 0;
+		font-size: $font-xs - 0.2;
+		text-align: left;
+	}
+
+	@media #{$xl} {
+		@include span(5 no-gutter);
+		@include pre(1);
+	}
+
+	a, a:visited {
+		display: inline-block;
+
+		&:after {
+			content: "\f105";
+			font-family: FontAwesome;
+			margin: 0 4px;
+			display: inline-block;
+		}
+	}
+}
+
+.shareDiv {
+	text-align: center;
+	padding: 15px 0;
+	margin: 0 0 2em;
+
+	@media #{$md} {
+		width: 48%;
+		float: right;
+		text-align: right;
+		padding: 0;
+		font-size: $font-xs - 0.4;
+		text-transform: uppercase;
+		font-family: $font-stack2;
+		margin: 0;
+	}
+
+	@media #{$xl} {
+		@include span(5 no-gutter last);
+		@include post(1);
+	}
+
+	a, a:visited {
+		color: $primary;
+
+		@media #{$md} {
+			color: #fff;
+		}
+	}
+}
+
+.addthis_toolbox {
+
+	@media #{$md} {
+		display: inline-block;
+	}
+}
+
+a.shareBtn.at300b,
+a.shareBtn.at300m {
+	display: inline-block;
+	vertical-align: middle;
+	width: 45px !important;
+	height: 35px;
+	text-align: center;
+	float: none;
+	font-size: 31px;
+
+	@media #{$md} {
+		font-size: 18px;
+		width: auto !important;
+		height: auto !important;
+		margin: 0 4px 3px;
+	}
+
+	&:first-child {
+
+		@media #{$md} {
+			margin-left: 15px;
+		}
+	}
+
+	span {
+		display: none;
+	}
+
+	&:hover {
+		text-decoration: none;
+		color: $secondary;
+
+		@media #{$md} {
+			color: #fff;
+			opacity: 0.7;
+		}
+	}
+
+	&:after {
+		content: "";
+		font-family: FontAwesome;
+	}
+}
+
+a.shareFacebook.at300b {
+	
+	&:after {
+		content: "\f082";
+		font-family: FontAwesome;
+	}
+}
+
+a.shareTwitter.at300b {
+	
+	&:after {
+		content: "\f099";
+		font-family: FontAwesome;
+	}
+}
+
+a.shareEmail.at300b {
+	
+	&:after {
+		content: "\f0e0";
+		font-family: FontAwesome;
+	}
+}
+
+a.sharePrint.at300b {
+	
+	&:after {
+		content: "\f02f";
+		font-family: FontAwesome;
+	}
+}
+
+a.sharePlus.at300m {
+
+	&:after {
+		content: "\f067";
+		font-family: FontAwesome;
+	}
+}
+
+/* ==========================================================================
+   MAIN
+   ========================================================================== */
+main {
+	margin-bottom: 2em;
+	
+	@media #{$md} {
+		@include span(8 no-gutter);
+	}
+
+	@media #{$xl} {
+		@include span(7 no-gutter);
+		@include pre(1);
+		padding-bottom: 3em;
+	}
+
+	&.full {
+		@include span(12);
+
+		@media #{$xl} {
+			@include span(10);
+			@include pre(1);
+		}
+	}
+
+	.general & {
+
+		@media #{$md} {
+			padding: 2em 0;
+		}
+
+		@media #{$xl} {
+			padding-top: 3em;
+		}
+	}
+
+	.galleryContainer {
+		margin-left: -15px;
+		margin-right: -15px;
+
+		@media #{$sm} {
+		margin-left: -25px;
+		margin-right: -25px;
+		}
+
+		@media #{$md} {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
+
+/* ==========================================================================
+   ASIDE
+   ========================================================================== */
+aside {
+	padding: 0 0 2em;
+
+	@media #{$md} {
+		@include span(4 last);
+		padding: 0 0 2em 25px;
+	}
+
+	@media #{$lg} {
+		@include span(3 wider last);
+		padding: 0 0 3em;
+	}
+
+	@media #{$xl} {
+		@include span(2 wider last);
+		@include post(1);
+	}
+
+	.general & {
+		padding: 2em 0;
+
+		@media #{$md} {
+			padding-top: 5.5em;
+		}
+
+		@media #{$lg} {
+			padding-top: 6em;
+		}
+
+		@media #{$xl} {
+			padding-top: 7em;
+		}
+	}
+
+	img.adImg {
+		display: block;
+		max-width: 300px;
+		margin: 0 auto;
+		box-shadow: 0 0 9px rgba(#000, 0.3);
+
+		@media #{$md} {
+			max-width: 100%;
+		}
+	}
+
+	h2, h3, h4 {
+		text-align: center;
+		margin: 0 0 1em;
+	}
+}
+
+.asideBox {
+	margin: 0 0 2em;
+}
+
+/* ==========================================================================
+   HOME LANDING BOX
+   ========================================================================== */
+.homeLandingContent {
+	background: url('../images/gridBg.png');
+	padding: 2em 0;
+	clear: both;
+	margin: 0 0 2em;
+
+	@media #{$md} {
+		margin: -1em 0 0;
+	}
+
+	@media #{$lg} {
+		padding: 3em 0;
+		margin: 0 0 3em;
+	}
+}
+
+.homeLandingBox {
+	background: #fff;
+	box-shadow: 2px 2px 4px rgba(#000, 0.2);
+	margin: 0 0 1em;
+
+	@media #{$md} {
+		margin: 0 0 2em;
+	}
+
+	@media #{$lg} {
+		margin: 0 0 3em;
+	}
+
+	&::after {
+		@extend .clearfix;
+	}
+
+	&:last-child {
+
+		@media #{$md} {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.homeLandingBoxTitle {
+	background: $primary;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 11px;
+	margin: 0 0 1em;
+
+	@media #{$sm} {
+		margin: 0 0 2em;
+	}
+
+	@media #{$md} {
+		font-size: 2.4rem;
+	}
+}
+
+.homeLandingBoxIcon {
+	margin: 0 0 1em;
+
+	@media #{$sm} {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		width: 25%;
+		-webkit-transform: translate(0, -50%);
+		-ms-transform: translate(0, -50%);
+		transform: translate(0, -50%);
+	}
+
+	img {
+		height: 50px;
+		width: auto;
+		display: block;
+		margin: 0 auto;
+
+		@media #{$sm} {
+			width: 110px;
+			height: auto;
+		}
+	}
+}
+
+.homeLandingBoxContent {
+	padding: 0 25px;
+	text-align: center;
+	position: relative;
+
+	@media #{$sm} {
+		padding: 0 35px 0 25%;
+		text-align: left;
+	}
+
+	.dropDownWrapper {
+		margin: 0 0 0.8em;
+		font-family: $font-stack2;
+		font-size: 0.8em;
+		max-width: 350px;
+	}
+}
+
+.homeLandingBoxAction {
+	clear: both;
+	margin: 0 0 1em;
+
+	@media #{$md} {
+		margin-bottom: 2em;
+	}
+
+	a.btn,
+	a:visited.btn {
+		display: block;
+		width: 80%;
+		margin: 0 auto;
+		font-weight: 700;
+	}
+}

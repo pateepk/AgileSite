@@ -1,0 +1,595 @@
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.iHero {
+	background: url('../images/iHeroMobile.jpg') 50% 80% no-repeat;
+	background-size: cover;
+	border-bottom: 1px solid #fff;
+
+	@media #{$md} {
+		background: url('../images/iHero.jpg') 50% 80% no-repeat;
+		background-size: cover;
+		max-height: 900px;
+		border: none;
+	}
+
+	&:after {
+		content: "";
+		display: block;
+		padding: 0 0 35%;
+
+		@media #{$md} {
+			padding: 0 0 80%;
+		}
+	}
+}
+
+.iHeroCaption {
+	position: absolute;
+	display: none;
+
+	@media #{$md} {
+		display: block;
+		@include span(6 no-gutter);
+		@include pre(5);
+		top: 300px;
+		background: $primary;
+		color: #fff;
+		padding: 35px 45px;
+		font-size: $font-sm;
+	}
+
+	@media #{$lg} {
+		top: 380px;
+		font-size: 1.8rem;
+	}
+
+	@media #{$xl} {
+		@include span(4 no-gutter);
+		@include pre(7);
+	}
+
+	h1 {
+
+		@media #{$md} {
+			color: #fff;
+			font-size: 3rem;
+		}
+
+		@media #{$lg} {
+			font-size: 4.2rem;
+		}
+	}
+
+	a.iHeroReadMore {
+		font-style: italic;
+
+		&:after {
+			content: "\f101";
+			font-family: FontAwesome;
+			margin: 0 0 0 7px;
+			font-size: 0.7em;
+		}
+	}
+}
+
+/* ==========================================================================
+   ACTIONS
+   ========================================================================== */
+.iActions {
+
+	@media #{$lg} {
+		background: $primary;
+		position: relative;
+	}
+
+	.wrapper {
+		padding: 0;
+
+		@media #{$lg} {
+			height: 100px;
+		}
+	}
+}
+
+.iActionWrapper {
+
+	@media #{$lg} {
+		@include span(10);
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		box-shadow: 0 0 9px rgba(#000, 0.4);
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+a.iAction,
+a:visited.iAction {
+	width: 50%;
+	float: left;
+	height: 115px;
+	text-align: center;
+	color: #fff;
+	background: $accent1;
+	display: inline-block;
+	font-family: $font-stack2;
+	text-transform: uppercase;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	position: relative;
+	letter-spacing: 2px;
+
+	@media #{$sm} {
+		width: 33.333333%;
+	}
+
+	@media #{$md} {
+		width: 16.66666%;
+		border-bottom: none;
+	}
+
+	@media #{$lg} {
+		height: 165px;
+		border-color: $primary;
+	}
+
+	&:nth-child(even) {
+		border-right: none;
+
+		@media #{$sm} {
+			border-right: 1px solid #fff;
+		}
+
+		@media #{$lg} {
+			border-color: $primary;
+		}
+	}
+
+	&:nth-child(3n+3) {
+
+		@media #{$sm} {
+			border-right: none;
+		}
+
+		@media #{$md} {
+			border-right: 1px solid #fff;
+		}
+
+		@media #{$lg} {
+			border-color: $primary;
+		}
+	}
+
+	&:last-child {
+
+		@media #{$md} {
+			border-right: none;
+		}
+	}
+
+	&:hover {
+		background: #fff;
+
+		h2 {
+			color: $accent1;
+		}
+	}
+
+	h2 {
+		color: #fff;
+		font-size: $font-xs - 0.2;
+		font-weight: 700;
+	}
+}
+
+.iActionContent {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	padding: 0 15px;
+}
+
+.iActionThumb {
+
+	img {
+		display: block;
+		margin: 0 auto 1em;
+		height: 30px;
+		width: auto;
+
+		@media #{$lg} {
+			margin-bottom: 1.4em;
+		}
+
+		&.dark {
+			display: none;
+		}
+	}
+}
+
+a.iAction:hover {
+
+	img.white {
+		display: none;
+	}
+
+	img.dark {
+		display: block;
+	}
+}
+
+/* ==========================================================================
+   INDEX ROW
+   ========================================================================== */
+.iRow1 {
+	background: url('../images/gridBg.png');
+	padding: 2em 0;
+
+	@media #{$sm} {
+		background: url('../images/iRowBg.jpg') 50% 50% no-repeat;
+		background-size: cover;
+	}
+
+	@media #{$md} {
+		padding: 3em 0;
+	}
+
+	@media #{$lg} {
+		padding: 150px 0 100px;
+	}
+
+	.wrapper {
+
+		@media #{$lg} {
+			padding: 0;
+		}
+	}
+}
+
+.iRowLeft {
+	margin: 0 0 2em;
+
+	@media #{$sm} {
+		@include span(5);
+	}
+
+	@media #{$md} {
+		padding: 0 35px 0 0;
+	}
+
+	@media #{$lg} {
+		@include span(3 wider);
+		@include pre(1);
+		padding: 0;
+	}
+
+	.subscribeAd {
+		box-shadow: 1px 1px 8px rgba(#000, 0.4);
+		padding: 0;
+	}
+}
+
+.iRowRight {
+	
+	@media #{$sm} {
+		@include span(7 last);
+	}
+
+	@media #{$lg} {
+		@include span(6 last);
+		@include post(1);
+	}
+
+	.bannerFlag {
+		background: $secondary;
+
+		@media #{$sm} {
+			background: $primary;
+		}
+
+		&:before,
+		&:after {
+			border-top-color: $secondary;
+			border-bottom-color: $secondary;
+
+			@media #{$sm} {
+				border-top-color: $primary;
+				border-bottom-color: $primary;
+			}
+		}
+	}
+
+	img {
+		box-shadow: 1px 1px 8px rgba(#000, 0.4);
+	}
+}
+
+/* ==========================================================================
+   INDEX BLOG TEASERS
+   ========================================================================== */
+.iBlogTitle {
+	background: $primary;
+	color: #fff;
+	position: relative;
+	text-transform: uppercase;
+	font-size: $font-sm;
+	font-weight: 700;
+	padding: 25px 0;
+
+	@media #{$md} {
+		font-size: $font-lg;
+		padding: 20px 0 15px;
+		letter-spacing: 2px;
+	}
+
+	@media #{$lg} {
+		font-size: 2.8rem;
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+
+	a.blogViewAll,
+	a:visited.blogViewAll {
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		-webkit-transform: translate(0, -50%);
+		-ms-transform: translate(0, -50%);
+		transform: translate(0, -50%);
+		font-family: $font-stack2;
+		text-transform: uppercase;
+		display: inline-block;
+		padding: 5px 21px;
+		border: 1px solid $accent1;
+		font-weight: 400;
+		font-size: 0.8em;
+
+		@media #{$sm} {
+			right: 25px;
+		}
+
+		@media #{$md} {
+			font-size: 1.1rem;
+			right: 45px;
+		}
+
+		&:after {
+			content: "\f101";
+			font-family: FontAwesome;
+			margin: 0 0 0 7px;
+		}
+
+		&:hover {
+			background: $accent1;
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+}
+
+.iBlogWrapper {
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+.iBlogBox {
+	width: 50%;
+	float: left;
+	text-align: center;
+	position: relative;
+
+	&:after {
+		content: "";
+		width: 2px;
+		background: $gray-light;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	@media #{$sm} {
+		width: 33.333333%;
+	}
+
+	@media #{$md} {
+		width: 25%;
+	}
+
+	&:nth-child(2) {
+		
+		&:after {
+			display: none;
+
+			@media #{$sm} {
+				display: block;
+			}
+		}
+	}
+
+	&:nth-child(3) {
+
+		&:after {
+		
+			@media #{$sm} {
+				display: none;
+			}
+
+			@media #{$md} {
+				display: block;
+			}
+		}
+	}
+
+	&:nth-child(4) {
+
+		&:after {
+		
+			@media #{$md} {
+				display: none;
+			}
+		}
+	}
+
+	&:nth-child(n+3) {
+		display: none;
+
+		@media #{$sm} {
+			display: block;
+		}
+	}
+
+	&:nth-child(n+4) {
+
+		@media #{$sm} {
+			display: none;
+		}
+
+		@media #{$md} {
+			display: block;
+		}
+	}
+}
+
+.iBlogBoxThumb {
+	background: $gray-light;
+	position: relative;
+
+	&:after {
+		content: "";
+		display: block;
+		padding: 0 0 100%;
+	}
+}
+
+.iBlogBoxDate {
+	position: absolute;
+	top: 0;
+	left: 5px;
+	text-align: center;
+	background: $secondary;
+	font-family: $font-stack3;
+	color: #fff;
+	padding: 11px;
+
+	@media #{$lg} {
+		padding: 15px 25px;
+		left: 0;
+	}
+
+	.day {
+		border-bottom: 1px solid #fff;
+		width: 30px;
+		font-size: 2rem;
+		line-height: 1;
+		padding: 0 0 7px;
+		font-weight: 700;
+		text-align: center;
+		margin: 0 auto 0.2em;
+
+		@media #{$lg} {
+			font-size: 3rem;
+			padding: 0 0 3px;
+			width: 40px;
+		}
+	}
+
+	.month {
+		width: 40px;
+		text-transform: uppercase;
+		font-size: 0.8rem;
+		letter-spacing: 4px;
+		text-align: center;
+		margin: 0 auto;
+		text-indent: 4px;
+	}
+}
+
+.iBlogBoxContent {
+	background: #fff;
+	padding: 15px;
+	position: relative;
+
+	@media #{$lg} {
+		padding: 35px 40px;
+	}
+
+	&:before {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 0;
+		border-bottom: 16px solid #fff;
+		border-left: 16px solid transparent;
+		border-right: 16px solid transparent;
+		margin: -16px 0 0 -16px;
+	}
+
+	&:after {
+		content: "\f106";
+		font-family: FontAwesome;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		-webkit-transform: translate(-50%, 0);
+		-ms-transform: translate(-50%, 0);
+		transform: translate(-50%, 0);
+		color: $gray-med;
+		margin: -11px 0 0;
+	}
+
+	h3 {
+		font-family: $font-stack3;
+		font-size: 1.4rem;
+		font-weight: 400;
+		margin: 0 0 1em;
+		line-height: $line-height-base;
+		text-transform: none;
+
+		@media #{$lg} {
+			font-size: 2rem;
+			margin: 0 0 2em;
+		}
+
+		a, a:visited {
+			color: $text-med;
+		}
+	}
+
+	a.btn {
+
+		&:before {
+			display: none;
+		}
+
+		&:after {
+			content: "\f101";
+			font-family: FontAwesome;
+			margin: 0 0 0 7px;
+		}
+	}
+}
+
+.iBlogBoxAuth {
+	color: $secondary;
+	text-transform: uppercase;
+	font-family: $font-stack2;
+	font-weight: 700;
+	font-size: $font-xs - 0.2;
+	margin: 0 0 2em;
+}

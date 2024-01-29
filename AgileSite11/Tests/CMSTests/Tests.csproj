@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B167ECE-E558-4C33-AF08-FAD87F522371}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Tests</RootNamespace>
+    <AssemblyName>CMS.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Output\Debug\Tests\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Output\Debug\Tests\CMS.Tests.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Output\Release\Tests\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Output\Release\Tests\CMS.Tests.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Attributes\IncludeAssemblyAttribute.cs" />
+    <Compile Include="Attributes\Priority.cs" />
+    <Compile Include="Attributes\RelatedBugAttribute.cs" />
+    <Compile Include="Attributes\SharedDatabaseForAllTestsAttribute.cs" />
+    <Compile Include="AppReset\AppStateReset.cs" />
+    <Compile Include="Base\IsolatedIntegration\IsolatedIntegrationTests.cs" />
+    <Compile Include="Base\WebAppInstance\AbstractWebAppInstanceTests.cs" />
+    <Compile Include="Base\AutomatedTests.cs" />
+    <Compile Include="Base\AutomatedTestsWithData.cs" />
+    <Compile Include="Attributes\ExtraDatabaseAttribute.cs" />
+    <Compile Include="Base\CmsDependenciesConfiguration.cs" />
+    <Compile Include="Base\IsolatedIntegration\DatabaseProperties.cs" />
+    <Compile Include="AppReset\InitSequenceAnalyzer.cs" />
+    <Compile Include="Base\IsolatedIntegration\AutomatedTestsWithLocalDB.cs" />
+    <Compile Include="AppReset\MethodReflection.cs" />
+    <Compile Include="Base\IMSTestSetup.cs" />
+    <Compile Include="Base\WebAppInstance\IWebInstanceTestsEnvironmentManager.cs" />
+    <Compile Include="Base\WebAppInstance\WebInstanceTestsEnvironmentManager.cs" />
+    <Compile Include="Base\WebAppInstance\WebInstanceTestsAssemblySetUp.cs" />
+    <Compile Include="EmbededResourceReader\EmbeddedResourceNotFoundException.cs" />
+    <Compile Include="EmbededResourceReader\EmbeddedResourceReader.cs" />
+    <Compile Include="EmbededResourceReader\EmbeddedResourceReaderGeneric.cs" />
+    <Compile Include="Fakes\EventLogServiceWrapper.cs" />
+    <Compile Include="Fakes\FakeEventLogService.cs" />
+    <Compile Include="Fakes\FakeSettingsService.cs" />
+    <Compile Include="Fakes\FakeSimpleDataClass.cs" />
+    <Compile Include="Fakes\IFakeMethods.cs" />
+    <Compile Include="Fakes\IInfoFake.cs" />
+    <Compile Include="Fakes\IInfoProviderFake.cs" />
+    <Compile Include="Fakes\InfoFakeSettings.cs" />
+    <Compile Include="Fakes\ITestEventLogService.cs" />
+    <Compile Include="Fakes\MemoryTransactionScope.cs" />
+    <Compile Include="Helpers\ConstraintExtensions.cs" />
+    <Compile Include="Helpers\ExponentiallyDelayedConstraint.cs" />
+    <Compile Include="Helpers\ConstraintResultWithCustomMessage.cs" />
+    <Compile Include="Helpers\IDatabaseQueryChecker.cs" />
+    <Compile Include="Helpers\ExecuteQueryEventArgsExtensions.cs" />
+    <Compile Include="Helpers\MacroAssert.cs" />
+    <Compile Include="Helpers\ShortGuid.cs" />
+    <Compile Include="Helpers\TestCategoryCheck.cs" />
+    <Compile Include="Base\TestExtender.cs" />
+    <Compile Include="Base\WebAppInstance\WebAppInstanceTests.cs" />
+    <Compile Include="Fakes\FakeEventLogProvider.cs" />
+    <Compile Include="Fakes\FakeMethods.cs" />
+    <Compile Include="Fakes\FakeClassStructureInfo.cs" />
+    <Compile Include="Attributes\Category.cs" />
+    <Compile Include="Helpers\CMSAssert.cs" />
+    <Compile Include="Helpers\JSONConstraint.cs" />
+    <Compile Include="Helpers\InfoFake.cs" />
+    <Compile Include="Helpers\IFake.cs" />
+    <Compile Include="Helpers\InfoProviderFake.cs" />
+    <Compile Include="Base\UnitTests.cs" />
+    <Compile Include="Base\IntegrationTests.cs" />
+    <Compile Include="Helpers\TestConfig.cs" />
+    <Compile Include="Helpers\TestsAssemblyDiscovery.cs" />
+    <Compile Include="Helpers\TestsAssemblyDiscoveryHelper.cs" />
+    <Compile Include="Helpers\TestsDirectoryHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\UnitTestExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataEngine\DataEngine.csproj">
+      <Project>{a7a2ecd2-8c5c-4c95-9efe-82d605fdb28c}</Project>
+      <Name>DataEngine</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.csproj">
+      <Project>{25431232-c0b1-4aef-890f-b92da6df2bed}</Project>
+      <Name>Base</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WebFarmSync\WebFarmSync.csproj">
+      <Project>{B428927B-B248-4428-BA1C-38FC6C2D8BCD}</Project>
+      <Name>WebFarmSync</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="CMS.pfx" />
+    <EmbeddedResource Include="Data\WebAppInstance\web.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)..\..\Lib\*" "$(TargetDir)" /y /r
+"$(ProjectDir)..\..\Scripts\Update-OutputJunctions.cmd" "$(ProjectDir)..\..\" $(Configuration) CMS
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

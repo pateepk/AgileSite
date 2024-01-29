@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC624557-8BBC-4130-B2EA-896AAA75A55F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PaymentProcessor</RootNamespace>
+    <AssemblyName>PaymentProcessor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Braintree-2.51.0">
+      <HintPath>..\packages\Braintree.2.51.0\lib\Braintree-2.51.0.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="braintree_recure.aspx" />
+    <Content Include="braintree.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="DPCInsightPlusRecurringBilling.aspx" />
+    <Content Include="DPInteractive.aspx" />
+    <Content Include="DPCInsightRecurringBilling.aspx" />
+    <Content Include="error.htm" />
+    <Content Include="ffinvoicepayment.aspx" />
+    <Content Include="OnTimeBilling.aspx" />
+    <Content Include="DPCRecurringBilling.aspx" />
+    <Content Include="Javapitbilling.aspx" />
+    <Content Include="RemoraLiteBilling.aspx" />
+    <Content Include="RemoraBilling.aspx" />
+    <Content Include="SWRecurringBilling2.aspx" />
+    <Content Include="SWRecurringBilling.aspx" />
+    <Content Include="RecurringBilling.aspx" />
+    <Content Include="SWCryptotunitiesBilling.aspx" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="Configs\DPC\ExcellaLite2\Web.config" />
+    <Content Include="Configs\DPC\ExcellaLite2\Web_dev.config" />
+    <Content Include="Configs\DPC\ExcellaLite2\Web_Production.config" />
+    <Content Include="Configs\DPC\ExcellaLite2\Web_production_DP.config" />
+    <Content Include="Configs\DPC\ExcellaLite2\Web_Production_TSW.config" />
+    <Content Include="Configs\DPC\ExcellaLiteDPC\Web.config" />
+    <Content Include="Configs\DPC\ExcellaLiteDPC\Web_Production.config" />
+    <Content Include="Configs\TSW\ExcellaLite2\Web.config" />
+    <Content Include="Configs\TSW\ExcellaLite2\Web_dev.config" />
+    <Content Include="Configs\TSW\ExcellaLite2\Web_Production.config" />
+    <Content Include="Configs\TSW\ExcellaLite2\Web_production_DP.config" />
+    <Content Include="Configs\TSW\ExcellaLite2\Web_Production_TSW.config" />
+    <Content Include="Configs\TSW\ExcellaLite3\Web.config" />
+    <Content Include="Configs\TSW\ExcellaLite3\Web_dev.config" />
+    <Content Include="Configs\TSW\ExcellaLite3\Web_Production.config" />
+    <Content Include="Configs\TSW\ExcellaLite3\Web_production_DP.config" />
+    <Content Include="Configs\TSW\ExcellaLite3\Web_Production_TSW.config" />
+    <Content Include="Configs\TSW\ExcellaLite\Web.config" />
+    <None Include="Properties\PublishProfiles\Deploy To Live %28old%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Publish to Bin.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Web_dev.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web References\net.authorize.apitest\ANetApiResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\ARBCancelSubscriptionResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\ARBCreateSubscriptionResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\ARBGetSubscriptionStatusResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\ARBUpdateSubscriptionResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\CreateCustomerPaymentProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\CreateCustomerProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\CreateCustomerProfileTransactionResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\CreateCustomerShippingAddressResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\DeleteCustomerPaymentProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\DeleteCustomerProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\DeleteCustomerShippingAddressResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetBatchStatisticsResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetCustomerPaymentProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetCustomerProfileIdsResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetCustomerProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetCustomerShippingAddressResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetHostedProfilePageResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetSettledBatchListResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetTransactionDetailsResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetTransactionListResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\GetUnsettledTransactionListResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\net.authorize.apitest\Service.disco" />
+    <None Include="Web References\net.authorize.apitest\Service.wsdl" />
+    <None Include="Web References\net.authorize.apitest\UpdateCustomerPaymentProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\UpdateCustomerProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\UpdateCustomerShippingAddressResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\UpdateSplitTenderGroupResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.authorize.apitest\ValidateCustomerPaymentProfileResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <Content Include="SIMAuth.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web_Production.config" />
+    <Content Include="Web_production_DP.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web_Production_TSW.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="base\DPCRecurringPaymentPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="base\PaymentPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="base\RecurringPaymentPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="base\SWRecurringPaymentPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="braintree_recure.aspx.cs">
+      <DependentUpon>braintree_recure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="braintree_recure.aspx.designer.cs">
+      <DependentUpon>braintree_recure.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="braintree.aspx.cs">
+      <DependentUpon>braintree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="braintree.aspx.designer.cs">
+      <DependentUpon>braintree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DPCInsightPlusRecurringBilling.aspx.cs">
+      <DependentUpon>DPCInsightPlusRecurringBilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DPCInsightPlusRecurringBilling.aspx.designer.cs">
+      <DependentUpon>DPCInsightPlusRecurringBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DPInteractive.aspx.cs">
+      <DependentUpon>DPInteractive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DPInteractive.aspx.designer.cs">
+      <DependentUpon>DPInteractive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DPCInsightRecurringBilling.aspx.cs">
+      <DependentUpon>DPCInsightRecurringBilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DPCInsightRecurringBilling.aspx.designer.cs">
+      <DependentUpon>DPCInsightRecurringBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ffinvoicepayment.aspx.cs">
+      <DependentUpon>ffinvoicepayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ffinvoicepayment.aspx.designer.cs">
+      <DependentUpon>ffinvoicepayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CheckoutFormBuilders.cs" />
+    <Compile Include="Helpers\CheckoutFormReaders.cs" />
+    <Compile Include="DPCRecurringBilling.aspx.cs">
+      <DependentUpon>DPCRecurringBilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DPCRecurringBilling.aspx.designer.cs">
+      <DependentUpon>DPCRecurringBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Javapitbilling.aspx.cs">
+      <DependentUpon>Javapitbilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Javapitbilling.aspx.designer.cs">
+      <DependentUpon>Javapitbilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RemoraLiteBilling.aspx.cs">
+      <DependentUpon>RemoraLiteBilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RemoraLiteBilling.aspx.designer.cs">
+      <DependentUpon>RemoraLiteBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RemoraBilling.aspx.cs">
+      <DependentUpon>RemoraBilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RemoraBilling.aspx.designer.cs">
+      <DependentUpon>RemoraBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SWRecurringBilling2.aspx.cs">
+      <DependentUpon>SWRecurringBilling2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SWRecurringBilling2.aspx.designer.cs">
+      <DependentUpon>SWRecurringBilling2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SWRecurringBilling.aspx.cs">
+      <DependentUpon>SWRecurringBilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SWRecurringBilling.aspx.designer.cs">
+      <DependentUpon>SWRecurringBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SIMAuth.aspx.cs">
+      <DependentUpon>SIMAuth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SIMAuth.aspx.designer.cs">
+      <DependentUpon>SIMAuth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SWCryptotunitiesBilling.aspx.cs">
+      <DependentUpon>SWCryptotunitiesBilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SWCryptotunitiesBilling.aspx.designer.cs">
+      <DependentUpon>SWCryptotunitiesBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\AIM\Gateway.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\IGateway.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\AuthorizationRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\CaptureRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\CreditRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\EcheckRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\GatewayRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\IGatewayRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\PriorAuthCaptureRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\UnlinkedCredit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Requests\VoidRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Responses\GatewayResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Responses\IGatewayResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Responses\ResponseBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AIM\Responses\SIMResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\AnetApiSchema.cs" />
+    <Compile Include="Utility\ApiFields.cs" />
+    <Compile Include="Utility\CommonFunctions.cs" />
+    <Compile Include="Utility\Crypto.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\CryptoRandom.cs" />
+    <Compile Include="Utility\DPMFormGenerator.cs" />
+    <Compile Include="OnTimeBilling.aspx.cs">
+      <DependentUpon>OnTimeBilling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OnTimeBilling.aspx.designer.cs">
+      <DependentUpon>OnTimeBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecurringBilling.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>RecurringBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecurringBilling.aspx.designer.cs">
+      <DependentUpon>RecurringBilling.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\HttpXmlUtility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Web References\net.authorize.apitest\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://apitest.authorize.net/soap/v1/Service.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\net.authorize.apitest\</RelPath>
+      <UpdateFromURL>https://apitest.authorize.net/soap/v1/Service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PaymentProcessor_net_authorize_apitest_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1393</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

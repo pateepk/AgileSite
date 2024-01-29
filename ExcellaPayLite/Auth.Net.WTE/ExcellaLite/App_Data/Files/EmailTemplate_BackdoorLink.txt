@@ -1,0 +1,12 @@
+﻿WTE login link information
+Dear {0},
+
+Here the login link to WTE Solutions Excella Lite:
+
+{1}
+
+
+
+
+billing department
+WTE Solutions

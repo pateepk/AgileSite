@@ -1,0 +1,58 @@
+﻿<samlp:Response Version="2.0" ID="51ece70b-de63-49e8-92bd-75ed1102fab2" IssueInstant="2023-05-19T17:21:32Z" Destination="view-source:https://www.trainingnetworknow.com/sso/sso_mychemtrade" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">TrainingNetworkNow-Prod</saml:Issuer>
+  <samlp:Status>
+    <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+  </samlp:Status>
+  <saml:Assertion ID="d5d27ec1-2730-48aa-bdca-2b7a90815145" IssueInstant="2023-05-19T17:21:32Z" Version="2.0" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+    <saml:Issuer>TrainingNetworkNow-Prod</saml:Issuer>
+    <saml:Subject>
+      <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">admin@trainingnetworknow.com</saml:NameID>
+      <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <saml:SubjectConfirmationData Recipient="https://www.trainingnetworknow.com/sso/sso_mychemtrade" NotOnOrAfter="2023-05-20T17:21:32Z" />
+      </saml:SubjectConfirmation>
+    </saml:Subject>
+    <saml:Conditions NotBefore="2023-05-19T17:21:32Z" NotOnOrAfter="2023-05-20T17:21:32Z">
+      <saml:AudienceRestriction>
+        <saml:Audience></saml:Audience>
+      </saml:AudienceRestriction>
+    </saml:Conditions>
+    <saml:AuthnStatement SessionIndex="5f2b122d-13d2-4852-be3c-a284dd8d93a6" AuthnInstant="2023-05-19T17:21:32Z">
+      <saml:AuthnContext>
+        <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml:AuthnContextClassRef>
+      </saml:AuthnContext>
+    </saml:AuthnStatement>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="FullName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">test</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="Email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">test@test.com</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="CompanyID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
+  </saml:Assertion>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>H7d6dbjgIAxxa0znLbvguJctNPc=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>4SLBj/MTCVgN8212mA91M2DUSMtHl1auXINWBmq4Mp16NMz0MseusqbGbjD7g7kdYm9uN8UCVF/q8Uc6xDr7vyjvMO7JsgCVxcdxR8aXTL7DcuXmBYKN2AFtMR3ZpXX0WNmdQiZmeGig87vf+5JYF1aEQkrWlD3zFEkIn1+3rrzIzZcNnz/bwM354874arQ4kr0pp7Vw0jrDCsZxhU2fDBNls22i4x5fqCguvOcXjf2az6GHcJ92tTMAGqDKEj5D1K/tB1cRq7NjZ+wqQ7MkP4vnYJ1gZ82Mk0nPghjAnxHd+rW7OIPJ/+E9JSbu18LNo5Uwa5j2CkBU84od/iyWIw==</SignatureValue>
+    <KeyInfo>
+      <KeyValue>
+        <RSAKeyValue>
+          <Modulus>6TNk+3nbtoGPf6OD8DVT6l10/3rbXhaXnp0r4FtiJEl6Di51YdED2d0y5dRiDHaRPRl68jiPE4p4krJ8Coid2IPuuYm/7BGxGnvVEeDm5SqYEMz2KQP45roC6UT16SDHBCmGuUC5tL+XrKr+vUU3l6b8J8r2nCbsJ6lYv3AGifFThuoDzTWDhZgcuuFr7GbB23sNkxrqB62JLQFBAG+Z9MQtH9523xznDB4Lr0Ej0cM4P5RfwbIgbY32RDNX4wCiUwu/GwewZMonGO7WCAaIf43zrLh7ppOuZCxE43N5/tJN8td9ebOn3wgSrXx63lBaBF1Gi4gh3uxKhxqmKte5+Q==</Modulus>
+          <Exponent>AQAB</Exponent>
+        </RSAKeyValue>
+      </KeyValue>
+    </KeyInfo>
+  </Signature>
+</samlp:Response>

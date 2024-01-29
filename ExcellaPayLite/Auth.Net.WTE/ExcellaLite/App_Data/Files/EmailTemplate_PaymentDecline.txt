@@ -1,0 +1,11 @@
+﻿Your payment for invoice: {0}
+Payment Item:
+Item ID: {1}
+Amount: {2}
+Payment Date: {3}
+Note: {4}
+
+has been DECLINED for some reasons. Please contact billing department.
+
+Below is the information about the invoice:
+

@@ -1,0 +1,80 @@
+//------------------------------------
+// Susy Grid settings
+//------------------------------------
+$susy: (
+  columns: 12,
+  gutters: 1/4,
+  gutter-position: after,  //after (before | after | split | inside | inside-static )
+);
+
+@include border-box-sizing;
+
+//------------------------------------
+// z-index mapping
+//------------------------------------
+// use as @include z-index(nav);
+$z-index: (
+    tbar:                   2,
+    header:                 100,
+    nav:                    3,
+);
+
+
+//------------------------------------
+// breakpoints
+//------------------------------------
+
+$bp-small:                  480px;
+$bp-mid:                    820px;
+$bp-nav:                    980px;
+$bp-wide:                   1024px;
+$bp-xtra:                   1200px;
+
+//containers
+$c-small:                   98%;
+$c-large:                   1200px;
+
+
+//------------------------------------
+// Color
+//------------------------------------
+$black:                     black;
+$gray-darkest:              #444 !default;
+$gray-darker:               #333 !default;
+$gray-dark:                 #666 !default;
+$gray:                      #888 !default; 
+$gray-light:                #aaa !default;
+$gray-lighter:              #eee !default;
+$gray-lightest:             #f1f1f1 !default;
+$white:                     white !default;
+$transparent:               transparent;
+
+
+// Base colors
+// ------------------------------------
+$brand-primary:             #23A5F4 !default;
+$brand-secondary:           #88CAEB !default;
+
+$brand-success:             #5cb85c !default;
+$brand-info:                #0085d8 !default;
+$brand-warning:             #F5A623 !default;
+$brand-danger:              #DF312C !default;
+
+
+//------------------------------------
+// general
+//------------------------------------
+$body-color:                $white;
+$text-color:                $gray-darker;
+$border:		            #d6d6d6;
+$text-muted:                shade(white,16);
+
+$base-font-family:          'Open Sans', Arial, sans-serif;
+$headings-font-family:      $base-font-family;
+
+
+//------------------------------------
+// Form Input
+//------------------------------------
+$input-radius: 	             .25em;
+$input-background:		      $white;

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFEDFFC2-0F9F-4880-9D31-0A2E3F60017D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ssch.tools</RootNamespace>
+    <AssemblyName>ssch.tools</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Braintree-2.51.0">
+      <HintPath>..\packages\Braintree.2.51.0\lib\Braintree-2.51.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\References\SQL.SDK.Assemblies\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\References\SQL.SDK.Assemblies\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\References\SQL.SDK.Assemblies\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BraintreeSandBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BraintreeSandBox.Designer.cs">
+      <DependentUpon>BraintreeSandBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="DataReaderGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataReaderGenerator.Designer.cs">
+      <DependentUpon>DataReaderGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EGivingsCopyToProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EGivingsCopyToProd.Designer.cs">
+      <DependentUpon>EGivingsCopyToProd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLauncher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLauncher.Designer.cs">
+      <DependentUpon>FormLauncher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLData.cs" />
+    <Compile Include="StoredProcedureGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoredProcedureGenerator.Designer.cs">
+      <DependentUpon>StoredProcedureGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="structures\DRspScannedDocument_GetNoRecipient.cs" />
+    <Compile Include="structures\DRspIncomingDocument_UpdateCurrentPath.cs" />
+    <Compile Include="structures\DRspIncomingDocument_Insert.cs" />
+    <Compile Include="structures\DRspRecipient_GetByID.cs" />
+    <Compile Include="structures\DRspScannedDocument_GetRecipientID.cs" />
+    <Compile Include="structures\DRspFunctions_GetAll.cs" />
+    <Compile Include="structures\DRspScannedDocument_Get.cs" />
+    <Compile Include="structures\DRspScannedDocument_Insert.cs" />
+    <Compile Include="structures\DRspScannedDocument_Update.cs" />
+    <Compile Include="structures\DRspStoredProcedures_GetAll.cs" />
+    <Compile Include="structures\DRspTables_GetAll.cs" />
+    <Compile Include="SV.cs" />
+    <Compile Include="TableReaderBase.cs" />
+    <EmbeddedResource Include="BraintreeSandBox.resx">
+      <DependentUpon>BraintreeSandBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataReaderGenerator.resx">
+      <DependentUpon>DataReaderGenerator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EGivingsCopyToProd.resx">
+      <DependentUpon>EGivingsCopyToProd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLauncher.resx">
+      <DependentUpon>FormLauncher.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="StoredProcedureGenerator.resx">
+      <DependentUpon>StoredProcedureGenerator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

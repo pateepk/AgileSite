@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="CUCustomTableDeleteItem.ascx.cs" Inherits="CMSApp.CMSWebParts.CUWebParts.CUCustomTableDeleteItem" %>
+<asp:Label ID="lblMsg" runat="server" EnableViewState="false" />

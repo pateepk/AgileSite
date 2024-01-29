@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A3BAA53F-F715-4C5C-B0F7-55E410C3E773}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Personas.Web.UI</RootNamespace>
+    <AssemblyName>CMS.Personas.Web.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Personas.Web.UI.XML</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Personas.Web.UI.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ContactProfile\Controllers\ContactPersonaController.cs" />
+    <Compile Include="ContactProfile\ViewModels\ContactPersonaViewModel.cs" />
+    <Compile Include="Controls\PersonaPicturesInGrid.cs" />
+    <Compile Include="Controls\PersonasSelectableButton.cs" />
+    <Compile Include="Controls\PreviewModePersonaSelector.cs" />
+    <Compile Include="Demographics\Controllers\ContactPersonaDemographicsController.cs" />
+    <Compile Include="Demographics\Controllers\ContactPersonaDemographicsControllerService.cs" />
+    <Compile Include="Demographics\Controllers\IContactPersonaDemographicsControllerService.cs" />
+    <Compile Include="Demographics\Services\ContactPersonaDemographicsGroupService.cs" />
+    <Compile Include="Demographics\Services\IContactPersonaDemographicsGroupService.cs" />
+    <Compile Include="Demographics\ViewModels\ContactsGroupedByPersonaViewModel.cs" />
+    <Compile Include="Extenders\ContentEditMenuPersonaSelectorExtender.cs" />
+    <Compile Include="Extenders\DocumentListMassActionsExtender.cs" />
+    <Compile Include="Extenders\DocumentListUniGridExtender.cs" />
+    <Compile Include="Extenders\IPersonaReportExtenderService.cs" />
+    <Compile Include="Extenders\PersonaContactsListExtender.cs" />
+    <Compile Include="Extenders\PersonaReportConfigurationViewModel.cs" />
+    <Compile Include="Extenders\PersonaReportExtender.cs" />
+    <Compile Include="Extenders\PersonaReportExtenderService.cs" />
+    <Compile Include="Extenders\PersonasUniGridExtender.cs" />
+    <Compile Include="Extenders\PersonasUniSelectorExtender.cs" />
+    <Compile Include="ContactProfile\Services\IPersonaViewModelService.cs" />
+    <Compile Include="ContactProfile\Services\PersonaViewModelService.cs" />
+    <Compile Include="History\IPersonaContactHistoryControllerService.cs" />
+    <Compile Include="History\PersonaContactHistoryController.cs" />
+    <Compile Include="History\PersonaContactHistoryControllerService.cs" />
+    <Compile Include="History\PersonaContactHistoryViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base.Web.UI\Base.Web.UI.csproj">
+      <Project>{AAB21685-08CB-42D6-B70F-CAFB766C0903}</Project>
+      <Name>Base.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManagement.Web.UI\ContactManagement.Web.UI.csproj">
+      <Project>{633FD48C-EC1A-4B1F-A885-5FBA17135B4C}</Project>
+      <Name>ContactManagement.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManagement\ContactManagement.csproj">
+      <Project>{77BDFFCB-2AEA-4B58-B7DA-A1B69A1E7F22}</Project>
+      <Name>ContactManagement</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine.Web.UI\DocumentEngine.Web.UI.csproj">
+      <Project>{68AF54B9-B6B4-4119-9590-E120F5605775}</Project>
+      <Name>DocumentEngine.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755C13-7B45-48EA-8425-CBAD44133A02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine.Web.UI\FormEngine.Web.UI.csproj">
+      <Project>{71a95f61-5a1d-42d2-aa36-071a2d201754}</Project>
+      <Name>FormEngine.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{D9B92F71-4497-4050-A75D-0F9C84DFBE6B}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{D8BC8F2E-B5CB-472B-A894-3900A96FF456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6BDC71F9-7A04-45DA-8821-1246EC51E3CE}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Personas\Personas.csproj">
+      <Project>{FFA27418-83D1-43C5-B73A-844C3D5404CF}</Project>
+      <Name>Personas</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\UIControls\UIControls.csproj">
+      <Project>{0A45B54E-0AE9-48BB-A8CF-908E5A480626}</Project>
+      <Name>UIControls</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApi\WebApi.csproj">
+      <Project>{6FD3628D-D76F-40B9-9412-E230D7E950B4}</Project>
+      <Name>WebApi</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77BDFFCB-2AEA-4B58-B7DA-A1B69A1E7F22}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.ContactManagement</RootNamespace>
+    <AssemblyName>CMS.ContactManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.ContactManagement.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.ContactManagement.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Account\AccountContactInfo.cs" />
+    <Compile Include="Account\AccountContactInfoProvider.cs" />
+    <Compile Include="Account\AccountContactListInfo.cs" />
+    <Compile Include="Account\AccountInfo.cs" />
+    <Compile Include="Account\AccountInfoProvider.cs" />
+    <Compile Include="Account\AccountListInfo.cs" />
+    <Compile Include="Activities\ContactActivityModifier.cs" />
+    <Compile Include="Activities\ContactActivityLogValidator.cs" />
+    <Compile Include="Contact\VisitorToContactInfoProvider.cs" />
+    <Compile Include="Contact\VisitorToContactInfo.cs" />
+    <Compile Include="ContactDataPropagationCheckers\CustomerContactDataPropagationChecker.cs" />
+    <Compile Include="DataInjecting\ContactDataInjector.cs" />
+    <Compile Include="DataInjecting\ContactDataMapper.cs" />
+    <Compile Include="Events\ContactInfosDeletedHandler.cs" />
+    <Compile Include="Events\ContactInfosDeletedHandlerEventArgs.cs" />
+    <Compile Include="Helpers\MacroValidationHelper.cs" />
+    <Compile Include="Merging\ContactMergeHandler.cs" />
+    <Compile Include="Merging\ContactMergeModel.cs" />
+    <Compile Include="Merging\ContactMergeOnlineUsersUpdater.cs" />
+    <Compile Include="Merging\ContactMergeService.cs" />
+    <Compile Include="Merging\CurrentContactMergeService.cs" />
+    <Compile Include="Merging\IContactMergeOnlineUsersUpdater.cs" />
+    <Compile Include="Merging\IContactMergeService.cs" />
+    <Compile Include="Merging\ICurrentContactMergeService.cs" />
+    <Compile Include="ContactDataPropagationCheckers\UserContactDataPropagationChecker.cs" />
+    <Compile Include="Scoring\Extensions\ScoreContactRuleInfoObjectQueryExtensions.cs" />
+    <Compile Include="Scoring\Score\ScoreQueueWorker.cs" />
+    <Compile Include="Services\ContactGroupMember\ContactGroupMembersCount.cs" />
+    <Compile Include="Services\ContactGroupMember\ContactGroupMemberService.cs" />
+    <Compile Include="Services\ContactGroupMember\IContactGroupMemberService.cs" />
+    <Compile Include="Services\ContactProcessingChecker.cs" />
+    <Compile Include="Services\ContactTypeEnum.cs" />
+    <Compile Include="Automation\ContactAccountAction.cs" />
+    <Compile Include="Automation\ContactAutomationAction.cs" />
+    <Compile Include="Automation\ContactGroupAction.cs" />
+    <Compile Include="Automation\ContactPropertyAction.cs" />
+    <Compile Include="Automation\ContactStatusAction.cs" />
+    <Compile Include="Automation\CustomActivityAction.cs" />
+    <Compile Include="Automation\DeleteContactAction.cs" />
+    <Compile Include="Configuration\AccountStatusInfo.cs" />
+    <Compile Include="Configuration\AccountStatusInfoProvider.cs" />
+    <Compile Include="Configuration\ContactRoleInfo.cs" />
+    <Compile Include="Configuration\ContactRoleInfoProvider.cs" />
+    <Compile Include="Configuration\ContactStatusInfo.cs" />
+    <Compile Include="Configuration\ContactStatusInfoProvider.cs" />
+    <Compile Include="ContactChangeQueue\ContactChangeLogWorker.cs" />
+    <Compile Include="ContactChangeQueue\ContactChangeQueueRepository.cs" />
+    <Compile Include="ContactChangeQueue\IContactChangeRepository.cs" />
+    <Compile Include="ContactChangeQueue\IContactChangeQueueRecalculationProvider.cs" />
+    <Compile Include="ContactChangeQueue\SqlContactChangeQueueRecalculationProvider.cs" />
+    <Compile Include="ContactGroup\ContactGroupContactListInfo.cs" />
+    <Compile Include="ContactGroup\ContactGroupHandlers.cs" />
+    <Compile Include="ContactGroup\ContactGroupInfo.cs" />
+    <Compile Include="ContactGroup\ContactGroupInfoProvider.cs" />
+    <Compile Include="ContactGroup\ContactGroupMemberInfo.cs" />
+    <Compile Include="ContactGroup\ContactGroupMemberInfoProvider.cs" />
+    <Compile Include="ContactGroup\ContactGroupMemberTypeEnum.cs" />
+    <Compile Include="ContactGroup\ContactGroupRebuildTaskManager.cs" />
+    <Compile Include="ContactGroup\ContactGroupStatusEnum.cs" />
+    <Compile Include="ContactGroup\ContactGroupUsageDataSource.cs" />
+    <Compile Include="ContactGroup\DynamicEvaluation\ContactGroupMemoryRebuilder.cs" />
+    <Compile Include="ContactGroup\DynamicEvaluation\ContactGroupRebuilder.cs" />
+    <Compile Include="ContactGroup\DynamicEvaluation\ContactGroupSqlRebuilder.cs" />
+    <Compile Include="ContactGroup\Extensions\ContactGroupInfoExtensions.cs" />
+    <Compile Include="ContactGroup\Filters\AffectedContactGroupsFilter.cs" />
+    <Compile Include="ContactGroup\Filters\ContactsAffectingContactGroupFilter.cs" />
+    <Compile Include="ContactGroup\MemberAddedHowEnum.cs" />
+    <Compile Include="ContactManagementUsageDataSource.cs" />
+    <Compile Include="Contact\ContactAccountListInfo.cs" />
+    <Compile Include="ContactChangeQueue\ContactChangeRecalculationQueueInfo.cs" />
+    <Compile Include="ContactChangeQueue\ContactChangeRecalculationQueueInfoProvider.cs" />
+    <Compile Include="Contact\ContactInfo.cs" />
+    <Compile Include="Contact\ContactInfoProvider.cs" />
+    <Compile Include="Contact\ContactListInfo.cs" />
+    <Compile Include="Contact\ContactUsageDataSource.cs" />
+    <Compile Include="Contact\Extensions\ContactInfoExtensions.cs" />
+    <Compile Include="Contact\Extensions\ContactInfoObjectQueryExtensions.cs" />
+    <Compile Include="DeleteInactiveContacts\ContactWhereConditions\ContactLastActivityOlderThanWhereCondition.cs" />
+    <Compile Include="DeleteInactiveContacts\ContactWhereConditions\ContactWithoutEmailWhereCondition.cs" />
+    <Compile Include="DeleteInactiveContacts\ContactWhereConditions\IContactsWhereCondition.cs" />
+    <Compile Include="DeleteInactiveContacts\DefaultDeleteInactiveContactsService.cs" />
+    <Compile Include="DeleteInactiveContacts\DeleteContactsImplementationContainer.cs" />
+    <Compile Include="DeleteInactiveContacts\DeleteContactsNotActiveLastXDays.cs" />
+    <Compile Include="DeleteInactiveContacts\DeleteContactsNotActiveLastXDaysAndNoEmail.cs" />
+    <Compile Include="DeleteInactiveContacts\DeleteContactsSettingsItem.cs" />
+    <Compile Include="DeleteInactiveContacts\IDeleteContacts.cs" />
+    <Compile Include="DeleteInactiveContacts\IDeleteInactiveContactsService.cs" />
+    <Compile Include="DeleteInactiveContacts\RegisterDeleteContactsImplementationAttribute.cs" />
+    <Compile Include="DocumentationLinks.cs" />
+    <Compile Include="Events\ContactManagementEvents.cs" />
+    <Compile Include="Events\DuplicateActivitiesForContactEventArgs.cs" />
+    <Compile Include="Events\DuplicateActivitiesForContactHandler.cs" />
+    <Compile Include="Events\ProcessContactActionsBatchEventArgs.cs" />
+    <Compile Include="Events\ProcessContactActionsBatchHandler.cs" />
+    <Compile Include="Helpers\AccountHelper.cs" />
+    <Compile Include="Helpers\ContactHelper.cs" />
+    <Compile Include="Helpers\GeoLocationContactHelper.cs" />
+    <Compile Include="Log\ActivityRecalculationQueueDto.cs" />
+    <Compile Include="Log\ActivityRecalculationQueueInfo.cs" />
+    <Compile Include="Log\ActivityRecalculationQueueInfoProvider.cs" />
+    <Compile Include="Log\ContactActionsLogWorker.cs" />
+    <Compile Include="Log\ContactActionsQueueProcessor.cs" />
+    <Compile Include="ContactChangeQueue\ContactChangeData.cs" />
+    <Compile Include="Log\IActivityQueueRecalculationProvider.cs" />
+    <Compile Include="Log\IActivityRecalculationQueueInfo.cs" />
+    <Compile Include="ContactManagementContext.cs" />
+    <Compile Include="Log\SqlActivityQueueRecalculationProvider.cs" />
+    <Compile Include="Macros\ContactInfoMethods.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasComeToLandingPageWithSpecifiedURLTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasVisitedPageWithURLInLastXDaysTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasVisitedSpecifiedSiteInTheLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Relations\Membership\ContactMembershipCustomerListInfo.cs" />
+    <Compile Include="Relations\Membership\ContactMembershipInfo.cs" />
+    <Compile Include="Relations\Membership\ContactMembershipInfoProvider.cs" />
+    <Compile Include="Relations\Membership\ContactMembershipUserListInfo.cs" />
+    <Compile Include="Relations\Membership\MemberTypeEnum.cs" />
+    <Compile Include="Scoring\Calculation\ContactsWithRuleMatching\ContactsAffectedByActivityRulesMatcher.cs" />
+    <Compile Include="Scoring\Calculation\ContactsWithRuleMatching\ContactsAffectedByAttributeRulesMatcher.cs" />
+    <Compile Include="Scoring\Calculation\ContactsWithRuleMatching\ContactsAffectedByMacroRulesMatcher.cs" />
+    <Compile Include="Scoring\Calculation\ContactsWithRuleMatching\Filters\ContactsAffectingRulesFilter.cs" />
+    <Compile Include="Scoring\Calculation\ContactsWithRuleMatching\IContactsAffectedByRuleMatcher.cs" />
+    <Compile Include="Scoring\Calculation\ContactsWithRuleMatching\IRuleWithContactActionsMatchersFactory.cs" />
+    <Compile Include="Scoring\Calculation\ContactsWithRuleMatching\RuleWithContactActionsMatchersFactory.cs" />
+    <Compile Include="Scoring\Calculation\IRuleRecalculator.cs" />
+    <Compile Include="Scoring\Calculation\IScoreRecalculator.cs" />
+    <Compile Include="Scoring\Calculation\RuleRecalculator.cs" />
+    <Compile Include="Scoring\Calculation\RuleTypeCalculators\ActivityRuleTypeCalculator.cs" />
+    <Compile Include="Scoring\Calculation\RuleTypeCalculators\AttributeRuleTypeCalculator.cs" />
+    <Compile Include="Scoring\Calculation\RuleTypeCalculators\IRuleTypeCalculator.cs" />
+    <Compile Include="Scoring\Calculation\RuleTypeCalculators\IRuleTypeCalculatorFactory.cs" />
+    <Compile Include="Scoring\Calculation\RuleTypeCalculators\MacroRuleTypeCalculator.cs" />
+    <Compile Include="Scoring\Calculation\RuleTypeCalculators\RuleTypeCalculatorFactory.cs" />
+    <Compile Include="Scoring\Calculation\RuleTypeCalculators\ScoreMacroRuleSqlRecalculator.cs" />
+    <Compile Include="Scoring\Calculation\ScoreAsyncRecalculator.cs" />
+    <Compile Include="Scoring\Calculation\ScoreRecalculator.cs" />
+    <Compile Include="Scoring\Calculation\TextComparer.cs" />
+    <Compile Include="Scoring\Events\RecalculateAfterContactActionEventArgs.cs" />
+    <Compile Include="Scoring\Events\RecalculateAfterContactActionsBatchEventArgs.cs" />
+    <Compile Include="Scoring\Events\RecalculateAfterContactActionsBatchHandler.cs" />
+    <Compile Include="Scoring\Events\RecalculateScoreForAllContactsHandler.cs" />
+    <Compile Include="Scoring\Events\ScoreEventArgs.cs" />
+    <Compile Include="Scoring\Events\ScoringEvents.cs" />
+    <Compile Include="Scoring\Extensions\RuleInfoExtensions.cs" />
+    <Compile Include="Scoring\NotificationSending\AllContactsScoreNotificationsChecker.cs" />
+    <Compile Include="Scoring\NotificationSending\BatchContactScoreNotificationsChecker.cs" />
+    <Compile Include="Scoring\NotificationSending\ScoreNotificationsSender.cs" />
+    <Compile Include="Scoring\Rule\CachedRulesManager.cs" />
+    <Compile Include="Scoring\Rule\ICachedRulesManager.cs" />
+    <Compile Include="Scoring\Rule\RuleCondition.cs" />
+    <Compile Include="Scoring\Rule\RuleHelper.cs" />
+    <Compile Include="Scoring\Rule\RuleInfo.cs" />
+    <Compile Include="Scoring\Rule\RuleInfoProvider.cs" />
+    <Compile Include="Scoring\Rule\RuleItems\RuleActivityItem.cs" />
+    <Compile Include="Scoring\Rule\RuleItems\RuleAttributeItem.cs" />
+    <Compile Include="Scoring\Rule\RuleItems\RuleItem.cs" />
+    <Compile Include="Scoring\Rule\RuleItems\RuleMacroItem.cs" />
+    <Compile Include="Scoring\Rule\RuleTypeEnum.cs" />
+    <Compile Include="Scoring\Score\ContactWithScoreValue.cs" />
+    <Compile Include="Scoring\Score\ContactWithScoreValueCollection.cs" />
+    <Compile Include="Scoring\Score\ScoreContactListInfo.cs" />
+    <Compile Include="Scoring\Score\ScoreContactRuleInfo.cs" />
+    <Compile Include="Scoring\Score\ScoreContactRuleInfoProvider.cs" />
+    <Compile Include="Scoring\Score\ScoreContactRuleListInfo.cs" />
+    <Compile Include="Scoring\Score\ScoreInfo.cs" />
+    <Compile Include="Scoring\Score\ScoreInfoProvider.cs" />
+    <Compile Include="Scoring\Score\ScoreStatusEnum.cs" />
+    <Compile Include="Scoring\Score\ScoreStatusFormatter.cs" />
+    <Compile Include="Scoring\ScoringHandlers.cs" />
+    <Compile Include="Scoring\ScoringUsageDataSource.cs" />
+    <Compile Include="Scoring\TriggerFiring\BatchScoreTriggersRunner.cs" />
+    <Compile Include="Services\ContactCreator\DefaultContactCreator.cs" />
+    <Compile Include="Services\ContactCreator\IContactCreator.cs" />
+    <Compile Include="Services\ContactPersistentStorage\DefaultContactPersistentStorage.cs" />
+    <Compile Include="Services\ContactPersistentStorage\IContactPersistentStorage.cs" />
+    <Compile Include="Contact\Extensions\ContactDataSetExtensions.cs" />
+    <Compile Include="Services\ContactValidator\DefaultContactValidator.cs" />
+    <Compile Include="Services\ContactValidator\IContactValidator.cs" />
+    <Compile Include="Services\CookieService\DefaultCookieService.cs" />
+    <Compile Include="Services\CurrentContactProvider\CurrentContactProviderContextDecorator.cs" />
+    <Compile Include="DataInjecting\IContactDataInjector.cs" />
+    <Compile Include="DataInjecting\IContactDataPropagationChecker.cs" />
+    <Compile Include="DataInjecting\IContactDataMapper.cs" />
+    <Compile Include="Services\IContactProcessingChecker.cs" />
+    <Compile Include="Services\CurrentContactProvider\DefaultCurrentContactProvider.cs" />
+    <Compile Include="Services\CurrentContactProvider\ICurrentContactProvider.cs" />
+    <Compile Include="Services\CurrentUserRelatedContactProvider\DefaultCurrentUserContactProvider.cs" />
+    <Compile Include="Services\CurrentUserRelatedContactProvider\ICurrentUserContactProvider.cs" />
+    <Compile Include="Services\CookieService\ICookieService.cs" />
+    <Compile Include="Services\ContactRelationAssigner\DefaultContactRelationAssigner.cs" />
+    <Compile Include="Services\ContactRelationAssigner\IContactRelationAssigner.cs" />
+    <Compile Include="Tasks\ContactGroupEvaluator.cs" />
+    <Compile Include="Tasks\DefaultOffPeakService.cs" />
+    <Compile Include="Tasks\DeleteInactiveContacts.cs" />
+    <Compile Include="Tasks\IOffPeakService.cs" />
+    <Compile Include="Tasks\ScoreEvaluator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\CachedMacroConditionAnalyzer.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\CachedMacroRuleTrees.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\IMacroRuleInstanceToDataQueryTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\IMacroRuleTreeToDataQueryTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\MacroRuleInstance.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\MacroRuleInstanceToDataQueryTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\MacroRuleMetadata.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\MacroRuleMetadataContainer.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\MacroRuleTreeAnalyzer.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\MacroRuleTreeEvaluator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\MacroRuleTreeParser.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\MacroRuleTreeToDataQueryTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactAgeIsBetweenInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactAgeIsGreaterThanInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactBelongsToAccountInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactFieldContainsValueInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasAtLeastXProductsInWishlistInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasComeToSpecifiedLandingPageInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasDoneAnyActivityInTheLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasDoneFollowingActivitiesInTheLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasDownloadedSpecifiedFileInLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasLoggedInInTheLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasMadeAtLeastXOrdersInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasProductInWishlistInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasPurchasedNumberOfProductsInTheLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasPurchasedSpecifiedProductInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasSearchedForSpecifiedKeywordsInLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasSpentMoneyInTheStoreInTheLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasSubmittedSpecifiedFormInLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasVisitedSpecifiedPageInLastXDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactHasVotedInSpecifiedPollInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsFemaleInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsFromCountryInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsFromStateInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsInCommunityGroup.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsInContactGroupInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsInRoleInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsMaleInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsRegisteredAsAUserInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactIsRegisteredForSpecifiedEventInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactStatusIsInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSContactWasCreatedInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSCurrentDatetimeIsInRangeInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSCurrentDayOfTheWeekIsOneOfSpecifiedDaysInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSCurrentDayTimeIsInRangeInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\CMSCurrentMonthIsInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\IMacroRuleInstanceTranslator.cs" />
+    <Compile Include="Macros\MacroRuleMetadata\Translators\SingleMacroRuleInstanceTranslatorBase.cs" />
+    <Compile Include="Module\ContactManagementHandlers.cs" />
+    <Compile Include="Module\ContactManagementModule.cs" />
+    <Compile Include="Module\ContactManagementModuleMetadata.cs" />
+    <Compile Include="Module\ContactManagementResolvers.cs" />
+    <Compile Include="Module\ImportExport\ContactManagementImportSpecialActions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Activities\Activities.csproj">
+      <Project>{DC7FDFAA-4C8A-4D6F-8572-AC4F789E2494}</Project>
+      <Name>Activities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Automation\Automation.csproj">
+      <Project>{D78A0F88-323C-47BA-9E69-50FDF6EFCFCA}</Project>
+      <Name>Automation</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EmailEngine\EmailEngine.csproj">
+      <Project>{F4E4C255-DD0D-4AB8-985B-B20B36E5B6EE}</Project>
+      <Name>EmailEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6BDC71F9-7A04-45DA-8821-1246EC51E3CE}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{F21C925B-3AA1-4139-9706-BA5073527A8F}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAnalytics\WebAnalytics.csproj">
+      <Project>{C2B6B91C-1D58-4531-8893-388960AFAA80}</Project>
+      <Name>WebAnalytics</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

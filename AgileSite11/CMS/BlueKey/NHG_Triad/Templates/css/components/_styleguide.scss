@@ -1,0 +1,336 @@
+/*************************************************************
+
+STANDARD STYLEGUIDE STYLES
+
+*************************************************************/
+
+.styleWrapper {
+	font-family: $font-stack;
+	background: #fff;
+}
+
+a.guideLink,
+a:visited.guideLink {
+	color: #999;
+	text-decoration: none;
+}
+
+a:hover.guideLink,
+a:visited:hover.guideLink {
+	color: #333;
+}
+
+.styleWrapper {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0;
+	padding: 35px 25px 0 25px;
+	position: relative;
+
+	@media #{$md} {
+		padding-left: 250px;
+	}
+
+	section {
+		margin: 0 0 100px;
+	}
+
+	section.guideLastSection {
+		margin-bottom: 0;
+	}
+}
+
+.styleMenu {
+	position: fixed;
+	top: 29px;
+	left: 0;
+	width: 200px;
+	text-align: right;
+	bottom: 0;
+	font-size: 1.4rem;
+	font-family: 'Raleway', sans-serif;
+	display: none;
+
+	@media #{$md} {
+		display: block;
+	}
+
+	a {
+		display: block;
+		margin: 0 0 11px;
+		text-align: right;
+		padding: 5px 15px;
+		border-right: 4px solid transparent;
+
+		&:hover {
+			background: #f8f8f8;
+			text-decoration: none;
+		}
+	}
+
+	a.guideLinkOn {
+		background: #efefef;
+		color: #222;
+		border-color: #aaa;
+	}
+
+	a.bkLink {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		border: none;
+
+		&:hover {
+			background: transparent;
+		}
+	}
+
+	.bkBadge {
+		height: 35px;
+		width: auto;
+		margin: 0 0 0 0;
+		opacity: .8;
+		position: absolute;
+		right: 15px;
+		bottom: 15px;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.guideStyleToggle {
+	text-align: right;
+	margin: 0 15px 11px 0;
+	cursor: pointer;
+	color: #999;
+
+	span {
+		display: inline-block;
+		padding: 3px 9px;
+		border-radius: 3px;
+		border: 1px solid #ddd;
+
+		&:hover {
+			background: #fafafa;
+		}
+	}
+
+	span.toggleOn {
+		background: #00A4E4;
+		color: #fff;
+		border-color: #00A4E4;
+	}
+
+	span.toggleOn:before {
+		content: "\f00c";
+		font-family: FontAwesome;
+		margin: 0 5px 0 0;
+	}
+}
+
+.guideTag {
+	position: relative;
+	background: #00A4E4;
+	font-size: 1.4rem;
+	line-height: 1.4rem;
+	padding: 1px 4px;
+	display: inline-block;
+	color: #fff;
+	margin: 0 9px;
+	display: none;
+	border: 1px solid #fff;
+	font-weight: 400;
+	font-family: 'Raleway', sans-serif;
+}
+
+.mainHeader {
+	font-size: 8rem;
+	line-height: 8.4rem;
+	margin: 0 0 25px;
+	font-family: 'Raleway', sans-serif;
+	color: #000;
+	font-size: 3rem;
+	line-height: 3.4rem;
+
+	@media #{$md} {
+		font-size: 8rem;
+		line-height: 8.4rem;
+		margin-bottom: 45px;
+	}
+
+	span {
+		color: #aaa;
+		display: block;
+		margin: 0;
+		font-size: 1.6rem;
+		line-height: 1.8rem;
+	}
+}
+
+.styleHeader {
+	border-bottom: 1px solid #333;
+	padding: 9px 0;
+	margin: 0 0 35px;
+	text-align: center;
+	font-weight: 700;
+	color: #333;
+	position: relative;
+	text-transform: uppercase;
+	font-size: 1.6rem;
+	clear: both;
+	font-family: 'Raleway', sans-serif;
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: -8px;
+		left: 50%;
+		margin: 0 0 0 -8px;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+		border-top: 8px solid #333;
+	}
+
+	.guideLink {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		width: 25px;
+		height: 25px;
+		line-height: 25px;
+		text-align: center;
+		margin: -12px 0 0;
+		font-size: 1.6rem;
+	}
+}
+
+.colorBoxWrapper {
+	width: 31.3333%;
+	margin: 0 1% 25px;
+	float: left;
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+
+	@media #{$sm} {
+		width: 23%;
+	}
+
+	@media #{$md} {
+		width: 18%;
+	}
+}
+
+.colorBox {
+	width: 100%;
+	height: 90px;
+	border-radius: 3px;
+	background: #ccc;
+	display: block;
+	margin: 0 0 5px;
+	position: relative;
+	overflow: hidden;
+	font-family: 'Raleway', sans-serif;
+
+	@media #{$md} {
+		height: 110px;
+	}
+}
+
+.colorBox-Light {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 50%;
+	height: 31px;
+	background: #ddd;
+}
+
+.colorBox-Dark {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 50%;
+	height: 31px;
+	background: #bbb;
+}
+
+.colorTitle {
+	font-weight: 700;
+	font-family: 'Raleway', sans-serif;
+}
+
+.colorHex {
+	color: #aaa;
+	font-family: 'Raleway', sans-serif;
+}
+
+.colorBoxGray {
+	height: 50px;
+}
+
+.clearer {
+	clear: both;
+}
+
+/*************************************************************
+
+UNIQUE STYLEGUIDE STYLES
+
+*************************************************************/
+.colorBox-Primary {
+	background: $primary;
+
+	& .colorBox-Light {
+		background: $primary-light;
+	}
+
+	& .colorBox-Dark {
+		background: $primary-dark;
+	}
+}
+
+.colorBox-Secondary {
+	background: $secondary;
+
+	& .colorBox-Light {
+		background: $secondary-light;
+	}
+
+	& .colorBox-Dark {
+		background: $secondary-dark;
+	}
+}
+
+.colorBox-Accent1 {
+	background: $accent1;
+
+	& .colorBox-Light {
+		background: $accent1-light;
+	}
+
+	& .colorBox-Dark {
+		background: $accent1-dark;
+	}
+}
+
+.colorBox-Gray-Ex-Dark {
+	background: $gray-ex-dark;
+}
+
+.colorBox-Gray-Dark {
+	background: $gray-dark;
+}
+
+.colorBox-Gray-Medium {
+	background: $gray-med;
+}
+
+.colorBox-Gray-Light {
+	background: $gray-light;
+}
+
+.colorBox-Gray-Ex-Light {
+	background: $gray-ex-light;
+}

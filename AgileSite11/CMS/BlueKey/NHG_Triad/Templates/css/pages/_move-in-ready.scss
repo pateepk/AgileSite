@@ -1,0 +1,308 @@
+/* ==========================================================================
+   MOVE IN TOP
+   ========================================================================== */
+.moveInTop {
+	background: url('../images/gridBg.png');
+
+	@media #{$md} {
+		margin-top: -2em;
+		padding-top: 2em;
+	}
+
+	@media #{$lg} {
+		padding-top: 3em;
+	}
+
+	main.full {
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+}
+
+.moveInIntro {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto 2em;
+	text-align: center;
+}
+
+/* ==========================================================================
+   MOVE IN READY LISTING BOXES
+   ========================================================================== */
+.moveInHomesContainer {
+	position: relative;
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+.moveInHome {
+	position: relative;
+	margin: 0 0 2em;
+	box-shadow: 2px 2px 5px rgba(#000, 0.3);
+	-webkit-perspective: 1000px; /* Chrome, Safari, Opera */
+	perspective: 1000px;
+	background: $gray-light;
+
+	@media #{$sm} {
+		@include gallery(6);
+	}
+
+	@media #{$md} {
+		@include gallery(4);
+	}
+
+	@media #{$lg} {
+		@include gallery(2 of 6);
+	}
+}
+
+.moveInHomeInner {
+	position: relative;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	transition: -webkit-transform 0.4s ease-in-out;
+	transition: transform 0.4s ease-in-out;
+	transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+	height: 540px;
+
+	@media #{$lg} {
+		height: 500px;
+	}
+
+	.flipped & {
+		transform: rotateY(180deg);
+	}
+
+	figure {
+		margin: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		background: #fff;
+		padding: 15px;
+
+		@media #{$md} {
+			padding: 25px;
+		}
+
+		&:after {
+			@extend .clearfix;
+		}
+
+		&.front {
+			
+		}
+
+		&.back {
+			transform: rotateY(180deg);
+		}
+	}
+}
+
+.flipped figure.back {
+	z-index: 3;
+}
+
+.flipped figure.front {
+	z-index: -1;
+}
+
+.moveInHomeThumb {
+	margin: 0 0 0.8em;
+
+	&:after {
+		content: "";
+		display: block;
+		padding: 0 0 60%;
+	}
+}
+
+.moveInHomeValueContainer {
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+.moveInHomeValue {
+	@include gallery(4);
+	margin-bottom: 1.6em;
+	font-size: $font-sm;
+	font-family: $font-stack4;
+	font-weight: 700;
+	line-height: $line-height-compact;
+
+	@media #{$md} {
+		font-size: 1.2rem;
+		line-height: $line-height-base;
+	}
+
+	a, a:visited {
+		color: $primary;
+		text-decoration: underline;
+	}
+}
+
+.moveInHomeLabel {
+	display: block;
+	color: #9B9B9B;
+	text-transform: uppercase;
+	font-family: $font-stack2;
+	font-size: $font-xs - 0.2;
+
+	@media #{$md} {
+		font-size: 0.9rem;
+	}
+}
+
+.moveInHomePrice {
+	font-size: $font-base;
+	color: $secondary;
+
+	@media #{$md} {
+		font-size: 1.6rem;
+	}
+}
+
+.moveInHomeActions {
+	@extend .clearfix;
+	width: 100%;
+
+	&:after {
+		@extend .clearfix;
+	}
+
+	a.btn,
+	a:visited.btn {
+		@include gallery(2 of 4);
+
+		.fa {
+			margin: 0 3px;
+		}
+
+		@media #{$md} {
+			font-size: 0.7em;
+			padding: 5px;
+		}
+	}
+}
+
+.moveInHomeMore {
+	font-family: $font-stack2;
+	position: relative;
+	font-size: $font-xs;
+	padding-top: 45px;
+	line-height: $line-height-wider;
+
+	@media #{$md} {
+		font-size: 1.1rem;
+	}
+}
+
+.moveInHomeMoreClose {
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-transform: uppercase;
+	font-size: $font-xs - 0.2;
+
+	@media #{$md} {
+		font-size: 1.1rem;
+	}
+
+	&:hover {
+		color: $text-dark;
+	}
+
+	&:after {
+		content: "\f057";
+		font-family: FontAwesome;
+		margin: 0 0 0 6px;
+		display: inline-block;
+		font-size: 1.4em;
+		vertical-align: middle;
+
+		@media #{$md} {
+			font-size: 2em;
+			margin-top: -3px;
+		}
+	}
+}
+
+/* ==========================================================================
+   MOVE IN SORTS
+   ========================================================================== */
+.sortWrapper.moveInSorts {
+	background: $gray-ex-light;
+	padding: 11px;
+	margin-bottom: 1em;
+
+	@media #{$md} {
+		padding: 11px 25px;
+	}
+
+	span {
+		text-transform: uppercase;
+		position: relative;
+		text-align: center;
+		display: block;
+		overflow: hidden;
+		font-size: $font-sm;
+
+		span {
+			display: inline-block;
+			padding: 0 15px;
+			overflow: visible;
+		}
+
+		&:after,
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;
+			border-top: 1px solid $gray-med;
+		}
+
+		&:before {
+			left: -9999px;
+			right: 100%;
+		}
+
+		&:after {
+			right: -9999px;
+			left: 100%;
+		}
+	}
+
+	ul {
+		
+
+		@media #{$md} {
+			width: 100%;
+			display: table;
+		}
+	}
+
+	li {
+
+		@media #{$md} {
+			display: table-cell;
+			text-align: center;
+		}
+	}
+
+	.sorter {
+
+	}
+}

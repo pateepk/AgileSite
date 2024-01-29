@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TrackClick_NHG_C.aspx.cs" Inherits=" CMSPages_TrackClick_NHG_C" %>
