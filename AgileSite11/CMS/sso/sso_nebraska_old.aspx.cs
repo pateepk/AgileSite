@@ -24,8 +24,8 @@ public partial class sso_nebraska_old : System.Web.UI.Page
     private int GivenRoleID = 120; // RoleID given for this SSO
     private string OtherRolesCantUseSSO = "2,3,53,119,118,142,117";
     private string X509Certificate = "MIIEJjCCAw6gAwIBAgIUCJMtRn7NCy6pqXCN8AD5aMqFh0cwDQYJKoZIhvcNAQEFBQAwXTELMAkGA1UEBhMCVVMxFjAUBgNVBAoMDVdURSBTb2x1dGlvbnMxFTATBgNVBAsMDE9uZUxvZ2luIElkUDEfMB0GA1UEAwwWT25lTG9naW4gQWNjb3VudCA4NTM3NzAeFw0xNjA1MzAxMzA4MDFaFw0yMTA1MzExMzA4MDFaMF0xCzAJBgNVBAYTAlVTMRYwFAYDVQQKDA1XVEUgU29sdXRpb25zMRUwEwYDVQQLDAxPbmVMb2dpbiBJZFAxHzAdBgNVBAMMFk9uZUxvZ2luIEFjY291bnQgODUzNzcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA2LQCxsUbPz5iFIXKp+soz6DQOvnsrlwJ3VfOz8GeqHIPOOXHFTfP17gDth3gT5S2j7Bs+g5FCoWHG5XwpYxhJDi7Y2rCzZrMpo+4S4yD5mNrQReeYlYHi/R63FrxZwXrbxG8BOa9gMPspU4srO4xp3xt/0f6vDQcX/1STd0ga0yxLgp0q83a1JxFDkjQEBGf5Kfx1BcCNTn7Ry+2kwGfFXv0V0wwGBZScemnMe8s8H2/rl9sSI3dKnQSqkpu8CCWKs0uxHbrnYmqWFX9Zw03tfe3xEbx58El1tnA3xJYERBJXGYdH1q5lBL/k3uuL1/CpNYlxO98LLcptjmR/HDRAgMBAAGjgd0wgdowDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUjsiH6C3m54gEO9AYspoN0Sn1pOMwgZoGA1UdIwSBkjCBj4AUjsiH6C3m54gEO9AYspoN0Sn1pOOhYaRfMF0xCzAJBgNVBAYTAlVTMRYwFAYDVQQKDA1XVEUgU29sdXRpb25zMRUwEwYDVQQLDAxPbmVMb2dpbiBJZFAxHzAdBgNVBAMMFk9uZUxvZ2luIEFjY291bnQgODUzNzeCFAiTLUZ+zQsuqalwjfAA+WjKhYdHMA4GA1UdDwEB/wQEAwIHgDANBgkqhkiG9w0BAQUFAAOCAQEAMg7kAzYWZe7NX9U48MuoewIoZtkUCD8vOomL+THTpDjhqRoUdlTlrPsxf36asmN8bVvMVetjEdVrJdENNP34wa8TCCER/gCGDU2i0pgewy0OujREG8m0RlWUSWb4JqAdjzPOULzWrfsO7OR3OUcHu8c6I1FBGlTFxULA7qsjKd/1rKjZn1tusw/HkVELzGFT4yNp5f6SZ9i2MksnXHtnAvPejJluYSIPmLNpTNs3OOwjEg2Z5y6uoEFlbzf/e5/eWMg/E5QCH+kjbeDmiosL5pL0HTUoJt07UrrG7xD/lTlwKOPQndH7ZtveLCuIypI9pQkqcC4F6BgTXjXX+UO5hQ==";
-    private string SSOErrorURL = "http://www.trainingnetworknow.com/system/SSOError?SSOLogID=";
-    private string SSOOkURL = "http://www.trainingnetworknow.com/home.aspx";
+    private string SSOErrorURL = "http://learn.streamery.co/system/SSOError?SSOLogID=";
+    private string SSOOkURL = "http://learn.streamery.co/home.aspx";
     private string SSOLogMessage = "";
     private Int64 SSOLogID = 0;
     private string hash = "";

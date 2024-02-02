@@ -23,7 +23,7 @@ public partial class sso_chemtrade : System.Web.UI.Page
     //string SharedKey = "XJK531LHQE819KDQ"; // for testing it is should be same shared key. tak ea look at sso_encrypt_test.aspx.cs
     private string SharedKey = "XGF622XDQE421KRS"; // for testing it is should be same shared key. tak ea look at sso_encrypt_test.aspx.cs
 
-    private string SSOErrorURL = "http://www.trainingnetworknow.com/system/SSOError?SSOLogID=";
+    private string SSOErrorURL = "http://learn.streamery.co/system/SSOError?SSOLogID=";
     private string SSOOkURL = "https://www.trainingnetworknow.com/system/search-results.aspx?searchtext=4255&searchmode=anywordorsynonyms";
     private string SSOLogMessage = "";
     private Int64 SSOLogID = 0;

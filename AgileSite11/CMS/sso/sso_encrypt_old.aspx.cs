@@ -20,8 +20,8 @@ public partial class sso_encrypt_old : System.Web.UI.Page
     private int GivenRoleID = 120; // RoleID given for this SSO
     private string OtherRolesCantUseSSO = "2,3,53,119,118,142,117";
     private string SharedKey = "XJK531LHQE819KDQ"; // for testing it is should be same shared key. tak ea look at sso_encrypt_test.aspx.cs
-    private string SSOErrorURL = "http://www.trainingnetworknow.com/system/SSOError?SSOLogID=";
-    private string SSOOkURL = "http://www.trainingnetworknow.com/home.aspx";
+    private string SSOErrorURL = "http://learn.streamery.co/system/SSOError?SSOLogID=";
+    private string SSOOkURL = "http://learn.streamery.co/home.aspx";
     private string SSOLogMessage = "";
     private Int64 SSOLogID = 0;
     private string hash = "";

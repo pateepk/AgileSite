@@ -18,8 +18,8 @@ public partial class sso_old : System.Web.UI.Page
     private string CurrentEmail = "";
     private int GivenRoleID = 120; // RoleID given for this SSO
     private string OtherRolesCantUseSSO = "2,3,53,119,118,142,117";
-    private string SSOErrorURL = "http://www.trainingnetworknow.com/system/SSOError?SSOLogID=";
-    private string SSOOkURL = "http://www.trainingnetworknow.com/home.aspx";
+    private string SSOErrorURL = "http://learn.streamery.co/system/SSOError?SSOLogID=";
+    private string SSOOkURL = "http://learn.streamery.co/home.aspx";
     private string SSOLogMessage = "";
     private Int64 SSOLogID = 0;
 

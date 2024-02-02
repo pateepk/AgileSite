@@ -24,8 +24,8 @@ public partial class sso_wte : System.Web.UI.Page
     private int GivenRoleID = 120; // RoleID given for this SSO
     private string OtherRolesCantUseSSO = "2,3,53,119,118,142,117";
     private string X509Certificate = "MIIEJjCCAw6gAwIBAgIUC25vCBpNXcjj6SY8VNXrLvDTL5swDQYJKoZIhvcNAQEFBQAwXTELMAkGA1UEBhMCVVMxFjAUBgNVBAoMDVdURSBTb2x1dGlvbnMxFTATBgNVBAsMDE9uZUxvZ2luIElkUDEfMB0GA1UEAwwWT25lTG9naW4gQWNjb3VudCA4NTM3NzAeFw0yMTA2MDkyMzQ4MDlaFw0yNjA2MDkyMzQ4MDlaMF0xCzAJBgNVBAYTAlVTMRYwFAYDVQQKDA1XVEUgU29sdXRpb25zMRUwEwYDVQQLDAxPbmVMb2dpbiBJZFAxHzAdBgNVBAMMFk9uZUxvZ2luIEFjY291bnQgODUzNzcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCgO8rrqiARDjhdcoeufMKYHPTsrWAr4j9Q5ATWNqeUTsaUsLGxZlX7uXmZmGpeSjiEnAk0h3s5K77xrr1Q3838Acl3zp7rLZwu0g/9mHRLrTCMrBLk41qB9GF06c8I+TgWc2QNBzW7+wS7hAlHjSke/ummE4UxY55mhkFqTfY+9BQJhfoh78dXGjxGRkHJzFqc8vx0f8VAiX/VTUf5ScOMuo1FofO+BCyXao5zZEut5PPtxe8f++OvhiOcjvzcBfAbyMUGaK7Cg3UiG5wr9fgotFfNqsTvCmMYtUuV3jxNTNQ4r4zr9pPQpqm/FQd0Y4CuTLGlgHzC/qpXHdIUkXzDAgMBAAGjgd0wgdowDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUpQ7Tp+Nh8vM/NgS1cyrnPc/CA0IwgZoGA1UdIwSBkjCBj4AUpQ7Tp+Nh8vM/NgS1cyrnPc/CA0KhYaRfMF0xCzAJBgNVBAYTAlVTMRYwFAYDVQQKDA1XVEUgU29sdXRpb25zMRUwEwYDVQQLDAxPbmVMb2dpbiBJZFAxHzAdBgNVBAMMFk9uZUxvZ2luIEFjY291bnQgODUzNzeCFAtubwgaTV3I4+kmPFTV6y7w0y+bMA4GA1UdDwEB/wQEAwIHgDANBgkqhkiG9w0BAQUFAAOCAQEAVHajxqhbkhuPKWHVWLKkbwKAST8WdY0Wwc+beoOnr19bsODmOe5usJInry/YslFmz9Le+JHh3xkri0eD5FGlEDouxk0eCJ3NhS+kH0VLoFyN2DoBwyHXfj0jSa30/cSV6R4bokbDGGBp3xa30JrvyQEOOqi63FJNXPvcF53pVJXN3072sDsZTVhNNup6CSD95fS5i6sr+tbwzSpl+tx3ldPJDLhugrSCADAAHYCxpCzqR0jVEJW3Vq3ewHmWKmEjxj1ld04HkvEsyGCxHPZ0BGsqU4LMk+OoqCW1Fu52RlF4atT2NsI79GvkhnHUyA+IcQBOQFFF3GS9haR+w+v6wA==";
-    private string SSOErrorURL = "http://www.trainingnetworknow.com/system/SSOError?SSOLogID=";
-    private string SSOOkURL = "http://www.trainingnetworknow.com/home.aspx";
+    private string SSOErrorURL = "http://learn.streamery.co/system/SSOError?SSOLogID=";
+    private string SSOOkURL = "http://learn.streamery.co/home.aspx";
     private string SSOLogMessage = "";
     private Int64 SSOLogID = 0;
     private string hash = "";
