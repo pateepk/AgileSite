@@ -336,6 +336,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{E841B020-698
 		Lib\Microsoft.Web.Services3.dll = Lib\Microsoft.Web.Services3.dll
 		Lib\NetSpell.SpellChecker.dll = Lib\NetSpell.SpellChecker.dll
 		Lib\PreMailer.Net.dll = Lib\PreMailer.Net.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.Design.dll = Lib\RCAJAX\2022.1.119.45\Telerik.Web.Design.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.Device.Detection.dll = Lib\RCAJAX\2022.1.119.45\Telerik.Web.Device.Detection.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.Device.Detection.xml = Lib\RCAJAX\2022.1.119.45\Telerik.Web.Device.Detection.xml
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.dll = Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.Skins.dll = Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.Skins.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.XML = Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.XML
 		Lib\Ude.dll = Lib\Ude.dll
 	EndProjectSection
 EndProject
@@ -344,6 +350,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.gitignore = ..\.gitignore
 		..\Dev_setup_instruction.txt = ..\Dev_setup_instruction.txt
 		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Telerik", "Telerik", "{D1DD25E1-7996-4511-A140-758B6AD25295}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.Design.dll = Lib\RCAJAX\2022.1.119.45\Telerik.Web.Design.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.Device.Detection.dll = Lib\RCAJAX\2022.1.119.45\Telerik.Web.Device.Detection.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.Device.Detection.xml = Lib\RCAJAX\2022.1.119.45\Telerik.Web.Device.Detection.xml
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.dll = Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.Skins.dll = Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.Skins.dll
+		Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.XML = Lib\RCAJAX\2022.1.119.45\Telerik.Web.UI.XML
 	EndProjectSection
 EndProject
 Global
@@ -1037,7 +1053,7 @@ Global
 		{508A8D62-9685-4041-8878-E0C772E6686B} = {0F1ACEF8-ECD0-445A-B425-134F07D9B81A}
 		{1608FBE1-796D-446D-98E0-A9791C3E8AF1} = {86E75923-0166-4A64-B12F-228C3BB01B28}
 		{460CC9CA-2AD0-4BAD-B503-28F032EF8033} = {86E75923-0166-4A64-B12F-228C3BB01B28}
-		{E841B020-6986-4415-9A70-6E47B9CCB7F9} = {18E8FF51-4BC9-4D87-A225-120CEE51609E}
+		{D1DD25E1-7996-4511-A140-758B6AD25295} = {E841B020-6986-4415-9A70-6E47B9CCB7F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC8286F1-8485-4DDD-89CD-DD6446E5AD7E}

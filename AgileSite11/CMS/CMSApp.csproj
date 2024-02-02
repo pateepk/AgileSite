@@ -8224,8 +8224,10 @@
     <Content Include="sso\ssotest_old.aspx" />
     <Content Include="sso\sso_chemtrade.aspx" />
     <Content Include="sso\sso_chemtrade_test.aspx" />
+    <Content Include="sso\sso_pei_encrypt.aspx" />
     <Content Include="sso\sso_encrypt.aspx" />
     <Content Include="sso\sso_encrypt_old.aspx" />
+    <Content Include="sso\sso_pei_encrypt_test.aspx" />
     <Content Include="sso\sso_encrypt_test.aspx" />
     <Content Include="sso\sso_encrypt_test_old.aspx" />
     <Content Include="sso\sso_mychemtrade.aspx" />
@@ -8238,7 +8240,9 @@
     <Content Include="sso\sso_nebraska_test.aspx" />
     <Content Include="sso\sso_nebraska_test_old.aspx" />
     <Content Include="sso\sso_old.aspx" />
+    <Content Include="sso\sso_pei_saml.aspx" />
     <Content Include="sso\sso_quality_refrig_services.aspx" />
+    <Content Include="sso\sso_pei_saml_test.aspx" />
     <Content Include="sso\sso_strategic_comp.aspx" />
     <Content Include="sso\sso_quality_refrig_services_test.aspx" />
     <Content Include="sso\sso_strategic_comp_test.aspx" />
@@ -11455,6 +11459,13 @@
     <Compile Include="sso\sso_chemtrade_test.aspx.designer.cs">
       <DependentUpon>sso_chemtrade_test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="sso\sso_pei_encrypt.aspx.cs">
+      <DependentUpon>sso_pei_encrypt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sso\sso_pei_encrypt.aspx.designer.cs">
+      <DependentUpon>sso_pei_encrypt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sso\sso_encrypt.aspx.cs">
       <DependentUpon>sso_encrypt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -11468,6 +11479,13 @@
     </Compile>
     <Compile Include="sso\sso_encrypt_old.aspx.designer.cs">
       <DependentUpon>sso_encrypt_old.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sso\sso_pei_encrypt_test.aspx.cs">
+      <DependentUpon>sso_pei_encrypt_test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sso\sso_pei_encrypt_test.aspx.designer.cs">
+      <DependentUpon>sso_pei_encrypt_test.aspx</DependentUpon>
     </Compile>
     <Compile Include="sso\sso_encrypt_test.aspx.cs">
       <DependentUpon>sso_encrypt_test.aspx</DependentUpon>
@@ -11553,12 +11571,26 @@
     <Compile Include="sso\sso_old.aspx.designer.cs">
       <DependentUpon>sso_old.aspx</DependentUpon>
     </Compile>
+    <Compile Include="sso\sso_pei_saml.aspx.cs">
+      <DependentUpon>sso_pei_saml.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sso\sso_pei_saml.aspx.designer.cs">
+      <DependentUpon>sso_pei_saml.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sso\sso_quality_refrig_services.aspx.cs">
       <DependentUpon>sso_quality_refrig_services.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="sso\sso_quality_refrig_services.aspx.designer.cs">
       <DependentUpon>sso_quality_refrig_services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sso\sso_pei_saml_test.aspx.cs">
+      <DependentUpon>sso_pei_saml_test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sso\sso_pei_saml_test.aspx.designer.cs">
+      <DependentUpon>sso_pei_saml_test.aspx</DependentUpon>
     </Compile>
     <Compile Include="sso\sso_strategic_comp.aspx.cs">
       <DependentUpon>sso_strategic_comp.aspx</DependentUpon>
@@ -31375,7 +31407,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="False" UseJQuerySupport="False" />
+      <UserProperties UseJQuerySupport="False" UseAjaxifiedTemplates="False" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
