@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- code required the following version of jquery -->
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js"></script>
+    <!--<script data-search-pseudo-elements src="https://kit.fontawesome.com/d39d472717.js" crossorigin="anonymous"></script>-->
+</head>
+<body>
+    
+<h2 class="center">Please enter your Knights of Columbus Member Number</h2>
+<div class="center">
+<div class="form-group large">
+  <label for="memberid">Member ID</label>
+  <input type="text" id="memberid" placeholder="Enter Member ID">
+  <div class="explanation-text">Enter User ID eg. 001234567, 1234567</div>
+  <!-- basic accessibility strongly prefers label to placeholder -->
+  <!-- suggest using explaination text for this is possible -->
+</div>
+</div>
+<div class="center p-b-1">
+  <div id="memberidLabel"></div> 
+  <div id="icon"></div>
+  <div id="usermessage"></div>
+  <div id="message"></div>
+  <div id="status"></div>
+  <div id="membername"></div>
+</div>
+<div class="center"><button id="btnRegister" name="btnRegister" type="button" class="btn btn-brand-2 btn-rounded btn-large btn-block">Register</button></div>
+
+
+<script>
+$(document).ready(function () {
+    var debounceTimer;
+    $('#btnRegister').hide();
+    $('#btnRegister').css('visibility', 'hidden');
+
+    $('#memberid').on('keyup', function (event) {
+        // Regular expression for allowed characters
+        var regex = /^[a-zA-Z0-9_]*$/;
+
+        var inputVal = $(this).val();
+        //if (!regex.test(inputVal)) {
+        //    // Remove the last character if it's not allowed
+        //    $(this).val(inputVal.slice(0, -1));
+        //    return;
+        //}
+
+        // Update the label with the mirrored username
+        //if (inputVal.length > 0) {
+        //    $('#memberidLabel').text(inputVal);
+        //} else {
+        //    $('#memberidLabel').empty(); // Clear the label if input is empty
+        //}
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+            var username = $('#memberid').val().trim();
+            if (username.length === 0) {
+                //$('#icon').empty();
+                $('#usermessage').empty();
+                return;
+            }
+
+            // Construct the URL with the username as a query parameter
+            var checkUrl = 'https://kofcnc.agilesite.com/wip/registration/member-lookup?mbn=' + encodeURIComponent(username);
+
+            // Send a POST request to check the username availability
+            $.post(checkUrl, function (response) {
+                // Check the response for specific keywords within HTML
+                var rmessage = $(response).find('#rmessage');
+                var rstatus = $(response).find('#rstatus');
+                var rmembername = $(response).find('#rmembername');
+
+                var message = '';
+                var status = '';
+                var membername = '';
+
+                if (rmessage != null) {
+                    message = rmessage.val();
+                }
+
+                if (rstatus != null) {
+                    status = rstatus.val();
+                }
+
+                if (rmembername != null) {
+                    membername = rmembername.val();
+                }
+
+                $('#message').text(message);
+                $('#status').text(status);
+                $('#membername').text(membername);
+
+                if (status === 'NOT FOUND') {
+                    $('#usermessage').text('We are unabled to locate your membership information, please verify your membership number.');
+                    $('#btnRegister').hide();
+                    $('#btnRegister').css('visibility', 'hidden');
+                    //$('#message').text(message);
+                    //$('#status').text(status);
+                    //$('#membername').text(membername);
+                } else if (status === 'FOUND') {
+                    $('#usermessage').text('Welcome Brother ' + membername + '. <br/>We can not register you to the site at this time. It looks like you already have an account, please contact support at info@kofcnc.org.');
+                    $('#btnRegister').hide();
+                    $('#btnRegister').css('visibility', 'hidden');
+                    //$('#message').text(message);
+                    //$('#status').text(status);
+                    //$('#membername').text(membername);
+                }
+                else if (status === 'OK') {
+                    $('#usermessage').text('Welcome Brother ' + membername + '. You may proceed to registration.');
+                    $('#btnRegister').show();
+                    $('#btnRegister').css('visibility', 'visible');
+                    //$('#message').text(message);
+                    //$('#status').text(status);
+                    //$('#membername').text(membername);
+                }
+                else {
+                    // do nothing.
+                }
+            }).fail(function () {
+                // Handle any errors (e.g., server not responding)
+                //$('#icon').html('<i class="fas fa-exclamation-triangle orange"></i>');
+                $('#message').text('We are experiencing technical difficulty, please contact support at info@kofcnc.org.');
+            });
+        }, 1000); // Wait for 1 second after user stops typing
+    });
+});
+</script>
+</body>
+</html>

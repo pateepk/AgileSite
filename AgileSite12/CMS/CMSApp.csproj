@@ -4836,6 +4836,8 @@
     <Content Include="IntranetPortal\media\Media\Trees for Bugs\Trees-for-bugs-5.jpg" />
     <Content Include="IntranetPortal\media\Microsoft_Office_Upgrade\Microsoft Office graphics\msoffice.jpg" />
     <Content Include="IntranetPortal\media\Microsoft_Office_Upgrade\Microsoft Office graphics\msoffice_col.jpg" />
+    <Content Include="KofcNC\test_member_filter.html" />
+    <Content Include="KofcNC\test_member_lookup.html" />
     <Content Include="ObjectTranslationRESTService.svc" />
     <Content Include="DocumentRESTService.svc" />
     <Content Include="Default.aspx" />
@@ -23476,7 +23478,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

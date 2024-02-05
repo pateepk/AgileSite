@@ -1,0 +1,963 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="web_author" content="WTE Solutions">
+    <meta name="google-site-verification" content="6cLh7LxlyALB12LWRUov1n4An4ZwMKm9SOUJQu74SWs" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js"></script>
+
+    <link rel="stylesheet" href="https://kofcnc.org/App_Themes/kofcNC/assets/css/core.min.css" type="text/css" media="all">
+
+    <!--v6 font awesome -->
+    <!--<script data-search-pseudo-elements src="https://kit.fontawesome.com/a2dcd68816.js" crossorigin="anonymous"></script>-->
+    <!--v5 font awesome?? -- why are we switching backwards???? - because v6 breaks all the icons on the site because it's written in v5 code - pk-->
+    <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js" crossorigin="anonymous" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/favicon-16x16.png">
+    <link rel="mask-icon" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+</head>
+<body>
+    <style>
+        label {
+            font-weight: bold; /* Make the label text bold */
+            margin-right: 10px; /* Add some space between the label and the dropdown */
+            display: inline-block; /* Align label and dropdown on the same line */
+            vertical-align: middle; /* Align vertically */
+            margin-top: 5px; /* Add some space above the label */
+        }
+
+        select {
+            font-size: 1.2em; /* Increase the font size */
+            margin-right: 20px; /* Add some space to the right of the dropdown */
+            display: inline-block; /* Align label and dropdown on the same line */
+            vertical-align: middle; /* Align vertically */
+        }
+    </style>
+
+    <script>
+
+
+        // Clear the search box
+        function clearSearchBox(name, text) {
+            var search = getControlValue(name);
+            if (search == text) {
+                setControlValue(name, '');
+            }
+        }
+
+        // Fill the search box with 'water mark'
+        function fillSearchBox(name, text) {
+            var search = getSearchTerm(name);
+            var placeholder = getControlPlaceHolderValue(name);
+            if (typeof (placeholder) != 'undefined' && placeholder != text) {
+                if (search == '') {
+                    setControlValue(name, text);
+                }
+            }
+        }
+
+        // set search text box
+        function clearSearchInput(name, excludeText) {
+            var val = getControlValue(name);
+            if (val == excludeText) {
+                setvsterm(name, '', excludeText);
+            }
+        }
+
+        // Get search term
+        function getSearchTerm(name, excludeText) {
+            var ret = getControlValue(name);
+            if (ret == excludeText) {
+                ret = '';
+            }
+            return ret;
+        }
+
+        // get sort id
+        function getSortID(name, sortParamName, sortId, defaultSort) {
+
+            var ret = getParameterByName(name);
+
+            if (typeof (ret) == 'undefined' || ret == '') {
+                ret = sortId;
+            }
+            else {
+                if (sortId != '' && typeof (sortId) != 'undefined') {
+                    if (sortId == ret) {
+                        ret = sortId + 'x';
+                    }
+                    else {
+                        ret = sortId;
+                    }
+                }
+            }
+
+            //if (typeof (ret) == 'undefined') {
+            //    if (sortId != null) {
+            //        ret = sortId;
+            //    }
+            //    else {
+            //        ret = defaultSort;
+            //    }
+            //}
+            //else if (typeof (sortParamName) != 'undefined' && name == sortParamName) {
+            //    if (sortId == ret) {
+            //        ret = sortId + 'x';
+            //    }
+            //}
+
+            return ret;
+        }
+
+        // hide a control
+        function hideControl(name) {
+            setControlVisibility(name, 'false');
+        }
+
+        // show a control
+        function showControl(name) {
+            setControlVisibility(name, 'true');
+        }
+
+        // show or hide control
+        function setControlVisibility(name, show) {
+            var n = '#' + name;
+
+            if (typeof (show) == 'undefined' || show == '') {
+                show = 'true';
+            }
+
+            if ($(n) != null) {
+                if (show == 'true') {
+                    $(n).show();
+                    $(n).css('visibility', 'visible');
+                }
+                else {
+                    $(n).hide();
+                    $(n).css('visibility', 'hidden');
+                }
+            }
+        }
+
+        // Get value from a control (if exist)
+        function getControlValue(name) {
+            var val = null;
+            var n = '#' + name;
+            if ($(n) != null) {
+                val = $(n).val();
+            }
+            return val;
+        }
+
+        // Get Control value with default
+        function getControlValueWithDefault(name, defaultval) {
+            var ret = getControlValue(name);
+            if (typeof (ret) == 'undefined' || ret == '' || ret == null) {
+                ret = defaultval;
+            }
+            return ret;
+        }
+
+        // Set control value
+        function setControlValue(name, value, size) {
+            var n = '#' + name;
+            if (typeof (value) != 'undefined' && value != null && value != '') {
+                if ($(n) != null) {
+                    $(n).val(value);
+                    setControlFontSize(name, size);
+                }
+            }
+        }
+
+        // get value from the 'placeholder' property of a control
+        function getControlPlaceHolderValue(name) {
+            var val = null;
+            var n = '#' + name;
+            if ($(n) != null) {
+                val = $(n).attr('placeholder');
+            }
+            return val;
+        }
+
+        // set the value of the 'placeholder' property of a control
+        function setControlPlaceHolderValue(name, value) {
+            var n = '#' + name;
+            if (typeof (value) != 'undefined' && value != null && value != '') {
+                if ($(n) != null) {
+                    $(n).attr('placeholder', value);
+                }
+            }
+        }
+
+        // Set font
+        function setControlFontSize(name, size) {
+            var n = '#' + name;
+            if ($(n) != null) {
+                if (typeof (size) != 'undefined' && size != '') {
+                    $(n).css('font-weight', size);
+                }
+            }
+        }
+
+        // select drop down option
+        function selectDropDownOption(name, option, checkzero, checkblank, size) {
+
+            var n = '#' + name;
+            if ((checkzero != 'true' || option != '0') && (checkblank != 'true' || option != '')) {
+                if ($(n) != null) {
+                    var optionstring = n + " option[value='" + option + "']";
+                    $(optionstring).prop('selected', true);
+                    setControlFontSize(name, size);
+                }
+            }
+        }
+
+        // check to see if a check box is checked (also works for radio button)
+        function isCheckBoxChecked(name) {
+            var ret = false;
+            var n = '#' + name;
+            if ($(n) != null) {
+                ret = $(n).is(':checked');
+            }
+            return ret;
+        }
+
+        // check a check box (also works for radio button)
+        function checkCheckBox(name) {
+            setCheckBoxValue(name, true);
+        }
+
+        // uncheck a check box (also works for radio button)
+        function uncheckCheckBox(name) {
+            setCheckBoxValue(name, false);
+        }
+
+        // set the 'check' property (also works for radio button)
+        function setCheckBoxValue(name, check) {
+            var n = '#' + name;
+            if ($(n) != null) {
+                $(n).prop('checked', check);
+            }
+        }
+
+        // select radio button value
+        function setRadioButtonValue(name, value) {
+            var iname = "input[name='" + name + "'][value='" + value + "']";
+            if ($(iname) != null) {
+                $(iname).prop('checked', true);
+            }
+        }
+
+        // get radio button value
+        function getRadioButtonValue(name) {
+            var ret = '';
+            var iname = 'input:radio[name=' + name + ']:checked'
+            if ($(iname) != null) {
+                ret = $(iname).val();
+            }
+            return ret;
+        }
+
+        // get '1' or '0' from a boolean value
+        function getOneOrZero(val, hideFalse) {
+            var ret = '0';
+            if (val != null) {
+                if (getBoolean(val) == true) {
+                    ret = '1';
+                }
+            }
+
+            if (ret == '0' && hideFalse == true) {
+                ret = '';
+            }
+            return ret;
+        }
+
+        // get boolean from values
+        function getBoolean(val) {
+            var ret = false;
+            if (typeof (val) != 'undefined' && val != null && val != '') {
+                if (val == true || val == 1 || val == 'true' || val == 'yes') {
+                    ret = true;
+                }
+            }
+            return ret;
+        }
+
+
+
+        // remove all param from url
+        function resetStats() {
+            var clearURL = window.location.href.substr(0, window.location.href.indexOf('?'));
+            if (!clearURL) {
+                clearURL = window.location.href;
+            }
+            window.location.href = clearURL;
+        }
+
+        // reload page without query string
+        function reloadWithoutQueryString() {
+            window.location = window.location.href.split('?')[0];
+        }
+
+        // reload with query string (does not add item with empty values)
+        function reloadWithQueryStringVars(queryStringVars) {
+            var existingQueryVars = location.search ? location.search.substring(1).split('&') : [],
+                currentUrl = location.search ? location.href.replace(location.search, '') : location.href,
+                newQueryVars = {},
+                newUrl = currentUrl + '?';
+
+            if (existingQueryVars.length > 0) {
+                for (var i = 0; i < existingQueryVars.length; i++) {
+                    var pair = existingQueryVars[i].split('=');
+                    newQueryVars[pair[0]] = pair[1];
+                }
+            }
+
+            if (queryStringVars) {
+                for (var queryStringVar in queryStringVars) {
+                    newQueryVars[queryStringVar] = queryStringVars[queryStringVar];
+                }
+            }
+
+            if (newQueryVars) {
+                for (var newQueryVar in newQueryVars) {
+                    if (typeof (newQueryVars[newQueryVar]) == 'undefined' || newQueryVars[newQueryVar] == '') {
+                        // do nothing
+                    }
+                    else {
+                        newUrl += newQueryVar + '=' + newQueryVars[newQueryVar] + '&';
+                    }
+                }
+                newUrl = newUrl.substring(0, newUrl.length - 1);
+                window.location.href = newUrl;
+            } else {
+                window.location.href = location.href;
+            }
+        }
+
+        // reload with query string (version 2)
+        function reloadWithQueryStringVars2(queryStringVars) {
+            var existingQueryVars = location.search ? location.search.substring(1).split('&') : [],
+                currentUrl = location.search ? location.href.replace(location.search, '') : location.href,
+                newQueryVars = {},
+                newUrl = currentUrl + '?';
+            if (existingQueryVars.length > 0) {
+                for (var i = 0; i < existingQueryVars.length; i++) {
+                    var pair = existingQueryVars[i].split('=');
+                    newQueryVars[pair[0]] = pair[1];
+                }
+            }
+            if (queryStringVars) {
+                for (var queryStringVar in queryStringVars) {
+                    newQueryVars[queryStringVar] = queryStringVars[queryStringVar];
+                }
+            }
+            if (newQueryVars) {
+                for (var newQueryVar in newQueryVars) {
+                    newUrl += newQueryVar + '=' + newQueryVars[newQueryVar] + '&';
+                }
+                newUrl = newUrl.substring(0, newUrl.length - 1);
+                window.location.href = newUrl;
+            } else {
+                window.location.href = location.href;
+            }
+        }
+
+        // reload with query string (version 3)
+        function reloadWithQueryStringVars3(queryStringVars) {
+            var existingQueryVars = location.search ? location.search.substring(1).split('&') : [],
+                currentUrl = location.search ? location.href.replace(location.search, '') : location.href,
+                newQueryVars = {},
+                newUrl = currentUrl + '?';
+
+            if (existingQueryVars.length > 0) {
+                for (var i = 0; i < existingQueryVars.length; i++) {
+                    var pair = existingQueryVars[i].split('=');
+                    newQueryVars[pair[0]] = pair[1];
+                }
+            }
+            if (queryStringVars) {
+                for (var queryStringVar in queryStringVars) {
+                    if (typeof queryStringVar[queryStringVar] != 'undefined') {
+                        newQueryVars[queryStringVar] = queryStringVars[queryStringVar];
+                    }
+                }
+            }
+            if (newQueryVars) {
+                for (var newQueryVar in newQueryVars) {
+                    if (typeof newQueryVars[queryStringVar] != 'undefined') {
+                        newUrl += newQueryVar + '=' + newQueryVars[newQueryVar] + '&';
+                    }
+                }
+                newUrl = newUrl.substring(0, newUrl.length - 1);
+                window.location.href = newUrl;
+            } else {
+                window.location.href = location.href;
+            }
+        }
+
+        // create cookie for the page
+        function createCookie(name, value, days) {
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                var expires = '; expires=' + date.toGMTString();
+            }
+            else var expires = '';
+
+            document.cookie = name + '=' + value + expires + '; path=/';
+        }
+
+        // read cookie from the page
+        function readCookie(name) {
+            var nameEQ = name + '=';
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // get the first day of the year
+        function getFirstDayOfYear(dateFrom) {
+
+            if (typeof (dateFrom) == 'undefined' || dateFrom == '') {
+                dateFrom = new Date();
+            }
+            var ret = new Date(dateFrom.getFullYear(), 0, 1);
+
+            ret = getFormattedDate(ret);
+            return ret;
+        }
+
+        // get the last day of the year
+        function getLastDayOfYear(dateFrom) {
+            if (typeof (dateFrom) == 'undefined' || dateFrom == '') {
+                dateFrom = new Date();
+            }
+            var ret = new Date(dateFrom.getFullYear(), 11, 31);
+            ret = getFormattedDate(ret);
+            return ret;
+        }
+
+        // get first day of the month
+        function getFirstOfMonth(dateFrom) {
+
+            if (typeof (dateFrom) == 'undefined' || dateFrom == '') {
+                dateFrom = new Date();
+            }
+            var ret = new Date(dateFrom.getFullYear(), dateFrom.getMonth(), 1);
+            ret = getFormattedDate(ret);
+            return ret;
+        }
+
+        // get last day of the month
+        function getLastOfMonth(dateFrom) {
+            if (typeof (dateFrom) == 'undefined' || dateFrom == '') {
+                dateFrom = new Date();
+            }
+            var ret = new Date(dateFrom.getFullYear(), dateFrom.getMonth() + 1, 0);
+            ret = getFormattedDate(ret);
+            return ret;
+        }
+
+        // Get Yesterday's date
+        function getYesterday() {
+            return getPastDate(1);
+        }
+
+        // Get Tomorrow's date
+        function getTomorrow() {
+            return getFutureDate(1);
+        }
+
+        // Get Today's date
+        function getToday() {
+            return getFutureDate(0);
+        }
+
+        // Get 30 days ago
+        function getThirtyDaysAgo() {
+            return getPastDate(30);
+        }
+
+        // Get 30 Days from now
+        function getThirtyDaysFromNow() {
+            return getFutureDate(30);
+        }
+
+        // Get 90 Days ago
+        function getNinetyDaysAgo() {
+            return getPastDate(90);
+        }
+
+        // Get 90 days from now
+        function getNinetyDaysFromNow() {
+            return getFutureDate(90);
+        }
+
+        // get the date for 1 year ago
+        function getOneYearAgo() {
+            var ret = getPastDate(0, 0, 1);
+            return ret;
+        }
+
+        // get the date 1 year from now
+        function getOneYearFromNow() {
+            var ret = getFutureDate(0, 0, 1);
+            return ret;
+        }
+
+        // Get date of number of days, month and year in the past (from today)
+        function getPastDate(numDays, numMonths, numYears, dateFrom, formatDate) {
+
+            if (typeof (dateFrom) == 'undefined' || dateFrom == '') {
+                dateFrom = new Date();
+            }
+
+            var ret = dateFrom;
+
+            if (typeof (numDays) == 'undefined' || numDays == '') {
+                numDays = 0;
+            }
+            if (typeof (numMonths) == 'undefined' || numMonths == '') {
+                numMonths = 0;
+            }
+            if (typeof (numYears) == 'undefined' || numYears == '') {
+                numYears = 0;
+            }
+
+            ret.setDate(ret.getDate() - numDays);
+            ret.setMonth(ret.getMonth() - numMonths);
+            ret.setYear(ret.getFullYear() - numYears);
+            ret = getFormattedDate(ret, formatDate);
+
+            return ret;
+        }
+
+        // Get date of number of days, month and year in the future from today
+        function getFutureDate(numDays, numMonths, numYears, dateFrom, formatDate) {
+
+            if (typeof (dateFrom) == 'undefined' || dateFrom == '') {
+                dateFrom = new Date();
+            }
+
+            var ret = dateFrom;
+
+            if (typeof (numDays) == 'undefined' || numDays == '') {
+                numDays = 0;
+            }
+            if (typeof (numMonths) == 'undefined' || numMonths == '') {
+                numMonths = 0;
+            }
+            if (typeof (numYears) == 'undefined' || numYears == '') {
+                numYears = 0;
+            }
+
+            ret.setDate(ret.getDate() + numDays);
+            ret.setMonth(ret.getMonth() + numMonths);
+            ret.setYear(ret.getFullYear() + numYears);
+            ret = getFormattedDate(ret, formatDate);
+
+            return ret;
+        }
+
+        // Get date in mm/dd/yyyy format
+        function getFormattedDate(dateFrom, formatDate) {
+
+            var doFormat = true;
+
+            if (formatDate == false || (typeof (formatDate) != 'undefined')) {
+                doFormat = getBoolean(formatDate);
+            }
+
+            if (typeof (dateFrom) == 'undefined' || dateFrom == '') {
+                dateFrom = new Date();
+            }
+
+            if (doFormat == true) {
+                var dd = dateFrom.getDate();
+                var mm = dateFrom.getMonth() + 1; //January is 0!
+                var yyyy = dateFrom.getFullYear();
+
+                if (dd < 10) { dd = '0' + dd }
+                if (mm < 10) { mm = '0' + mm }
+
+                ret = mm + '/' + dd + '/' + yyyy;
+            }
+            else {
+                ret = dateFrom;
+            }
+
+            return ret;
+        }
+    </script>
+
+    <div>
+        <label for="districtDropdown">District:</label>
+        <!-- need to load the district here -->
+        <select id="districtDropdown" onchange="applyFilters();">
+            <option value="0">Select District</option>
+            <option value="-1">Any</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="21">21</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+        </select>
+
+        <label for="councilDropdown">Council:</label>
+        <!-- need to load the options here -->
+        <select id="councilDropdown" onchange="applyFilters();">
+            <option value="0">Select Council</option>
+            <option value="-1">Any</option>
+            <option value="9549">9549</option>
+            <option value="9365">9365</option>
+            <option value="11235">11235</option>
+            <option value="14276">14276</option>
+        </select>
+
+        <label for="txtSearch">Search:</label>
+        <input class="input-search" type="text" id="txtSearch" name="txtSearch" placeholder="name or email" onfocus="clearUserSearch();" onblur="fillUserSearch();" onchange="applyFilters();" />
+    </div>
+
+    <script>
+        // get param with default value
+        function getParamWithDefault(name, defaultval) {
+            var ret = getParameterByName(name);
+            if (typeof (ret) == 'undefined' || ret == '' || ret == null) {
+                ret = defaultval;
+            }
+            return ret;
+        }
+
+        // name value from query string
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+                results = regex.exec(location.search);
+            return results == null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // make input a date picker
+        function makeDatePicker(name) {
+            var n = '#' + name;
+            if ($(n) != null) {
+                $(n).datepicker();
+            }
+        }
+
+        function onDropdownSelectionChanged() {
+
+            // Get the selected values
+            var district = $('#districtDropdown').val();
+            var council = $('#councilDropdown').val();
+
+            // Construct the URL
+            var baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            var newUrl = baseUrl + '?district=' + district + '&council=' + council;
+
+            // this does not work, because you need to refresh the page to trigger the datasource reload... (pk)
+            // Update the URL without reloading the page
+            window.history.pushState({ path: newUrl }, '', newUrl);
+        }
+
+        // Fill the filter with initial data from the query string
+        $(function () {
+
+            //$('#districtDropdown, #councilDropdown').change(function () {
+
+
+            //    //        reloadWithQueryStringVars({
+            //    //        'district': district,
+            //    //        'council': council
+            //    //    });
+            //});
+                            //var availableTags = autocompletedata;
+                var availableTags = ["1", "12", "123"]; 
+                //var data1 = JSON.parse(autocompletedata);
+                $('#txtSearch').autocomplete({
+                    source: availableTags,
+                    autofocus: true,
+                    disable: false,
+                    //close: function (event, ui) {
+                    //    checkHandle(name, event);
+                    //},
+                    //change: function (event, ui) {
+                    //    checkHandle(name, event);
+                    //},
+                    messages: {
+                        //noResults: 'no results',
+                        noResults: '',
+                        results: function (amount) {
+                            //return amount + 'results.';
+                            return '';
+                        }
+                    }
+                }); // this turns it off because we are passing string?
+
+            //var councilnum = getParamWithDefault('c', '0');
+            //var distrcitnum = getParamWithDefault('d', '0');
+
+            //selectDropDownOption('ddlTimeFrameC', ctf);
+            //setTimeFrameSelection('C', 'c');
+
+            //var astatus = getParameterByName('astatus');
+            //var asterm = getParameterByName('asterm');
+            //var asort = getParameterByName('asort');
+            //var atf = getParameterByName('atf');
+
+            //selectDropDownOption('ddlStatusA', astatus, 'false', 'true', '400');
+            //setControlValue('txtSearchA', asterm);
+            //selectDropDownOption('ddlTimeFrameA', atf);
+            //setTimeFrameSelection('A', 'a');
+
+            //makeDatePicker('dpStartDateU');
+            //makeDatePicker('dpEndDateU');
+            //var usdt = getParamWithDefault('usdt', getPastDate(90));
+            //var uedt = getParamWithDefault('uedt', getToday());
+            //var usterm = getParameterByName('usterm');
+            //var usort = getParameterByName('usort');
+            //var ustatus = getParameterByName('ustatus');
+            //var utf = getParameterByName('utf');
+
+            //setControlValue('dpStartDateU', usdt, '400');
+            //setControlValue('dpEndDateU', uedt, '400');
+            //setControlValue('txtSearchU', usterm, '400');
+            //selectDropDownOption('ddlStatusU', ustatus, 'false', 'true', '400');
+            //selectDropDownOption('ddlTimeFrameU', utf);
+            //setTimeFrameSelection('U', 'u');
+
+        });
+
+        // clear course search textbox
+        function clearCourseSearch() {
+            clearSearchBox('txtSearchC', 'sku or course name');
+        }
+
+        // fill course search textbox
+        function fillCourseSearch() {
+            fillSearchBox('txtSearchC', 'sku or course name');
+        }
+
+        // clear subaccount search textbox
+        function clearSubAccountSearch() {
+            clearSearchBox('txtSearchA', 'sub-acount name')
+        }
+
+        // fill subaccount search textbox
+        function fillSubAccountSearch() {
+            fillSearchBox('txtSearchA', 'sub-acount name')
+        }
+
+        // clear user search textbox
+        function clearUserSearch() {
+            clearSearchBox('txtSearchU', 'name or email');
+        }
+
+        // fill user search textbox
+        function fillUserSearch() {
+            fillSearchBox('txtSearchU', 'name or email');
+        }
+
+        // reset search (for entire page)
+        function resetSearch() {
+
+            reloadWithQueryStringVars({
+                'r': '',
+                'c': ''
+            });
+        }
+
+        // Apply the filter (when search or table header is clicked)
+        function applyFilters(sortID, sortParamName) {
+
+            var cdefaultsort = '2'
+            var csdt = getControlValue('dpStartDateC');
+            var cedt = getControlValue('dpEndDateC');
+            var csterm = getSearchTerm('txtSearchC', 'sku or course name');
+            var csort = getSortID('csort', sortParamName, sortID, cdefaultsort);
+            var ctf = getControlValue('ddlTimeFrameC');
+
+            var adefaultsort = '2'
+            var astatus = getControlValue('ddlStatusA');
+            var asterm = getSearchTerm('txtSearchA', 'sub-acount name');
+            var asort = getSortID('asort', sortParamName, sortID, adefaultsort);
+            var atf = getControlValue('ddlTimeFrameA');
+
+            var udefaultsort = '2'
+            var usdt = getControlValue('dpStartDateU');
+            var uedt = getControlValue('dpEndDateU');
+            var usterm = getSearchTerm('txtSearchU', 'name or email');
+            var usort = getSortID('usort', sortParamName, sortID, udefaultsort);
+            var ustatus = getControlValue('ddlStatusU');
+            var utf = getControlValue('ddlTimeFrameU');
+
+            reloadWithQueryStringVars({
+                'csdt': csdt,
+                'cedt': cedt,
+                'csterm': csterm,
+                'csort': csort,
+                'ctf': ctf,
+                'astatus': astatus,
+                'asterm': asterm,
+                'asort': asort,
+                'atf': atf,
+                'usdt': usdt,
+                'uedt': uedt,
+                'usterm': usterm,
+                'usort': usort,
+                'ustatus': ustatus,
+                'utf': utf
+            });
+        }
+
+
+        // reset search
+        function btnResetSearch_Clicked(ctnamesuffix, paramprefix) {
+            resetSearch();
+        }
+
+        // get text with suffix
+        function getTextWithSuffix(text, suffix) {
+            if (typeof (suffix) == 'undefined' || suffix == '') {
+                suffix = '';
+            }
+            var ret = text + suffix;
+            return ret;
+        }
+
+        // get text with prefix
+        function getTextWithPrefix(text, prefix) {
+            if (typeof (prefix) == 'undefined' || prefix == '') {
+                prefix = '';
+            }
+            var ret = prefix + text;
+            return ret;
+        }
+
+        // set time frame
+        function setTimeFrameSelection(ctnamesuffix, paramprefix) {
+
+            tfdropdownname = getTextWithSuffix('ddlTimeFrame', ctnamesuffix);
+            divsdtname = getTextWithSuffix('divSdt', ctnamesuffix);
+            lblsdtname = getTextWithSuffix('lblSdt', ctnamesuffix);
+            dpsdtname = getTextWithSuffix('dpStartDate', ctnamesuffix);
+            divedtname = getTextWithSuffix('divEdt', ctnamesuffix);
+            lbledtname = getTextWithSuffix('lblEdt', ctnamesuffix);
+            dpedtname = getTextWithSuffix('dpEndDate', ctnamesuffix);
+            divperiodname = getTextWithSuffix('divPeriod', ctnamesuffix);
+
+            tfparamname = getTextWithPrefix('tf', paramprefix);
+            sdtparamname = getTextWithPrefix('sdt', paramprefix);
+            edtparamname = getTextWithPrefix('edt', paramprefix);
+
+            var timeFrame = getControlValue(tfdropdownname);
+            var curSdt = getControlValueWithDefault(dpsdtname, getParamWithDefault(sdtparamname, getPastDate(90)));
+            var curEdt = getControlValueWithDefault(dpedtname, getParamWithDefault(edtparamname, getToday()));
+            var sdt = getControlValueWithDefault(dpsdtname, getParamWithDefault(sdtparamname, getPastDate(90)));
+            var edt = getControlValueWithDefault(dpedtname, getParamWithDefault(edtparamname, getToday()));
+
+            //1  -- Past 30 Days
+            //2  -- Month to Date (MTD)
+            //3  -- Year to Date (YTD)
+            //4  -- Past/Prior Month
+            //5  -- Last 90 Days
+            //8  -- Contract Period
+            //9  -- Custom Dates
+
+            if (timeFrame == '5') {
+                sdt = getPastDate(90);
+                edt = getToday();
+            }
+            else if (timeFrame == '1') {
+                sdt = getPastDate(30);
+                edt = getToday();
+            }
+            else if (timeFrame == '2') {
+                sdt = getFirstOfMonth();
+                edt = getToday();
+            }
+            else if (timeFrame == '3') {
+                sdt = getFirstDayOfYear();
+                edt = getToday();
+            }
+            else if (timeFrame == '4') {
+                sdt = getFirstOfMonth(getPastDate(0, 1, 0, new Date(), false));
+                edt = getLastOfMonth(getPastDate(0, 1, 0, new Date(), false));
+            }
+
+            setControlValue(dpsdtname, sdt);
+            setControlValue(dpedtname, edt);
+
+            if (timeFrame == '8' || timeFrame == '9') {
+                showControl(divperiodname);
+                showControl(dpsdtname);
+                showControl(dpedtname);
+                showControl(lblsdtname);
+                showControl(lbledtname);
+                showControl(divsdtname);
+                showControl(divedtname);
+
+                if (timeFrame == '8') {
+                    applyFiltersContract(ctnamesuffix, paramprefix, false);
+                }
+                else {
+                    setControlValue(dpsdtname, sdt);
+                    setControlValue(dpedtname, edt);
+                }
+            }
+            else {
+                // hide when not in used
+                hideControl(divperiodname);
+                hideControl(dpsdtname);
+                hideControl(dpedtname);
+                hideControl(lblsdtname);
+                hideControl(lbledtname);
+                hideControl(divsdtname);
+                hideControl(divedtname);
+            }
+        }
+    </script>
+
+
+
+
+
+    <!-- sort test -->
+    <a href="javascript:void(0);" onclick="applyFilters(1);return false;"><i class="fas fa-sort"></i> ID</a>
+
+    <!-- Contract date for testing (do not put in webpart) -->
+    <p>
+        <!-- Client Contract Period: <span id="Tusdt"><%# GetDateTime("StartDate", "MM/dd/yyy") %></span> | <span id="Tuedt"><%# GetDateTime("EndDate", "MMM dd, yyy") %></span> -->
+        <!-- Client Contract Period: <span id="Tusdt"><%# GetDateTime("StartDate", "MM/dd/yyy") %></span> | <span id="Tuedt"><%# GetDateTime("EndDate", "MM/dd/yyy") %></span> -->
+        Client Contract Period: <span id="Tusdt">1/1/2019</span> | <span id="Tuedt">1/1/2020</span>
+        <input type="hidden" id="hdnContractStart" value="1/1/2019" />
+        <input type="hidden" id="hdnContractEnd" value="1/1/2020" />
+    </p>
+
+    <script defer type="text/javascript" src="https://learn.streamery.co/app_themes/tnet19/assets/js/custom2.min.js"></script>
+</body>
+</html>
