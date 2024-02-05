@@ -46,3 +46,9 @@ b. VS_KEY_XXXXXXXXXXXXXXXX
 windows 11  with 4.8 installed: "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64"\sn.exe -i CMS.pfx <VS KEY provided in error message in VS>
 eg. "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64"\sn.exe -i CMS.pfx VS_KEY_3E13F3EF7635A845
 
+"c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64"\sn.exe -i CMS.pfx VS_KEY_7EC670ABC2074C07
+"c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64"\sn.exe -i CMS.pfx VS_KEY_182E2584C3C72396
+
+if error out (run in admin mode, remove the key container...)
+
+eg. "c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64"\sn.exe -d VS_KEY_182E2584C3C72396
