@@ -159,6 +159,7 @@ namespace CMSApp.CMSWebParts.WTE.Custom
                 {
                     GeneralConnection conn = ConnectionHelper.GetConnection();
                     QueryDataParameters parameters = new QueryDataParameters();
+
                     parameters.Add("@" + LookupKey, p_lookup);
 
 
@@ -936,6 +937,55 @@ namespace CMSApp.CMSWebParts.WTE.Custom
                 string nickName = String.Empty;
                 string emailValue = String.Empty;
 
+                FormEngineUserControl txtmembernumber = formUser.FieldControls["UserMemberNumber"];
+
+                if (txtmembernumber != null)
+                {
+                    string membernumber = txtmembernumber.Text;
+                    CustomRegistrationData data = new CustomRegistrationData();
+                    data.LookupKey = "MemberNumber";
+                    data.SetRegistrationInformation(membernumber);
+
+                    if (data != null)
+                    {
+                        if (!String.IsNullOrWhiteSpace(data.FirstName))
+                        {
+                            FormEngineUserControl txtFirstName = formUser.FieldControls["FirstName"];
+                            if (txtFirstName != null)
+                            {
+                                if (!String.IsNullOrWhiteSpace(txtFirstName.Text))
+                                {
+                                    txtFirstName.Value = data.FirstName;
+                                }
+                            }
+                        }
+
+                        if (!String.IsNullOrWhiteSpace(data.LastName))
+                        {
+                            FormEngineUserControl txtLastName = formUser.FieldControls["LastName"];
+                            if (txtLastName != null)
+                            {
+                                if (!String.IsNullOrWhiteSpace(txtLastName.Text))
+                                {
+                                    txtLastName.Value = data.LastName;
+                                }
+                            }
+                        }
+
+                        if (!String.IsNullOrWhiteSpace(data.FullName))
+                        {
+                            FormEngineUserControl txtFullName = formUser.FieldControls["FullName"];
+                            if (txtFullName != null)
+                            {
+                                if (!String.IsNullOrWhiteSpace(txtFullName.Text))
+                                {
+                                    txtFullName.Value = data.FullName;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 // Check duplicate user
                 // 1. Find appropriate control and get its value (i.e. user name)
                 // 2. Try to find user info
@@ -1022,6 +1072,24 @@ namespace CMSApp.CMSWebParts.WTE.Custom
             // Get user info from form
             UserInfo ui = (UserInfo)formUser.Data;
 
+            String rolesToAssigned = String.Empty;
+            string membernumber = ui.GetValue("UserMemberNumber", String.Empty);
+
+            if (!String.IsNullOrWhiteSpace(membernumber))
+            {
+                CustomRegistrationData data = new CustomRegistrationData();
+                data.LookupKey = "MemberNumber";
+                data.SetRegistrationInformation(membernumber);
+                if (data != null)
+                {
+                    rolesToAssigned = data.UserRoles;
+                }
+
+                if (!String.IsNullOrWhiteSpace(rolesToAssigned))
+                {
+                    AssignRoles += ";" + rolesToAssigned;
+                }
+            }
             // Add user prefix if settings is on
             // Ensure site prefixes
             if (UserInfoProvider.UserNameSitePrefixEnabled(CurrentSiteName))
