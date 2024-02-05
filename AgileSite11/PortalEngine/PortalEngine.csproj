@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.PortalEngine</RootNamespace>
+    <AssemblyName>CMS.PortalEngine</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.PortalEngine.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.PortalEngine.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Configuration\ConfigurationPropertiesLoader.cs" />
+    <Compile Include="CssStylesheets\CssEventArgs.cs" />
+    <Compile Include="CssStylesheets\CssPreprocessor.cs" />
+    <Compile Include="CssStylesheets\CssStylesheetInfo.cs" />
+    <Compile Include="CssStylesheets\CssStylesheetInfoProvider.cs" />
+    <Compile Include="CssStylesheets\CssStylesheetSiteInfo.cs" />
+    <Compile Include="CssStylesheets\CssStylesheetSiteInfoProvider.cs" />
+    <Compile Include="CssStylesheets\CSSWrapper.cs" />
+    <Compile Include="CurrentComponentsList.cs" />
+    <Compile Include="Devices\Layouts\DeviceLayoutVirtualFileObject.cs" />
+    <Compile Include="Devices\Layouts\DeviceProfileLayoutInfo.cs" />
+    <Compile Include="Devices\Layouts\DeviceProfileLayoutInfoProvider.cs" />
+    <Compile Include="EditModeButtonEnum.cs" />
+    <Compile Include="Handlers\PortalEngine\DeleteWidgetVariantsHandler.cs" />
+    <Compile Include="Handlers\PortalEngine\GetVariantEventArgs.cs" />
+    <Compile Include="Handlers\PortalEngine\GetVariantHandler.cs" />
+    <Compile Include="Handlers\PortalEngine\GetVariantsHandler.cs" />
+    <Compile Include="Handlers\PortalEngine\MVTVariantsEnabledHandler.cs" />
+    <Compile Include="Handlers\PortalEngine\PortalEngineEventArgs.cs" />
+    <Compile Include="Handlers\PortalEngine\PortalEngineEvents.cs" />
+    <Compile Include="Handlers\PortalEngine\DeleteVariantEventArgs.cs" />
+    <Compile Include="Handlers\PortalEngine\SetVariantEventArgs.cs" />
+    <Compile Include="Handlers\PortalEngine\SetVariantHandler.cs" />
+    <Compile Include="Handlers\Templates\PageTemplateCloneEventArgs.cs" />
+    <Compile Include="Handlers\Templates\PageTemplateCloneHandler.cs" />
+    <Compile Include="Handlers\PortalEngine\GetVariantsEventArgs.cs" />
+    <Compile Include="Handlers\WebParts\ChangeLayoutZoneIdHandler.cs" />
+    <Compile Include="Handlers\WebParts\MoveWebPartHandler.cs" />
+    <Compile Include="Handlers\WebParts\RemoveWebPartHandler.cs" />
+    <Compile Include="Handlers\WebParts\WebPartEventArgs.cs" />
+    <Compile Include="Handlers\WebParts\WebPartEvents.cs" />
+    <Compile Include="Handlers\WebParts\WebPartLoadVariantHandler.cs" />
+    <Compile Include="Instances\EditableItems.cs" />
+    <Compile Include="Instances\PageTemplateInstance.cs" />
+    <Compile Include="Instances\VariantModeEnum.cs" />
+    <Compile Include="Interfaces\IAdminPage.cs" />
+    <Compile Include="Interfaces\IPageManager.cs" />
+    <Compile Include="Interfaces\IPageInfo.cs" />
+    <Compile Include="Layouts\LayoutInfo.cs" />
+    <Compile Include="Layouts\LayoutInfoProvider.cs" />
+    <Compile Include="Layouts\LayoutVirtualFileObject.cs" />
+    <Compile Include="Macros\_Generated\WebParts\WebPartInfoMethods.cs" />
+    <Compile Include="ModuleUsageTracking\PortalEngineUsageDataSource.cs" />
+    <Compile Include="Module\ImportExport\CssStylesheetExport.cs" />
+    <Compile Include="Module\ImportExport\ExportSpecialActions.cs" />
+    <Compile Include="Module\ImportExport\ImportSpecialActions.cs" />
+    <Compile Include="Module\ImportExport\PageLayoutImport.cs" />
+    <Compile Include="Module\ImportExport\CssStylesheetImport.cs" />
+    <Compile Include="Module\ImportExport\PageTemplateExport.cs" />
+    <Compile Include="Module\ImportExport\PageTemplateImport.cs" />
+    <Compile Include="Module\ImportExport\WebPartExport.cs" />
+    <Compile Include="Module\ImportExport\WidgetImport.cs" />
+    <Compile Include="Module\ImportExport\WebPartImport.cs" />
+    <Compile Include="Module\ImportExport\WidgetExport.cs" />
+    <Compile Include="Module\PortalHandlers.cs" />
+    <Compile Include="Module\PortalModuleMetadata.cs" />
+    <Compile Include="Handlers\Templates\PageTemplateEvents.cs" />
+    <Compile Include="Module\SiteService.cs" />
+    <Compile Include="Module\UI\IUILinkProvider.cs" />
+    <Compile Include="Module\UI\ObjectDetailLinkParameters.cs" />
+    <Compile Include="Module\UI\GetDocLinkHandler.cs" />
+    <Compile Include="Module\UI\UILinkProvider.cs" />
+    <Compile Include="PortalFormHelper.cs" />
+    <Compile Include="PropertiesPositionEnum.cs" />
+    <Compile Include="Templates\Layouts\PageTemplateDeviceLayoutInfo.cs" />
+    <Compile Include="Templates\Layouts\PageTemplateDeviceLayoutInfoProvider.cs" />
+    <Compile Include="Templates\Layouts\PageTemplateLayoutTypeEnum.cs" />
+    <Compile Include="Templates\PageTemplateListInfo.cs" />
+    <Compile Include="Templates\PageTemplateVirtualFileObject.cs" />
+    <Compile Include="Templates\Scopes\PageTemplateScopeInfo.cs" />
+    <Compile Include="Templates\Scopes\PageTemplateScopeInfoProvider.cs" />
+    <Compile Include="Templates\PageTemplateTypeEnum.cs" />
+    <Compile Include="Module\PortalModule.cs" />
+    <Compile Include="Transformations\DefaultTransformationTypeEnum.cs" />
+    <Compile Include="Transformations\TransformationFullNameWhereConditionBuilder.cs" />
+    <Compile Include="Transformations\TransformationMacroMethods.cs" />
+    <Compile Include="Transformations\TransformationInfo.cs" />
+    <Compile Include="Transformations\TransformationInfoProvider.cs" />
+    <Compile Include="Transformations\TransformationTypeEnum.cs" />
+    <Compile Include="Transformations\TransformationVirtualFileObject.cs" />
+    <Compile Include="UIElementPropertiesPosition.cs" />
+    <Compile Include="Variants\VariantSettings.cs" />
+    <Compile Include="ViewMode\ViewModeCode.cs" />
+    <Compile Include="ViewMode\ViewModeExtensions.cs" />
+    <Compile Include="ViewMode\ViewModeOnDemand.cs" />
+    <Compile Include="WebParts\IWebPartZoneProperties.cs" />
+    <Compile Include="Module\PortalContext.cs" />
+    <Compile Include="ViewMode\ViewModeEnum.cs" />
+    <Compile Include="Templates\Categories\PageTemplateCategoryInfo.cs" />
+    <Compile Include="Templates\Categories\PageTemplateCategoryInfoProvider.cs" />
+    <Compile Include="Templates\PageTemplateInfo.cs" />
+    <Compile Include="Templates\PageTemplateInfoProvider.cs" />
+    <Compile Include="Templates\PageTemplateSiteInfo.cs" />
+    <Compile Include="Templates\PageTemplateSiteInfoProvider.cs" />
+    <Compile Include="Templates\PageTemplateTreeNode.cs" />
+    <Compile Include="Templates\PageTemplateTreeProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebParts\Layouts\WebPartLayoutException.cs" />
+    <Compile Include="WebParts\Layouts\WebPartLayoutVirtualFileObject.cs" />
+    <Compile Include="WebParts\VariantHelper.cs" />
+    <Compile Include="WebParts\VirtualWebPartVirtualFileObject.cs" />
+    <Compile Include="WebParts\WebPartListInfo.cs" />
+    <Compile Include="WebParts\PartialCacheHelper.cs" />
+    <Compile Include="WebParts\WebPartVirtualPageTemplateInfo.cs" />
+    <Compile Include="Widgets\WidgetListInfo.cs" />
+    <Compile Include="Widgets\Security\WidgetRoleInfoProvider.cs" />
+    <Compile Include="Widgets\Security\WidgetRoleInfo.cs" />
+    <Compile Include="Widgets\Categories\WidgetCategoryInfoProvider.cs" />
+    <Compile Include="Widgets\Categories\WidgetCategoryInfo.cs" />
+    <Compile Include="WebParts\WebPartTypeEnum.cs" />
+    <Compile Include="WebParts\Categories\WebPartCategoryInfo.cs" />
+    <Compile Include="WebParts\Categories\WebPartCategoryInfoProvider.cs" />
+    <Compile Include="Containers\WebPartContainerInfo.cs" />
+    <Compile Include="Containers\WebPartContainerInfoProvider.cs" />
+    <Compile Include="Containers\WebPartContainerSiteInfo.cs" />
+    <Compile Include="Containers\WebPartContainerSiteInfoProvider.cs" />
+    <Compile Include="WebParts\WebPartInfo.cs" />
+    <Compile Include="WebParts\WebPartInfoProvider.cs" />
+    <Compile Include="Instances\WebPartInstance.cs" />
+    <Compile Include="WebParts\Layouts\WebPartLayoutInfo.cs" />
+    <Compile Include="WebParts\Layouts\WebPartLayoutInfoProvider.cs" />
+    <Compile Include="Instances\WebPartZoneInstance.cs" />
+    <Compile Include="Widgets\WidgetInfo.cs" />
+    <Compile Include="Widgets\WidgetInfoProvider.cs" />
+    <Compile Include="Widgets\WidgetZoneTypeEnum.cs" />
+    <Compile Include="Macros\_Generated\Widgets\WidgetInfoMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeviceProfiles\DeviceProfiles.csproj">
+      <Project>{6e43ddf3-893d-4915-8828-ef7d40f1396e}</Project>
+      <Name>DeviceProfiles</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Routing.Web\Routing.Web.csproj">
+      <Project>{bd2f25a8-9315-4341-aac3-e9731922ddb2}</Project>
+      <Name>Routing.Web</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Synchronization\Synchronization.csproj">
+      <Project>{781f46eb-593f-484b-a1da-c59b1e13b59d}</Project>
+      <Name>Synchronization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{C78D0DDE-11B5-4BBA-98C0-756EBB98228A}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_Generated\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\Widget\After.xml" />
+    <EmbeddedResource Include="Configuration\Widget\Before.xml" />
+    <EmbeddedResource Include="Configuration\Widget\Edit.xml" />
+    <EmbeddedResource Include="Configuration\Widget\Simple.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\WebPartZone\Dashboard.xml" />
+    <EmbeddedResource Include="Configuration\WebPartZone\Standard.xml" />
+    <EmbeddedResource Include="Configuration\WebPartZone\UI.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\After.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Basic\After.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Basic\Before.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Before.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\DataSource\After.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\DataSource\Before.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Filter\After.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Filter\Before.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Invisible\After.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Invisible\Before.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Placeholder\After.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\Placeholder\Before.xml" />
+    <EmbeddedResource Include="Configuration\UIElement\After.xml" />
+    <EmbeddedResource Include="Configuration\UIElement\Before.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\UI\After.xml" />
+    <EmbeddedResource Include="Configuration\WebPart\UI\Before.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\AJAX.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\CodeBehind.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\Container.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\Default.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\Envelope.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\OutputFilter.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\Performance.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\PerformanceBasic.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\Timezones.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\Usability.xml" />
+    <EmbeddedResource Include="Configuration\_Groups\Visibility.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A05A67B-D880-41B4-9F5D-D3B74E97ACD6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.MessageBoards</RootNamespace>
+    <AssemblyName>CMS.MessageBoards</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/CMS.MessageBoards/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.MessageBoards.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.MessageBoards.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Activities\MessageBoardActivityLogger.cs" />
+    <Compile Include="Activities\MessageBoardCommentActivityInitializer.cs" />
+    <Compile Include="Activities\MessageBoardSubscriptionActivityInitializer.cs" />
+    <Compile Include="Boards\Messages\BoardMessageListInfo.cs" />
+    <Compile Include="Boards\BoardOwnerTypeEnum.cs" />
+    <Compile Include="Boards\BoardSubscriptionInfo.cs" />
+    <Compile Include="Boards\BoardSubscriptionInfoProvider.cs" />
+    <Compile Include="Boards\BoardProperties.cs" />
+    <Compile Include="Module\MessageBoardHandlers.cs" />
+    <Compile Include="Module\ImportExport\BoardExport.cs" />
+    <Compile Include="Module\ImportExport\BoardImport.cs" />
+    <Compile Include="Module\ImportExport\ImportSpecialActions.cs" />
+    <Compile Include="Module\MessageBoardModuleMetadata.cs" />
+    <Compile Include="Module\MessageBoardResolvers.cs" />
+    <Compile Include="Module\MessageBoardModule.cs" />
+    <Compile Include="Boards\BoardInfo.cs" />
+    <Compile Include="Boards\BoardInfoProvider.cs" />
+    <Compile Include="Boards\Messages\BoardMessageInfo.cs" />
+    <Compile Include="Boards\Messages\BoardMessageInfoProvider.cs" />
+    <Compile Include="Boards\BoardModeratorInfo.cs" />
+    <Compile Include="Boards\BoardModeratorInfoProvider.cs" />
+    <Compile Include="Boards\BoardRoleInfo.cs" />
+    <Compile Include="Boards\BoardRoleInfoProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadEmailSender.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Activities\Activities.csproj">
+      <Project>{dc7fdfaa-4c8a-4d6f-8572-ac4f789e2494}</Project>
+      <Name>Activities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EmailEngine\EmailEngine.csproj">
+      <Project>{F4E4C255-DD0D-4AB8-985B-B20B36E5B6EE}</Project>
+      <Name>EmailEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAnalytics\WebAnalytics.csproj">
+      <Project>{C2B6B91C-1D58-4531-8893-388960AFAA80}</Project>
+      <Name>WebAnalytics</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

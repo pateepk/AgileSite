@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76CE96C5-5F2C-425C-BD7A-4AF9C335368B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.CustomizationSamples</RootNamespace>
+    <AssemblyName>CMS.CustomizationSamples</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\Samples\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\Samples\CMS.CustomizationSamples.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\Samples\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\Samples\CMS.CustomizationSamples.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Classes\CustomCacheHelper.cs" />
+    <Compile Include="Classes\CustomEmailProvider.cs" />
+    <Compile Include="Classes\CustomSiteInfoProvider.cs" />
+    <Compile Include="Classes\CustomVersionManager.cs" />
+    <Compile Include="Classes\MyIndex.cs" />
+    <Compile Include="Classes\MyTask.cs" />
+    <Compile Include="Classes\SampleIntegrationConnector.cs" />
+    <Compile Include="CustomDataProvider\DataConnection.cs" />
+    <Compile Include="CustomDataProvider\DataProvider.cs" />
+    <Compile Include="CustomDataProvider\SqlGenerator.cs" />
+    <Compile Include="CustomDataProvider\TableManager.cs" />
+    <Compile Include="CustomFileSystemProvider\Directory.cs" />
+    <Compile Include="CustomFileSystemProvider\DirectoryInfo.cs" />
+    <Compile Include="CustomFileSystemProvider\File.cs" />
+    <Compile Include="CustomFileSystemProvider\FileInfo.cs" />
+    <Compile Include="CustomFileSystemProvider\FileStream.cs" />
+    <Compile Include="CustomSearchAnalyzer\CustomSearchAnalyzer.cs" />
+    <Compile Include="CustomSearchAnalyzer\SpaceTokenizer.cs" />
+    <Compile Include="CustomSearchIndex\CustomSearchIndex.cs" />
+    <Compile Include="CustomSearchProvider\SearchProvider.cs" />
+    <Compile Include="DataProtection\IdentityCollectors\SampleContactInfoIdentityCollector.cs" />
+    <Compile Include="DataProtection\IdentityCollectors\SampleCustomerInfoIdentityCollector.cs" />
+    <Compile Include="DataProtection\Module\DataProtectionModule.cs" />
+    <Compile Include="DataProtection\PersonalDataCollectors\CollectedColumn.cs" />
+    <Compile Include="DataProtection\PersonalDataCollectors\SampleContactDataCollectorCore.cs" />
+    <Compile Include="DataProtection\PersonalDataCollectors\SampleCustomerDataCollectorCore.cs" />
+    <Compile Include="DataProtection\PersonalDataCollectors\Writers\HumanReadablePersonalDataWriter.cs" />
+    <Compile Include="DataProtection\PersonalDataCollectors\Writers\IPersonalDataWriter.cs" />
+    <Compile Include="DataProtection\PersonalDataCollectors\Writers\XmlPersonalDataWriter.cs" />
+    <Compile Include="DataProtection\PersonalDataCollectors\SampleContactDataCollector.cs" />
+    <Compile Include="DataProtection\PersonalDataCollectors\SampleCustomerDataCollector.cs" />
+    <Compile Include="DataProtection\PersonalDataErasers\SampleContactPersonalDataEraser.cs" />
+    <Compile Include="DataProtection\PersonalDataErasers\SampleCustomerPersonalDataEraser.cs" />
+    <Compile Include="Ecommerce\CustomCustomerInfoProvider.cs" />
+    <Compile Include="Ecommerce\CustomOrderInfoProvider.cs" />
+    <Compile Include="Macros\CustomMacroMethods.cs" />
+    <Compile Include="Modules\SampleApplicationModule.cs" />
+    <Compile Include="Modules\SampleHandlerModule.cs" />
+    <Compile Include="Modules\SampleMacroModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Activities\Activities.csproj">
+      <Project>{dc7fdfaa-4c8a-4d6f-8572-ac4f789e2494}</Project>
+      <Name>Activities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CMSOutputFilter\CMSOutputFilter.csproj">
+      <Project>{8827b490-f624-400e-8350-46f3a006396c}</Project>
+      <Name>CMSOutputFilter</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManagement\ContactManagement.csproj">
+      <Project>{77bdffcb-2aea-4b58-b7da-a1b69a1e7f22}</Project>
+      <Name>ContactManagement</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProtection\DataProtection.csproj">
+      <Project>{631799c8-855d-4488-8188-3f7749c40356}</Project>
+      <Name>DataProtection</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{ca36a1e6-9385-46aa-a10e-97699e293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Ecommerce\Ecommerce.csproj">
+      <Project>{c333c520-6f02-4c22-b1cf-33d6e4599ca7}</Project>
+      <Name>Ecommerce</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EmailEngine\EmailEngine.csproj">
+      <Project>{f4e4c255-dd0d-4ab8-985b-b20b36e5b6ee}</Project>
+      <Name>EmailEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7f74d14a-c101-457e-94b0-1df57a619c84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{d9b92f71-4497-4050-a75d-0f9c84dfbe6b}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{dbcb4ea1-3129-4d2e-a653-dc948a34e0c2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Lucene.NET3\core\Lucene.Net.v3.csproj">
+      <Project>{5d4ad9be-1ffb-41ab-9943-25737971bf57}</Project>
+      <Name>Lucene.Net.v3</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Newsletters\Newsletters.csproj">
+      <Project>{51729de3-8bff-4943-b5cd-cc63ddcb3e56}</Project>
+      <Name>Newsletters</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineForms\OnlineForms.csproj">
+      <Project>{6780157e-48df-4254-b455-d9cebe73250f}</Project>
+      <Name>OnlineForms</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{f21c925b-3aa1-4139-9706-ba5073527a8f}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03f631a2-1728-411f-851b-58b33200b7ea}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SynchronizationEngine\SynchronizationEngine.csproj">
+      <Project>{981fb9e5-cf43-4c0c-af93-f206466fc8a8}</Project>
+      <Name>SynchronizationEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Synchronization\Synchronization.csproj">
+      <Project>{781f46eb-593f-484b-a1da-c59b1e13b59d}</Project>
+      <Name>Synchronization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

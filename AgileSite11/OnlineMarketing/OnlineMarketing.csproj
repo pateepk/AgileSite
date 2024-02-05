@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A687FF7A-9726-4C43-8A28-0E6C5F7CDAE3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.OnlineMarketing</RootNamespace>
+    <AssemblyName>CMS.OnlineMarketing</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.OnlineMarketing.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.OnlineMarketing.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ABTest\ABCachedObjects.cs" />
+    <Compile Include="ABTest\ABRequestManager.cs" />
+    <Compile Include="ABTest\ABTestContext.cs" />
+    <Compile Include="ABTest\ABTestInfo.cs" />
+    <Compile Include="ABTest\ABTestInfoProvider.cs" />
+    <Compile Include="ABTest\ABTestUsageDataSource.cs" />
+    <Compile Include="ABTest\ABVariantInfo.cs" />
+    <Compile Include="ABTest\ABVariantInfoProvider.cs" />
+    <Compile Include="ABTest\Helpers\ABTestStatusEnum.cs" />
+    <Compile Include="ABTest\Helpers\ABTestStatusEvaluator.cs" />
+    <Compile Include="ABTest\Helpers\ABVariantColorAssigner.cs" />
+    <Compile Include="ABTest\StaticRandom.cs" />
+    <Compile Include="Activities\ContactProcessingCheckerActivityLogFilter.cs" />
+    <Compile Include="Activities\CurrentUserEnabledTrackingFilter.cs" />
+    <Compile Include="Activities\DocumentActivityFilter.cs" />
+    <Compile Include="ContentPersonalization\ContentPersonalizationUsageDataSource.cs" />
+    <Compile Include="Macros\ActivityInfoMethods.cs" />
+    <Compile Include="Macros\AutomationStateInfoMethods.cs" />
+    <Compile Include="MarketingAutomation\MarketingAutomationUsageDataSource.cs" />
+    <Compile Include="MVTest\MVTestContext.cs" />
+    <Compile Include="MVTest\MVTestUsageDataSource.cs" />
+    <Compile Include="MVTest\VariantTypeEnum.cs" />
+    <Compile Include="OnlineMarketingUsageDataSource.cs" />
+    <Compile Include="Serialization\WebPartsStructuredData.cs" />
+    <Compile Include="Module\ABTest\ABHandlers.cs" />
+    <Compile Include="ABTest\ABSegmentationEvaluator.cs" />
+    <Compile Include="ABTest\Statistics\ABVariantStatisticsData.cs" />
+    <Compile Include="ABTest\Helpers\ABTestValidator.cs" />
+    <Compile Include="ABTest\UserStateManagement\ABUserStateManager.cs" />
+    <Compile Include="ABTest\UserStateManagement\ABCookieValue.cs" />
+    <Compile Include="ABTest\Statistics\ABConversionRateInterval.cs" />
+    <Compile Include="Module\ABTest\ABTestModule.cs" />
+    <Compile Include="Module\ABTest\ABTestModuleMetadata.cs" />
+    <Compile Include="ContentPersonalization\ContentPersonalizationVariantInfo.cs" />
+    <Compile Include="ContentPersonalization\ContentPersonalizationVariantInfoProvider.cs" />
+    <Compile Include="Module\ContentPersonalization\ContentPersonalizationModule.cs" />
+    <Compile Include="Module\ContentPersonalization\ContentPersonalizationModuleMetadata.cs" />
+    <Compile Include="Module\MVTest\MVTestModule.cs" />
+    <Compile Include="Module\MVTest\MVTestModuleMetadata.cs" />
+    <Compile Include="Module\OnlineMarketing\ImportExport\OnlineMarketingImportSpecialActions.cs" />
+    <Compile Include="Module\OnlineMarketing\OnlineMarketingHandlers.cs" />
+    <Compile Include="Module\OnlineMarketing\OnlineMarketingModuleMetadata.cs" />
+    <Compile Include="MVTest\MVTHandlers.cs" />
+    <Compile Include="MVTest\MVTHelper.cs" />
+    <Compile Include="Range.cs" />
+    <Compile Include="MVTest\MVTestStatusEnum.cs" />
+    <Compile Include="MVTest\MVTCombinationInfo.cs" />
+    <Compile Include="MVTest\MVTCombinationInfoProvider.cs" />
+    <Compile Include="MVTest\MVTCombinationVariationInfo.cs" />
+    <Compile Include="MVTest\MVTCombinationVariationInfoProvider.cs" />
+    <Compile Include="MVTest\MVTestInfo.cs" />
+    <Compile Include="MVTest\MVTestInfoProvider.cs" />
+    <Compile Include="MVTest\MVTVariantInfo.cs" />
+    <Compile Include="MVTest\MVTVariantInfoProvider.cs" />
+    <Compile Include="MVTest\MVTTargetConversionTypeEnum .cs" />
+    <Compile Include="MVTest\MVTestListInfo.cs" />
+    <Compile Include="Module\OnlineMarketing\OnlineMarketingModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Activities.Loggers\Activities.Loggers.csproj">
+      <Project>{A39CA7F6-8ECF-4BB0-9DAE-88CC86F0191D}</Project>
+      <Name>Activities.Loggers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Activities\Activities.csproj">
+      <Project>{DC7FDFAA-4C8A-4D6F-8572-AC4F789E2494}</Project>
+      <Name>Activities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Automation\Automation.csproj">
+      <Project>{D78A0F88-323C-47BA-9E69-50FDF6EFCFCA}</Project>
+      <Name>Automation</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactManagement\ContactManagement.csproj">
+      <Project>{77BDFFCB-2AEA-4B58-B7DA-A1B69A1E7F22}</Project>
+      <Name>ContactManagement</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceProfiles\DeviceProfiles.csproj">
+      <Project>{6e43ddf3-893d-4915-8828-ef7d40f1396e}</Project>
+      <Name>DeviceProfiles</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine\FormEngine.csproj">
+      <Project>{1169AD9D-510C-4196-9A44-BC1BCB957DFB}</Project>
+      <Name>FormEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{D9B92F71-4497-4050-A75D-0F9C84DFBE6B}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExport\ImportExport.csproj">
+      <Project>{728524df-119d-4d51-898a-bdfebb2a56bd}</Project>
+      <Name>ImportExport</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Newsletters\Newsletters.csproj">
+      <Project>{51729de3-8bff-4943-b5cd-cc63ddcb3e56}</Project>
+      <Name>Newsletters</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineForms\OnlineForms.csproj">
+      <Project>{6780157E-48DF-4254-B455-D9CEBE73250F}</Project>
+      <Name>OnlineForms</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{F21C925B-3AA1-4139-9706-BA5073527A8F}</Project>
+      <Name>Scheduler</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAnalytics\WebAnalytics.csproj">
+      <Project>{C2B6B91C-1D58-4531-8893-388960AFAA80}</Project>
+      <Name>WebAnalytics</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{35808876-2219-4DB5-9F3E-C683EDB20BCA}</Project>
+      <Name>WorkflowEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SampleData\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

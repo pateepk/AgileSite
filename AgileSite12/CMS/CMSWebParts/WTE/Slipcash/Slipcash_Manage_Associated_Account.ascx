@@ -8,6 +8,55 @@
 
 
 
+<style>
+#button{
+  display:block;
+  margin:20px auto;
+  padding:10px 30px;
+  background-color:#eee;
+  border:solid #ccc 1px;
+  cursor: pointer;
+}
+#overlay{	
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height:100%;
+  display: none;
+  background: rgba(0,0,0,0.6);
+}
+.cv-spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px #ddd solid;
+  border-top: 4px #2e93e6 solid;
+  border-radius: 50%;
+  animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+.is-hide{
+  display:none;
+}
+</style>
+
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+
+
 <div id="divtest" runat="server" visible="false">
     <style>
         /**
@@ -207,58 +256,333 @@
     </div>
 
     <div class="center">
-        <button class="modal-toggle btn btn-dark">add new</button>
+        <button class="modal-toggle btn btn-dark" onclick="toggleAddNew('99999',true);">add new</button>
     </div>
-    <script>
-        // Quick & dirty toggle to demonstrate modal toggle behavior
-        $('.modal-toggle').on('click', function (e) {
-            e.preventDefault();
-            $('.modal').toggleClass('is-visible');
-        });
-    </script>
 
 </div>
+<style>
+    /*  input[type=text] {
+            background: none;
+            font-weight: bold;
+            border-color: #2e2e2e;
+            border-style: solid;
+            border-width: 2px 2px 2px 2px;
+            outline: none;
+            padding: 10px 20px 10px 20px;
+            width: 250px;
+        }*/
+    /*Css to target the dropdownbox*/
+    ul {
+        background: black;
+        width: 250px;
+        list-style-type: none;
+    }
 
-
-<div id="divManageAction" class="filter-box" runat="server" visible="false">
-    <div class="inline-form-group">
-        <select id="ddlManageAction" name="ddlManageAction" class="select-css">
-            <option value="">--none--</option>
-            <option value="enable">enable</option>
-            <option value="disable">disable</option>
-        </select>
+        ul.ui-autocomplete {
+            color: white !important;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            z-index: 99999
+        }
+</style>
+<div class="center m-b-2">
+    <div id='div_team_100' name='div_team_100' class="form-group form-group_team-member">
+        <label for="lnkPreview_100"><a id="lnkPreview_100" href="https://slipcash.agilesite.com/$<%# Eval("[DisplayAssociatedHandle]") %>" class="people-pay__btn" name="lnkPreview_100"><%# Eval("[DisplayAssociatedHandle]") %></a></label>
+        <input id="txtHandle_100" type="text" placeholder="enter handle" name="txtHandle_100" value='<%# Eval("[AssociatedHandle]") %>' onkeyup="checkHandle('100', event);" />
+        <a id="lnkUpdate_100" title="Update" href="#" onclick="doSaveAssociatedAccount('100', event);" name="lnkUpdate_100">
+            <i class="fa-sharp fa-solid fa-circle-check"></i>Save
+        </a>
+        <a id="lnkCancel_100" title="Cancel" href="#" onclick="doCancelSaveAssociatedAccount('100', event);" name="lnkCancel_100">
+            <i class="fa-sharp fa-solid fa-circle-x"></i>Cancel
+        </a>
+        <div class="ui-icons">
+            <a id="lnkEdit_100" title="Edit" href="#" onclick="doEditAssociatedAccount('100', event);" name="lnkEdit_100">
+                <i class="fa-duotone fa-user-pen"></i>
+            </a>
+            <a id="lnkEnable_100" class="" title="Enable" href="#" onclick="doEnableAssociatedAccount('100', 'true', event);" name="lnkEnable_100">
+                <i class="fa-solid fa-user-large-slash"></i>
+            </a>
+            <a id="lnkDelete_100" class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('100', event);" name="lnkDelete_100">
+                <i class="fa-sharp fa-regular fa-trash"></i>
+            </a>
+        </div>
+        <input type='hidden' id='hdnrow_100' value='100' />
+        <input type='hidden' id='hdnitemid_100' value='<%# Eval("[AssociatedAccountID]") %>' />
+        <input type='hidden' id='hdnmemberuserid_100' value='<%# Eval("[MemberUserID]") %>' />
+        <input type='hidden' id='hdnmemberid_100' value='<%# Eval("[MemberID]") %>' />
+        <input type='hidden' id='hdnmemberhandle_100' value='<%# Eval("[MemberHandle]") %>' />
+        <input type='hidden' id='hdnassociateduserid_100' value='<%# Eval("[AssociatedUserID]") %>' />
+        <input type='hidden' id='associatedmemberid_100' value='<%# Eval("[AssociatedMemberID]") %>' />
+        <input type='hidden' id='hdnassociatedmemberhandle_100' value='<%# Eval("[AssociatedHandle]") %>' />
+        <input type='hidden' id='hdnisenabled_100' value='<%# Eval("[IsEnabled]") %>' />
     </div>
-    <div class="inline-form-group">
-        <label for="chkManageSelectAll">select all:</label><input type="checkbox" id="chkManageSelectAll" onchange="chkManageSelectAll_checkchanged();return false;" title="select all" />
+    <div id='div_validationmsg_100'></div>
+    <div id='div_team_9999' name='div_team_9999' class="form-group form-group_team-member">
+        <label for="lnkPreview_9999"><a id="lnkPreview_9999" href="https://slipcash.agilesite.com/$<%# Eval("[DisplayAssociatedHandle]") %>" class="people-pay__btn" name="lnkPreview_9999"><%# Eval("[DisplayAssociatedHandle]") %></a></label>
+        <input id="txtHandle_9999" type="text" placeholder="enter handle" name="txtHandle_9999" value='<%# Eval("[AssociatedHandle]") %>' onkeyup="checkHandle('100', event);" />
+        <a id="lnkUpdate_9999" title="Update" href="#" onclick="doSaveAssociatedAccount('100', event);" name="lnkUpdate_9999">
+            <i class="fa-sharp fa-solid fa-circle-check"></i>Save
+        </a>
+        <a id="lnkCancel_9999" title="Cancel" href="#" onclick="doCancelSaveAssociatedAccount('100', event);" name="lnkCancel_9999">
+            <i class="fa-sharp fa-solid fa-circle-x"></i>Cancel
+        </a>
+        <div class="ui-icons">
+            <a id="lnkEdit_9999" title="Edit" href="#" onclick="doEditAssociatedAccount('100', event);" name="lnkEdit_9999">
+                <i class="fa-duotone fa-user-pen"></i>
+            </a>
+            <a id="lnkEnable_9999" class="" title="Enable" href="#" onclick="doEnableAssociatedAccount('100', 'true', event);" name="lnkEnable_9999">
+                <i class="fa-solid fa-user-large-slash"></i>
+            </a>
+            <a id="lnkDelete_9999" class="" title="Delete" href="#" onclick="doDeleteAssociatedAccount('100', event);" name="lnkDelete_9999">
+                <i class="fa-sharp fa-regular fa-trash"></i>
+            </a>
+        </div>
+        <input type='hidden' id='hdnrow_9999' value='100' />
+        <input type='hidden' id='hdnitemid_9999' value='<%# Eval("[AssociatedAccountID]") %>' />
+        <input type='hidden' id='hdnmemberuserid_9999' value='<%# Eval("[MemberUserID]") %>' />
+        <input type='hidden' id='hdnmemberid_9999' value='<%# Eval("[MemberID]") %>' />
+        <input type='hidden' id='hdnmemberhandle_9999' value='<%# Eval("[MemberHandle]") %>' />
+        <input type='hidden' id='hdnassociateduserid_9999' value='<%# Eval("[AssociatedUserID]") %>' />
+        <input type='hidden' id='associatedmemberid_9999' value='<%# Eval("[AssociatedMemberID]") %>' />
+        <input type='hidden' id='hdnassociatedmemberhandle_9999' value='<%# Eval("[AssociatedHandle]") %>' />
+        <input type='hidden' id='hdnisenabled_9999' value='<%# Eval("[IsEnabled]") %>' />
     </div>
-    <div class="inline-form-group">
-        <button onclick="btnPerformMultipleManageAction_Clicked();return false;" class="btn-admin btn-admin-dark">Submit</button>
+    <div id='div_validationmsg_9999'></div>
+    <div class="center">
+        <button class="btn btn-dark" onclick="toggleAddNew('9999','true', event);">add new</button>
     </div>
 </div>
 
-<div id="divUpdateAction" class="filter-box" runat="server" visible="false">
-    <div class="inline-form-group">
-        <select id="ddlCompanyAssignmentAction" name="ddlCompanyAssignmentAction" class="select-css">
-            <option value="">--none--</option>
-            <option value="assign">save</option>
-        </select>
-    </div>
-    <div class="inline-form-group">
-        <label for="chkCompanyAssignmentSelectAll">select all:</label><input type="checkbox" id="chkCompanyAssignmentSelectAll" onchange="chkCompanyAssignmentSelectAll_checkchanged();return false;" title="select all" />
-    </div>
-    <div class="inline-form-group">
-        <button onclick="btnPerformMultipleCompanyAssignmentAction_Clicked();return false;" class="btn-admin btn-admin-dark">Submit</button>
-    </div>
-</div>
 
 <script type="text/javascript">
+    var flag = false;
+    var debounceTimer;
 
+    $(document).ready(function () {
+
+        if (flag == false) {
+            // hide on the input
+            $('input[type=text][id*=' + 'txtHandle' + ']').each(function () {
+                var id = this.id;
+                var name = this.name;
+                if (name != 'txtHandle_9999' && name != 'txtHandle_9999') {
+                    setControlVisibility(name, 'false');
+                }
+            });
+
+            // hide all the check button
+            $('a[id*=' + 'lnkUpdate' + ']').each(function () {
+                var id = this.id;
+                var name = this.name;
+                if (name != 'lnkUpdate_9999' && name != 'lnkUpdate_9999') {
+                    setControlVisibility(name, 'false');
+                }
+            });
+
+            // hide all the cancel button
+            $('a[id*=' + 'lnkCancel_' + ']').each(function () {
+                var id = this.id;
+                var name = this.name;
+                if (name != 'lnkCancel_9999' && name != 'lnkCancel_9999') {
+                    setControlVisibility(name, 'false');
+                }
+            });
+
+            // hide the "add new items"
+
+            // test section
+            setControlVisibility('div_team_9999', 'false');
+            setControlVisibility('lnkEdit_9999', 'false');
+            setControlVisibility('lnkDelete_9999', 'false');
+            setControlVisibility('lnkEnable_9999', 'false');
+
+            // live section
+            setControlVisibility('div_team_99999', 'false');
+            setControlVisibility('lnkEdit_99999', 'false');
+            setControlVisibility('lnkDelete_99999', 'false');
+            setControlVisibility('lnkEnable_99999', 'false');
+
+            flag = true;
+        }
+    });
+
+    // do save
+    function doSaveAssociatedAccount(name, e) {
+        // call the save function and refresh the page...
+        if (e != null) {
+            e.preventDefault();
+        }
+        toggleTextBox(name, 'false'); // hide the text box
+        setControlVisibility('lnkUpdate_' + name, 'false'); // hide the update button
+        setControlVisibility('lnkCancel_' + name, 'false'); // hide the update button
+        if (name != '99999') {
+            setControlVisibility('lnkEdit_' + name, 'true'); // show the edit button
+            setControlVisibility('lnkDelete_' + name, 'true'); // show the delete button
+            setControlVisibility('lnkEnable_' + name, 'true'); //show the enable button
+        }
+        PerformSingleSaveAction(name);
+    }
+
+    // do cancel
+    function doCancelSaveAssociatedAccount(name, e) {
+        // call the save function and refresh the page...
+        if (e != null) {
+            e.preventDefault();
+        }
+        toggleTextBox(name, 'false'); // hide the text box
+        if (name === '99999' || name === '9999') {
+            var fullname = 'div_team_' + name;
+            setControlVisibility(fullname, 'false'); // show the add new div
+        }
+        setControlVisibility('lnkUpdate_' + name, 'false'); // hide the update button
+        setControlVisibility('lnkCancel_' + name, 'false'); // hide the update button
+        if (name != '99999') {
+            setControlVisibility('lnkEdit_' + name, 'true'); // show the edit button
+            setControlVisibility('lnkDelete_' + name, 'true'); // show the delete button
+            setControlVisibility('lnkEnable_' + name, 'true'); //show the enable button
+        }
+        //PerformSingleSaveAction(name);
+    }
+
+
+    // show the text box.
+    function doEditAssociatedAccount(name, e) {
+        if (e != null) {
+            e.preventDefault();
+        }
+        toggleTextBox(name, 'true'); // show the text box
+        setControlVisibility('lnkUpdate_' + name, 'false'); // show the "check" icon
+        setControlVisibility('lnkCancel_' + name, 'true'); // hide the update button
+        setControlVisibility('lnkEdit_' + name, 'false'); // show the edit button
+        setControlVisibility('lnkDelete_' + name, 'false'); // show the delete button
+        setControlVisibility('lnkEnable_' + name, 'false'); //show the enable button
+        checkHandle(name, e);
+    }
+
+    function doEnableAssociatedAccount(name, enable, e) {
+        if (e != null) {
+            e.preventDefault();
+        }
+        var action = 'enable'
+        if (enable == 'true') {
+            action = 'enable';
+        }
+        else {
+            action = 'disable';
+        }
+        PerformSingleSaveAction(name, action);
+    }
+
+    function doDeleteAssociatedAccount(name, e) {
+        if (e != null) {
+            e.preventDefault();
+        }
+        PerformSingleSaveAction(name, 'delete');
+    }
+
+    // Show/Hide add new section
+    function toggleAddNew(name, show, e) {
+        if (e != null) {
+            e.preventDefault();
+        }
+        var fullname = 'div_team_' + name;
+        setControlVisibility(fullname, show); // show the add new div
+        toggleTextBox(name, 'true'); // show the text box
+        setControlVisibility('lnkUpdate_' + name, 'true'); // show the "check" icon
+        checkHandle(name, e);
+    }
+
+    // toggle input textbox visibility
+    function toggleTextBox(name, show) {
+        var fullname = 'txtHandle_' + name;
+        setControlVisibility(fullname, show);
+    }
+
+    // save new clicked (not used)
     function saveNew_Clicked() {
         PerformSaveAction('addnew', 'hdnrow', 'hdnPostbackUrl')
     }
 
     function savebutton_Clicked() {
         PerformSavePayProfileAction('ddlManageActionTest', 'hdnrow', 'hdnPostbackUrl')
+    }
+
+    if (typeof PerformSingleSaveAction !== 'function' || typeof PerformSingleSaveAction === 'undefined') {
+        // perform the selected action
+        function PerformSingleSaveAction(name, action, postbackUrlName) {
+
+            var postbackUrl = getControlValue(postbackUrlName);
+            postbackUrl = window.location.href.split("?")[0];
+
+            if (typeof (action) == 'undefined') {
+                action = 'update';
+            }
+
+            if (typeof (postbackUrl) == 'undefined' || postbackUrl == '') {
+                return false; // we can't proceed no postback url defined
+            }
+
+            if (typeof (action) == 'undefined' || action == '') {
+                return false; // we can't proceed no action defined
+            }
+
+            //{"Action":"test",
+            //"AccountData":
+            //[
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //]
+            //}
+
+            var selectedid = "";
+            if (selectedid.length > 0) {
+                selectedid += ",";
+            }
+            var itemid = getControlValue('hdnitemid_' + name);
+            var memberuserid = getControlValue('hdnmemberuserid_' + name);
+            var memberid = getControlValue('hdnmemberid_' + name);
+            var memberhandle = getControlValue('hdnmemberhandle_' + name);
+            var associateduserid = getControlValue('hdnassociateduserid_' + name);
+            var associatedmemberid = getControlValue('hdnassociatedmemberid_' + name);
+            var associatedmemberhandle = getControlValue('txtHandle_' + name);
+            var isenabled = getControlValue('hdnisenabled_' + name);
+
+            if (action == 'enable') {
+                isenabled = true;
+            }
+            else if (action == 'disable') {
+                isenabled = false;
+            }
+
+            var assignmentdata = '{"AssociatedAccountID":"' + itemid
+                + '","MemberUserID":"' + memberuserid
+                + '","MemberID":"' + memberid
+                + '","MemberHandle":"' + memberhandle
+                + '","AssociatedUserID":"' + associateduserid
+                + '","AssociatedMemberID":"' + associatedmemberid
+                + '","AssociatedMemberHandle":"' + associatedmemberhandle
+                + '","IsEnabled":"' + isenabled + '"}';
+            selectedid += assignmentdata;
+
+            if (selectedid.length > 0) {
+                if (action == 'enable' || action == 'disable' || action == 'delete') {
+                    // do confirmation.
+                    var actionstring = 'Are you sure you want to ' + action + ' this team member?'
+                    if (!confirm(actionstring)) {
+                        return false;
+                    }
+                }
+
+                // submit the payload
+                var payload = '{"Action":"' + action + '","AccountData":[' + selectedid + ']}';
+                var transResponse = JSON.parse(payload);
+                RedirectAndPostJSON(postbackUrl, transResponse);
+                return true;
+            }
+
+            return false;
+        }
     }
 
     if (typeof PerformSaveAction !== 'function' || typeof PerformSaveAction === 'undefined') {
@@ -283,9 +607,9 @@
             //{"Action":"test",
             //"AccountData":
             //[
-            //{"UserPaymentMethodID":"1", "PaymentTypeID":"1", "MemberID": "1", "PaymentLink":"1", "UserID":"1", "IsEnabled":"true" },
-            //{"UserPaymentMethodID":"", "PaymentTypeID":"1", "MemberID": "1", "PaymentLink":"1"  "UserID":"1","IsEnabled":"true" },
-            //{"UserPaymentMethodID":"1", "PaymentTypeID":"1", "MemberID": "1", "PaymentLink":"1" "UserID":"1","IsEnabled":"true" }
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
+            //{"AssociatedAccountID":"1", "MemberUserID":"1", "MemberID": "1", "MemberHandle":"1", "AssociatedUserID":"1", "AssociatedMemberID":"1", "AssoociatedMemberHandle":"1",IsEnabled":"true" },
             //]
             //}
 
@@ -305,7 +629,14 @@
                 var associatedmemberid = getControlValue('hdnassociatedmemberid_' + id);
                 var associateduserhandle = getControlValue('input_' + id);
                 var isenabled = getControlValue('hdnisenabled_' + id);
-                var assignmentdata = '{"AssociatedAccountID":"' + itemid + '","MemberUserID":"' + memberuserid + '","MemberID":"' + memberid + '","MemberHandle":"' + memberhandle + '","AssociatedUserID":"' + associateduserid + '","AssociatedMemberID":"' + associatedmemberid + '","AssociatedMemberHandle":"' + associatedmemberhandle + '","IsEnabled":"' + isenabled + '"}';
+                var assignmentdata = '{"AssociatedAccountID":"' + itemid
+                    + '","MemberUserID":"' + memberuserid
+                    + '","MemberID":"' + memberid
+                    + '","MemberHandle":"' + memberhandle
+                    + '","AssociatedUserID":"' + associateduserid
+                    + '","AssociatedMemberID":"' + associatedmemberid
+                    + '","AssociatedMemberHandle":"' + associatedmemberhandle
+                    + '","IsEnabled":"' + isenabled + '"}';
                 selectedid += assignmentdata;
             });
 
@@ -322,6 +653,271 @@
             return false;
         }
     }
+</script>
+
+<!-- look up scripts -->
+<script>
+
+    function checkHandle(name, e) {
+
+        if (e != null) {
+            e.preventDefault();
+        }
+
+        // Regular expression for allowed characters
+        var regex = /^[a-zA-Z0-9_]*$/;
+        //var inputVal = $(this).val(); // this is uncessary?
+        var inputname = '#txtHandle_' + name;
+        var updatelinkname = '#lnkUpdate_' + name;
+
+        var messagedivname = '#div_validationmsg_' + name;
+        var statusdivname = '#div_status_' + name;
+        var autocompletedivname = '#div_autocomplete_' + name;
+        var matcheddivname = '#div_autocomplete_' + name;
+
+
+        //if (!regex.test(inputVal)) {
+        //    // Remove the last character if it's not allowed
+        //    $(this).val(inputVal.slice(0, -1));
+        //    return;
+        //}
+
+        // Update the label with the mirrored username
+        //if (inputVal.length > 0) {
+        //    $('#memberidLabel').text(inputVal);
+        //} else {
+        //    $('#memberidLabel').empty(); // Clear the label if input is empty
+        //}
+
+        var lengthCheck = $(inputname).val().trim();
+        if (lengthCheck.length === 0) {
+            setControlVisibility('lnkUpdate_' + name, 'false'); // hide the save icon
+            setControlVisibility('lnkCancel_' + name, 'true'); // show the cancel icon
+        }
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+            var handle = $(inputname).val().trim();
+            if (handle.length === 0) {
+                //$('#icon').empty();
+                $(messagedivname).empty();
+                return;
+            }
+
+            // Construct the URL with the username as a query parameter
+            var checkUrl = 'https://slipcash.agilesite.com/secure/associated-accounts/check-handle?handle=' + encodeURIComponent(handle);
+
+            // Send a POST request to check the username availability
+            $.post(checkUrl, function (response) {
+                // Check the response for specific keywords within HTML
+                var rmessage = $(response).find('#rmessage');
+                var rstatus = $(response).find('#rstatus');
+                var rautocomplete = $(response).find('#rautocomplete');
+                var rmatched = $(response).find('#rmatched');
+
+                var message = '';
+                var status = '';
+                var autocompletedata = '';
+                var matched = '';
+
+                if (rmessage != null) {
+                    message = rmessage.val();
+                }
+
+                if (rstatus != null) {
+                    status = rstatus.val();
+                }
+
+                if (rautocomplete != null) {
+                    autocompletedata = rautocomplete.val();
+                }
+
+                if (rmatched != null) {
+                    matched = rmatched.val();
+                }
+
+                $(messagedivname).text(message);
+                $(statusdivname).text(status);
+                $(autocompletedivname).text(autocompletedata);
+                $(matcheddivname).text(matched);
+
+
+
+                //var availableTags = autocompletedata;
+                //availableTags = ["1", "2", "3"]; 
+                var data1 = JSON.parse(autocompletedata);
+                $(inputname).autocomplete({
+                    source: data1,
+                    autofocus: true,
+                    disable: false,
+                    close: function (event, ui) {
+                        checkHandle(name, event);
+                    },
+                    change: function (event, ui) {
+                        checkHandle(name, event);
+                    },
+                    messages: {
+                        //noResults: 'no results',
+                        noResults: '',
+                        results: function (amount) {
+                            //return amount + 'results.';
+                            return '';
+                        }
+                    }
+                }); // this turns it off because we are passing string?
+
+                /*$(inputname).attr("autocomplete", "on");*/
+                //$(inputname).autocomplete({ source: data1 });
+
+                //if (status === 'valid') {
+                //    if (matched === 'matched') { }
+                //}
+
+                //setControlVisibility('lnkUpdate_' + name, 'true'); // show the "check" icon
+                //setControlVisibility('lnkCancel_' + name, 'false'); // hide the update button
+                //setControlVisibility('lnkEdit_' + name, 'false'); // show the edit button
+                //setControlVisibility('lnkDelete_' + name, 'false'); // show the delete button
+                //setControlVisibility('lnkEnable_' + name, 'false'); //show the enable button
+
+                if (matched === 'no matched') {
+                    $(messagedivname).text('the slipcash use does not exists.');
+                    //$(updatelinkname).hide();
+                    //$(updatelinkname).css('visibility', 'hidden');
+                    setControlVisibility('lnkUpdate_' + name, 'false');
+                    setControlVisibility('lnkCancel_' + name, 'true');
+                    //$(messagedivname).text(message);
+                    //$(statusdivname).text(status);
+                    //$(autocompletedivname).text(autocompletedata);
+                    //$(matcheddivname).text(matched);
+                } else if (matched === 'matched') {
+                    $(messagedivname).text('You are good to go.');
+                    //$(updatelinkname).show();
+                    //$(updatelinkname).css('visibility', 'visible');
+                    setControlVisibility('lnkUpdate_' + name, 'true');
+                    setControlVisibility('lnkCancel_' + name, 'false');
+                    //$(messagedivname).text(message);
+                    //$(statusdivname).text(status);
+                    //$(autocompletedivname).text(autocompletedata);
+                    //$(matcheddivname).text(matched);
+                }
+                else if (status === 'OK') {
+                    // this never happens (code from another app)
+                    $('#usermessage').text('found');
+                    setControlVisibility('')
+                    $(updatelinkname).show();
+                    $(updatelinkname).css('visibility', 'visible');
+                    //$(messagedivname).text(message);
+                    //$(statusdivname).text(status);
+                    //$(autocompletedivname).text(autocompletedata);
+                    //$(matcheddivname).text(matched);
+                }
+                else {
+                    // do nothing.
+                }
+            }).fail(function () {
+                // Handle any errors (e.g., server not responding)
+                //$('#icon').html('<i class="fas fa-exclamation-triangle orange"></i>');
+                $('#message').text('We are experiencing technical difficulty, please contact support at support@wte.net');
+            });
+        }, 100); // Wait for 1 second after user stops typing
+    };
+
+    //$(document).ready(function () {
+    //    var debounceTimer;
+    //    $('#btnRegister').hide();
+    //    $('#btnRegister').css('visibility', 'hidden');
+
+    //    $('#memberid').on('keyup', function (event) {
+    //        // Regular expression for allowed characters
+    //        var regex = /^[a-zA-Z0-9_]*$/;
+
+    //        var inputVal = $(this).val();
+    //        //if (!regex.test(inputVal)) {
+    //        //    // Remove the last character if it's not allowed
+    //        //    $(this).val(inputVal.slice(0, -1));
+    //        //    return;
+    //        //}
+
+    //        // Update the label with the mirrored username
+    //        //if (inputVal.length > 0) {
+    //        //    $('#memberidLabel').text(inputVal);
+    //        //} else {
+    //        //    $('#memberidLabel').empty(); // Clear the label if input is empty
+    //        //}
+
+    //        clearTimeout(debounceTimer);
+    //        debounceTimer = setTimeout(function () {
+    //            var username = $('#memberid').val().trim();
+    //            if (username.length === 0) {
+    //                //$('#icon').empty();
+    //                $('#usermessage').empty();
+    //                return;
+    //            }
+
+    //            // Construct the URL with the username as a query parameter
+    //            var checkUrl = 'https://kofcnc.agilesite.com/wip/registration/member-lookup?mbn=' + encodeURIComponent(username);
+
+    //            // Send a POST request to check the username availability
+    //            $.post(checkUrl, function (response) {
+    //                // Check the response for specific keywords within HTML
+    //                var rmessage = $(response).find('#rmessage');
+    //                var rstatus = $(response).find('#rstatus');
+    //                var rmembername = $(response).find('#rmembername');
+
+    //                var message = '';
+    //                var status = '';
+    //                var membername = '';
+
+    //                if (rmessage != null) {
+    //                    message = rmessage.val();
+    //                }
+
+    //                if (rstatus != null) {
+    //                    status = rstatus.val();
+    //                }
+
+    //                if (rmembername != null) {
+    //                    membername = rmembername.val();
+    //                }
+
+    //                $('#message').text(message);
+    //                $('#status').text(status);
+    //                $('#membername').text(membername);
+
+    //                if (status === 'NOT FOUND') {
+    //                    $('#usermessage').text('We are unabled to locate your membership information, please verify your membership number.');
+    //                    $('#btnRegister').hide();
+    //                    $('#btnRegister').css('visibility', 'hidden');
+    //                    //$('#message').text(message);
+    //                    //$('#status').text(status);
+    //                    //$('#membername').text(membername);
+    //                } else if (status === 'FOUND') {
+    //                    $('#usermessage').text('Welcome Brother ' + membername + '. <br />We can not register you to the site at this time. It looks like you already have an account, please contact support at info@kofcnc.org.');
+    //                    $('#btnRegister').hide();
+    //                    $('#btnRegister').css('visibility', 'hidden');
+    //                    //$('#message').text(message);
+    //                    //$('#status').text(status);
+    //                    //$('#membername').text(membername);
+    //                }
+    //                else if (status === 'OK') {
+    //                    $('#usermessage').text('Welcome Brother ' + membername + '. You may proceed to registration.');
+    //                    $('#btnRegister').show();
+    //                    $('#btnRegister').css('visibility', 'visible');
+    //                    //$('#message').text(message);
+    //                    //$('#status').text(status);
+    //                    //$('#membername').text(membername);
+    //                }
+    //                else {
+    //                    // do nothing.
+    //                }
+    //            }).fail(function () {
+    //                // Handle any errors (e.g., server not responding)
+    //                //$('#icon').html('<i class="fas fa-exclamation-triangle orange"></i>');
+    //                $('#message').text('We are experiencing technical difficulty, please contact support at info@kofcnc.org.');
+    //            });
+    //        }, 1000); // Wait for 1 second after user stops typing
+    //    });
+    //});
 </script>
 
 <!-- start common script -->
@@ -435,10 +1031,51 @@
             }
         }
     }
+
+    if (typeof setControlVisibility !== 'function' || typeof setControlVisibility === 'undefined') {
+        // show or hide control
+        setControlVisibility = function setControlVisibility(name, show) {
+            var n = "#" + name;
+
+            if (typeof (show) == 'undefined' || show == '') {
+                show = 'true';
+            }
+
+            if ($(n) != null) {
+                if (show == 'true') {
+                    $(n).show();
+                    $(n).css('visibility', 'visible');
+                }
+                else {
+                    $(n).hide();
+                    $(n).css('visibility', 'hidden');
+                }
+            }
+        }
+    }
+
 </script>
 
+<script>
+//jQuery(function($){
+//  $(document).ajaxSend(function() {
+//    $("#overlay").fadeIn(300);　
+//  });		
+//  $('#button').click(function(){
+//    $.ajax({
+//      type: 'GET',
+//      success: function(data){
+//        console.log(data);
+//      }
+//    }).done(function() {
+//      setTimeout(function(){
+//        $("#overlay").fadeOut(300);
+//      },500);
+//    });
+//  });	
+//});
+</script>
 <script type="text/javascript">
-
     if (typeof RedirectAndPostJSON !== 'function' || typeof RedirectAndPostJSON === 'undefined') {
         // post convert json to form data to page
         function RedirectAndPostJSON(postUrl, data) {
@@ -448,6 +1085,7 @@
 
     if (typeof sendJSON !== 'function' || typeof sendJSON === 'undefined') {
         function sendJSON(url, data) {
+            $("#overlay").fadeIn(300);　
             xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-type", "application/json");
@@ -458,11 +1096,11 @@
             }
             var data = JSON.stringify(data);
             xhr.send(data);
-
             xhr.onload = function () {
                 //var responseobj = xhr.response;
                 //alert(responseobj);
-                setTimeout(redirectToSelf, 1000);
+                $("#overlay").fadeOut(300);
+                setTimeout(redirectToSelf, 100);
             }
         }
     }
@@ -473,3 +1111,4 @@
         }
     }
 </script>
+

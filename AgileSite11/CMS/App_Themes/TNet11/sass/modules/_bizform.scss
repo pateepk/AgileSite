@@ -1,0 +1,280 @@
+// classes for required - add class to form field
+.FieldLabel .required {
+    //with required set on caption cell
+    &:before {
+        content: '*';
+        color: $brand-danger;
+        margin-right: 3px;
+        display: inline-block;
+    }
+}
+td.required {
+    //with required set on control cell
+    vertical-align: top;
+    position: relative;
+    .editing-form-control-nested-control {
+        &:after {
+            // add content after first div
+            content: '*';
+            color: $brand-danger;
+            margin-left: 3px;
+            display: block;
+            position: absolute;
+            top: 3px;
+            right: -5px;
+        }
+    }
+    
+    label {
+        //hides text above on captcha
+        display: none;
+    }
+}
+
+.EditingFormTable {
+	margin: 0 0 1em;
+	width: auto !important;
+	td {
+		padding: 3px;
+	}
+}
+.EditingFormCategoryRow {
+    font-size: 24px;
+    //font-family: $headings-font-family;
+}
+
+.FieldLabel {
+	text-align: right;
+	padding-right: 3px;
+	vertical-align: top;
+	position: relative; //for asterisk in cart
+	
+	label {
+		margin-top: 5px;
+	}
+	label small {
+    	// if small is added inside caption
+		display: block;
+		margin-top: 4px;
+		color: $gray-light;
+	}
+}
+.UploaderUpload {
+	td span {
+		display: none; //extra label
+	}
+}
+.uploader {
+	input.HiddenButton {
+		display: none; //empty btn
+		width: 0;			
+	}
+}
+
+.input-width-15 {
+    max-width: 3em;
+    margin: 0 2px;
+}
+
+.input-width-20 {
+    max-width: 4em;
+    margin: 0 2px;
+}
+
+.CaptchaTable {
+    display: inline-block;
+	td {
+		padding: 0;
+	}
+	td:nth-child(2) {
+    	//hide empty table cell
+    	display: none;
+	}
+	tbody, tr, td {
+    	display: block;
+	}
+	.CaptchaQuestion {
+    	font-weight: bold;
+    	padding-top: 4px;
+	}
+	.CaptchaAfterText {
+    	// this repeats answer question text
+		padding-left: 6px;
+		display: none;
+	}
+	
+	.radio,
+    .checkbox {
+        label {
+            display: inline-block;
+            margin-right: 1em;
+        }
+        
+    }
+
+}
+.captchaLabel {
+	display: none;
+}
+
+.ErrorLabel {
+    font-weight: bold;
+    margin-bottom: 3em;
+    display: block;
+}
+
+.ErrorLabel, 
+.FormErrorLabel {
+    color: $brand-danger;
+}
+
+.EditingFormErrorLabel {
+	background: $brand-danger;
+	color: white;
+	font-size: 12px;
+	padding: 4px 8px;
+}
+
+//used on blog comment, possibly other places as well
+.form-group {
+    margin-bottom: 1em;
+    
+    .editing-form-label-cell label {
+        font-weight: bold;
+    }
+    .editing-form-value-cell {
+
+    }
+    .CheckBoxMovedLeft {
+        float: left;
+        margin-bottom: 1em;
+        + label {
+          position: relative;
+          top: 5px;
+          left: 5px;  
+        }
+    }
+    
+}
+
+
+
+.inline-form {
+    //web part container for bizforms
+    @include breakpoint($bp-wide) {
+        width: 80%;
+        margin: 60px 0;
+    }
+    
+    table, 
+    tbody,
+    tr, 
+    td, 
+    th {
+        display: block;  
+        background: transparent;
+        padding: 0;
+        width: 100%; 
+    }
+    
+    tr {
+        padding-bottom: 4em;
+    }
+     
+    .EditingFormCategoryRow td {
+        color: tint($brand-primary,30);
+        
+        small {
+            color: tint($text-color, 30);
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        div {
+            padding: 2em 0 1em;
+            position: relative;
+            //width: 80%;
+            &:before {
+                position: absolute;
+                top: 2.35em;
+                z-index: 1;
+                display: block;  
+                width: 100%;
+                height: 3px;
+                border-bottom: 3px solid tint($brand-primary,30);
+                content: '';
+            }
+        }
+        span {
+            display: block;
+            padding: 0 .25em;
+            background: $white;
+            z-index: 200;
+            position: absolute;
+            left: 1em;
+        }
+    } 
+    
+    .FieldLabel {
+        text-align: left;
+        
+        .EditingFormLabel {
+            margin: 0;
+            display: block;
+            padding-bottom: 4px;
+            font-weight: bold;
+            line-height: 1.2;
+            
+            small {
+                font-weight: normal;
+                font-size: 13px;
+            }
+        }
+    }
+    
+    .required {
+        color: $brand-danger;
+    }
+    
+    
+    tr {
+        position: relative;
+        
+        .EditingFormErrorLabel {
+            position: absolute;
+            top: -2.5em;
+            left: 0;
+            width: auto;
+            line-height: 1;
+            border-radius: 3px;
+            text-align: center;
+            display: inline-block;
+            
+            &:after {
+            	@include triangle(8px, $brand-danger, down);
+            	content: '';
+            	position: relative;
+            	top: 2em;
+            	left: -2em;
+        	}
+        }
+    }
+    
+    .EditingFormButtonCell {
+        text-align: center;
+        
+        input {
+            display: inline-block;
+        }
+    }
+    
+    .WatermarkText {
+        color: $text-muted;
+    }
+    
+}
+
+.logon-password-retrieval-result {
+	display: block;
+	font-weight: bold;
+}

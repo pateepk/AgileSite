@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{181657D2-83F8-4CCA-A386-248876AC8295}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.ModuleLicenses.Web.UI</RootNamespace>
+    <AssemblyName>CMS.ModuleLicenses.Web.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.ModuleLicenses.Web.UI.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.ModuleLicenses.Web.UI.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ModuleLicenseKeyExtender.cs" />
+    <Compile Include="ModuleLicenseKeyListExtender.cs" />
+    <Compile Include="ModuleLicenseKeyListInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base.Web.UI\Base.Web.UI.csproj">
+      <Project>{AAB21685-08CB-42D6-B70F-CAFB766C0903}</Project>
+      <Name>Base.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755C13-7B45-48EA-8425-CBAD44133A02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine.Web.UI\DocumentEngine.Web.UI.csproj">
+      <Project>{68AF54B9-B6B4-4119-9590-E120F5605775}</Project>
+      <Name>DocumentEngine.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\FormEngine.Web.UI\FormEngine.Web.UI.csproj">
+      <Project>{71A95F61-5A1D-42D2-AA36-071A2D201754}</Project>
+      <Name>FormEngine.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Globalization\Globalization.csproj">
+      <Project>{D9B92F71-4497-4050-A75D-0F9C84DFBE6B}</Project>
+      <Name>Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003C67F-4B92-47BC-9117-CEA7429F929E}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ModuleLicenses\ModuleLicenses.csproj">
+      <Project>{47DC77E6-73AE-410C-9B17-D0FD928C25E9}</Project>
+      <Name>ModuleLicenses</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6BDC71F9-7A04-45DA-8821-1246EC51E3CE}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine.Web.UI\PortalEngine.Web.UI.csproj">
+      <Project>{A7F95B77-A99A-4753-9084-BA691FC786E1}</Project>
+      <Name>PortalEngine.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\UIControls\UIControls.csproj">
+      <Project>{0A45B54E-0AE9-48BB-A8CF-908E5A480626}</Project>
+      <Name>UIControls</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

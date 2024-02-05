@@ -1,0 +1,71 @@
+﻿<samlp:Response ID="_66122c60-8b90-4e42-bdcd-0c86bbd828d2" Version="2.0" IssueInstant="2021-07-19T19:40:05.321Z" Destination="https://www.trainingnetworknow.com/sso/TNN_SSO.aspx?companyid=5008" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://sts.windows.net/03c40a11-5519-405c-be41-02e4d5b8b33c/</Issuer>
+  <samlp:Status>
+    <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+  </samlp:Status>
+  <Assertion ID="_83dc56de-7eb7-4c5d-891b-864cb88cab01" IssueInstant="2021-07-19T19:40:05.321Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+    <Issuer>https://sts.windows.net/03c40a11-5519-405c-be41-02e4d5b8b33c/</Issuer>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+        <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+        <Reference URI="#_83dc56de-7eb7-4c5d-891b-864cb88cab01">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <DigestValue>Klntc748vpzIt8R5r0CUd8Lw7/0/qGkVfUSiCRnf3LU=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>iYBRAZ2eYch8DRNwUQ0IIejYEMryyo5+wa2kdxE5s9pLUr+yVGql9la0gVlUX0qK/oTGiijjG+VJMnFz92HC68L94NaSxU57gAYIMyIza8qWTr1HWlGvU57U2LqmGXXyjtJvRDtpT4gqB5nChn63W/6u1RXUBsyKviTJowiwalmdQcfqvJtzO4U+95IPtKibIHyU/ttlcboZQPyWF8f6bGKfkJqMQinucm1bWO5ivbGOR/JhL6/+7GEeMFVWifpYDGVy4kFf73k27gWPwQG5qBPkjPB0e3H6lgMuBhuiPFhukYZGbXYnRElspJxl/9/Z/8sSzVWhuoth69ekkEZHuA==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>MIIC8DCCAdigAwIBAgIQG2SEbtHp0JJFlSY0QMBxaTANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMTA3MTkxNjAxMjNaFw0yNDA3MTkxNjAxMjNaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwJVsEPl2hbw3v4YeWCX3yPjOkPDK9eJEPiFzRHIR3RKPdkRbPU0vfTZ7a+zy7Qe6m4NE7OyunbGUNsqiRzVdy1qKMOJ+Nx6UIAVzKPGQOd47SoesC1F065DcaKEip7O1NFudECc7R5UGKhMYwIfiIyeGpjpyJ18EaJbZ2RDjlMexzx0Nfukf5BHPOf/LwKWERygrnWrki/Cf3CK24BTCGlZYzw/dULvHA/e3DpQRjCStZh/qbeVyI+DicrKlSdRLxxFNoX6w5osyqLvky55mMTd2WYUbO6VFPX99H7F9XiHhgfVRC1zODga6CGV84nKB73FTZQdVVPNPBSnyhM5t8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAiY9hASYKxjO6M1QGaCz724EsxdaMQ3VTnfOJRktnnchy/UuisTwmzb1XB5Fiibte1DFIlSded+guyOi0z1YoZ1wIPwOOkIPhpRIsdil3N/X1/QY2yciSC45LI7H1f9AK6U6Ow+9O62N5Axt1qCeHvcryLk7REkdJWOhKzy+RVfm6cyFyh06gRX+6RyK6jm32+mOEKBQXkjvmAB9s4sA0wkTEFoGSmb6XWrYDqRECmXZqdl0FgvmjbsY0vcTEcf2XVJ1svke/UGqk/RDD9veNgouByKqWaJeOIrU1xX3qtj4kGu2GxQtmRUHBA7Or7Qe48kHoMAILJuuw2LOHy83Dk</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+    <Subject>
+      <NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress">admin@moblz.com</NameID>
+      <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <SubjectConfirmationData NotOnOrAfter="2021-07-19T20:40:05.227Z" Recipient="https://www.trainingnetworknow.com/sso/TNN_SSO.aspx?companyid=5008" />
+      </SubjectConfirmation>
+    </Subject>
+    <Conditions NotBefore="2021-07-19T19:35:05.227Z" NotOnOrAfter="2021-07-19T20:40:05.227Z">
+      <AudienceRestriction>
+        <Audience>spn:6b428e7f-a95e-4dd4-a2c9-66d99bf2438e</Audience>
+      </AudienceRestriction>
+    </Conditions>
+    <AttributeStatement>
+      <Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">
+        <AttributeValue>03c40a11-5519-405c-be41-02e4d5b8b33c</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">
+        <AttributeValue>6426d88e-255a-4acf-9017-1d54afb708ad</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.microsoft.com/identity/claims/displayname">
+        <AttributeValue>365 Admin</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.microsoft.com/identity/claims/identityprovider">
+        <AttributeValue>https://sts.windows.net/03c40a11-5519-405c-be41-02e4d5b8b33c/</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.microsoft.com/claims/authnmethodsreferences">
+        <AttributeValue>http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">
+        <AttributeValue>365</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">
+        <AttributeValue>Admin</AttributeValue>
+      </Attribute>
+      <Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">
+        <AttributeValue>admin@moblz.com</AttributeValue>
+      </Attribute>
+    </AttributeStatement>
+    <AuthnStatement AuthnInstant="2021-07-19T15:11:29.220Z" SessionIndex="_83dc56de-7eb7-4c5d-891b-864cb88cab01">
+      <AuthnContext>
+        <AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:Password</AuthnContextClassRef>
+      </AuthnContext>
+    </AuthnStatement>
+  </Assertion>
+</samlp:Response>

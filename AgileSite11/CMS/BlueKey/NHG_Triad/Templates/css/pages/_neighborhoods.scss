@@ -1,0 +1,256 @@
+/* ==========================================================================
+   SORTS
+   ========================================================================== */
+.neighborhoodSort {
+
+	li {
+
+		&:nth-child(1) {
+
+			@media #{$sm} {
+				@include span(4 no-gutter);
+			}
+		}
+
+		&:nth-child(2) {
+
+			@media #{$sm} {
+				@include span(2);
+			}
+		}
+
+		&:nth-child(3) {
+
+			@media #{$sm} {
+				@include span(2);
+			}
+		}
+
+		&:nth-child(4) {
+
+			@media #{$sm} {
+				@include span(4 wide last);
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   NEIGHBORHOOD LIST
+   ========================================================================== */
+.neighborhoodList {
+	margin: 0 -15px;
+	font-size: $font-sm;
+
+	@media #{$sm} {
+		margin: 0 -25px;
+	}
+
+	@media #{$md} {
+		margin: 0;
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+.neighborhoodBox {
+	font-family: $font-stack4;
+	line-height: $line-height-compact;
+	margin: 0 0 0.2em;
+	background: #F3F3F3;
+	padding: 7px 0;
+	border-top: 1px solid darken($gray-light, 5%);
+	border-bottom: 1px solid darken($gray-light, 5%);
+	position: relative;
+
+	@media #{$sm} {
+		padding: 0;
+		border-right: 1px solid darken($gray-light, 5%);
+	}
+
+	&:nth-child(even) {
+		background: #fafafa;
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+.neighborhoodBoxName {
+	padding: 0 15px;
+	font-weight: 700;
+	position: relative;
+
+	@media #{$sm} {
+		@include span(4 no-gutter);
+		height: 65px;
+		border-left: 1px solid darken($gray-light, 5%);
+		border-right: 1px solid darken($gray-light, 5%);
+	}
+
+	a, a:visited {
+		color: $primary;
+		
+		@media #{$sm} {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			padding: 0 9px;
+			-webkit-transform: translate(0, -50%);
+			-ms-transform: translate(0, -50%);
+			transform: translate(0, -50%);
+		}
+	}
+}
+
+.neighborhoodBoxPrice {
+	padding: 0 15px;
+	font-weight: 700;
+	position: relative;
+
+	@media #{$sm} {
+		@include span(2 wide no-gutter);
+		height: 65px;
+		border-right: 1px solid darken($gray-light, 5%);
+	}
+
+	span {
+
+		@media #{$sm} {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			padding: 0 9px;
+			-webkit-transform: translate(0, -50%);
+			-ms-transform: translate(0, -50%);
+			transform: translate(0, -50%);
+		}
+	}
+}
+
+.neighborhoodBoxCity {
+	padding: 0 15px;
+	position: relative;
+
+	@media #{$sm} {
+		@include span(2 wide no-gutter);
+		height: 65px;
+		border-right: 1px solid darken($gray-light, 5%);
+	}
+
+	span {
+
+		@media #{$sm} {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			padding: 0 9px;
+			-webkit-transform: translate(0, -50%);
+			-ms-transform: translate(0, -50%);
+			transform: translate(0, -50%);
+		}
+	}
+}
+
+.neighborhoodBoxBuilder {
+	padding: 0 15px;
+	position: relative;
+
+	@media #{$sm} {
+		@include span(4 wide last);
+		height: 65px;
+	}
+
+	span {
+
+		@media #{$sm} {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			padding: 0 9px;
+			-webkit-transform: translate(0, -50%);
+			-ms-transform: translate(0, -50%);
+			transform: translate(0, -50%);
+		}
+	}
+}
+
+/* ==========================================================================
+   NEIGHBORHOOD INTRO
+   ========================================================================== */
+.neighborhoodIntroLeft {
+	padding: 1em 0;
+
+	@media #{$md} {
+		@include span(9);
+		text-align: left;
+	}
+
+	p {
+		margin: 0 0 0.4em;
+	}
+}
+
+.neighborhoodDetailInfo {
+	font-weight: 700;
+
+	.neighborhoodIntroAddress {
+
+		&:before {
+			content: "\f041";
+			font-family: FontAwesome;
+			margin: 0 7px 0 0;
+			font-weight: normal;
+		}
+	}
+
+	.neighborhoodIntroHours {
+
+		&:before {
+			content: "\f017";
+			font-family: FontAwesome;
+			margin: 0 7px 0 0;
+			font-weight: normal;
+		}
+	}
+}
+
+.neighborhoodIntroRight {
+	text-transform: uppercase;
+	margin: 0 0 1em;
+
+	@media #{$md} {
+		@include span(2 last);
+		padding: 1em 0;
+	}
+
+	img {
+		display: block;
+		margin: 0 auto 0.4em;
+		max-width: 150px;
+	}
+}
+
+/* ==========================================================================
+   HELPFUL LINKS
+   ========================================================================== */
+.neighborhoodHelpfulLinks {
+	color: $secondary;
+	font-weight: 700;
+
+	a, a:visited {
+		color: $secondary;
+	}
+
+	i.fa {
+		font-weight: normal;
+		margin: 0 5px 0 0;
+	}
+}

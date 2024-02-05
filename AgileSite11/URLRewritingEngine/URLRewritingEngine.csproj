@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E12B35A8-D6F0-49D3-A30A-65D464C68F2A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.URLRewritingEngine</RootNamespace>
+    <AssemblyName>CMS.URLRewritingEngine</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.URLRewritingEngine.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.URLRewritingEngine.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Handlers\ABTest\ProcessABTestHandler.cs" />
+    <Compile Include="Handlers\URLRewriting\URLRewriterPageNotFoundEventArgs.cs" />
+    <Compile Include="Handlers\URLRewriting\URLRewriterPageNotFoundHandler.cs" />
+    <Compile Include="Handlers\URLRewriting\URLRewritingEventArgs.cs" />
+    <Compile Include="Handlers\URLRewriting\URLRewritingHandler.cs" />
+    <Compile Include="Handlers\ABTest\ProcessABTestEventArgs.cs" />
+    <Compile Include="Module\URLRewritingHandlers.cs" />
+    <Compile Include="Module\URLRewritingContext.cs" />
+    <Compile Include="Handlers\URLRewritingEvents.cs" />
+    <Compile Include="Module\URLRewritingMacros.cs" />
+    <Compile Include="MVC\CMSControllerFactory.cs" />
+    <Compile Include="MVC\Constraints\BaseDocumentConstraint.cs" />
+    <Compile Include="MVC\Constraints\CMSMvcDocumentConstraint.cs" />
+    <Compile Include="MVC\CMSMvcHelper.cs" />
+    <Compile Include="MVC\ImplementationAdapter\MvcAdapter.cs" />
+    <Compile Include="MVC\Routes\CMSDocumentRouteHelper.cs" />
+    <Compile Include="MVC\Routes\CMSDocumentRouteHandler.cs" />
+    <Compile Include="MVC\Routes\CMSRoute.cs" />
+    <Compile Include="MVC\Constraints\CMSDocumentRouteConstraint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rewriting\URLRewriter.cs" />
+    <Compile Include="Rewriting\PreferredCultureEvaluator.cs" />
+    <Compile Include="Rewriting\UrlRewritingAction.cs" />
+    <Compile Include="Module\URLRewritingModule.cs" />
+    <Compile Include="Module\URLRewritingModuleMetadata.cs" />
+    <Compile Include="Rewriting\URLRewritingParams.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base.Web.UI\Base.Web.UI.csproj">
+      <Project>{aab21685-08cb-42d6-b70f-cafb766c0903}</Project>
+      <Name>Base.Web.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CMSOutputFilter\CMSOutputFilter.csproj">
+      <Project>{8827B490-F624-400E-8350-46F3A006396C}</Project>
+      <Name>CMSOutputFilter</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{71755c13-7b45-48ea-8425-cbad44133a02}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEngine\DataEngine.csproj">
+      <Project>{A7A2ECD2-8C5C-4C95-9EFE-82D605FDB28C}</Project>
+      <Name>DataEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceProfiles\DeviceProfiles.csproj">
+      <Project>{6e43ddf3-893d-4915-8828-ef7d40f1396e}</Project>
+      <Name>DeviceProfiles</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEngine\DocumentEngine.csproj">
+      <Project>{CA36A1E6-9385-46AA-A10E-97699E293363}</Project>
+      <Name>DocumentEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EventLog\EventLog.csproj">
+      <Project>{7F74D14A-C101-457E-94B0-1DF57A619C84}</Project>
+      <Name>EventLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{AE25CC54-D7AB-4EFE-8A85-6BE0B336BE59}</Project>
+      <Name>Helpers</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{DBCB4EA1-3129-4D2E-A653-DC948A34E0C2}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseProvider\LicenseProvider.csproj">
+      <Project>{0C4D9649-03DF-4F4D-8ABB-0FC2B86A8FE4}</Project>
+      <Name>LicenseProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{8003c67f-4b92-47bc-9117-cea7429f929e}</Project>
+      <Name>Localization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroEngine\MacroEngine.csproj">
+      <Project>{c78d0dde-11b5-4bba-98c0-756ebb98228a}</Project>
+      <Name>MacroEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{d8bc8f2e-b5cb-472b-a894-3900a96ff456}</Project>
+      <Name>Membership</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{6bdc71f9-7a04-45da-8821-1246ec51e3ce}</Project>
+      <Name>Modules</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Mvc\Mvc.csproj">
+      <Project>{f5fb5bfb-0b70-4081-8e1e-858b08686d65}</Project>
+      <Name>Mvc</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PortalEngine\PortalEngine.csproj">
+      <Project>{3C35F9B3-FA34-4910-BDF6-BFDB27A2CB99}</Project>
+      <Name>PortalEngine</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Protection\Protection.csproj">
+      <Project>{bd8679f6-9bc7-48ea-8dce-f244bc328ba8}</Project>
+      <Name>Protection</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Routing.Web\Routing.Web.csproj">
+      <Project>{bd2f25a8-9315-4341-aac3-e9731922ddb2}</Project>
+      <Name>Routing.Web</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Search\Search.csproj">
+      <Project>{1f2ee2a3-4d9c-4c9b-96cc-4414656301f2}</Project>
+      <Name>Search</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFarmSync\WebFarmSync.csproj">
+      <Project>{b428927b-b248-4428-ba1c-38fc6c2d8bcd}</Project>
+      <Name>WebFarmSync</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{25431232-C0B1-4AEF-890F-B92DA6DF2BED}</Project>
+      <Name>Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SiteProvider\SiteProvider.csproj">
+      <Project>{03F631A2-1728-411F-851B-58B33200B7EA}</Project>
+      <Name>SiteProvider</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAnalytics\WebAnalytics.csproj">
+      <Project>{C2B6B91C-1D58-4531-8893-388960AFAA80}</Project>
+      <Name>WebAnalytics</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\WebServices\WebServices.csproj">
+      <Project>{e609c084-7148-4286-b420-e9e5f4b1512f}</Project>
+      <Name>WebServices</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="CMS.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

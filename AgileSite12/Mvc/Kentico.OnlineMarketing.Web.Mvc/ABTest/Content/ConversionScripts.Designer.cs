@@ -19,7 +19,7 @@ namespace Kentico.OnlineMarketing.Web.Mvc.ABTest.Content {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ConversionScripts {
@@ -61,17 +61,7 @@ namespace Kentico.OnlineMarketing.Web.Mvc.ABTest.Content {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///(function (LOG_URL) {
-        ///    var xmlhttp = new XMLHttpRequest();
-        ///    // The actual response does not matter. If error occurred during request it should be logged on server side.
-        ///    // If everything is OK there is no action to be performed.
-        ///    xmlhttp.open(&quot;POST&quot;, LOG_URL, true);
-        ///    xmlhttp.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
-        ///    xmlhttp.send(
-        ///        &quot;url=&quot; + encodeURIComponent(window.location.href)
-        ///    );
-        ///}).
+        ///   Looks up a localized string similar to (function (url, culture) { var xmlhttp = new XMLHttpRequest(); xmlhttp.open(&quot;POST&quot;, url, !0); xmlhttp.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;); xmlhttp.send(&quot;url=&quot; + encodeURIComponent(window.location.href) + &quot;&amp;culture=&quot; + encodeURIComponent(culture)); }).
         /// </summary>
         internal static string ConversionLogger {
             get {

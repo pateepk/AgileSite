@@ -1,0 +1,533 @@
+/* ==========================================================================
+   SORTS
+   ========================================================================== */
+.availableHomesSort {
+	margin: 0 auto;
+
+	@media #{$xl} {
+		@include span(10 no-gutter);
+		@include pre(1);
+	}
+
+	li {
+
+		&:nth-child(1) {
+
+			@media #{$md} {
+				@include span(1 wider no-gutter);
+
+				&:after {
+					content: "";
+				}
+			}
+		}
+
+		&:nth-child(2) {
+
+			@media #{$md} {
+				@include span(1 wide no-gutter);
+			}
+		}
+
+		&:nth-child(3) {
+
+			@media #{$md} {
+				@include span(3 no-gutter);
+			}
+		}
+
+		&:nth-child(4) {
+
+			@media #{$md} {
+				@include span(3 no-gutter);
+			}
+		}
+
+		&:nth-child(5) {
+
+			@media #{$md} {
+				@include span(1 no-gutter);
+			}
+		}
+
+		&:nth-child(6) {
+
+			@media #{$md} {
+				@include span(1 no-gutter);
+			}
+		}
+
+		&:nth-child(7) {
+
+			@media #{$md} {
+				@include span(1 no-gutter);
+			}
+		}
+
+		&:nth-child(8) {
+
+			@media #{$md} {
+				@include span(1 no-gutter);
+			}
+		}
+	}
+}
+
+.neighborhoodAvailableHomes .filterWrapper {
+	display: none;
+}
+
+/* ==========================================================================
+   AVAILABLE HOMES LIST
+   ========================================================================== */
+.availableHomesContainer {
+	background: $gray-ex-light;
+	margin: 0 -15px;
+
+	@media #{$sm} {
+		margin: 0 -25px;
+	}
+
+	@media #{$md} {
+		margin: 0 0 2em;
+		padding: 35px 0;
+	}
+
+	@media #{$lg} {
+		padding: 50px 0;
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+
+	.bannerFlag {
+
+		@media #{$md} {
+			margin-bottom: 2em;
+		}
+
+		@media #{$xl} {
+			@include pre(1);
+		}
+	}
+
+	&.builderAvailableHomes.bannerFlag {
+
+		@media #{$md} {
+			margin-bottom: 1px;
+		}
+	}
+}
+
+.availableHomesList {
+	margin: 0 auto;
+
+	@media #{$xl} {
+		@include span(10 no-gutter);
+		@include pre(1);
+	}
+}
+
+.availableHomeBox {
+	font-family: $font-stack4;
+	line-height: $line-height-compact;
+	margin: 0 0 2em;
+	background: #F3F3F3;
+	padding: 0;
+	border: 1px solid darken($gray-light, 5%);
+	position: relative;
+	font-size: 1.4rem;
+
+	@media #{$sm} {
+		padding: 0;
+		border-right: 1px solid darken($gray-light, 5%);
+	}
+
+	@media #{$md} {
+		margin: 0 0 0.2em;
+	}
+
+	&:nth-child(even) {
+		
+		@media #{$md} {
+			background: #fafafa;
+		}
+	}
+
+	&:after {
+		@extend .clearfix;
+	}
+}
+
+.availableHomeMobileHeader {
+	display: block;
+	font-family: $font-stack2;
+	text-transform: uppercase;
+	font-size: 1rem;
+	font-weight: 700;
+	color: $text-light;
+	margin: 0 0 0.4em;
+
+	@media #{$md} {
+		display: none;
+	}
+}
+
+.availableHomeContent {
+	display: block;
+	padding: 0 9px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.availableHomeThumb {
+	@include span(3 no-gutter);
+	display: block;
+	height: calc(100px - 30px);
+	position: relative;
+	border-right: 1px solid darken($gray-light, 5%);
+	border-bottom: 1px solid darken($gray-light, 5%);
+
+	@media #{$md} {
+		@include span(1 wider no-gutter);
+		height: 70px;
+		border-bottom: none;
+	}
+}
+
+.availableHomeDate {
+	position: absolute;
+	bottom: -30px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	background: $primary;
+	padding: 4px 0;
+	line-height: $line-height-compact;
+	font-weight: 700;
+
+	@media #{$md} {
+		width: auto;
+		left: 11px;
+		right: 11px;
+		bottom: 0;
+		font-size: 1rem;
+	}
+
+	.availableHomeMobileHeader {
+		color: #fff;
+		margin: 0;
+
+		@media #{$md} {
+			display: block;
+			font-size: 0.8rem;
+		}
+	}
+}
+
+.availableHomePrice {
+	display: none;
+
+	@media #{$md} {
+		@include span(1 wide no-gutter);
+		position: relative;
+		display: block;
+		height: 70px;
+		border-right: 1px solid darken($gray-light, 5%);
+		color: $secondary;
+		font-weight: 700;
+		font-size: 1.6rem;
+	}
+}
+
+.availableHomePriceMobile {
+	position: relative;
+	@include span(3 no-gutter);
+	height: 70px;
+	border-right: 1px solid darken($gray-light, 5%);
+	font-size: 1.2em;
+	font-weight: 700;
+	color: $secondary;
+
+	@media #{$md} {
+		display: none;
+	}
+}
+
+.availableHomeNeighborhood {
+	@include span(5 wide no-gutter);
+	height: 100px;
+	border-right: 1px solid darken($gray-light, 5%);
+	border-bottom: 1px solid darken($gray-light, 5%);
+	position: relative;
+
+	@media #{$md} {
+		@include span(3 no-gutter);
+		height: 70px;
+		font-size: 1.2rem;
+		border-bottom: none;
+	}
+
+	a, a:visited {
+		color: $primary;
+		text-decoration: underline;
+		display: block;
+		font-weight: 700;
+		margin: 0 0 0.4em;
+	}
+
+	span {
+		display: block;
+	}
+
+	.availableHomeMobileHeader {
+
+		@media #{$md} {
+			display: none;
+		}
+	}
+}
+
+.availableHomePlan {
+	@include span(4 wide last);
+	height: 100px;
+	border-bottom: 1px solid darken($gray-light, 5%);
+	position: relative;
+
+	@media #{$md} {
+		@include span(3 no-gutter);
+		height: 70px;
+		border-right: 1px solid darken($gray-light, 5%);
+		font-size: 1.2rem;
+		border-bottom: none;
+	}
+
+	span {
+		display: block;
+	}
+
+	.availableHomeMobileHeader {
+
+		@media #{$md} {
+			display: none;
+		}
+	}
+
+	.planName {
+		font-weight: 700;
+		text-transform: uppercase;
+		margin: 0 0 0.4em;
+
+		@media #{$md} {
+			color: $gray-med;
+		}
+	}
+
+	a, a:visited {
+		color: $primary;
+
+		@media #{$md} {
+			font-weight: 700;
+			text-decoration: underline;
+		}
+	}
+}
+
+.availableHomeLotNumber {
+	@include span(2 no-gutter);
+	position: relative;
+	height: 70px;
+	border-right: 1px solid darken($gray-light, 5%);
+	font-weight: 700;
+
+	@media #{$md} {
+		@include span(1 no-gutter);
+		height: 70px;
+		font-size: 1.2rem;
+	}
+}
+
+.availableHomeBedMobile {
+	@include span(3 no-gutter);
+	position: relative;
+	height: 70px;
+	border-right: 1px solid darken($gray-light, 5%);
+	font-weight: 700;
+
+	@media #{$md} {
+		display: none;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		margin: 0;
+	}
+
+	.availableHomeMobileHeader {
+		display: inline-block;
+		margin-right: 5px;
+	}
+}
+
+.availableHomeStories {
+	position: relative;
+	display: none;
+
+	@media #{$md} {
+		@include span(1 no-gutter);
+		display: block;
+		height: 70px;
+		border-right: 1px solid darken($gray-light, 5%);
+		font-size: 1.2rem;
+	}
+}
+
+.availableHomeBed {
+	position: relative;
+	display: none;
+
+	@media #{$md} {
+		@include span(1 no-gutter);
+		display: block;
+		height: 70px;
+		border-right: 1px solid darken($gray-light, 5%);
+		font-size: 1.2rem;
+	}
+}
+
+.availableHomeSqFt {
+	@include span(2 wide no-gutter);
+	position: relative;
+	height: 70px;
+	font-weight: 700;
+
+	@media #{$md} {
+		@include span(1 no-gutter);
+		height: 70px;
+		border-right: 1px solid darken($gray-light, 5%);
+		font-size: 1.2rem;
+	}
+}
+
+.availableHomeActions {
+	@include span(2 wider last);
+	position: relative;
+	height: 70px;
+
+	@media #{$md} {
+		@include span(1 last);
+		height: 70px;
+	}
+
+	.availableHomeContent {
+		padding: 0;
+
+		@media #{$sm} {
+			height: 100%;
+		}
+
+		@media #{$md} {
+			padding: 12px 11px 0;
+		}
+	}
+
+	a, a:visited {
+		background: $accent1;
+		color: #fff;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		display: block;
+		border-bottom: 1px solid #fff;
+		text-transform: uppercase;
+		font-family: $font-stack2;
+		font-size: 0.8em;
+		font-weight: 700;
+
+		@media #{$sm} {
+			position: absolute;
+			top: 0;
+			height: 100%;
+			left: 0;
+			width: 50%;
+			border: none;
+			border-right: 1px solid #fff;
+			padding: 17px 0 0;
+		}
+
+		@media #{$md} {
+			position: relative;
+			top: auto;
+			height: auto;
+			left: auto;
+			width: 100%;
+			border: none;
+			padding: 6px 5px;
+			margin: 0 0 5px;
+			font-size: 0.5em;
+			line-height: $line-height-compact;
+		}
+
+		&:last-child {
+			border: none;
+
+			@media #{$sm} {
+				left: 50%;
+			}
+
+			@media #{$md} {
+				left: auto;
+				margin-bottom: 0;
+			}
+		}
+
+		&:hover {
+			text-decoration: none;
+			background: $accent1-dark;
+		}
+
+		&.on {
+			background: $accent1-dark;
+		}
+
+		.fa {
+			margin: 0 4px;
+			font-size: 1em;
+
+			@media #{$md} {
+				font-size: 1.2em;
+				margin: 0 2px;
+			}
+		}
+	}
+}
+
+.availableHomeInfo {
+	border-top: 3px solid $accent1-dark;
+	clear: both;
+	padding: 15px;
+	line-height: 1.4;
+	font-family: $font-stack2;
+	display: none;
+
+	@media #{$md} {
+		font-size: $font-xs - 0.3;
+		border-top: 1px solid darken($gray-light, 5%);
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}

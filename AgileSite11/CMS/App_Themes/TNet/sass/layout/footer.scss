@@ -1,0 +1,44 @@
+// ------------------------------------
+// footer
+// ------------------------------------
+footer {
+    padding: 1em 0;
+    width: 100%;
+    background: $gray-darkest;
+    position: relative;
+
+    section {
+        @include container($c-small);
+        color: $gray-lightest;
+    }
+    
+
+}
+
+
+
+// scrollup -----------------------------------------
+// --------------------------------------------------
+.scroll-up {
+    font-size: 20px;
+    line-height: 1;
+
+	position: absolute;
+    top: -.75em;
+    left: 50%;
+    margin-left: -16px;
+    width: 32px;
+
+    text-align: center;
+
+    background: white;
+    color: $text-color;
+    border-radius: 50%;
+    border: 1px solid tint($brand-primary, 50);
+    padding: .2em 0;
+
+    &:hover {
+    	color: $brand-primary;
+	    text-decoration: none;
+    }
+}

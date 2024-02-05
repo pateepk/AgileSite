@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{71755C13-7B45-48EA-8425-CBAD44133A02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.Core</RootNamespace>
+    <AssemblyName>CMS.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\Debug\CMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Debug\CMS\CMS.Core.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\CMS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Release\CMS\CMS.Core.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CMS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AppCoreSetup.cs" />
+    <Compile Include="AssemblyVersionHelper.cs" />
+    <Compile Include="Attributes\Implementation\RegistrationPriority.cs" />
+    <Compile Include="Discovery\AssemblyDiscoveryHelper.cs" />
+    <Compile Include="Attributes\Contract\ContractAttribute.cs" />
+    <Compile Include="Attributes\Contract\NotContract.cs" />
+    <Compile Include="Attributes\Contract\StaticContractAttribute.cs" />
+    <Compile Include="Attributes\AssemblyDiscoverableAttribute.cs" />
+    <Compile Include="Attributes\Implementation\Lifestyle.cs" />
+    <Compile Include="Attributes\Implementation\RegisterImplementationAttribute.cs" />
+    <Compile Include="Attributes\Implementation\RequiredImplementationAttribute.cs" />
+    <Compile Include="Attributes\Interfaces\IPreInitAttribute.cs" />
+    <Compile Include="Attributes\Generators\GeneratedFromAttribute.cs" />
+    <Compile Include="Attributes\Interfaces\IInitAttribute.cs" />
+    <Compile Include="AppCore.cs" />
+    <Compile Include="Attributes\RegisterModuleAttribute.cs" />
+    <Compile Include="DefaultAssemblyResolver.cs" />
+    <Compile Include="Discovery\AssemblyDiscovery.cs" />
+    <Compile Include="Attributes\Implementation\DefaultImplementationAttribute.cs" />
+    <Compile Include="Factories\TypeManager.cs" />
+    <Compile Include="Factories\SingletonStorage.cs" />
+    <Compile Include="Interfaces\Macros\IMacroRoot.cs" />
+    <Compile Include="Interfaces\Macros\IMacroMethodParam.cs" />
+    <Compile Include="Interfaces\Macros\IMacroMethod.cs" />
+    <Compile Include="Interfaces\Default\DefaultPerformanceCounter.cs" />
+    <Compile Include="Interfaces\IPerformanceCounter.cs" />
+    <Compile Include="IoCContainer\IoCContainer.cs" />
+    <Compile Include="IoCContainer\IoCContainerExtensions.cs" />
+    <Compile Include="IoCContainer\ObjectFactoryLikeReleasePolicy.cs" />
+    <Compile Include="IoCContainer\Registration\IRegistration.cs" />
+    <Compile Include="IoCContainer\Registration\Registration.cs" />
+    <Compile Include="IoCContainer\Registration\Registration_1.cs" />
+    <Compile Include="IoCContainer\Registration\RegistrationCore.cs" />
+    <Compile Include="IoCContainer\ServiceRegistrationException.cs" />
+    <Compile Include="IoCContainer\ServiceResolutionException.cs" />
+    <Compile Include="IWorkerTask.cs" />
+    <Compile Include="Discovery\DiscoveryError.cs" />
+    <Compile Include="Discovery\ModuleDiscovery.cs" />
+    <Compile Include="Modules\Entries\DataStructures\BasicModuleInstallationMetaData.cs" />
+    <Compile Include="Modules\Entries\DataStructures\ModuleInstallationMetaData.cs" />
+    <Compile Include="Services\DefaultCoreServicesImplementations.cs" />
+    <Compile Include="Services\Default\DefaultDateTimeNowService.cs" />
+    <Compile Include="Services\Default\DefaultInstallableModulesInformationService.cs" />
+    <Compile Include="Services\Interfaces\IDateTimeNowService.cs" />
+    <Compile Include="Services\Interfaces\IInstallableModulesInformationService.cs" />
+    <Compile Include="Modules\Entries\ModuleEntry.cs" />
+    <Compile Include="Modules\Entries\ModuleEntrySort.cs" />
+    <Compile Include="Modules\ModuleMetadata.cs" />
+    <Compile Include="Modules\ModuleName.cs" />
+    <Compile Include="Services\Default\BufferedEvent.cs" />
+    <Compile Include="Services\Default\DefaultLogContext.cs" />
+    <Compile Include="Services\Default\DefaultWebFarmService.cs" />
+    <Compile Include="Services\Interfaces\ILogContext.cs" />
+    <Compile Include="Services\Interfaces\IWebFarmService.cs" />
+    <Compile Include="Services\Interfaces\IWebFarmTask.cs" />
+    <Compile Include="Services\Objects\BinaryData.cs" />
+    <Compile Include="Services\Objects\LoggingPolicy.cs" />
+    <Compile Include="Services\Objects\LoggingPolicyEnum.cs" />
+    <Compile Include="Services\Objects\WebFarmTask.cs" />
+    <Compile Include="Services\Objects\WebFarmTaskOptimizeActionEnum.cs" />
+    <Compile Include="Services\Default\DefaultConversionService.cs" />
+    <Compile Include="Services\Default\DefaultConnectionStringService.cs" />
+    <Compile Include="Services\Default\DefaultEventLogService.cs" />
+    <Compile Include="Services\Default\DefaultAppSettingsService.cs" />
+    <Compile Include="Services\Default\DefaultLocalizationService.cs" />
+    <Compile Include="Services\Default\DefaultSettingsService.cs" />
+    <Compile Include="Services\Interfaces\IConnectionStringService.cs" />
+    <Compile Include="Services\Interfaces\IEventLogService.cs" />
+    <Compile Include="Services\Interfaces\IConversionService.cs" />
+    <Compile Include="Modules\ModuleInfo.cs" />
+    <Compile Include="Modules\Entries\ModuleEntryManager.cs" />
+    <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\CoreServices.cs" />
+    <Compile Include="Factories\IObjectFactory.cs" />
+    <Compile Include="Factories\ObjectFactory.cs" />
+    <Compile Include="Services\Interfaces\IAppSettingsService.cs" />
+    <Compile Include="Services\Interfaces\ILocalizationService.cs" />
+    <Compile Include="Services\Interfaces\ISettingsService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wrappers\StaticWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMS.pfx" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.4.0.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.9.6.1\lib\net45\Mono.Cecil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.9.6.1\lib\net45\Mono.Cecil.Mdb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.9.6.1\lib\net45\Mono.Cecil.Pdb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.9.6.1\lib\net45\Mono.Cecil.Rocks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

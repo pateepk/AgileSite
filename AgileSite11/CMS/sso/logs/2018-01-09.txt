@@ -1,0 +1,50 @@
+11 09:39:18 1tdkx3tgzq5sskfkrzg3mzfe: Page_Load
+/sso/ssotest.aspx 09:39:34 1tdkx3tgzq5sskfkrzg3mzfe: Page_Load
+/sso/ssotest.aspx 09:39:34 1tdkx3tgzq5sskfkrzg3mzfe: cmdCheckCompany_Click
+ssotest.aspx 09:41:27 1tdkx3tgzq5sskfkrzg3mzfe: Page_Load
+ssotest.aspx 09:45:25 1tdkx3tgzq5sskfkrzg3mzfe: Page_Load
+ssotest.aspx 09:45:46 1tdkx3tgzq5sskfkrzg3mzfe: Page_Load
+ssotest.aspx 09:45:46 1tdkx3tgzq5sskfkrzg3mzfe: [BEGIN]
+cmdCheckCompany_Click
+Checking company![END]ssotest.aspx 09:46:27 1tdkx3tgzq5sskfkrzg3mzfe: Page_Load
+ssotest.aspx 09:46:27 1tdkx3tgzq5sskfkrzg3mzfe: [BEGIN]
+cmdCheckCompany_Click
+Checking company!
+[END]
+ssotest.aspx 10:22:39 1tdkx3tgzq5sskfkrzg3mzfe: Ho ho ho
+sso_nebraska.aspx 10:27:10 1tdkx3tgzq5sskfkrzg3mzfe: PHNhbWxwOlJlc3BvbnNlIFZlcnNpb249IjIuMCIgSUQ9ImE1MWNjZWFmLWEzOTAtNDk1NS1hMjZjLTBkMmJhODg0ZGQwZiIgSXNzdWVJbnN0YW50PSIyMDE4LTAxLTA5VDE1OjI3OjA4WiIgRGVzdGluYXRpb249InZpZXctc291cmNlOmh0dHBzOi8vd3d3LnRyYWluaW5nbmV0d29ya25vdy5jb20vc3NvL3Nzb19uZWJyYXNrYS5hc3B4IiB4bWxuczpzYW1scD0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnByb3RvY29sIj4NCiAgPHNhbWw6SXNzdWVyIHhtbG5zOnNhbWw9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDphc3NlcnRpb24iPlRyYWluaW5nTmV0d29ya05vdy1Qcm9kPC9zYW1sOklzc3Vlcj4NCiAgPHNhbWxwOlN0YXR1cz4NCiAgICA8c2FtbHA6U3RhdHVzQ29kZSBWYWx1ZT0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnN0YXR1czpTdWNjZXNzIiAvPg0KICA8L3NhbWxwOlN0YXR1cz4NCiAgPHNhbWw6QXNzZXJ0aW9uIElEPSJlZTNmMjdhOC05ZGQ0LTQwOWUtYTBkYy1hNjc4YWI4NzlhYzQiIElzc3VlSW5zdGFudD0iMjAxOC0wMS0wOVQxNToyNzowOFoiIFZlcnNpb249IjIuMCIgeG1sbnM6c2FtbD0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOmFzc2VydGlvbiI+DQogICAgPHNhbWw6SXNzdWVyPlRyYWluaW5nTmV0d29ya05vdy1Qcm9kPC9zYW1sOklzc3Vlcj4NCiAgICA8c2FtbDpTdWJqZWN0Pg0KICAgICAgPHNhbWw6TmFtZUlEIEZvcm1hdD0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6MS4xOm5hbWVpZC1mb3JtYXQ6dW5zcGVjaWZpZWQiPmFkbWluQHRyYWluaW5nbmV0d29ya25vdy5jb208L3NhbWw6TmFtZUlEPg0KICAgICAgPHNhbWw6U3ViamVjdENvbmZpcm1hdGlvbiBNZXRob2Q9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDpjbTpiZWFyZXIiPg0KICAgICAgICA8c2FtbDpTdWJqZWN0Q29uZmlybWF0aW9uRGF0YSBSZWNpcGllbnQ9Imh0dHBzOi8vd3d3LnRyYWluaW5nbmV0d29ya25vdy5jb20vc3NvL3Nzb19uZWJyYXNrYS5hc3B4IiBOb3RPbk9yQWZ0ZXI9IjIwMTgtMDEtMTBUMTU6Mjc6MDhaIiAvPg0KICAgICAgPC9zYW1sOlN1YmplY3RDb25maXJtYXRpb24+DQogICAgPC9zYW1sOlN1YmplY3Q+DQogICAgPHNhbWw6Q29uZGl0aW9ucyBOb3RCZWZvcmU9IjIwMTgtMDEtMDlUMTU6Mjc6MDhaIiBOb3RPbk9yQWZ0ZXI9IjIwMTgtMDEtMTBUMTU6Mjc6MDhaIj4NCiAgICAgIDxzYW1sOkF1ZGllbmNlUmVzdHJpY3Rpb24+DQogICAgICAgIDxzYW1sOkF1ZGllbmNlPjwvc2FtbDpBdWRpZW5jZT4NCiAgICAgIDwvc2FtbDpBdWRpZW5jZVJlc3RyaWN0aW9uPg0KICAgIDwvc2FtbDpDb25kaXRpb25zPg0KICAgIDxzYW1sOkF1dGhuU3RhdGVtZW50IFNlc3Npb25JbmRleD0iMmE2NzYyMDQtYzg0My00ZTEwLTgxOTAtMWY5ODY2YmE5MjYzIiBBdXRobkluc3RhbnQ9IjIwMTgtMDEtMDlUMTU6Mjc6MDhaIj4NCiAgICAgIDxzYW1sOkF1dGhuQ29udGV4dD4NCiAgICAgICAgPHNhbWw6QXV0aG5Db250ZXh0Q2xhc3NSZWY+dXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOmFjOmNsYXNzZXM6dW5zcGVjaWZpZWQ8L3NhbWw6QXV0aG5Db250ZXh0Q2xhc3NSZWY+DQogICAgICA8L3NhbWw6QXV0aG5Db250ZXh0Pg0KICAgIDwvc2FtbDpBdXRoblN0YXRlbWVudD4NCiAgICA8c2FtbDpBdHRyaWJ1dGVTdGF0ZW1lbnQ+DQo8c2FtbDpBdHRyaWJ1dGUgTmFtZT0iRnVsbE5hbWUiIE5hbWVGb3JtYXQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDphdHRybmFtZS1mb3JtYXQ6YmFzaWMiPg0KICAgICAgICA8c2FtbDpBdHRyaWJ1dGVWYWx1ZSB4c2k6dHlwZT0ieHM6c3RyaW5nIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPkNoYWNoYSBUZXN0aW5nPC9zYW1sOkF0dHJpYnV0ZVZhbHVlPg0KPC9zYW1sOkF0dHJpYnV0ZT48c2FtbDpBdHRyaWJ1dGUgTmFtZT0iRW1haWwiIE5hbWVGb3JtYXQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDphdHRybmFtZS1mb3JtYXQ6YmFzaWMiPg0KICAgICAgICA8c2FtbDpBdHRyaWJ1dGVWYWx1ZSB4c2k6dHlwZT0ieHM6c3RyaW5nIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPjYzNzM8L3NhbWw6QXR0cmlidXRlVmFsdWU+DQo8L3NhbWw6QXR0cmlidXRlPjxzYW1sOkF0dHJpYnV0ZSBOYW1lPSJDb21wYW55SUQiIE5hbWVGb3JtYXQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDphdHRybmFtZS1mb3JtYXQ6YmFzaWMiPg0KICAgICAgICA8c2FtbDpBdHRyaWJ1dGVWYWx1ZSB4c2k6dHlwZT0ieHM6c3RyaW5nIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPjE0NTI8L3NhbWw6QXR0cmlidXRlVmFsdWU+DQo8L3NhbWw6QXR0cmlidXRlPjwvc2FtbDpBdHRyaWJ1dGVTdGF0ZW1lbnQ+DQogIDwvc2FtbDpBc3NlcnRpb24+DQo8L3NhbWxwOlJlc3BvbnNlPg==
+sso_nebraska.aspx 10:28:27 1tdkx3tgzq5sskfkrzg3mzfe: [BEGIN]
+<samlp:Response Version="2.0" ID="3b4b72f2-86fb-4d9a-bd22-1d33c564791e" IssueInstant="2018-01-09T15:28:26Z" Destination="view-source:https://www.trainingnetworknow.com/sso/sso_nebraska.aspx" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">TrainingNetworkNow-Prod</saml:Issuer>
+  <samlp:Status>
+    <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+  </samlp:Status>
+  <saml:Assertion ID="e9f32a97-2861-44d2-af95-d4ad3099d38d" IssueInstant="2018-01-09T15:28:26Z" Version="2.0" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+    <saml:Issuer>TrainingNetworkNow-Prod</saml:Issuer>
+    <saml:Subject>
+      <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">admin@trainingnetworknow.com</saml:NameID>
+      <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <saml:SubjectConfirmationData Recipient="https://www.trainingnetworknow.com/sso/sso_nebraska.aspx" NotOnOrAfter="2018-01-10T15:28:26Z" />
+      </saml:SubjectConfirmation>
+    </saml:Subject>
+    <saml:Conditions NotBefore="2018-01-09T15:28:26Z" NotOnOrAfter="2018-01-10T15:28:26Z">
+      <saml:AudienceRestriction>
+        <saml:Audience></saml:Audience>
+      </saml:AudienceRestriction>
+    </saml:Conditions>
+    <saml:AuthnStatement SessionIndex="106f07cb-9ef6-4ba4-aee3-e29ca039bafd" AuthnInstant="2018-01-09T15:28:26Z">
+      <saml:AuthnContext>
+        <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml:AuthnContextClassRef>
+      </saml:AuthnContext>
+    </saml:AuthnStatement>
+    <saml:AttributeStatement>
+<saml:Attribute Name="FullName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Chacha Testing</saml:AttributeValue>
+</saml:Attribute><saml:Attribute Name="Email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">637333</saml:AttributeValue>
+</saml:Attribute><saml:Attribute Name="CompanyID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1452</saml:AttributeValue>
+</saml:Attribute></saml:AttributeStatement>
+  </saml:Assertion>
+</samlp:Response>
+[END]

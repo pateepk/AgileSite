@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AppSettings>
+  <Data>
+    <Type>ConnectionString</Type>
+    <Name>EBPP</Name>
+    <Value WebServer="WIN-ACVIB7J83KQ" Value="Data Source=10.100.1.111;Initial Catalog=ACS_EBPP;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="1" Value="Data Source=10.100.1.111;Initial Catalog=ACS_EBPP;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="2" Value="Data Source=10.100.1.111;Initial Catalog=ACS_EBPP;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="3" Value="Data Source=10.100.1.111;Initial Catalog=ACS_EBPP;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="4" Value="Data Source=10.100.1.111;Initial Catalog=ACS_EBPP;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Notes>Admin Connection String for default database</Notes>
+  </Data> 
+  <Data>
+    <Type>ConnectionString</Type>
+    <Name>DefaultDB</Name>
+    <Value WebServer="WIN-ACVIB7J83KQ" Value="Data Source=10.100.1.112;Initial Catalog=PSE_billing;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="1" Value="Data Source=10.100.1.112;Initial Catalog=PSE_billing;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="2" Value="Data Source=10.100.1.112;Initial Catalog=PSE_billing;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="3" Value="Data Source=10.100.1.112;Initial Catalog=PSE_billing;User ID=sa;Password=frodo;Integrated Security=False;" />    
+    <Value WebServer="4" Value="Data Source=10.100.1.112;Initial Catalog=PSE_billing;User ID=sa;Password=RxX0t66jo0s~;Integrated Security=False;" />
+    <Notes>Admin Connection String for default database</Notes>
+  </Data>
+  <Data>
+    <Type>ConnectionString</Type>
+    <Name>EGivings</Name>
+    <Value WebServer="WIN-ACVIB7J83KQ" Value="Data Source=10.100.1.112;Initial Catalog=AS9_Production_AgileSite9;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="1" Value="Data Source=10.100.1.112;Initial Catalog=AS9_Production_AgileSite9;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="2" Value="Data Source=10.100.1.112;Initial Catalog=AS9_Production_AgileSite9;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="3" Value="Data Source=10.100.1.112;Initial Catalog=AS9_Production_AgileSite9;User ID=sa;Password=frodo;Integrated Security=False;" />
+    <Value WebServer="4" Value="Data Source=10.100.1.112;Initial Catalog=AS9_Production_AgileSite9;User ID=sa;Password=RxX0t66jo0s~;Integrated Security=False;" />
+    <Notes>Admin Connection String for default database</Notes>
+  </Data>
+</AppSettings>

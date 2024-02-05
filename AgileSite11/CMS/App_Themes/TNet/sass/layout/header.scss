@@ -1,0 +1,150 @@
+// ------------------------------------
+// header -
+// ------------------------------------
+header {
+    padding: .5em 0 1em;
+    line-height: 1;
+    width: 100%;
+    position: relative;
+    background: white;
+
+    section {
+        @include container($c-small);
+    }
+
+    .logo,
+    .co-brand {
+        text-align: center;
+    }
+    
+    .co-brand {
+        margin-top: 1.5em;
+    }
+    
+    @include breakpoint($bp-mid) {
+        
+        .logo, 
+        .co-brand {
+            text-align: left;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .logo {
+            margin-right: 1.5em;
+        }
+        
+        .co-brand {
+            margin-top: 0;
+        }
+    }
+    
+    @include breakpoint($bp-xtra) {
+        section {
+           @include container($c-large);   
+        }
+    }
+}
+
+//menu toggle on mobile
+.mobile-only.toggle-menu {
+    margin-top: 1.5em; 
+    
+    a {
+        color: $text-color;
+        
+        font-size: 1.5em;  
+        
+        &:before {
+            content: $icon-bars;
+            @extend .icon;
+            position: relative;
+            top: 2px;
+            right: 6px; 
+        }
+    }
+}
+
+.nav-bar {
+    display: none;
+    padding: .5em 0;
+    //height: 50px;
+    
+    .topics-trigger a:before,
+    .login-nav a:after {
+	    @extend .icon;
+    }
+    
+    
+    
+    @include breakpoint($bp-mid) {
+        
+        display: block;
+        background: $brand-primary;
+        
+        section {
+           @include container($c-small);   
+        } 
+        
+        .topics-trigger {
+            //trigger for fly-out menu
+            @include span(2 of 12);
+            
+            a {
+                color: $gray-lighter;
+                padding: 6px 10px;
+                display: block;
+                font-weight: bold;
+                cursor: pointer;
+                
+                &:before {
+                    content: $icon-bars;
+                    
+                    position: relative;
+                    top: 2px;
+                    right: 6px; 
+                }
+                
+                &:hover {
+                    color: $gray-darkest;
+                }
+            }
+        }       
+        
+        .tasks-nav {
+            //container for dropdown menu
+            @include span(8 of 12);
+
+        }
+        
+        .login-nav {
+            //holds logout link
+            @include span(2 of 12 last);
+            
+            a {
+                color: $gray-lighter;
+                font-weight: bold;
+                padding: 6px 10px;
+                display: block;
+                
+                &:after {
+                    content: $icon-unlock-alt;
+                    position: relative;
+                    top: 2px;
+                    left: 6px; 
+                }
+                
+                &:hover {
+                    color: $gray-darkest;
+                }
+            }
+        }
+    }
+    
+    @include breakpoint($bp-xtra) {
+        section {
+           @include container($c-large);   
+        }
+    }
+}
+

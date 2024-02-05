@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ExcellaLite.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> -  Excella Lite</title>
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />  
+    <link href="~/Content/WTE-Core.css" rel="stylesheet" /> 
+    <link href="~/Content/Site.css" rel="stylesheet" /> 
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:PlaceHolder runat="server">        
+        <script src="<%: ResolveUrl("~/Scripts/jquery-1.8.3.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/jquery-ui.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/modernizr-2.6.2.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/Excellalite.js") %>"></script>
+    </asp:PlaceHolder>
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <asp:ScriptReference Name="jquery" />
+            <asp:ScriptReference Name="jquery.ui.combined" />
+        </Scripts>
+    </asp:ScriptManager>
+    <header>
+        <section>   
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title"><a runat="server" href="~/">
+                    <img src="<%: ResolveUrl("~/Images/WTE.jpg") %>" />
+                                      </a></p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+<%if(!user.isLogin) { %>
+                       
+                            <ul>
+                                <li><a id="loginLink" runat="server" href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        
+<% } else { %>
+                            <p>
+                                Hello <a runat="server" class="username" href="~/Account/Manage" title="Manage your account">
+                                    <%=user.FullName %>
+                                </a>|
+                                <a id="logoutLink" runat="server" href="~/Account/Logout">Log Out</a>
+                            </p>
+ <% } %>
+                   
+                </section>
+                <nav>
+                    <ul id="menu">
+<%--                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>--%>
+<%if(user.isLogin) { %>
+                        <li><a runat="server" href="~/Invoices/MyInvoices">Open Invoices</a></li>
+                        <li><a runat="server" href="~/Invoices/MyInvoices?InvoiceStatusID=1">In Transit Payments</a></li>
+                        <li><a runat="server" href="~/Invoices/MyInvoices?InvoiceStatusID=2">Closed Invoices</a></li>
+<% } %>
+<%if(user.isLogin && user.isUserAdministrator) { %>
+                        <li><a runat="server" href="~/Account/AccountBackdoors">Backdoors</a></li>
+                        <li><a runat="server" href="~/Account/AccountUsers">Users</a></li>
+                        <li><a runat="server" href="~/Account/UserActivityLogs">Logs</a></li>
+<% } %>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        </section> 
+    </header>
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left" style="height:200px;">
+                <p style="font-size:larger;">
+                    Disclaimer: Thank you for your prompt payment. Payment terms are based on your Master Service Agreement (MSA), Statement of Work (SOW) or Estimate of Work (EOW). Late payments are subject to the WTE Payment Terms Policy outlined in your MSA and/or Terms of Service Agreement.<br />
+                    Contact:
+                    If you have questions about invoices or need additional assistance utilizing this payment system, please contact the Billing Department at 866-994-7467 ext 104 or <a href="mailto:billing@wte.net">billing@wte.net</a>.
+                </p>
+                <p>&copy; <%: DateTime.Now.Year %> - Excella Lite                  
+                </p>
+            </div>
+        </div>
+    </footer>
+    </form>
+</body>
+</html>
