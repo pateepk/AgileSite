@@ -133,7 +133,6 @@
                                 <asp:ListItem Value="2" Text="Paul aka the Alien"></asp:ListItem>
                                 <asp:ListItem Value="3" Text="Jane aka Jungle Jane"></asp:ListItem>
                                 <asp:ListItem Value="4" Text="Stefanie Kammerman"></asp:ListItem>
-                                <asp:ListItem Value="7" Text="Wealth Summit"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>
