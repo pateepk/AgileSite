@@ -2,137 +2,333 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <title></title>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="web_author" content="WTE Solutions">
+   <meta name="google-site-verification" content="6cLh7LxlyALB12LWRUov1n4An4ZwMKm9SOUJQu74SWs" />
 
-    <!-- code required the following version of jquery -->
-    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js"></script>
-    <!--<script data-search-pseudo-elements src="https://kit.fontawesome.com/d39d472717.js" crossorigin="anonymous"></script>-->
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+   <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js"></script>
+
+   <link rel="stylesheet" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/css/core.min.css" type="text/css" media="all">
+
+   <!--v6 font awesome -->
+   <!--<script data-search-pseudo-elements src="https://kit.fontawesome.com/a2dcd68816.js" crossorigin="anonymous"></script>-->
+   <!--v5 font awesome?? -- why are we switching backwards???? - because v6 breaks all the icons on the site because it's written in v5 code - pk-->
+   <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js" crossorigin="anonymous" defer></script>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+   <link rel="apple-touch-icon" sizes="180x180" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon-16x16.png">
+   <link rel="mask-icon" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/safari-pinned-tab.svg" color="#5bbad5">
+   <link rel="shortcut icon" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon.ico">
+   <meta name="msapplication-TileColor" content="#ffffff">
 </head>
 <body>
-    
-<h2 class="center">Please enter your Knights of Columbus Member Number</h2>
-<div class="center">
-<div class="form-group large">
-  <label for="memberid">Member ID</label>
-  <input type="text" id="memberid" placeholder="Enter Member ID">
-  <div class="explanation-text">Enter User ID eg. 001234567, 1234567</div>
-  <!-- basic accessibility strongly prefers label to placeholder -->
-  <!-- suggest using explaination text for this is possible -->
-</div>
-</div>
-<div class="center p-b-1">
-  <div id="memberidLabel"></div> 
-  <div id="icon"></div>
-  <div id="usermessage"></div>
-  <div id="message"></div>
-  <div id="status"></div>
-  <div id="membername"></div>
-</div>
-<div class="center"><button id="btnRegister" name="btnRegister" type="button" class="btn btn-brand-2 btn-rounded btn-large btn-block">Register</button></div>
+
+   <style>
+      .heading1 {
+         /*position: absolute;*/
+         text-align: center;
+         font-size: 90%;
+         width: 100%;
+         /*top: 15%;*/
+         cursor: pointer;
+      }
+
+      .heading2 {
+         /*position: absolute;*/
+         text-align: center;
+         font-size: 100%;
+         font-weight: bold;
+         width: 100%;
+         /* top: 15%;*/
+         cursor: pointer;
+      }
+   </style>
+
+   <style type="text/css">
+      .heading1 {
+         /*position: absolute;*/
+         text-align: center;
+         font-size: 90%;
+         width: 100%;
+         /*top: 15%;*/
+         cursor: pointer;
+      }
+
+      .heading2 {
+         /*position: absolute;*/
+         text-align: center;
+         font-size: 100%;
+         font-weight: bold;
+         width: 100%;
+         /* top: 15%;*/
+         cursor: pointer;
+      }
+
+      .messagetext {
+         /*position: absolute;*/
+         text-align: center;
+         font-size: 70%;
+         /*font-weight: bold;*/
+         width: 100%;
+         /* top: 15%;*/
+         cursor: pointer;
+      }
+
+      .errortext {
+         /*position: absolute;*/
+         text-align: center;
+         font-size: 70%;
+         color: darkred;
+         /*font-weight: bold;*/
+         width: 100%;
+         /* top: 15%;*/
+         cursor: pointer;
+      }
+   </style>
+   <div class="center heading1" id="intro1">This is a completely new site and your login information from the old state website was not transfer over.</div>
+   <div class="center heading2" id="intro2">
+      Please enter your Knights of Columbus<br />
+      Member Number to begin Registration.
+   </div>
+
+   <div class="center">
+      <div class="form-group large">
+         <label for="memberid" style="visibility:hidden;">Member ID</label>
+         <input type="text" id="memberid" placeholder="Enter your member number">
+         <div class="explanation-text">Enter your member number<br />eg. 001234567, 1234567</div>
+      </div>
+   </div>
+   <div class="center messagetext">
+      <div id="welcomemessage"></div>
+      <div id="errormessage1"></div>
+      <div id="errormessage2"></div>
+      <div id="errormessage3"></div>
+      <div id="contactsupport1">please contact support at <a href="mailto:info@kofcnc.org">info@kofcnc.org</a> for assistance.</div>
+      <div id="contactsupport2">or contact support at <a href="mailto:info@kofcnc.org">info@kofcnc.org</a> for assistance.</div>
+   </div>
+   <div class="center"><button id="btnRegister" name="btnRegister" type="button" class="btn btn-brand-2 btn-rounded btn-large btn-block">Register</button></div>
+   <div class="center p-b-1" style="visibility:hidden;">
+      <div id="memberidLabel"></div>
+      <div id="icon"></div>
+      <div id="usermessage"></div>
+      <div id="message"></div>
+      <div id="status"></div>
+      <div id="membername"></div>
+   </div>
+   <script>
+      $(document).ready(function () {
+         var debounceTimer;
+
+         // hide support
+         $('#contactsupport').hide();
+         $('#contactsupport').css('visibility', 'hidden');
+
+         // hide register button
+         $('#btnRegister').hide();
+         $('#btnRegister').css('visibility', 'hidden');
 
 
-<script>
-$(document).ready(function () {
-    var debounceTimer;
-    $('#btnRegister').hide();
-    $('#btnRegister').css('visibility', 'hidden');
+         $('#contactsupport1').hide();
+         $('#contactsupport1').css('visibility', 'hidden');
+         $('#contactsupport2').hide();
+         $('#contactsupport2').css('visibility', 'hidden');
 
-    $('#memberid').on('keyup', function (event) {
-        // Regular expression for allowed characters
-        var regex = /^[a-zA-Z0-9_]*$/;
+         // set onlick event for register button
+         $('#btnRegister').on('click', function (event) {
+            RedirectToRegistration(event);
+         });
 
-        var inputVal = $(this).val();
-        //if (!regex.test(inputVal)) {
-        //    // Remove the last character if it's not allowed
-        //    $(this).val(inputVal.slice(0, -1));
-        //    return;
-        //}
+         $('#memberid').on('keyup', function (event, debounceTimer) {
+            ProcessMemberLookup(event, debounceTimer);
+         });
+      });
 
-        // Update the label with the mirrored username
-        //if (inputVal.length > 0) {
-        //    $('#memberidLabel').text(inputVal);
-        //} else {
-        //    $('#memberidLabel').empty(); // Clear the label if input is empty
-        //}
+      function ProcessMemberLookup(event, debounceTimer) {
 
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(function () {
-            var username = $('#memberid').val().trim();
-            if (username.length === 0) {
-                //$('#icon').empty();
-                $('#usermessage').empty();
-                return;
+         var lookupnow = false;
+         var hasMemberNumber = false;
+         // check for "enter", "return", "next", "go" button.
+         if (event.keyCode == 9) {
+            //you got tab i.e "NEXT" Btn
+            //$('#input-number').blur();
+            lookupnow = true;
+         }
+         if (event.keyCode == 13) {
+            //you got enter i.e "GO" Btn
+            //$('#input-number').blur();
+            lookupnow = true;
+         }
+
+         var memberid = $('#memberid');
+
+         if (memberid != null) {
+            var usernumber = $('#memberid').val().trim();
+            if (usernumber.length === 0) {
+               //$('#icon').empty();
+               $('#usermessage').empty();
+               return;
+            }
+            else {
+               if (usernumber.length >= 5) {
+                  hasMemberNumber = true;
+               }
             }
 
-            // Construct the URL with the username as a query parameter
-            var checkUrl = 'https://kofcnc.agilesite.com/wip/registration/member-lookup?mbn=' + encodeURIComponent(username);
+            // Regular expression for allowed characters
+            if (lookupnow === true || hasMemberNumber === true) {
+               console.log("looking up: " + usernumber);
+               //var regex = /^[a-zA-Z0-9_]*$/;
+               //var inputVal = $(this).val();
+               clearTimeout(debounceTimer);
+               debounceTimer = setTimeout(function (event) {
+                  LookupMember(usernumber, event);
+               }, 1); // 1 ms (1000  = 1 second)
+            }
+            else {
+               console.log("nothing to look up");
+            }
+         }
+      }
 
-            // Send a POST request to check the username availability
-            $.post(checkUrl, function (response) {
-                // Check the response for specific keywords within HTML
-                var rmessage = $(response).find('#rmessage');
-                var rstatus = $(response).find('#rstatus');
-                var rmembername = $(response).find('#rmembername');
+      function LookupMember(membernumber, event) {
 
-                var message = '';
-                var status = '';
-                var membername = '';
+         var allowduperegistration = true;
+         // Construct the URL with the username as a query parameter
+         var checkUrl = 'https://www.kofcnc.org/wip/registration/member-lookup?mbn=' + encodeURIComponent(membernumber);
 
-                if (rmessage != null) {
-                    message = rmessage.val();
-                }
 
-                if (rstatus != null) {
-                    status = rstatus.val();
-                }
 
-                if (rmembername != null) {
-                    membername = rmembername.val();
-                }
+         $('#welcomemessage').text('');
+         $('#errormessage1').text('');
+         $('#errormessage2').text('')
+         $('#errormessage3').text('');
+         $('#contactsupport1').hide();
+         $('#contactsupport1').css('visibility', 'hidden');
+         $('#contactsupport2').hide();
+         $('#contactsupport2').css('visibility', 'hidden');
+         $('#btnRegister').hide();
+         $('#btnRegister').css('visibility', 'hidden');
 
-                $('#message').text(message);
-                $('#status').text(status);
-                $('#membername').text(membername);
+         // Send a POST request to check the username availability
+         $.post(checkUrl, function (response) {
+            // Check the response for specific keywords within HTML
+            var rmessage = $(response).find('#rmessage');
+            var rstatus = $(response).find('#rstatus');
+            var rmembername = $(response).find('#rmembername');
 
-                if (status === 'NOT FOUND') {
-                    $('#usermessage').text('We are unabled to locate your membership information, please verify your membership number.');
-                    $('#btnRegister').hide();
-                    $('#btnRegister').css('visibility', 'hidden');
-                    //$('#message').text(message);
-                    //$('#status').text(status);
-                    //$('#membername').text(membername);
-                } else if (status === 'FOUND') {
-                    $('#usermessage').text('Welcome Brother ' + membername + '. <br/>We can not register you to the site at this time. It looks like you already have an account, please contact support at info@kofcnc.org.');
-                    $('#btnRegister').hide();
-                    $('#btnRegister').css('visibility', 'hidden');
-                    //$('#message').text(message);
-                    //$('#status').text(status);
-                    //$('#membername').text(membername);
-                }
-                else if (status === 'OK') {
-                    $('#usermessage').text('Welcome Brother ' + membername + '. You may proceed to registration.');
-                    $('#btnRegister').show();
-                    $('#btnRegister').css('visibility', 'visible');
-                    //$('#message').text(message);
-                    //$('#status').text(status);
-                    //$('#membername').text(membername);
-                }
-                else {
-                    // do nothing.
-                }
-            }).fail(function () {
-                // Handle any errors (e.g., server not responding)
-                //$('#icon').html('<i class="fas fa-exclamation-triangle orange"></i>');
-                $('#message').text('We are experiencing technical difficulty, please contact support at info@kofcnc.org.');
-            });
-        }, 1000); // Wait for 1 second after user stops typing
-    });
-});
-</script>
+            var message = '';
+            var status = '';
+            var membername = '';
+
+            if (rmessage != null) {
+               message = rmessage.val();
+            }
+
+            if (rstatus != null) {
+               status = rstatus.val();
+            }
+
+            if (rmembername != null) {
+               membername = rmembername.val();
+            }
+
+            $('#message').text(message);
+            $('#status').text(status);
+            $('#membername').text(membername);
+
+            if (status === 'NOT FOUND') {
+               $('#welcomemessage').text('We are unable to locate your membership information');
+               $('#errormessage1').text('please verify your membership number.');
+               $('#errormessage2').text('If your membership number is correct');
+               $('#contactsupport1').show();
+               $('#contactsupport1').css('visibility', 'visible');
+               //these are hidden currently.
+               $('#usermessage').text('We are unable to locate your membership information, please verify your membership number.');
+               $('#btnRegister').hide();
+               $('#btnRegister').css('visibility', 'hidden');
+               //$('#message').text(message);
+               //$('#status').text(status);
+               //$('#membername').text(membername);
+            } else if (status === 'FOUND') {
+               if (allowduperegistration === true) {
+                  $('#welcomemessage').text('Welcome Brother ' + membername);
+                  $('#errormessage1').text('According to our record you are already registered.');
+                  $('#errormessage2').text('You may proceed to register a second account using the button below')
+                  //$('#errormessage3').text('Or contact support for futher assistance');
+                  $('#contactsupport1').hide();
+                  $('#contactsupport1').css('visibility', 'hidden');
+                  $('#contactsupport2').show();
+                  $('#contactsupport2').css('visibility', 'visible');
+
+                  //these are hidden currently
+                  $('#usermessage').text('Welcome Brother ' + membername + '. You may proceed to registration.');
+                  $('#btnRegister').show();
+                  $('#btnRegister').css('visibility', 'visible');
+               }
+               else {
+                  $('#welcomemessage').text('Welcome Brother ' + membername);
+                  $('#errormessage').text('According to our record you are already registered.');
+                  //$('#errormessage').text('We can not register you to the site at this time');
+                  //$('#errormessage2').text('According to our record you are already registered.');
+                  $('#contactsupport1').show();
+                  $('#contactsupport1').css('visibility', 'visible');
+                  $('#contactsupport2').hide();
+                  $('#contactsupport2').css('visibility', 'hidden');
+                  //these are hudden currently.
+                  $('#usermessage').text('Welcome Brother ' + membername + '. We can not register you to the site at this time. It looks like you already have an account, please contact support at info@kofcnc.org.');
+                  $('#btnRegister').hide();
+                  $('#btnRegister').css('visibility', 'hidden');
+                  //$('#message').text(message);
+                  //$('#status').text(status);
+                  //$('#membername').text(membername);
+               }
+            }
+            else if (status === 'OK') {
+               $('#welcomemessage').text('Welcome Brother ' + membername);
+               $('#errormessage').text('Please proceed to registration by using the button below.');
+               $('#contactsupport').hide();
+               $('#contactsupport').css('visibility', 'hidden');
+               $('#usermessage').text('Welcome Brother ' + membername + '. You may proceed to registration.');
+               $('#btnRegister').show();
+               $('#btnRegister').css('visibility', 'visible');
+               //$('#message').text(message);
+               //$('#status').text(status);
+               //$('#membername').text(membername);
+            }
+            else {
+               // do nothing.
+            }
+         }).fail(function () {
+            // Handle any errors (e.g., server not responding)
+            //$('#icon').html('<i class="fas fa-exclamation-triangle orange"></i>');
+            $('#message').text('We are experiencing technical difficulty, please contact support at info@kofcnc.org.');
+
+            $('#errormessage').text('Please proceed to registration by using the button below.');
+            $('#contactsupport').show();
+            $('#contactsupport').css('visibility', 'visible');
+
+         });
+      }
+
+      function RedirectToRegistration(event) {
+         var membernumber = $('#memberid').val().trim();
+         if (membernumber.length > 0) {
+            // Redirect to the register page with the username
+            window.location.href = '/WIP/registration/registration?mbr=' + encodeURIComponent(membernumber);
+         } else {
+            alert('Please enter a membernumber.');
+         }
+      }
+   </script>
 </body>
 </html>
