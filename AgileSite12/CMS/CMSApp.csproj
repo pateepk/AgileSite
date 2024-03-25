@@ -1220,6 +1220,12 @@
     <Content Include="App_Themes\kofcNC\assets\img\logo-nckofc.jpg" />
     <Content Include="App_Themes\kofcNC\assets\img\missing-headshot.jpg" />
     <Content Include="App_Themes\kofcNC\assets\js\custom.min.js" />
+    <Content Include="App_Themes\kofcNC\assets\js\libs\trainingnetwork\search-filter-scripts.js" />
+    <Content Include="App_Themes\kofcNC\assets\js\libs\wte\wtecontrols.js" />
+    <Content Include="App_Themes\kofcNC\assets\js\libs\wte\wtedata.js" />
+    <Content Include="App_Themes\kofcNC\assets\js\libs\wte\wtedates.js" />
+    <Content Include="App_Themes\kofcNC\assets\js\libs\wte\wterequests.js" />
+    <Content Include="App_Themes\kofcNC\assets\js\libs\wte\wtewebrequesthandler.js" />
     <Content Include="App_Themes\rideology\assets\css\core.min.css" />
     <Content Include="App_Themes\rideology\assets\img\icon_search.png" />
     <Content Include="App_Themes\rideology\assets\img\logo%402x.png" />
@@ -4836,6 +4842,7 @@
     <Content Include="IntranetPortal\media\Media\Trees for Bugs\Trees-for-bugs-5.jpg" />
     <Content Include="IntranetPortal\media\Microsoft_Office_Upgrade\Microsoft Office graphics\msoffice.jpg" />
     <Content Include="IntranetPortal\media\Microsoft_Office_Upgrade\Microsoft Office graphics\msoffice_col.jpg" />
+    <Content Include="KofcNC\test_member_search.html" />
     <Content Include="KofcNC\test_member_filter.html" />
     <Content Include="KofcNC\test_member_lookup.html" />
     <Content Include="ObjectTranslationRESTService.svc" />
@@ -23478,7 +23485,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

@@ -31,241 +31,6 @@
    <meta name="msapplication-TileColor" content="#ffffff">
 </head>
 <body>
-   <style>
-      label {
-         font-weight: bold; /* Make the label text bold */
-         margin-right: 10px; /* Add some space between the label and the dropdown */
-         display: inline-block; /* Align label and dropdown on the same line */
-         vertical-align: middle; /* Align vertically */
-         margin-top: 5px; /* Add some space above the label */
-      }
-
-      select {
-         font-size: 1.2em; /* Increase the font size */
-         margin-right: 20px; /* Add some space to the right of the dropdown */
-         display: inline-block; /* Align label and dropdown on the same line */
-         vertical-align: middle; /* Align vertically */
-      }
-   </style>
-
-   <div>
-      <label for="ddlDistrict">District:</label>
-      <!-- need to load the district here -->
-      <select id="ddlDistrict">
-         <option value="0">Select District</option>
-         <option value="-1">Any</option>
-         <option value="1">1</option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-         <option value="4">4</option>
-         <option value="5">5</option>
-         <option value="6">6</option>
-         <option value="7">7</option>
-         <option value="21">21</option>
-         <option value="32">32</option>
-         <option value="33">33</option>
-      </select>
-
-      <label for="ddlCouncil">Council:</label>
-      <!-- need to load the options here -->
-      <select id="ddlCouncil">
-         <option value="0">Select Council</option>
-         <option value="-1">Any</option>
-         <option value="9549">9549</option>
-         <option value="9365">9365</option>
-         <option value="11235">11235</option>
-         <option value="14276">14276</option>
-      </select>
-
-      <label for="txtSearch">Search:</label>
-      <input class="input-search" type="text" id="txtSearch" name="txtSearch" placeholder="name or email" />
-      <button id="btnReset" class="btn btn-brand-2 btn-rounded btn-large btn-block">reset</button>
-   </div>
-
-   <script>
-      // button on click event
-      $(document).ready(function () {
-
-         var councilnum = getParamWithDefault('c', '-1');
-         var districtnum = getParamWithDefault('d', '-1');
-         var search = getParamWithDefault('search', '');
-         var sort = getParamWithDefault('s', '');
-
-         console.log('c=' + councilnum + ' d=' + districtnum + ' search=' + search + ' sort=' + sort);
-
-         SetFilterData();
-
-         //selectDropDownOption('ddlCouncil', councilnum, 'false', 'true', '400');
-         //selectDropDownOption('ddlDistrict', districtnum, 'false', 'true', '400');
-         //setControlValue('txtSearch', search);
-
-
-         //$('#districtDropdown, #councilDropdown').change(function () {
-
-         //    //        reloadWithQueryStringVars({
-         //    //        'district': district,
-         //    //        'council': council
-         //    //    });
-         //});
-         //var availableTags = autocompletedata;
-
-         //var availableTags = ["1", "12", "123"];
-         ////var data1 = JSON.parse(autocompletedata);
-         //$('#txtSearch').autocomplete({
-         //   source: availableTags,
-         //   autofocus: true,
-         //   disable: false,
-         //   //close: function (event, ui) {
-         //   //    checkHandle(name, event);
-         //   //},
-         //   //change: function (event, ui) {
-         //   //    checkHandle(name, event);
-         //   //},
-         //   messages: {
-         //      //noResults: 'no results',
-         //      noResults: '',
-         //      results: function (amount) {
-         //         //return amount + 'results.';
-         //         return '';
-         //      }
-         //   }
-         //});
-
-         //var districtDropdown = $('#ddlDistrict');
-         //if (districtDropdown != null) {
-         //   var values = '{"name":"Select District", "value": "0"}';
-         //   values += ",";
-         //   values += '{"name":"Any", "value": "-1"}';
-         //   values += ",";
-         //   values += '{"name":"1", "value": "1"}';
-         //   values += ",";
-         //   values += '{"name":"2", "value": "2"}';
-         //   values += ",";
-         //   values += '{"name":"3", "value": "3"}';
-         //   values += ",";
-         //   values += '{"name":"21", "value": "21"}';
-         //   //var jsonString = '{ "data": [' + values + ']}';
-         //   var jsonString = '[' + values + ']';
-         //   var regiondata = JSON.parse(jsonString);
-         //   districtDropdown.empty();
-         //   for (var i = 0; i < regiondata.length; i++) {
-         //      districtDropdown.append($("<option></option>").val(regiondata[i].value).html(regiondata[i].name));
-         //   }
-         //   //$(regiondata).each(function (i, val) {
-         //   //   $.each(val, function (k, v) {
-         //   //      console.log(k + " : " + v);
-         //   //     // districtDropdown.append($("<option></option>").val(regiondata.value).html(regiondata.name));
-         //   //   });
-         //   //});
-         //}
-
-
-         $('#txtSearch').on('keyup', function (event) {
-            OnKeyEvents(this, event);
-         });
-
-         $('#txtSearch').on('change', function (event) {
-            applyFilters(event);
-         });
-
-         $('#ddlCouncil').on('change', function (event) {
-            applyFilters(event);
-         });
-
-         $('#ddlDistrict').on('change', function (event) {
-            applyFilters(event);
-         });
-
-         $('#btnReset').on('click', function (event) {
-            resetSearch(event);
-         });
-      });
-
-      function SetFilterData(event) {
-
-         console.log("set filter data");
-
-         var councilnumold = getControlValue('ddlCouncil');
-         var districtnumold = getControlValue('ddlDistrict');
-         var searchtermold = getSearchTerm('txtSearch', 'name or email');
-
-         // not ideal but for now grab this from the param.
-         var councilnum = getParamWithDefault('c', '-1');
-         var districtnum = getParamWithDefault('d', '-1');
-         var search = getParamWithDefault('search', '');
-         var sort = getParamWithDefault('s', '');
-
-
-         // Construct the URL with the username as a query parameter
-         var checkUrl = 'https://www.kofcnc.org/system/lookups/get-filters';
-         checkUrl += '?c=' + encodeURIComponent(councilnum);
-         checkUrl += '&d=' + encodeURIComponent(districtnum);
-         checkUrl += '&search=' + encodeURIComponent(search);
-
-         // Send post to get data
-         $.post(checkUrl, function (response) {
-            // Check the response for specific keywords within HTML
-            var rregion = $(response).find('#rregion');
-            var rcouncil = $(response).find('#rcouncil');
-            var rmember = $(response).find('#rmember');
-            var rdistrict = $(response).find('#rdistrict');
-
-            var regiondata = JSON.parse(rregion.val());
-            var councildata = JSON.parse(rcouncil.val());
-            var memberdata = JSON.parse(rmember.val());
-            var districtdata = JSON.parse(rdistrict.val());
-
-            var districtDropdown = $('#ddlDistrict');
-            if (districtDropdown != null) {
-               districtDropdown.empty();
-               for (var i = 0; i < districtdata.length; i++) {
-                  districtDropdown.append($("<option></option>").val(districtdata[i].value).html(districtdata[i].name));
-               }
-            }
-
-            var councilDropdown = $('#ddlCouncil');
-            if (councilDropdown != null) {
-               councilDropdown.empty();
-               for (var i = 0; i < councildata.length; i++) {
-                  councilDropdown.append($("<option></option>").val(councildata[i].value).html(councildata[i].name));
-               }
-            }
-
-         }).fail(function () {
-            // Handle any errors (e.g., server not responding)
-            //$('#icon').html('<i class="fas fa-exclamation-triangle orange"></i>');
-            console.log("Houston, we have a problem");
-            //$('#message').text('We are experiencing technical difficulty, please contact support at info@kofcnc.org.');
-
-            //$('#errormessage').text('Please proceed to registration by using the button below.');
-            //$('#contactsupport').show();
-            //$('#contactsupport').css('visibility', 'visible');
-
-         });
-
-         console.log("setting drop down values");
-         // we set this here?
-         selectDropDownOption('ddlCouncil', councilnum, 'false', 'true', '400');
-         selectDropDownOption('ddlDistrict', districtnum, 'false', 'true', '400');
-         setControlValue('txtSearch', search);
-      }
-
-      // Apply the filter (when search or table header is clicked)
-      function applyFilters(event, sortID, sortParamName) {
-
-         var councilnum = getControlValue('ddlCouncil');
-         var districtnum = getControlValue('ddlDistrict');
-         var searchterm = getSearchTerm('txtSearch', 'name or email');
-
-         reloadWithQueryStringVars({
-            'c': councilnum,
-            'd': districtnum,
-            'search': searchterm,
-            's': sortID
-         });
-      }
-
-   </script>
 
    <script>
 
@@ -530,7 +295,7 @@
          window.location = window.location.href.split('?')[0];
       }
 
-      // reload with query string (does not add item with empty values and keep param not in reloaded list)
+      // reload with query string (does not add item with empty values)
       function reloadWithQueryStringVars(queryStringVars) {
          var existingQueryVars = location.search ? location.search.substring(1).split('&') : [],
             currentUrl = location.search ? location.href.replace(location.search, '') : location.href,
@@ -868,31 +633,104 @@
          window.history.pushState({ path: newUrl }, '', newUrl);
       }
 
-      function OnKeyEvents(ctrl, event) {
+      // Fill the filter with initial data from the query string
+      $(function () {
 
-         // check for "enter", "return", "next", "go" button.
-         if (event.keyCode == 9) {
-            //you got tab i.e "NEXT" Btn
-            //$('#input-number').blur();
-            applyFilters();
-         }
-         if (event.keyCode == 13) {
-            //you got enter i.e "GO" Btn
-            //$('#input-number').blur();
-            applyFilters();
-         }
+         var councilnum = getParamWithDefault('c', '-1');
+         var districtnum = getParamWithDefault('d', '-1');
+         var search = getParamWithDefault('search', '');
+         var sort = getParamWithDefault('s', '');
 
-         //$('#lblerror').text(msg);
-         //console.log(msg);
-      }
+         selectDropDownOption('ddlCouncil', councilnum, 'false', 'true', '400');
+         selectDropDownOption('ddlDistrict', districtnum, 'false', 'true', '400');
+         setControlValue('txtSearch', search);
+
+         //$('#districtDropdown, #councilDropdown').change(function () {
+
+         //    //        reloadWithQueryStringVars({
+         //    //        'district': district,
+         //    //        'council': council
+         //    //    });
+         //});
+         //var availableTags = autocompletedata;
+         //var availableTags = ["1", "12", "123"];
+         //var data1 = JSON.parse(autocompletedata);
+         //$('#txtSearch').autocomplete({
+         //    source: availableTags,
+         //    autofocus: true,
+         //    disable: false,
+         //close: function (event, ui) {
+         //    checkHandle(name, event);
+         //},
+         //change: function (event, ui) {
+         //    checkHandle(name, event);
+         //},
+         //   messages: {
+         //noResults: 'no results',
+         //       noResults: '',
+         //       results: function (amount) {
+         //return amount + 'results.';
+         //           return '';
+         //       }
+         //   }
+         //}); // this turns it off because we are passing string?
+
+         //var councilnum = getParamWithDefault('c', '0');
+         //var distrcitnum = getParamWithDefault('d', '0');
+
+         //selectDropDownOption('ddlTimeFrameC', ctf);
+         //setTimeFrameSelection('C', 'c');
+
+         //var astatus = getParameterByName('astatus');
+         //var asterm = getParameterByName('asterm');
+         //var asort = getParameterByName('asort');
+         //var atf = getParameterByName('atf');
+
+         //selectDropDownOption('ddlStatusA', astatus, 'false', 'true', '400');
+         //setControlValue('txtSearchA', asterm);
+         //selectDropDownOption('ddlTimeFrameA', atf);
+         //setTimeFrameSelection('A', 'a');
+
+         //makeDatePicker('dpStartDateU');
+         //makeDatePicker('dpEndDateU');
+         //var usdt = getParamWithDefault('usdt', getPastDate(90));
+         //var uedt = getParamWithDefault('uedt', getToday());
+         //var usterm = getParameterByName('usterm');
+         //var usort = getParameterByName('usort');
+         //var ustatus = getParameterByName('ustatus');
+         //var utf = getParameterByName('utf');
+
+         //setControlValue('dpStartDateU', usdt, '400');
+         //setControlValue('dpEndDateU', uedt, '400');
+         //setControlValue('txtSearchU', usterm, '400');
+         //selectDropDownOption('ddlStatusU', ustatus, 'false', 'true', '400');
+         //selectDropDownOption('ddlTimeFrameU', utf);
+         //setTimeFrameSelection('U', 'u');
+
+      });
 
       // reset search (for entire page)
       function resetSearch() {
          reloadWithQueryStringVars({
-            'c': '',
             'd': '',
+            'c': '',
             'search': '',
             's': ''
+         });
+      }
+
+      // Apply the filter (when search or table header is clicked)
+      function applyFilters(sortID, sortParamName) {
+
+         var councilnum = getControlValue('ddlCouncil');
+         var districtnum = getControlValue('ddlDistrict');
+         var searchterm = getSearchTerm('txtSearch', 'name or email');
+
+         reloadWithQueryStringVars({
+            'c': councilnum,
+            'd': districtnum,
+            'search': searchterm,
+            's': sortID
          });
       }
 
@@ -919,6 +757,57 @@
          return ret;
       }
    </script>
+
+   <style>
+      label {
+         font-weight: bold; /* Make the label text bold */
+         margin-right: 10px; /* Add some space between the label and the dropdown */
+         display: inline-block; /* Align label and dropdown on the same line */
+         vertical-align: middle; /* Align vertically */
+         margin-top: 5px; /* Add some space above the label */
+      }
+
+      select {
+         font-size: 1.2em; /* Increase the font size */
+         margin-right: 20px; /* Add some space to the right of the dropdown */
+         display: inline-block; /* Align label and dropdown on the same line */
+         vertical-align: middle; /* Align vertically */
+      }
+   </style>
+
+   <div>
+      <label for="ddlDistrict">District:</label>
+      <!-- need to load the district here -->
+      <select id="ddlDistrict" onchange="applyFilters();">
+         <option value="0">Select District</option>
+         <option value="-1">Any</option>
+         <option value="1">1</option>
+         <option value="2">2</option>
+         <option value="3">3</option>
+         <option value="4">4</option>
+         <option value="5">5</option>
+         <option value="6">6</option>
+         <option value="7">7</option>
+         <option value="21">21</option>
+         <option value="32">32</option>
+         <option value="33">33</option>
+      </select>
+
+      <label for="ddlCouncil">Council:</label>
+      <!-- need to load the options here -->
+      <select id="ddlCouncil" onchange="applyFilters();">
+         <option value="0">Select Council</option>
+         <option value="-1">Any</option>
+         <option value="9549">9549</option>
+         <option value="9365">9365</option>
+         <option value="11235">11235</option>
+         <option value="14276">14276</option>
+      </select>
+
+      <label for="txtSearch">Search:</label>
+      <input class="input-search" type="text" id="txtSearch" name="txtSearch" placeholder="name or email" onchange="applyFilters();" />
+      <button id="btnReset" class="btn btn-brand-2 btn-rounded btn-large btn-block" onclick="resetSearch();">reset</button>
+   </div>
 
    <!-- sort test -->
    <a href="javascript:void(0);" onclick="applyFilters(event, 1);return false;"><i class="fas fa-sort"></i> ID</a>
