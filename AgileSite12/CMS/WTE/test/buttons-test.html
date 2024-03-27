@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="web_author" content="WTE Solutions">
+   <meta name="google-site-verification" content="6cLh7LxlyALB12LWRUov1n4An4ZwMKm9SOUJQu74SWs" />
+
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+   <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js"></script>
+
+   <link rel="stylesheet" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/css/core.min.css" type="text/css" media="all">
+
+   <!--v6 font awesome -->
+   <!--<script data-search-pseudo-elements src="https://kit.fontawesome.com/a2dcd68816.js" crossorigin="anonymous"></script>-->
+   <!--v5 font awesome?? -- why are we switching backwards???? - because v6 breaks all the icons on the site because it's written in v5 code - pk-->
+   <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js" crossorigin="anonymous" defer></script>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+   <link rel="apple-touch-icon" sizes="180x180" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon-16x16.png">
+   <link rel="mask-icon" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/safari-pinned-tab.svg" color="#5bbad5">
+   <link rel="shortcut icon" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon.ico">
+   <meta name="msapplication-TileColor" content="#ffffff">
+</head>
+<body>
+   <style>
+      .auto-grid {
+         margin-bottom: 1rem
+      }
+
+      @supports (display:grid) {
+         .auto-grid {
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fill,minmax(300px,1fr))
+         }
+      }
+
+      .auto-grid__btns {
+         max-width: 420px;
+         margin: 2rem auto
+      }
+
+         .auto-grid__btns.btn-test > div {
+            text-align: center
+         }
+
+            .auto-grid__btns.btn-test > div span {
+               font-size: .5rem;
+               margin-bottom: .25rem;
+               display: block
+            }
+
+   </style>
+
+   <p style="text-align: center;">These styles can be applied to any link. Just add the classes shown below to the link.</p>
+
+   <div class="auto-grid__btns btn-test">
+      <div><span>btn</span> <a class="btn" href="#">button</a></div>
+
+      <div><span>btn btn-dark</span> <a class="btn btn-dark" href="#">button</a></div>
+
+      <div><span>btn btn-default</span> <a class="btn btn-default" href="#">button</a></div>
+
+      <div><span>btn btn-brand-1</span> <a class="btn btn-brand-1" href="#">button</a></div>
+
+      <div><span>btn btn-brand-2</span> <a class="btn btn-brand-2" href="#">button</a></div>
+
+      <div><span>btn btn-brand-3</span> <a class="btn btn-brand-3" href="#">button</a></div>
+
+      <div><span>btn btn-brand-1 btn-arrow</span> <a class="btn btn-brand-1 btn-arrow" href="#">button<svg class="svg-inline--fa fa-f061" data-fa-i2svg="" data-fa-pseudo-element="::after" data-icon="f061" data-prefix="fas" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="currentColor"></path></svg></a></div>
+
+      <div><span>btn btn-brand-2 btn-arrow</span> <a class="btn btn-brand-2 btn-arrow" href="#">button<svg class="svg-inline--fa fa-f061" data-fa-i2svg="" data-fa-pseudo-element="::after" data-icon="f061" data-prefix="fas" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="currentColor"></path></svg></a></div>
+
+      <div><span>btn btn-brand-3 btn-arrow</span> <a class="btn btn-brand-3 btn-arrow" href="#">button<svg class="svg-inline--fa fa-f061" data-fa-i2svg="" data-fa-pseudo-element="::after" data-icon="f061" data-prefix="fas" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="currentColor"></path></svg></a></div>
+
+      <div><span>btn btn-border btn-brand-1</span> <a class="btn btn-border btn-brand-1" href="#">button</a></div>
+
+      <div><span>btn btn-border btn-brand-2</span> <a class="btn btn-border btn-brand-2" href="#">button</a></div>
+
+      <div><span>btn btn-border btn-brand-3</span> <a class="btn btn-border btn-brand-3" href="#">button</a></div>
+
+      <div><span>btn btn-brand-2 btn-rounded</span> <a class="btn btn-brand-1 btn-rounded" href="#">button</a></div>
+
+      <div><span>btn btn-brand-1 btn-rounded</span> <a class="btn btn-brand-2 btn-rounded" href="#">button</a></div>
+
+      <div><span>btn btn-brand-3 btn-rounded</span> <a class="btn btn-brand-3 btn-rounded" href="#">button</a></div>
+
+      <div><span>btn btn-brand-1 btn-rounded btn-border</span> <a class="btn btn-brand-1 btn-rounded btn-border" href="#">button</a></div>
+
+      <div><span>btn btn-brand-2 btn-rounded btn-border</span> <a class="btn btn-brand-2 btn-rounded btn-border" href="#">button</a></div>
+
+      <div><span>btn btn-brand-3 btn-rounded btn-border</span> <a class="btn btn-brand-3 btn-rounded btn-border" href="#">button</a></div>
+
+      <div><span>btn btn-brand-1 btn-rounded btn-large</span> <a class="btn btn-brand-1 btn-rounded btn-large" href="#">button</a></div>
+
+      <div><span>btn btn-brand-2 btn-small</span> <a class="btn btn-brand-2 btn-small" href="#">button</a></div>
+   </div>
+</body>
+</html>
