@@ -1,0 +1,291 @@
+﻿<!-- Button v2 -->
+<div class="right m-b-s">
+{%
+
+		/******************************************/
+		/* RetMode                                */
+		/* 1 = main client page                   */
+		/* 2 = to parent (client overview)        */
+		/* 3 = to subaccount overview             */
+		/* 4 = to employee                        */
+		/* 5 = back to subaccount/company         */
+		/* 6 = Quiz report main                   */
+		/* 7 = Video report main                  */
+		/******************************************/
+
+		/* https://trainingnetworknow.com/System/TestMacros?sdt=12/29/2019&edt=03/27/2020&SortID=0&tf=0&Status=1&searchTerm=x */
+		btn1_link = "/Secure/Administration/Employees/Employee-Report-Download";
+		btn1_title = "Download Report";
+		btn1_icon = "fas fa-download";
+		btn1_css = "btn-admin";
+		btn1_return = "1";
+		btn1_addparam = "1";
+		btn1_params = "";
+		btn2_link = "/Secure/Administration/Employees/Company-Videos";
+		btn2_title = "Available Videos";
+		btn2_icon = "fas fa-video";
+		btn2_css = "btn-admin";
+		btn2_return = "1";
+		btn2_addparam = "1";
+		btn2_params = "";
+		btn3_link = "/Secure/Administration/Employees/Create-new-User";
+		btn3_title = "Add New User";
+		btn3_icon = "fas fa-user-plus";
+		btn3_css = "btn-admin";
+		btn3_return = "1";
+		btn3_addparam = "1";
+		btn3_params = "";
+		
+		userCompany = Convert.ToString(CurrentUser.UserCompany, "");
+		userGuid = Convert.ToString(QueryString.GetValue("eid"),""); 
+		sortId = Convert.ToString(QueryString.GetValue("SortID"),""); 
+		status = Convert.ToString(QueryString.GetValue("status"),""); 
+		searchTerm = Convert.ToString(QueryString.GetValue("SearchTerm"),""); 
+		timeFrame = Convert.ToString(QueryString.GetValue("tf"),""); 
+		startDate = Convert.ToString(QueryString.GetValue("sdt"),""); 
+		endDate = Convert.ToString(QueryString.GetValue("edt"),"");
+		
+		redirectUrl = "/Secure/Administration/Clients/";
+		r = Convert.ToString(QueryString.GetValue("r"),""); /* return mode  */
+		dpguid = Convert.ToString(ParentItemGUID, ""); /* parentItemGUID from datasource */
+		dpcid  = Convert.ToString(ParentItemID,""); /* parentItemID from datasource */
+		dcguid = Convert.ToString(ItemGUID, ""); /* ItemGUID from datasource */
+		dcid = Convert.ToString(ItemID, ""); /* ItemID from dataSource */
+		back = Convert.ToString(QueryString.GetValue("back"), "");
+		parent = Convert.ToString(QueryString.GetValue("parent"), "");
+		client = Convert.ToString(QueryString.GetValue("client"), "");
+		subaccount = Convert.ToString(QueryString.GetValue("subaccount"), "");
+		itemid = Convert.ToString(QueryString.GetValue("ItemID"), "");
+		cid = Convert.ToString(QueryString.GetValue("cid"), "");
+		pcid = Convert.ToString(QueryString.GetValue("pcid"), "");
+		
+		newparams = "";
+		useCid = "";
+		buttons = "";
+		
+		if (cid != "")
+		{
+			useCid = cid;
+		}
+		else
+		{
+			if (userCompany != "")
+			{
+				useCid = userCompany;
+			}
+		}
+			
+		if (parent != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "parent=" + parent;
+		}
+
+		if (client != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "client=" + client;
+		}	
+		
+		if (subaccount != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "subaccount=" + subaccount;
+		}
+	
+		if (useCid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "cid=" + useCid;
+		}
+		
+		if (useCid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "CompanyID=" + useCid;
+		}
+				
+		if (pcid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "pcid=" + client;
+		}
+		
+		
+		if (r != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "r=" + r;
+		}
+		
+		
+		if (userGuid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "eid=" + userGuid;
+		}
+		
+		if (sortId != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "SortID=" + sortId;
+		}
+				
+		if (status != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "Status=" + status;
+		}
+
+		if (searchTerm != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "SearchTerm=" + searchTerm;
+		}
+		
+		if (timeFrame != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "tf=" + timeFrame;
+		}
+		
+		if (startDate != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "sdt=" + startDate;
+		}
+		
+		if (endDate != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "edt=" + endDate;
+		}	
+		
+		if (btn1_addparam == "1")
+		{
+			btn1_params = newparams;
+		}
+		
+		if (btn1_return != "")
+		{
+			if (btn1_params != "")
+			{
+				btn1_params = btn1_params + "&";
+			}
+			btn1_params = btn1_params + "r=" + btn1_return;	
+		}
+		
+		if (btn1_link != "")
+		{
+			if (btn1_params != "")
+			{
+				btn1_link = btn1_link + "?" + btn1_params;
+			}
+		}
+		
+		if (btn2_addparam == "1")
+		{
+			btn2_params = newparams;
+		}
+		
+		if (btn2_return != "")
+		{
+			if (btn2_params != "")
+			{
+				btn2_params = btn2_params + "&";
+			}
+			btn2_params = btn2_params + "r=" + btn2_return;	
+		}
+		
+		if (btn2_link != "")
+		{
+			if (btn2_params != "")
+			{
+				btn2_link = btn2_link + "?" + btn1_params;
+			}
+		}		
+		
+		if (btn3_addparam == "1")
+		{
+			btn3_params = newparams;
+		}	
+		
+		if (btn3_return != "")
+		{
+			if (btn3_params != "")
+			{
+				btn3_params = btn3_params + "&";
+			}
+			btn3_params = btn3_params + "r=" + btn3_return;	
+		}	
+		
+		if (btn3_link != "")
+		{
+			if (btn3_params != "")
+			{
+				btn3_link = btn3_link + "?" + btn3_params;
+			}
+		}		
+	
+		if (btn1_link != "")
+		{
+			buttons = buttons + "<a class=\"" + btn1_css + "\" href=\"" + btn1_link + "\"><i class=\"" + btn1_icon + "\"></i> " + btn1_title + "</a>";
+		}
+		
+		if (btn2_link != "")
+		{
+			buttons = buttons + "<a class=\"" + btn2_css + "\" href=\"" + btn2_link + "\"><i class=\"" + btn2_icon + "\"></i> " + btn2_title + "</a>";
+		}
+	
+		if (btn3_link != "")
+		{
+			buttons = buttons + "<a class=\"" + btn3_css + "\" href=\"" + btn3_link + "\"><i class=\"" + btn3_icon + "\"></i> " + btn3_title + "</a>";
+		}
+	
+		Convert.ToString(buttons);
+
+#%}
+   
+</div>

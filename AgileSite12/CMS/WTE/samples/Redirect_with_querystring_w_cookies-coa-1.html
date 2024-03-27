@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <!-- AccordionDropDownLogicJS -->
+    <script type="text/javascript">
+        var urlParams = ["entity", "sitelocation", "costcenter", "account", "program", "future1", "future2", "interEntity"];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            getURLParams();
+            checkNextAccordion();
+            convertCOAFormat();
+            checkCOA();
+        }, false);
+
+        // Gets current url and places previous searches in the dropdowns
+        function removeGenericValuesURL() {
+            var hasVals = location.search.replace("?", "");
+            hasVals.split('&');
+
+            if (hasVals.includes('&viewmode=0')) {
+                hasVals.replace('&viewmode=0', '')
+            } else if (hasVals.includes('viewmode=0')) {
+                hasVals.replace('viewmode=0', '')
+            }
+            return hasVals;
+        }
+
+        function getURLParams() {
+            var hasVals = removeGenericValuesURL();
+            if (hasVals.includes("&")) { // Has multiple parameters
+                hasVals = hasVals.split("&")
+
+                // Lets replace some url strings and place in the appropriate spotdocument.getElementById('account');
+                hasVals.forEach(x => {
+                    urlParams.forEach(y => {
+                        var element = document.getElementById(y);
+                        if (element != null) {
+                            if (x.includes(y)) {
+                                x = x.replace(y + "=", "");
+                                element.value = x;
+                            }
+                        }
+                    })
+                });
+            } else if (hasVals.includes('entity')) { // Only has entity
+                hasVals = hasVals.replace('entity=', '')
+                var element = document.getElementById('entity');
+                element.value = hasVals;
+            }
+
+            // Lets check for the last value and open the last accordion
+        }
+
+        function checkNextAccordion() {
+            var entity = document.getElementById('entity');
+            var lastSelected = '';
+            var acc = '';
+            var nextDDSelect = '';
+            var hasVals = removeGenericValuesURL().split("&");
+
+            if (hasVals.length > 0) {
+                lastSelected = hasVals.pop().split("=")[0];
+
+                urlParams.forEach((item, index, object) => {
+                    if (item == lastSelected) {
+                        nextDDSelect = object[index + 1]
+                        acc = document.getElementById(nextDDSelect);
+                        if (acc != null) {
+                            entity.parentElement.parentElement.style = 'height: 0px; overflow: hidden; display: none;' // Lets close a dd
+                            acc.parentElement.parentElement.style = 'height: auto; overflow: auto; display: block;' // open next
+                        }
+                    }
+                })
+            }
+        }
+
+        //
+        function convertCOAFormat() {
+            var coaElement = document.getElementById('coaCodeLoad');
+            var coa = []
+            if (coaElement != null) {
+                coa = coaElement.value.split('-');
+                coa[3] = '915040';
+                coaElement.value = coa.join('-');
+            }
+        }
+
+        // To check if there is a coa coming back from the database. if so, then remove the fake input field due to repeater
+        function checkCOA() {
+            var coa = document.getElementById("coaCodeLoad");
+            var removeTemp = document.getElementById("coaCodeTemp");
+            var cookieCoa = document.cookie;
+
+            if (cookieCoa.includes("COA_Combined")) {
+                if (!cookieCoa.includes(';')) {
+                    cookieCoa = cookieCoa.replace('COA_Combined=', '');
+                    removeTemp.placeholder = cookieCoa
+                }
+            }
+
+            if (coa != null && coa != undefined) {
+                if (coa.type != 'hidden')
+                    removeTemp.type = 'hidden';
+            }
+
+            if (document.cookie.includes('')) {
+
+            }
+        }
+
+        function selectNextProd(selObject) { // On DropDown Select
+            var dropDown = '';
+            url = "http://clinicoracle.myonlineordering.com/Tools/COA-String?";
+
+            var hasVals = removeGenericValuesURL();
+
+            var count = 0;
+            if (hasVals != "") {
+                if (hasVals.includes("&")) { // Multiple params logic
+                    hasVals = hasVals.split("&");
+                    console.log(hasVals);
+                    console.log(selObject);
+                    try {
+                        hasVals.forEach(x => {
+                            if (x.includes(selObject.id)) { // If we hit a new drop down choice
+                                throw BreakException;
+                            }
+                            urlParams.forEach(y => {
+                                if (x.includes(y)) {
+                                    if (count > 0) // lets add an & if not first param
+                                        url += "&"
+
+                                    x = x.replace(y + "=", "");
+                                    url += y + "=" + x;
+                                    count++
+                                }
+                            });
+                        });
+                    } catch (e) {
+                    }
+
+                    url += '&' + selObject.id + '=' + selObject.value
+
+                    if (selObject.id === "costcenter") {
+                        url += '&account=0';
+                    }
+
+                } else if (hasVals.includes('entity') && !hasVals.includes(selObject.id)) { // ENTITY Only
+                    url += hasVals + '&' + selObject.id + '=' + selObject.value;
+                } else { // Doesnt have
+                    url += selObject.id + '=' + selObject.value;
+                }
+            } else {
+                url += selObject.id + '=' + selObject.value;
+            }
+            window.location.href = url;
+        }
+
+        //Save Button && Cookie generator
+        function saveUserChoice() {
+            var selectedURL = "";
+
+            var coa = document.getElementById("coaCodeLoad");
+            if (coa != null && coa != undefined) {
+                var exdate = new Date();
+                saveToClipboard(coa.value);
+
+                // Save as Cookie
+                //exdate.setDate(exdate.getDate() + 30);
+                //var c_value = escape(coa.value) + ("; expires=" + exdate.toUTCString());
+                //document.cookie = 'COA_Combined=' + c_value;
+
+                // Redirect to bcex page and add coaID
+                var coaID = document.getElementById('coaID');
+                var redirectURL = getSetBcexCookie("url") + "coastringid=" + coaID.value
+                window.location.href = redirectURL;
+            }
+        }
+
+        // BCEX Cookie (in other tool page as well)
+        function getSetBcexCookie(action) {
+            var devModeURL = "http://site.bcex.zk4.com/Checkout.aspx/Checkout.aspx?";
+            var onlineOrderingURL = "https://site.myonlineordering.com/Checkout.aspx?"
+            var selected = "";
+            // Lets get the bcex cookie and redirect where nessecary
+            if (action === "url") {
+                var cookies = document.cookie;
+                if (cookies.includes("BCEX_Path")) {
+                    if (cookies.includes(';')) {
+                        cookies = cookies.split(';');
+                        cookies.forEach(x => {
+                            if (x.includes('BCEX_Path=')) {
+                                x = x.replace('BCEX_Path=', '');
+                                if (x.includes('true')) {
+                                    selected = devModeURL;
+                                } else {
+                                    selected = onlineOrderingURL;
+                                }
+                            }
+                        });
+
+                        cookies.forEach(x => {
+                            if (x.includes('BCEX_site')) {
+                                selected = selected.replace('site', x.replace('BCEX_site=', ''));
+                            };
+                        });
+                    }
+                }
+            }
+            return selected.replace(' ', '');
+        }
+
+        // Save to clipboard login
+        function saveToClipboard(coa) {
+            if (window.clipboardData && window.clipboardData.setData) {
+                // IE specific code path to prevent textarea being shown while dialog is visible.
+                return clipboardData.setData("Text", coa);
+
+            } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                var textarea = document.createElement("textarea");
+                textarea.textContent = coa;
+                textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+                } catch (ex) {
+                    console.warn("Copy to clipboard failed.", ex);
+                    return false;
+                } finally {
+                    document.body.removeChild(textarea);
+                }
+            }
+        }
+    </script>
+    <!-- sample output -->
+    <input type="hidden" id="coaID" value='20' />
+    <input id="coaCodeLoad" placeholder="1000-1000-12212-0-0-0-0-0" style="padding:.5em; margin-top:.5em; width: 100%;" value="1000-1000-12212-0-0-0-0-0" disabled="disabled" type="text" />
+
+    <!-- fake button -->
+    <input disabled="disabled" id="coaCodeTemp" placeholder="COA String" style="padding:.5em;margin-top:.5em;width: 100%;" type="text" value="" />
+
+    <!-- the next button -->
+    <button onclick="saveUserChoice()" style="margin-top:.5em;padding:.5em;" type="button">Next</button>
+</body>
+</html>

@@ -1,0 +1,541 @@
+<tr>
+   <td><%# Eval("[PropertyName]") %></td>
+   <!--<td><%# Eval("[Address]") %></br><%# Eval("[City]") %>, <%# Eval("[State]") %>&nbsp;<%# Eval("[uszipcode]") %></td> -->
+   <td>	
+      <b><div class="fas fa-check-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTApproved]")) %><br>
+      <b><div class="fas fa-question-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTPending]")) %><br>
+      <b><div class="fas fa-times-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTDenied]")) %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Yes", "", "<div class=\"fas fa-check-circle\"></div><span class=\"sr-only\"> Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "No", "", "<div class=\"fas fa-times-circle\"></div><span class=\"sr-only\"> Not Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Events Only", "", "<div class=\"fas fa-check-circle\"></div> Events Only") %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowMobileVendors]"), "Yes", "", "<span title=\"allowed\" class=\"tag-true\"><div class=\"fas fa-check-circle\"></div> <span class=\"sr-only\">Allowed</span></span>") %>
+      <%# IfCompare(Eval("[AllowMobileVendors]"), "No", "", "<span title=\"not allowed\" class=\"tag-false\"><div class=\"fas fa-times-circle\"></div> <span class=\"sr-only\">Not Allowed</span> </span>") %>
+   </td>
+   <td>
+      <a href="/Property-Manager-Home/Add-Tenants?pid=<%# Eval("Moblz_PropertyID") %>&Pname=<%# Eval("PropertyName") %>">Tenant Contacts</a>
+   </td>
+   <td>
+      <a href="/Building-Managers/Admin/Manage-Properties/Add-Property/<%# Eval("[ManagementID]") %>/<%# Eval("[PropertyID]") %>/">Edit Property</a><br>
+      <a href="/Building-Managers/Admin/Manage-Properties/Delete-Property/<%# Eval("[ManagementID]") %>/<%# Eval("[PropertyID]") %>/">Del Property</a>
+   </td>
+</tr>
+
+
+
+
+
+<tr>
+   <td><%# Eval("PropertyName") %></td>
+   <!--<td><%# Eval("[Address]") %></br><%# Eval("[City]") %>, <%# Eval("[State]") %>&nbsp;<%# Eval("[uszipcode]") %></td> -->
+   <td>	
+      <b><div class="fas fa-check-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTApproved]")) %><br>
+      <b><div class="fas fa-question-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTPending]")) %><br>
+      <b><div class="fas fa-times-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTDenied]")) %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Yes", "", "<div class=\"fas fa-check-circle\"></div><span class=\"sr-only\"> Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "No", "", "<div class=\"fas fa-times-circle\"></div><span class=\"sr-only\"> Not Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Events Only", "", "<div class=\"fas fa-check-circle\"></div> Events Only") %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("AllowMobileVendors"), "Yes", "", "<span title=\"allowed\" class=\"tag-true\"><div class=\"fas fa-check-circle\"></div> <span class=\"sr-only\">Allowed</span></span>") %>
+      <%# IfCompare(Eval("AllowMobileVendors"), "No", "", "<span title=\"not allowed\" class=\"tag-false\"><div class=\"fas fa-times-circle\"></div> <span class=\"sr-only\">Not Allowed</span> </span>") %>
+   </td>
+   <td>
+      <a href="/Property-Manager-Home/Add-Occupants?pid=<%# Eval("[PropertyID]") %>&Pname=<%# Eval("PropertyName") %>">Occupant Contacts</a><br />
+      <a href="/Property-Managers/Admin/Email-All-Occupants?PID=<%# Eval("[PropertyID]") %>">Email Occupants</a><br />
+      <a href="/Property-Managers/Admin/Vendors/<%# Eval("[PropertyID]") %>">Manage Vendors</a> 
+   </td>
+</tr>
+
+
+
+
+<strong>Reports</strong>
+<ul>
+	<li><a href="/Building-Managers/Admin/Communication-Portal/Reports/Report-Registered-Tenants">Registered Tenants</a></li>
+	<li><a href="/Building-Managers/Admin/Communication-Portal/Reports/Report-Registered-Occupants">Registered Occupant</a></li>
+	<li><a href="/Building-Managers/Admin/Communication-Portal/Reports/Report-Occupant-Emails-Sent">Emails and SMS to Occupants</a></li>
+	<li><a href="/Building-Managers/Admin/Communication-Portal/Reports/Report-Tenant-Email-Sent">Emails to Tenants</a></li>
+	<li><a href="/Building-Managers/Admin/Communication-Portal/Reports/Report-Vendor-Email-Sent">Emails to Vendors</a></li>
+	<li><a href="/Building-Managers/Admin/Communication-Portal/Reports/Report-Tenant-SMS-Sent">SMS To Tenants</a></li>
+	<li><a href="/Building-Managers/Admin/Communication-Portal/Reports/Report-Vendor-SMS-Sent">SMS to Vendors</a></li>
+</ul>
+
+"Single"
+<!-- Main-->
+<div class="wrapper style1">
+  <section id="main" class="container">
+	<!-- Content -->
+    <section id="content" class="box">
+      <div class="min sub-home">  
+        <div class="wrap">
+          <cms:CMSWebPartZone runat="server" ZoneID="zoneContent" />
+        </div>
+      </div>
+    </section>
+  </section>
+</div>
+
+"With side bar"
+
+
+<div class="wrapper style1">
+	<section id="main" class="container">
+		<header class="major">
+			<cms:CMSWebPartZone runat="server" ZoneID="zoneTitle" />
+		</header>
+		<div class="row">
+			<div class="8u 12u(narrower)">
+				<!-- Content -->
+				<section id="content" class="box">
+					<cms:CMSWebPartZone runat="server" ZoneID="zoneContent" />
+				</section>
+			</div>
+		<div class="4u 12u(narrower)">
+			<!-- Sidebar -->
+			<section id="sidebar" class="box">
+				<cms:CMSWebPartZone runat="server" ZoneID="zoneSidebar" />
+			</section>
+	</section>
+</div>
+						</div>
+
+					</section>
+				</div>
+-- the back button.	
+<a href="javascript:history.back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> BACK</a>
+
+<!-- more items -->
+
+EventDate >= CAST (GETDATE() AS DATE) OR (EventEndDate IS NOT NULL AND EventEndDate <= CAST (GETDATE() AS DATE))<div class="card-custom">
+  <div class="card-header event-header">
+    <div><%# GetDateTime("EventDate"," MMMM dd, yyy") %></div>
+    <div><%# IfEmpty(Eval("EventTimeRange"), GetDateTime("EventDate","h:mmtt"), Eval("EventTimeRange")) %></div>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title"><%# IfEmpty(Eval("EventDisplayName"), Eval("EventName"), Eval("EventDisplayName")) %></h4>
+    <h6 class="card-subtitle text-muted"><%# IfEmpty(Eval("EventSummary"), "", Eval("EventSummary")) %></h6>
+    <%# IfEmpty(Eval("EventDetails"), "", "<p class=\"text-right\"><br><a class=\"btn btn-outline-primary\" href=\""+ GetDocumentUrl() +"\">Get Details <i class=\"fa fa-angle-right\"></i></a></p>") %>
+  </div>
+</div>
+
+
+    <%#IfCompare(FormatDateTime(Eval("EventDate"), "MMMM dd, yyy"), FormatDateTime(Eval("EventEndDate"), "MMMM dd, yyy"),
+	FormatDateTime(Eval("EventDate"), "MMMM dd, yyy"), FormatDateTime(Eval("EventDate"), "MMMM dd, yyy").ToString() + "</br> to " + FormatDateTime(Eval("EventEndDate"), "MMMM dd, yyy").ToString())%>
+
+<div class="card-custom">
+  <div class="card-header event-header">
+    <div>
+	   <%# IfEmpty(Eval("EventEndDate"), FormatDateTime(Eval("EventDate"), "MMMM dd, yyy"),
+	   FormatDateTime(Eval("EventDate"), "MMMM dd, yyy").ToString() + "<br/> to " + FormatDateTime(Eval("EventEndDate"), "MMMM dd, yyy").ToString())%></div>
+    <div><%# IfEmpty(Eval("EventTimeRange"), GetDateTime("EventDate","h:mmtt"), Eval("EventTimeRange")) %></div>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title"><%# IfEmpty(Eval("EventDisplayName"), Eval("EventName"), Eval("EventDisplayName")) %></h4>
+    <h6 class="card-subtitle text-muted"><%# IfEmpty(Eval("EventSummary"), "", Eval("EventSummary")) %></h6>
+    <%# IfEmpty(Eval("EventDetails"), "", "<p class=\"text-right\"><br><a class=\"btn btn-outline-primary\" href=\""+ GetDocumentUrl() +"\">Get Details <i class=\"fa fa-angle-right\"></i></a></p>") %>
+  </div>
+</div>
+
+
+
+
+<tr>
+   <td><%# Eval("PropertyName") %></td>
+   <!--<td><%# Eval("[Address]") %></br><%# Eval("[City]") %>, <%# Eval("[State]") %>&nbsp;<%# Eval("[uszipcode]") %></td> -->
+   <td>	
+      <b><div class="fas fa-check-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTApproved]")) %><br>
+      <b><div class="fas fa-question-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTPending]")) %><br>
+      <b><div class="fas fa-times-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTDenied]")) %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Yes", "", "<div class=\"fas fa-check-circle\"></div><span class=\"sr-only\"> Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "No", "", "<div class=\"fas fa-times-circle\"></div><span class=\"sr-only\"> Not Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Events Only", "", "<div class=\"fas fa-check-circle\"></div> Events Only") %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("AllowMobileVendors"), "Yes", "", "<span title=\"allowed\" class=\"tag-true\"><div class=\"fas fa-check-circle\"></div> <span class=\"sr-only\">Allowed</span></span>") %>
+      <%# IfCompare(Eval("AllowMobileVendors"), "No", "", "<span title=\"not allowed\" class=\"tag-false\"><div class=\"fas fa-times-circle\"></div> <span class=\"sr-only\">Not Allowed</span> </span>") %>
+   </td>
+   <td>
+      <a href="/Property-Manager-Home/Add-Occupants?pid=<%# Eval("[PropertyID]") %>&Pname=<%# Eval("PropertyName") %>">Occupant Contacts</a><br />
+      <a href="/Property-Managers/Admin/Email-All-Occupants?PID=<%# Eval("[PropertyID]") %>">Email Occupants</a><br />
+      <a href="/Property-Managers/Admin/Vendors/<%# Eval("[PropertyID]") %>">Manage Vendors</a> 
+   </td>
+</tr>
+
+
+
+
+<tr>
+   <td><%# Eval("[PropertyName]") %></td>
+   <!--<td><%# Eval("[Address]") %></br><%# Eval("[City]") %>, <%# Eval("[State]") %>&nbsp;<%# Eval("[uszipcode]") %></td> -->
+   <td>	
+      <b><div class="fas fa-check-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTApproved]")) %><br>
+      <b><div class="fas fa-question-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTPending]")) %><br>
+      <b><div class="fas fa-times-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTDenied]")) %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Yes", "", "<div class=\"fas fa-check-circle\"></div><span class=\"sr-only\"> Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "No", "", "<div class=\"fas fa-times-circle\"></div><span class=\"sr-only\"> Not Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Events Only", "", "<div class=\"fas fa-check-circle\"></div> Events Only") %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowMobileVendors]"), "Yes", "", "<span title=\"allowed\" class=\"tag-true\"><div class=\"fas fa-check-circle\"></div> <span class=\"sr-only\">Allowed</span></span>") %>
+      <%# IfCompare(Eval("[AllowMobileVendors]"), "No", "", "<span title=\"not allowed\" class=\"tag-false\"><div class=\"fas fa-times-circle\"></div> <span class=\"sr-only\">Not Allowed</span> </span>") %>
+   </td>
+   <td>
+      <a href="/Property-Manager-Home/Add-Tenants?pid=<%# Eval("[PropertyID]") %>&Pname=<%# Eval("[PropertyName]") %>">Tenant Contacts</a>
+   </td>
+   <td>
+      <a href="/Building-Managers/Admin/Manage-Properties/Add-Property/<%# Eval("[ManagementID]") %>/<%# Eval("[PropertyID]") %>">Edit Property</a><br>
+      <a href="/Building-Managers/Admin/Manage-Properties/Delete-Property/<%# Eval("[ManagementID]") %>/<%# Eval("[PropertyID]") %>">Del Property</a>
+   </td>
+</tr>
+
+
+/* Tenant List*/
+
+<ul class="actions fit small">
+  <li><a class="button alt fit small" style="cursor: pointer;" 
+  href="<a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Add-Tenants?pid=<%# QueryString["pid"] %>">Add New Tenant</a></li>
+</ul>
+
+
+
+<a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Add-Tenants?pid={?pid?}">Add New Tenant</a>
+<h4>Tenant List</h4>
+<div class="table-wrapper">
+<table class="striped alt">
+<thead>
+<th>Property</th>
+<th>Company Name</th>
+<th>Contact Name</th>
+<th>Contact Email</th>
+<th>Contact Phone</th>
+<th>Action</th>
+</thead>
+
+
+<tr>
+   <td><%# Eval("[PropertyName]") %></td> 
+   <td><%# Eval("[CompanyName]") %></td>
+   <td><%# Eval("[ContactName]") %></td>
+   <td><%# Eval("[ContactEmail") %></td>
+   <td><%# Eval("[ContactPhone") %></td>
+   <td>
+      <a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Add-Tenant?pid=<%# Eval("[PropertyID]") %>&tid=<%# Eval("[TenantID]")%>">Edit</a>
+	  <a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Delete-Tenant?pid=<%# Eval("[PropertyID]") %>&tid=<%# Eval("[TenantID]")%>">Delete</a>
+   </td>
+</tr>
+
+
+visibility macro: {% CurrentUser.UserID == QueryString.GetValue("uid") #%}
+
+
+<%# Request.QueryString["parameter"] %>
+
+/* occupant list %/
+
+
+<a href="/Building-Managers/Admin/Manage-Properties/Manage-Occupants/Add-Employee?pid={?pid?}&tid={?tid?}">Add New Occupant</a>
+
+<h4>Tenant List</h4>
+<div class="table-wrapper">
+<table class="striped alt">
+<thead>
+<th>Property</th>
+<th>Company Name</th>
+<th>Contact Name</th>
+<th>Contact Email</th>
+<th>Contact Phone</th>
+<th>Action</th>
+</thead>
+
+
+<tr>
+   <td><%# Eval("[PropertyName]") %></td> 
+   <td><%# Eval("[CompanyName]") %></td>
+   <td><%# Eval("[ContactName]") %></td>
+   <td><%# Eval("[ContactEmail") %></td>
+   <td><%# Eval("[ContactPhone") %></td>
+   <td>
+      <a href="/Building-Managers/Admin/Manage-Properties/Manage-Occupants/Add-Employee?pid=<%# Eval("[PropertyID]") %>&tid=<%# Eval("[TenantID]")%>&oid=<%# Eval("[OccupantID]")%>">Edit</a>
+	  <a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Delete-Employee?pid=<%# Eval("[PropertyID]") %>&oid=<%# Eval("[OccupantID]")%>">Delete</a>
+   </td>
+</tr>
+
+-- test vendors 
+https://zk4.com/C0K4D
+
+https://zk4.com/C0K4D/ThisISSomeCodeToo
+192
+193
+
+https://zk4.com/C0K4D
+real:
+40C0C5A8-B08C-4C38-AA76-C1954D4A610D
+
+<ul class="actions fit small">
+  <li><a class="button alt fit small" style="cursor: pointer;" href="/Building-Managers/Admin/Manage-Properties/Add-Property/<%# Eval("[ManagementID]") %>/">Add New Property</a></li>
+  <li><a class="button alt fit small" style="cursor: pointer;" href="/Building-Managers/Admin/Manage-Properties/Add-Property-Bulk/<%# Eval("[ManagementID]") %>/">Bulk Load Properties</a></li>
+  <li><a class="button alt fit small" style="cursor: pointer;" href="/Building-Managers/Admin/Manage-Properties/Add-Building-Manager-Named-Party/<%# Eval("[ManagementID]") %>/">Add Named Party</a></li>
+</ul>
+
+--- vendor sign up
+
+<h2><%# Eval("Message") %></h2>
+<h2><%# GetDateTime("ProcessedDate", "MM/dd/yyyy") %></h2>
+
+  
+
+
+<h3><%# IfCompare(Eval("[Processed]"), "True", "We are not able to verify your information at this time, please contact support", "Welcome to Moblz") %>
+<h4><%# IfCompare(Eval("[Success]"), "True", Eval("[ErrorMessage]"), Eval("[Message]"))%></h4>
+<%# IfCompare(Eval("[Processed]"), "True", "", "<a class=\"button fit\" style=\"cursor: pointer;\" href=\"/Mobile-Vendors/admin/dashboard\">Manage your Trucks</a>") %>
+
+<div style="visibility:hidden">
+  <h2>Message: <%# Eval("Message") %></h2>
+  <h2>Error: <%# Eval("ErrorMessage") %></h2>
+  <h2>Success: <%# Eval("Success") %></h2>
+  <h2>Processed: <%# Eval("Processed")%></h2>
+  <h2>ProcessDate: <%# GetDateTime("ProcessedDate", "MM/dd/yyyy") %>  
+</div>
+ 
+ 
+ /Building-Managers/Admin/Communication-Portal/Alerts/RedAlert2?vc={%MOBLZ_RedAlertStep1ID%}
+ https://www.moblz.com/Mobile-Vendors/Join/Confirmation?vc={%VerificationCode%}
+ 
+ 
+ /Mobile-Vendors/Join/Confirmation?ShortCode={?sc?}&vc={?vc?}
+ /Mobile-Vendors/Join/Confirmation/{?sc?}?vc={?vc?}
+ /Mobile-Vendors/Join/Confirmation?sc={?sc?}&vc={?vc?}
+ /Mobile-Vendors/Join/Confirmation/{?sc?}?vc={?vc?}
+ 
+ 
+ <ul class="actions fit small">
+  <li><a class="button alt fit small" style="cursor: pointer;" 
+  href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Add-Tenants?pid=<%# Request.QueryString["pid"] %>">Add New Tenant</a></li>
+</ul>
+
+<!-- more items -->
+
+EventDate >= CAST (GETDATE() AS DATE) OR (EventEndDate IS NOT NULL AND EventEndDate <= CAST (GETDATE() AS DATE))<div class="card-custom">
+  <div class="card-header event-header">
+    <div><%# GetDateTime("EventDate"," MMMM dd, yyy") %></div>
+    <div><%# IfEmpty(Eval("EventTimeRange"), GetDateTime("EventDate","h:mmtt"), Eval("EventTimeRange")) %></div>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title"><%# IfEmpty(Eval("EventDisplayName"), Eval("EventName"), Eval("EventDisplayName")) %></h4>
+    <h6 class="card-subtitle text-muted"><%# IfEmpty(Eval("EventSummary"), "", Eval("EventSummary")) %></h6>
+    <%# IfEmpty(Eval("EventDetails"), "", "<p class=\"text-right\"><br><a class=\"btn btn-outline-primary\" href=\""+ GetDocumentUrl() +"\">Get Details <i class=\"fa fa-angle-right\"></i></a></p>") %>
+  </div>
+</div>
+
+
+    <%#IfCompare(FormatDateTime(Eval("EventDate"), "MMMM dd, yyy"), FormatDateTime(Eval("EventEndDate"), "MMMM dd, yyy"),
+	FormatDateTime(Eval("EventDate"), "MMMM dd, yyy"), FormatDateTime(Eval("EventDate"), "MMMM dd, yyy").ToString() + "</br> to " + FormatDateTime(Eval("EventEndDate"), "MMMM dd, yyy").ToString())%>
+
+<div class="card-custom">
+  <div class="card-header event-header">
+    <div>
+	   <%# IfEmpty(Eval("EventEndDate"), FormatDateTime(Eval("EventDate"), "MMMM dd, yyy"),
+	   FormatDateTime(Eval("EventDate"), "MMMM dd, yyy").ToString() + "<br/> to " + FormatDateTime(Eval("EventEndDate"), "MMMM dd, yyy").ToString())%></div>
+    <div><%# IfEmpty(Eval("EventTimeRange"), GetDateTime("EventDate","h:mmtt"), Eval("EventTimeRange")) %></div>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title"><%# IfEmpty(Eval("EventDisplayName"), Eval("EventName"), Eval("EventDisplayName")) %></h4>
+    <h6 class="card-subtitle text-muted"><%# IfEmpty(Eval("EventSummary"), "", Eval("EventSummary")) %></h6>
+    <%# IfEmpty(Eval("EventDetails"), "", "<p class=\"text-right\"><br><a class=\"btn btn-outline-primary\" href=\""+ GetDocumentUrl() +"\">Get Details <i class=\"fa fa-angle-right\"></i></a></p>") %>
+  </div>
+</div>
+
+
+
+
+<tr>
+   <td><%# Eval("PropertyName") %></td>
+   <!--<td><%# Eval("[Address]") %></br><%# Eval("[City]") %>, <%# Eval("[State]") %>&nbsp;<%# Eval("[uszipcode]") %></td> -->
+   <td>	
+      <b><div class="fas fa-check-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTApproved]")) %><br>
+      <b><div class="fas fa-question-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTPending]")) %><br>
+      <b><div class="fas fa-times-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTDenied]")) %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Yes", "", "<div class=\"fas fa-check-circle\"></div><span class=\"sr-only\"> Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "No", "", "<div class=\"fas fa-times-circle\"></div><span class=\"sr-only\"> Not Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Events Only", "", "<div class=\"fas fa-check-circle\"></div> Events Only") %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("AllowMobileVendors"), "Yes", "", "<span title=\"allowed\" class=\"tag-true\"><div class=\"fas fa-check-circle\"></div> <span class=\"sr-only\">Allowed</span></span>") %>
+      <%# IfCompare(Eval("AllowMobileVendors"), "No", "", "<span title=\"not allowed\" class=\"tag-false\"><div class=\"fas fa-times-circle\"></div> <span class=\"sr-only\">Not Allowed</span> </span>") %>
+   </td>
+   <td>
+      <a href="/Property-Manager-Home/Add-Occupants?pid=<%# Eval("[PropertyID]") %>&Pname=<%# Eval("PropertyName") %>">Occupant Contacts</a><br />
+      <a href="/Property-Managers/Admin/Email-All-Occupants?PID=<%# Eval("[PropertyID]") %>">Email Occupants</a><br />
+      <a href="/Property-Managers/Admin/Vendors/<%# Eval("[PropertyID]") %>">Manage Vendors</a> 
+   </td>
+</tr>
+
+
+
+
+<tr>
+   <td><%# Eval("[PropertyName]") %></td>
+   <!--<td><%# Eval("[Address]") %></br><%# Eval("[City]") %>, <%# Eval("[State]") %>&nbsp;<%# Eval("[uszipcode]") %></td> -->
+   <td>	
+      <b><div class="fas fa-check-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTApproved]")) %><br>
+      <b><div class="fas fa-question-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTPending]")) %><br>
+      <b><div class="fas fa-times-circle"></div> #</b> <%# String.Format("{0:#,##0;(#,##0);0}", Eval("[CNTDenied]")) %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Yes", "", "<div class=\"fas fa-check-circle\"></div><span class=\"sr-only\"> Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "No", "", "<div class=\"fas fa-times-circle\"></div><span class=\"sr-only\"> Not Allowed") %>
+      <%# IfCompare(Eval("[AllowFoodTrucks]"), "Events Only", "", "<div class=\"fas fa-check-circle\"></div> Events Only") %>
+   </td>
+   <td>
+      <%# IfCompare(Eval("[AllowMobileVendors]"), "Yes", "", "<span title=\"allowed\" class=\"tag-true\"><div class=\"fas fa-check-circle\"></div> <span class=\"sr-only\">Allowed</span></span>") %>
+      <%# IfCompare(Eval("[AllowMobileVendors]"), "No", "", "<span title=\"not allowed\" class=\"tag-false\"><div class=\"fas fa-times-circle\"></div> <span class=\"sr-only\">Not Allowed</span> </span>") %>
+   </td>
+   <td>
+      <a href="/Property-Manager-Home/Add-Tenants?pid=<%# Eval("[PropertyID]") %>&Pname=<%# Eval("[PropertyName]") %>">Tenant Contacts</a>
+   </td>
+   <td>
+      <a href="/Building-Managers/Admin/Manage-Properties/Add-Property/<%# Eval("[ManagementID]") %>/<%# Eval("[PropertyID]") %>">Edit Property</a><br>
+      <a href="/Building-Managers/Admin/Manage-Properties/Delete-Property/<%# Eval("[ManagementID]") %>/<%# Eval("[PropertyID]") %>">Del Property</a>
+   </td>
+</tr>
+
+
+/* Tenant List*/
+
+<ul class="actions fit small">
+  <li><a class="button alt fit small" style="cursor: pointer;" 
+  href="<a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Add-Tenants?pid=<%# QueryString["pid"] %>">Add New Tenant</a></li>
+</ul>
+
+
+
+<a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Add-Tenants?pid={?pid?}">Add New Tenant</a>
+<h4>Tenant List</h4>
+<div class="table-wrapper">
+<table class="striped alt">
+<thead>
+<th>Property</th>
+<th>Company Name</th>
+<th>Contact Name</th>
+<th>Contact Email</th>
+<th>Contact Phone</th>
+<th>Action</th>
+</thead>
+
+
+<tr>
+   <td><%# Eval("[PropertyName]") %></td> 
+   <td><%# Eval("[CompanyName]") %></td>
+   <td><%# Eval("[ContactName]") %></td>
+   <td><%# Eval("[ContactEmail") %></td>
+   <td><%# Eval("[ContactPhone") %></td>
+   <td>
+      <a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Add-Tenant?pid=<%# Eval("[PropertyID]") %>&tid=<%# Eval("[TenantID]")%>">Edit</a>
+	  <a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Delete-Tenant?pid=<%# Eval("[PropertyID]") %>&tid=<%# Eval("[TenantID]")%>">Delete</a>
+   </td>
+</tr>
+
+
+visibility macro: {% CurrentUser.UserID == QueryString.GetValue("uid") #%}
+
+
+<%# Request.QueryString["parameter"] %>
+
+/* occupant list %/
+
+
+<a href="/Building-Managers/Admin/Manage-Properties/Manage-Occupants/Add-Employee?pid={?pid?}&tid={?tid?}">Add New Occupant</a>
+
+<h4>Tenant List</h4>
+<div class="table-wrapper">
+<table class="striped alt">
+<thead>
+<th>Property</th>
+<th>Company Name</th>
+<th>Contact Name</th>
+<th>Contact Email</th>
+<th>Contact Phone</th>
+<th>Action</th>
+</thead>
+
+
+<tr>
+   <td><%# Eval("[PropertyName]") %></td> 
+   <td><%# Eval("[CompanyName]") %></td>
+   <td><%# Eval("[ContactName]") %></td>
+   <td><%# Eval("[ContactEmail") %></td>
+   <td><%# Eval("[ContactPhone") %></td>
+   <td>
+      <a href="/Building-Managers/Admin/Manage-Properties/Manage-Occupants/Add-Employee?pid=<%# Eval("[PropertyID]") %>&tid=<%# Eval("[TenantID]")%>&oid=<%# Eval("[OccupantID]")%>">Edit</a>
+	  <a href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Delete-Employee?pid=<%# Eval("[PropertyID]") %>&oid=<%# Eval("[OccupantID]")%>">Delete</a>
+   </td>
+</tr>
+
+-- test vendors 
+https://zk4.com/C0K4D
+
+https://zk4.com/C0K4D/ThisISSomeCodeToo
+192
+193
+
+https://zk4.com/C0K4D
+real:
+40C0C5A8-B08C-4C38-AA76-C1954D4A610D
+
+<ul class="actions fit small">
+  <li><a class="button alt fit small" style="cursor: pointer;" href="/Building-Managers/Admin/Manage-Properties/Add-Property/<%# Eval("[ManagementID]") %>/">Add New Property</a></li>
+  <li><a class="button alt fit small" style="cursor: pointer;" href="/Building-Managers/Admin/Manage-Properties/Add-Property-Bulk/<%# Eval("[ManagementID]") %>/">Bulk Load Properties</a></li>
+  <li><a class="button alt fit small" style="cursor: pointer;" href="/Building-Managers/Admin/Manage-Properties/Add-Building-Manager-Named-Party/<%# Eval("[ManagementID]") %>/">Add Named Party</a></li>
+</ul>
+
+--- vendor sign up
+
+<h2><%# Eval("Message") %></h2>
+<h2><%# GetDateTime("ProcessedDate", "MM/dd/yyyy") %></h2>
+
+  
+
+
+<h3><%# IfCompare(Eval("[Processed]"), "True", "We are not able to verify your information at this time, please contact support", "Welcome to Moblz") %>
+<h4><%# IfCompare(Eval("[Success]"), "True", Eval("[ErrorMessage]"), Eval("[Message]"))%></h4>
+<%# IfCompare(Eval("[Processed]"), "True", "", "<a class=\"button fit\" style=\"cursor: pointer;\" href=\"/Mobile-Vendors/admin/dashboard\">Manage your Trucks</a>") %>
+
+<div style="visibility:hidden">
+  <h2>Message: <%# Eval("Message") %></h2>
+  <h2>Error: <%# Eval("ErrorMessage") %></h2>
+  <h2>Success: <%# Eval("Success") %></h2>
+  <h2>Processed: <%# Eval("Processed")%></h2>
+  <h2>ProcessDate: <%# GetDateTime("ProcessedDate", "MM/dd/yyyy") %>  
+</div>
+ 
+ 
+ /Building-Managers/Admin/Communication-Portal/Alerts/RedAlert2?vc={%MOBLZ_RedAlertStep1ID%}
+ https://www.moblz.com/Mobile-Vendors/Join/Confirmation?vc={%VerificationCode%}
+ 
+ 
+ /Mobile-Vendors/Join/Confirmation?ShortCode={?sc?}&vc={?vc?}
+ /Mobile-Vendors/Join/Confirmation/{?sc?}?vc={?vc?}
+ /Mobile-Vendors/Join/Confirmation?sc={?sc?}&vc={?vc?}
+ /Mobile-Vendors/Join/Confirmation/{?sc?}?vc={?vc?}
+ 
+ 
+ <ul class="actions fit small">
+  <li><a class="button alt fit small" style="cursor: pointer;" 
+  href="/Building-Managers/Admin/Manage-Properties/Manage-Tenants/Add-Tenants?pid=<%# Request.QueryString["pid"] %>">Add New Tenant</a></li>
+</ul>
+ 
+
+				
+

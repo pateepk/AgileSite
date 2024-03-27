@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="web_author" content="WTE Solutions">
+   <meta name="google-site-verification" content="6cLh7LxlyALB12LWRUov1n4An4ZwMKm9SOUJQu74SWs" />
+
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+   <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js"></script>
+
+   <link rel="stylesheet" href="https://kofcnc.org/App_Themes/kofcNC/assets/css/core.min.css" type="text/css" media="all">
+
+   <!--v6 font awesome -->
+   <!--<script data-search-pseudo-elements src="https://kit.fontawesome.com/a2dcd68816.js" crossorigin="anonymous"></script>-->
+   <!--v5 font awesome?? -- why are we switching backwards???? - because v6 breaks all the icons on the site because it's written in v5 code - pk-->
+   <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js" crossorigin="anonymous" defer></script>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+   <link rel="apple-touch-icon" sizes="180x180" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/favicon-16x16.png">
+   <link rel="mask-icon" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/safari-pinned-tab.svg" color="#5bbad5">
+   <link rel="shortcut icon" href="https://kofcnc.org/App_Themes/kofcNC/assets/fav/favicon.ico">
+   <meta name="msapplication-TileColor" content="#ffffff">
+</head>
+<body>
+
+   <style>
+
+      a.sticky {
+         position: -webkit-sticky; /* Safari */
+         position: sticky;
+         top: 0;
+         background-color: darkgrey;
+         /*border: 2px solid #4CAF50;*/
+         border: 3px solid blue;
+         color: white;
+         z-index: 99999;
+         width: 50%;
+         /*height: 200px;*/
+         text-align: center;
+         left: 25%;
+         border-radius: 20% 20% 20% 20%;
+         align-self: center;
+         float: right;
+      }
+
+      /*      div.text {
+               position: absolute;
+               text-align: center;
+               font-size: 70%;
+               width: 100%;
+               top: 25%;
+            }
+            */
+
+      div.sticky {
+         position: -webkit-sticky; /* Safari */
+         position: sticky;
+         top: 0;
+         background-color: blue;
+         /*border: 2px solid #4CAF50;*/
+         border: 3px solid blue;
+         color: white;
+         z-index: 99999;
+         width: 200px;
+         height: 200px;
+         text-align: center;
+         left: 25%;
+         border-radius: 70% 70% 70% 70%;
+         align-self: center;
+      }
+
+      /*.a {
+               text-decoration: none;
+               border: 1px solid;
+               width: 50%;
+               font-size: 70%;*/
+      /*background-color: slategrey;*/
+      /*background: #05437b;
+               border-color: #fff;
+               color: #fff;
+            }*/
+
+      .text {
+         position: absolute;
+         text-align: center;
+         font-size: 70%;
+         width: 100%;
+         top: 25%;
+      }
+   </style>
+
+   <!--<a href="/support" class="sticky">Contact Support!</a>-->
+   <a href="/support" class="sticky" style="visibility:hidden;">
+      <div class="text">
+         If you are having issues<br />Please use this button to contact support
+         <!--<a href="/support" target="_blank" class="btn btn-brand-1 m-b-1">Contact Support!</a>-->
+      </div>
+   </a>
+   <div id="support-button" class='sticky' onclick="opensupportwindow();">
+      <div class="text">
+         If you are having issues<br />please contact support using this button
+         <br />
+         <br />
+         <a href="/support" target="_blank" class="sticky">Contact Support!</a>
+      </div>
+   </div>
+
+   <!--<a href="/support" target="_blank" class="btn btn-brand-1 m-b-1">Contact Support!</a>-->
+
+   <script>
+      // normal with scrolling
+      //$(function () {
+      //    $("#modal-launcher, #modal-background, #modal-close").click(function () {
+      //        $("#modal-content, #modal-background").toggleClass("active");
+      //    });
+      //});
+
+      // no scrolling (eplace the jQuery function with: (body added to line 3)
+      //$(function () {
+      //    $("#modal-launcher, #modal-background, #modal-close").click(function () {
+      //        $("body, #modal-content, #modal-background").toggleClass("active");
+      //    });
+      //});
+
+      // no background click (Replace the jQuery function with: (#modal-background removed from line 2))
+      //$(function () {
+      //    $("#modal-launcher, #modal-close").click(function () {
+      //        $("#modal-content, #modal-background").toggleClass("active");
+      //    });
+      //});
+
+      // no scrolling and no background click?
+      //$(function () {
+      //    $("#modal-launcher, #modal-close").click(function () {
+      //        $("body, #modal-content, #modal-background").toggleClass("active");
+      //    });
+      //});
+      $(function () {
+         $("#support-button, #modal-close").click(function () {
+            $("body, #modal-content, #modal-background").toggleClass("active");
+         });
+      });
+   </script>
+   <style>
+
+      body.active {
+         position: fixed;
+         overflow: hidden;
+      }
+
+      #modal-background {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: white;
+         opacity: .50;
+         -webkit-opacity: .5;
+         -moz-opacity: .5;
+         filter: alpha(opacity=50);
+         z-index: 1000;
+      }
+
+      #modal-og-content {
+         background-color: white;
+         border-radius: 10px;
+         -webkit-border-radius: 10px;
+         -moz-border-radius: 10px;
+         box-shadow: 0 0 20px 0 #222;
+         -webkit-box-shadow: 0 0 20px 0 #222;
+         -moz-box-shadow: 0 0 20px 0 #222;
+         display: none;
+         height: 500px;
+         left: 50%;
+         margin: -120px 0 0 -160px;
+         padding: 10px;
+         position: fixed;
+         top: 50%;
+         width: 500px;
+         z-index: 1000;
+         margin: 10% auto;
+      }
+
+      #modal-content {
+         display: none;
+         border-radius: 10px;
+         background-color: white;
+         height: 50%;
+         width: 50%;
+         z-index: 1000;
+         margin: 10% auto;
+         position: absolute;
+      }
+
+         #modal-background.active, #modal-content.active {
+            display: block;
+         }
+   </style>
+   <!--<div class="center">
+      <h1>Bacon ipsum dolor sit amet</h1>
+      <button id="modal-launcher">Launch Modal Window</button>
+   </div>-->
+   <div id="modal-background"></div>
+   <div id="modal-content">
+      <div class="center">
+         <p>Magna adipisicing eu, pig ex pariatur non biltong nisi consequat do exercitation. Biltong exercitation consequat aute. Excepteur velit ribeye, et salami pariatur sed consequat enim ham. Tenderloin consequat et, in pastrami aute meatloaf beef spare ribs tri-tip beef ribs sed ut jerky strip steak. Fugiat turkey shank frankfurter pork loin pastrami.</p>
+         <button id="modal-close">Close Modal Window</button>
+      </div>
+   </div>
+   <style>
+      /*** Box model adjustments
+       * `border-box`... ALL THE THINGS - http://cbrac.co/RQrDL5
+      /
+
+      *,
+      *:before,
+      *:after {
+         -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+         box-sizing: border-box;
+      }
+
+      /**
+         * 1. Force a vertical scrollbar - http://cbrac.co/163MspB
+         * NOTE: Use `text-rendering` with caution - http://cbrac.co/SJt8p1
+         * NOTE: Avoid the webkit anti-aliasing trap - http://cbrac.co/TAdhbH
+         * NOTE: IE for Windows Phone 8 ignores `-ms-text-size-adjust` if the
+         *       viewport <meta> tag is used - http://cbrac.co/1cFrAvl
+      */
+
+      html {
+         font-size: 100%;
+         overflow-y: scroll; /* 1 */
+         min-height: 100%;
+      }
+
+      /**
+         * 1. Inherits percentage declared on above <html> as base `font-size`
+         * 2. Unitless `line-height`, which acts as multiple of base `font-size`
+      */
+
+      body {
+         font-family: "Helvetica Neue", Arial, sans-serif;
+         font-size: 1em; /* 1 */
+         line-height: 1.5; /* 2 */
+         color: #444;
+      }
+
+      /* Page wrapper */
+      .wrapper {
+         width: 90%;
+         max-width: 800px;
+         margin: 4em auto;
+         text-align: center;
+      }
+
+      /* Icons */
+      .icon {
+         display: inline-block;
+         width: 16px;
+         height: 16px;
+         vertical-align: middle;
+         fill: currentcolor;
+      }
+
+      /* Headings */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+         color: #222;
+         font-weight: 700;
+         font-family: inherit;
+         line-height: 1.333;
+         text-rendering: optimizeLegibility;
+      }
+
+      /**
+         * Modals ($modals)
+      */
+
+      /* 1. Ensure this sits above everything when visible */
+      .modal {
+         position: absolute;
+         z-index: 10000; /* 1 */
+         top: 0;
+         left: 0;
+         visibility: hidden;
+         width: 100%;
+         height: 100%;
+      }
+
+         .modal.is-visible {
+            visibility: visible;
+         }
+
+      .modal-overlay {
+         position: fixed;
+         z-index: 10;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: hsla(0, 0%, 0%, 0.5);
+         visibility: hidden;
+         opacity: 0;
+         transition: visibility 0s linear 0.3s, opacity 0.3s;
+      }
+
+      .modal.is-visible .modal-overlay {
+         opacity: 1;
+         visibility: visible;
+         transition-delay: 0s;
+      }
+
+      .modal-wrapper {
+         position: absolute;
+         z-index: 9999;
+         top: 6em;
+         left: 50%;
+         width: 32em;
+         margin-left: -16em;
+         background-color: #fff;
+         box-shadow: 0 0 1.5em hsla(0, 0%, 0%, 0.35);
+      }
+
+      .modal-transition {
+         transition: all 0.3s 0.12s;
+         transform: translateY(-10%);
+         opacity: 0;
+      }
+
+      .modal.is-visible .modal-transition {
+         transform: translateY(0);
+         opacity: 1;
+      }
+
+      .modal-header,
+      .modal-content {
+         padding: 1em;
+      }
+
+      .modal-header {
+         position: relative;
+         background-color: #fff;
+         box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.06);
+         border-bottom: 1px solid #e8e8e8;
+      }
+
+      .modal-close {
+         position: absolute;
+         top: 0;
+         right: 0;
+         padding: 1em;
+         color: #aaa;
+         background: none;
+         border: 0;
+      }
+
+         .modal-close:hover {
+            color: #777;
+         }
+
+      .modal-heading {
+         font-size: 1.125em;
+         margin: 0;
+         -webkit-font-smoothing: antialiased;
+         -moz-osx-font-smoothing: grayscale;
+      }
+
+      .modal-content > *:first-child {
+         margin-top: 0;
+      }
+
+      .modal-content > *:last-child {
+         margin-bottom: 0;
+      }
+   </style>
+   <!--<div class="wrapper">
+      <h1>Simple jQuery Modal</h1>
+      <button class="modal-toggle">Show modal</button>
+   </div>-->
+   <div class="modal">
+      <div class="modal-overlay modal-toggle"></div>
+      <div class="modal-wrapper modal-transition">
+         <div class="modal-header">
+            <button class="modal-close modal-toggle"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            <h2 class="modal-heading">This is a modal</h2>
+         </div>
+
+         <div class="modal-body">
+            <div class="modal-content">
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit eum delectus, libero, accusantium dolores inventore obcaecati placeat cum sapiente vel laboriosam similique totam id ducimus aperiam, ratione fuga blanditiis maiores.</p>
+               <button class="modal-toggle">Update</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script>
+      // Quick & dirty toggle to demonstrate modal toggle behavior
+      $('.modal-toggle').on('click', function (e) {
+         e.preventDefault();
+         $('.modal').toggleClass('is-visible');
+      });
+   </script>
+</body>
+</html>

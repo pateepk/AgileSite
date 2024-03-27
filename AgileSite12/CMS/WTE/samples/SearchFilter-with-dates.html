@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- code required the following version of jquery -->
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+</head>
+<body>
+
+    <script>
+        $(function () {
+            $("#dpStartDate").datepicker();
+            $("#dpEndDate").datepicker();
+
+            var dtTomorrow = getTomorrow();
+            var dtToday = getToday();
+            var dtNinetyPast = getNinetyDaysAgo();
+            var dtNinetyFuture = getNinetyDaysFromNow();
+            var qpSdt = getParameterByName("sdt");
+            var qpEdt = getParameterByName("edt");
+            var SearchTermX = getParameterByName("SearchTerm");
+            var SortIDX = getParameterByName("SortID");
+            var StatusX = getParameterByName("Status");
+            var ReportTypeX = getParameterByName("ReportType");
+
+            if (SearchTermX != '') {
+                $("#txtSearch").val(SearchTermX);
+                $('#txtSearch').css('font-weight', 'bold');
+            }
+
+            if (qpSdt == '') {
+                $("#dpStartDate").val(dtNinetyPast);
+            }
+            else {
+                $("#dpStartDate").val(qpSdt);
+                $('#dpStartDate').css('font-weight', 'bold');
+            }
+
+            if (qpEdt == '') {
+                $("#dpEndDate").val(dtToday);
+            }
+            else {
+                $("#dpEndDate").val(qpEdt);
+                $('#dpEndDate').css('font-weight', 'bold');
+            }
+
+            if (ReportTypeX != '0' && ReportTypeX != '') {
+                $('#ddlReportType option[value=' + ReportTypeX + ']').prop('selected', true);
+                $('#ddlReportType').css('font-weight', 'bold');
+            }
+
+        });
+    </script>
+
+    <div id="dvFilter" name="dvFilter">
+        <table cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td style="width:100px;"><strong>Start Date: </strong><br><input type="text" id="dpStartDate" name="dpStartDate" style="padding-left:2px;width:95px; height:26px;"></td>
+                            <td style="width:100px;"><strong>End Date: </strong><br><input type="text" id="dpEndDate" name="dpEndDate" style="padding-left:2px;width:95px; height:26px;"></td>
+                            <td style="width:100px;">
+                                <strong>Report Type: </strong>
+                                <br />
+                                <select id="ddlReportType">
+                                    <option value="0">All</option>
+                                    <option value="1">Yesterday</option>
+                                </select>
+                                <!--input type="text" id="dpEndDate" name="dpEndDate" style="padding-left:2px;width:95px; height:26px;"-->
+                            </td>
+                            <td>
+                                <br />
+                                <input type="text" id="txtSearch" name="txtSearch" style="margin:3px 5px 3px 10px; padding:2px 3px; height:26px;" value="search" onfocus="clearSearchBox();" onblur="fillSearchBox();"
+                                       title="Search SKU or Description" />
+                            </td>
+                            <td style="width:100px; valign:bottom;">
+                                <br />
+                                <button class="btn-plain" onclick="applyFilters();return false;" style="border: 1px solid #000; width:100px; padding: 5px; color:#fff;margin-right:5px; background-color:#D01C06; cursor: pointer;">FILTER</button>
+                            </td>
+                            <td style="width:100px">
+                                <br />
+                                <a href="javascript:void();" onclick="reloadWithoutQueryString();return false;"><div style="border: 1px solid #000; width:100px; padding: 5px; color:#fff;margin-right:5px; background-color:#D01C06; cursor: pointer; text-decoration:none;" align="center">RESET</div></a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+
+    <script>
+
+        function clearSearchBox() {
+            var SearchTerm = $("#txtSearch").val();
+            if (SearchTerm == 'search') {
+                $("#txtSearch").val('');
+            }
+        }
+
+        function fillSearchBox() {
+            var SearchTerm = $("#txtSearch").val();
+            if (SearchTerm == '') {
+                $("#txtSearch").val('search');
+            }
+        }
+
+        function applyFilters(SortID) {
+            var sdt = $("#dpStartDate").val();
+            var edt = $("#dpEndDate").val();
+            var SearchTerm = $("#txtSearch").val();
+            var ReportType = $("#ddlReportType").val();
+
+            if (ReportType == '1') {
+                sdt = getYesterday();
+                edt = getToday();
+            }
+
+            if (SearchTerm == 'search') { SearchTerm = ''; }
+            if (typeof (SortID) == 'undefined') {
+                SortID = '0'
+            }
+            else {
+                if (getParameterByName("SortID") == SortID) {
+                    SortID = SortID + 'x';
+                }
+                if (getParameterByName("SortID") == '0' || getParameterByName("SortID") == '') {
+                    if (SortID == '9') {
+                        SortID = '9x';
+                    }
+                }
+            }
+
+            reloadWithQueryStringVars({
+                'SearchTerm': SearchTerm,
+                'sdt': sdt,
+                'edt': edt,
+                'SortID': SortID,
+                'ReportType': ReportType
+            });
+        }
+
+        function getTomorrow() {
+            var tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            var dd = tomorrow.getDate();
+            var mm = tomorrow.getMonth() + 1; //January is 0!
+            var yyyy = tomorrow.getFullYear();
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            tomorrow = mm + '/' + dd + '/' + yyyy;
+            return tomorrow;
+        }
+
+        function getToday() {
+            var today = new Date();
+            today.setDate(today.getDate());
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            today = mm + '/' + dd + '/' + yyyy;
+            return today;
+        }
+
+        function getNinetyDaysAgo() {
+            var ninetyAgo = new Date();
+            ninetyAgo.setDate(ninetyAgo.getDate() - 89);
+            var dd = ninetyAgo.getDate();
+            var mm = ninetyAgo.getMonth() + 1; //January is 0!
+            var yyyy = ninetyAgo.getFullYear();
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            ninetyAgo = mm + '/' + dd + '/' + yyyy;
+            return ninetyAgo;
+        }
+
+        function getNinetyDaysFromNow() {
+            var ninetyFromNow = new Date();
+            ninetyFromNow.setDate(ninetyFromNow.getDate() + 90);
+            var dd = ninetyFromNow.getDate();
+            var mm = ninetyFromNow.getMonth() + 1; //January is 0!
+            var yyyy = ninetyFromNow.getFullYear();
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            ninetyFromNow = mm + '/' + dd + '/' + yyyy;
+            return ninetyFromNow;
+        }
+
+        function getYesterday() {
+            var yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            var dd = yesterday.getDate();
+            var mm = yesterday.getMonth() + 1; //January is 0!
+            var yyyy = yesterday.getFullYear();
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            yesterday = mm + '/' + dd + '/' + yyyy;
+            return yesterday;
+        }
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function reloadWithoutQueryString() {
+            window.location = window.location.href.split("?")[0];
+        }
+
+        function reloadWithQueryStringVars(queryStringVars) {
+            var existingQueryVars = location.search ? location.search.substring(1).split("&") : [],
+              currentUrl = location.search ? location.href.replace(location.search, "") : location.href,
+                newQueryVars = {},
+                  newUrl = currentUrl + "?";
+
+            if (existingQueryVars.length > 0) {
+                for (var i = 0; i < existingQueryVars.length; i++) {
+                    var pair = existingQueryVars[i].split("=");
+                    newQueryVars[pair[0]] = pair[1];
+                }
+            }
+
+            if (queryStringVars) {
+                for (var queryStringVar in queryStringVars) {
+                    newQueryVars[queryStringVar] = queryStringVars[queryStringVar];
+                }
+            }
+
+            if (newQueryVars) {
+                for (var newQueryVar in newQueryVars) {
+                    newUrl += newQueryVar + "=" + newQueryVars[newQueryVar] + "&";
+                }
+                newUrl = newUrl.substring(0, newUrl.length - 1);
+                window.location.href = newUrl;
+            } else {
+                window.location.href = location.href;
+            }
+        }
+
+        function reloadWithQueryStringVars2(queryStringVars) {
+            var existingQueryVars = location.search ? location.search.substring(1).split("&") : [],
+                currentUrl = location.search ? location.href.replace(location.search, "") : location.href,
+                newQueryVars = {},
+                newUrl = currentUrl + "?";
+
+            if (existingQueryVars.length > 0) {
+                for (var i = 0; i < existingQueryVars.length; i++) {
+                    var pair = existingQueryVars[i].split("=");
+                    newQueryVars[pair[0]] = pair[1];
+                }
+            }
+
+            if (queryStringVars) {
+                for (var queryStringVar in queryStringVars) {
+                    if (typeof queryStringVars[queryStringVar] != 'undefined' && queryStringVars[queryStringVar] != '') {
+                        newQueryVars[queryStringVar] = queryStringVars[queryStringVar];
+                    }
+                }
+            }
+
+            if (newQueryVars) {
+                for (var newQueryVar in newQueryVars) {
+                    if (typeof newQueryVars[newQueryVar] != 'undefined' && newQueryVars[newQueryVar] != '') {
+                        newUrl += newQueryVar + "=" + newQueryVars[newQueryVar] + "&";
+                    }
+                }
+                newUrl = newUrl.substring(0, newUrl.length - 1);
+                window.location.href = newUrl;
+            } else {
+                window.location.href = location.href;
+            }
+        }
+
+        // Cookies
+        function createCookie(name, value, days) {
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                var expires = "; expires=" + date.toGMTString();
+            }
+            else var expires = "";
+
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
+</body>
+</html>

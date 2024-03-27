@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+<!-- AccordionDropDown_Projects -->
+<script type="text/javascript">
+    var urlParams = ["projectNumb", "org", "expendType", "task", "contNumb", "fundScNumb"];
+
+    // ======= [[ Page load callers And utils ]] ========//
+
+    document.addEventListener('DOMContentLoaded', function () {
+        projectNumberPreventSlowPage();
+        getURLParams();
+        checkNextAccordion();
+        convertPoetafFormat();
+        checkPoetaf();
+    }, false);
+
+    // Gets current url and places previous searches in the dropdowns
+    function removeGenValsUrl() {
+        var hasVals = location.search.replace("?", "").split("&")
+
+        hasVals.forEach((item, index, object) => {
+            if (item.includes('viewmode'))
+                object.splice(index, 1)
+
+            if (item == '')
+                object.splice(index, 1)
+        });
+        return hasVals;
+    }
+
+    function getURLParams() {
+        var hasVals = removeGenValsUrl();
+
+        // Lets replace some url strings and place in the appropriate spot
+        hasVals.forEach(x => {
+            urlParams.forEach(y => {
+                var element = document.getElementById(y);
+                if (element != null) {
+                    if (x.includes(y)) {
+                        x = x.replace(y + "=", "");
+                        element.value = x;
+                    }
+                }
+            })
+        });
+
+        hasVals.forEach(x => {
+            if (x.includes('projectNumb')) { // Only has entity
+                var temp = x.replace('projectNumb=', '')
+                var element = document.getElementById('projectNumb');
+                element.value = temp;
+            }
+        })
+    }
+
+    //=================== [[ Project Number Slow fix ]] ===========================//
+
+    // Lets check if Project Name is already selected and disable that sucker
+    function projectNumberPreventSlowPage() {
+        hasVals = removeGenValsUrl();
+        var selectedProjNumb = '';
+
+        hasVals.forEach(x => {
+            if (x.includes('projectNumb'))
+                selectedProjNumb = x.replace('projectNumb=', ''); // This is the value
+        });
+
+
+        if (selectedProjNumb != "" && selectedProjNumb != null) {
+            // Lets get current selected and 'Select Product Number' option tags
+            var projNumbDropDown = document.getElementById('projectNumb');
+            var initOp = projNumbDropDown[0];
+
+            // Find option w/ Project Number value
+            for (var o of document.querySelectorAll('#projectNumb > option')) {
+                if (o.value === selectedProjNumb)
+                    selectedProjNumb = o.index;
+            }
+            // Set temp location for these options
+            var selectedOp = projNumbDropDown[selectedProjNumb];
+            selectedOp.setAttribute('selected', 'selected');
+
+            // remove all options from the list and add selected & init
+            for (var o of document.querySelectorAll('#projectNumb > option')) {
+                o.remove()
+            }
+
+            projNumbDropDown.add(selectedOp);
+            projNumbDropDown.add(initOp);
+        }
+    }
+
+    // ===================== [[ Select next Dropdown ]] =============================//
+
+
+    // Will open next accordion for the user
+    function checkNextAccordion() {
+        var entity = document.getElementById('projectNumb');
+        var lastSelected = '';
+        var acc = '';
+        var nextDDSelect = '';
+        var hasVals = removeGenValsUrl()
+
+        if (hasVals.length > 0) {
+            lastSelected = hasVals.pop().split("=")[0];
+
+            urlParams.forEach((item, index, object) => {
+                if (item == lastSelected) {
+                    console.log(lastSelected);
+                    nextDDSelect = object[index + 1]
+                    acc = document.getElementById(nextDDSelect);
+                    if (acc != null) {
+                        entity.parentElement.parentElement.style = 'height: 0px; overflow: hidden; display: none;' // Lets close a dd
+                        acc.parentElement.parentElement.style = 'height: auto; overflow: auto; display: block;' // open next
+                    }
+                }
+            })
+        }
+    }
+
+    function convertPoetafFormat() { // Replacing bool with project string value provided by CLE
+        var poerefElement = document.getElementById('poerefLoad');
+        if (poerefElement != null) {
+            var poeref = []
+            poeref = poerefElement.value.split('-');
+            poeref[2] = '915040 Office Supplies';
+            poerefElement.value = poeref.join('-');
+        }
+    }
+
+
+    function selectNextProd(selObject) {
+        var dropDown = '';
+        var url = "https://clinicoracle.myonlineordering.com/Tools/Project-String?";
+        var hasVals = removeGenValsUrl();
+        var count = 0;
+
+        // Lets check if we are on ProjectNumb and do the least work possible
+        if (selObject.id == 'projectNumb') {
+            url += 'projectNumb=' + selObject.value
+        } else {
+            if (selObject.value != 'NULL') {
+                if (hasVals.length > 0 && hasVals[0] != '') {
+                    hasVals.forEach(x => {
+                        urlParams.forEach(y => {
+                            if (x.includes(y)) {
+                                if (count > 0) // lets add an & if not first param
+                                    url += "&"
+
+                                x = x.replace(y + "=", "");
+                                url += y + "=" + x;
+                                count++
+                            }
+                        });
+                    });
+                    url += '&' + selObject.id + '=' + selObject.value;
+
+                    if (selObject.id == 'org') { // to skip expendType
+                        url += '&expendType=0';
+                    }
+                }
+            }
+        }
+        if (selObject.value != 'NULL')
+            window.location.href = url;
+    }
+
+    // ================= [[ Cookie Stuff && Save ]] ==========================//
+
+    //Save Button && Cookie generator
+    function saveUserChoice() {
+        var coa = document.getElementById("poerefLoad");
+        if (coa != null && coa != undefined) {
+            var exdate = new Date();
+            //saveToClipboard(coa.value);
+
+            // Save cookie data
+            // exdate.setDate(exdate.getDate() + 30);
+            // var c_value = escape(coa.value) + ("; expires=" + exdate.toUTCString());
+            // document.cookie = 'poetafString=' + c_value;
+
+            // Redirect to webpage
+            var projectID = document.getElementById('projectID');
+            var redirectURL = getSetBcexCookie("url") + "projstringid=" + projectID.value;
+            window.location.href = redirectURL;
+        }
+    }
+
+    // BCEX Cookie (in other tool page as well)
+    function getSetBcexCookie(action) {
+        var devModeURL = "http://site.bcex.zk4.com/Checkout.aspx?";
+        var onlineOrderingURL = "https://site.myonlineordering.com/Checkout.aspx?"
+        var selected = "";
+        // Lets get the bcex cookie and redirect where nessecary
+        if (action === "url") {
+            var cookies = document.cookie;
+            if (cookies.includes("BCEX_Path")) {
+                if (cookies.includes(';')) {
+                    cookies = cookies.split(';');
+                    cookies.forEach(x => {
+                        if (x.includes('BCEX_Path=')) {
+                            x = x.replace('BCEX_Path=', '');
+                                if (x.includes('true')) {
+                                    selected =  devModeURL;
+                                } else {
+                                    selected =  onlineOrderingURL;
+                                }
+                        }
+                    });
+
+                    cookies.forEach(x => {
+                        if (x.includes('BCEX_site')) {
+                            selected = selected.replace('site', x.replace('BCEX_site=', ''));
+                        };
+                    });
+                }
+            }
+        }
+        return selected.replace(' ', '');
+    }
+
+    //======================== [[ Saving Codes ]] ===============================// 
+
+    // Check COA and replace fake temp box
+    function checkPoetaf() {
+        var poetaf = document.getElementById("poerefLoad");
+        var removeTemp = document.getElementById("poetafEmpty");
+        var cookiePoetaf = document.cookie;
+
+        if (cookiePoetaf.includes("poetafString")) {
+            if (!cookiePoetaf.includes(';')) {
+                cookiePoetaf = cookiePoetaf.replace('poetafString=', '');
+                removeTemp.placeholder = cookiePoetaf
+            }
+        }
+
+        if (poetaf != null && poetaf != undefined) {
+            if (poetaf.type != 'hidden')
+                removeTemp.type = 'hidden';
+        }
+
+        if (document.cookie.includes('')) {
+
+        }
+    }
+
+    // Save to clipboard login
+    function saveToClipboard(poetaf) {
+        if (window.clipboardData && window.clipboardData.setData) {
+            // IE specific code path to prevent textarea being shown while dialog is visible.
+            return clipboardData.setData("Text", poetaf);
+
+        } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+            var textarea = document.createElement("textarea");
+            textarea.textContent = poetaf;
+            textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+            } catch (ex) {
+                console.warn("Copy to clipboard failed.", ex);
+                return false;
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+    }
+</script>
+
+<!-- AccordionDropDown_Projects End -->
+
+<!-- Empty Project String Text Box -->
+<input disabled="disabled" id="poetafEmpty" placeholder="Project String" style="
+    padding:.5em;
+    margin-top:.5em;
+    width: 100%;
+  " type="text" value="" />
+
+<!-- Sample output -->
+<input type="hidden" id="projectID" value='109'  />
+<input id="poerefLoad" placeholder="C0013367S-33000-0-1--" style="padding:.5em;margin-top:.5em;width: 100%;" value="C0013367S-33000-0-1--" disabled="disabled"/>
+
+
+<!-- next button -->
+<button onclick="saveUserChoice(this); return false; returnfalse;" style="margin-top:.5em;padding:.5em;" type="button">Next</button>
+
+</body>
+</html>
