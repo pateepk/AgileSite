@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <script>
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function resetStats() {
+            var clearURL = window.location.href.substr(0, window.location.href.indexOf("?"));
+            if (!clearURL) {
+                clearURL = window.location.href;
+            }
+            window.location.href = clearURL;
+        }
+
+        function reloadWithoutQueryString() {
+            window.location = window.location.href.split("?")[0];
+        }
+
+        function reloadWithQueryStringVars(queryStringVars) {
+            var existingQueryVars = location.search ? location.search.substring(1).split("&") : [],
+                currentUrl = location.search ? location.href.replace(location.search, "") : location.href,
+                newQueryVars = {},
+                newUrl = currentUrl + "?";
+            if (existingQueryVars.length > 0) {
+                for (var i = 0; i < existingQueryVars.length; i++) {
+                    var pair = existingQueryVars[i].split("=");
+                    newQueryVars[pair[0]] = pair[1];
+                }
+            }
+            if (queryStringVars) {
+                for (var queryStringVar in queryStringVars) {
+                    newQueryVars[queryStringVar] = queryStringVars[queryStringVar];
+                }
+            }
+            if (newQueryVars) {
+                for (var newQueryVar in newQueryVars) {
+                    newUrl += newQueryVar + "=" + newQueryVars[newQueryVar] + "&";
+                }
+                newUrl = newUrl.substring(0, newUrl.length - 1);
+                window.location.href = newUrl;
+            } else {
+                window.location.href = location.href;
+            }
+        }
+
+        function applyFilters(SortID) {
+            if (typeof (SortID) == 'undefined') {
+                SortID = '0'
+            }
+            else {
+                if (getParameterByName("SortID") == SortID) {
+                    SortID = SortID + 'x';
+                }
+                if (getParameterByName("SortID") == '0' || getParameterByName("SortID") == '') {
+                    if (SortID == '5') {
+                        SortID = '5x';
+                    }
+                }
+            }
+
+            reloadWithQueryStringVars({ 'SortID': SortID });
+        }
+    </script>
+
+    <div id="main">
+        <table class="grid">
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        Summary (in current view/filter)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Number of Suspected Fraud Items:</b></td>
+                    <td>361</td>
+                </tr>
+                <tr>
+                    <td><b>Total Amount of Suspected Fraud:</b></td>
+                    <td>$579,783.15</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="grid">
+            <thead>
+                <tr>
+                    <th><a href="javascript:void(0);" onclick="applyFilters(2);return false;">Batch</a></th>
+                    <th>Transaction ID</th>
+                    <th>Insert Date</th>
+                    <th>Customer Name</th>
+                    <th><a href="javascript:void(0);" onclick="applyFilters(1);return false;">Amount</a></th>
+                    <th>Bank Name</th>
+                    <th>Account #</th>
+                    <th>Memo</th>
+                    <th>Reason</th>
+                    <th>Approve</th>
+                    <th>Reject</th>
+                    <th>Fraud</th>
+                    <th>Pause</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>549</td>
+                    <td><a href="/Home/Reports/Payment-Transactions/TransactionDetail?tid=2b9221b6-5f12-4828-b2d5-214917800bb8">2b9221b6-5f12-4828-b2d5-214917800bb8</a></td>
+                    <td>4/25/2019 4:55:00 PM</td>
+                    <td>RAN CHU</td>
+                    <td>$6,438.43</td>
+                    <td>OPTUM BANK, INC.                    </td>
+                    <td>
+                        95001020010132
+                    </td>
+                    <td>rollover benefit to optum</td>
+                    <td>>85% of Acct Bal Auto Process 2019-04-25</td>
+                    <td><a href="/Home/Reports/Admin/Fraud-Hold-Approval-Process/Release?TransID=2b9221b6-5f12-4828-b2d5-214917800bb8"><i class="fa fa-thumbs-up fa-4" style="font-size:18pt;"></i></a></td>
+                    <td><a href="/Home/Reports/Admin/Fraud-Hold-Approval-Process/Reject?TransID=2b9221b6-5f12-4828-b2d5-214917800bb8"><i class="fa fa-thumbs-down fa-4" style="font-size:18pt;"></i></a></td>
+                    <td><a href="/Home/Reports/Admin/Fraud-Hold-Approval-Process/Cancel?TransID=2b9221b6-5f12-4828-b2d5-214917800bb8"><i class="fa fa-ban fa-4" style="font-size:18pt;"></i></a></td>
+                    <td><a href="/Home/Reports/Admin/Fraud-Hold-Approval-Process/Pause?TransID=2b9221b6-5f12-4828-b2d5-214917800bb8"><i class="fa fa-pause fa-4" style="font-size:18pt"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

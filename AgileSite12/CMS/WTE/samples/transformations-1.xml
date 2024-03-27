@@ -1,0 +1,429 @@
+{% !MembershipContext.AuthenticatedUser.IsInRole("TN_SU-GRP") && !MembershipContext.AuthenticatedUser.IsInRole("TN_GRP") && MembershipContext.AuthenticatedUser.IsInRole("_authenticated_") #%}
+
+
+Subaccount: {% if (QueryString.GetValue("subaccount") != null) { QueryString.GetValue("subaccount") }  else { "N/A" } #%}
+</br>
+Client: {% if (QueryString.GetValue("client") != null) {"/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client")} else  { "N/A" } #%}
+<br/>
+Back:  {% QueryString.GetValue("Back") #%}
+<br/>
+{% 
+	if ( QueryString.GetValue("subaccount") != null)
+	{ 
+		if (QueryString.GetValue("client") != null)
+		{
+			"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + QueryString.GetValue("subaccount")  + "&client=" + QueryString.GetValue("client")
+		}
+		else
+		{
+			"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + QueryString.GetValue("subaccount")
+		}
+	}
+	else
+	{
+		if ( QueryString.GetValue("client") != null)
+		{
+			"/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client")
+		}
+		else
+		{
+			"/Secure/Administration/Clients/"
+		}
+	}
+#%}
+
+/******************************************/
+/* RetMode                                */
+/* 1 = main client page                   */
+/* 2 = to parent (client overview)        */
+/* 3 = to subaccount overview             */
+/* 4 = to employee                        */
+/* 5 = back to subaccount/company         */
+/* 6 = Quiz report main                   */
+/******************************************/
+
+<!-- template -->
+{%
+		if (QueryString.GetValue("r") != null)
+		{
+			if (QueryString.GetValue("r") == "1")
+			{	
+				<!-- return to main client page -->
+			}
+			else
+			{
+				if (QueryString.GetValue("r") == "2")
+				{
+					<!-- return to parent (client overview page) -->
+				}
+				else
+				{
+					if (QueryString.GetValue("r") == "3")
+					{
+						<!-- return to subaccount overview page -->
+					}
+					else
+					{
+						if (QueryString.GetValue("r") == "4")
+						{
+							<!-- return to main employee page -->
+						}
+						else 
+						{
+							if (QueryString.GetValue("r") == "5")
+							{
+								<!-- logic to send back to main sub-account/company page -->
+							}
+							else
+							{
+								<!-- ldefault ... -->
+							}	
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			if (QueryString.GetValue("back") != null)
+			{
+				<!-- return using "back" -->
+			}	
+		}
+#%}
+
+<!-- Client overview page param:  ?client=8433bbf0-e684-4ec2-a4cd-79ed4bf79d10&cid=3023 -->
+<!-- Sub-account over page param: ?subaccount=1facb9f4-8145-496d-9fd7-3e685c4b2b10&client=8433bbf0-e684-4ec2-a4cd-79ed4bf79d10&cid=5006&pcid=3023&r=2 -->
+<!-- Sub-account edit page: ?ItemID=1&Action=Edit&subaccount=8bf8eac7-cd85-4b7b-981b-50a51e3d9204&client=d4b6274a-3e49-446f-be0e-ed4a4af8b420&cid=1&pcid=3024&r=3 -->
+
+<!-- with data datasource -->
+{%
+	if (QueryString.GetValue("r") != null)
+	{
+		if (QueryString.GetValue("r") == "1")
+		{	
+			"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/\">"
+		}
+		else
+		{
+			if (QueryString.GetValue("r") == "2")
+			{
+				    if (Convert.ToString(ParentItemGUID, "") != "")
+				    {
+					    "<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Client-Overview?client=" + ParentItemGUID + "&cid=" + ParentItemID + "\">"
+				    }
+				    else
+				    {
+				        if (Convert.ToString(ItemGUID, "") != "")
+					    {
+						    "<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Client-Overview?client=" + ItemGUID + "&cid=" + ItemID + "\">"
+					    }
+					    else
+					    {
+							if (QueryString.GetValue("client") != null)
+							{
+								"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client")
+							}
+							else
+							{
+								"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("parent")
+							}
+							if (QueryString.GetValue("pcid") != null)
+							{
+								 "&cid=" + QueryString.GetValue("pcid") + "\">"
+							}
+							else
+							{
+								"&cid=" + QueryString.GetValue("cid") + "\">"
+							}
+					    }
+				    }
+			}
+			else
+			{
+				if (QueryString.GetValue("r") == "3")
+				{
+					    if (Convert.ToString(ItemID, "") != "")
+					    {
+							if (Convert.ToString(ParentItemGUID, "") != "")
+							{
+								"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + ItemGUID + "&cid=" + ItemID + "&client=" + ParentItemGUID + "&pcid=" + ParentItemID + "&r=2\">"
+							}
+							else
+							{
+								if (QueryString.GetValue("client") != null)
+								{
+									"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + ItemGUID + "&cid=" + ItemID + "&client=" + QueryString.GetValue("client") + "&pcid=" + QueryString.GetValue("pcid") + "&r=2\">"
+								}
+								else
+								{
+									"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + ItemGUID + "&cid=" + ItemID + "&client=" + QueryString.GetValue("parent") + "&pcid=" + QueryString.GetValue("pcid") + "&r=2\">"
+								}
+								
+							}						    
+					    }
+					    else
+					    {
+							if (QueryString.GetValue("client") != null)
+							{
+								"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + QueryString.GetValue("subaccount") + "&cid=" + QueryString.GetValue("cid") + "&client=" + QueryString.GetValue("client") + "&pcid=" + QueryString.GetValue("pcid") + "&r=2\">"
+							}
+							else
+							{
+								"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + QueryString.GetValue("subaccount") + "&cid=" + QueryString.GetValue("cid") + "&client=" + QueryString.GetValue("parent") + "&pcid=" + QueryString.GetValue("pcid") + "&r=2\">"
+							}					    
+					    }
+				}
+				else
+				{
+					if (QueryString.GetValue("r") == "4")
+					{
+						 "<a class=\"icon-only\" href=\"/Secure/Administration/Employees\">"
+					}
+					else
+					{
+						if (QueryString.GetValue("r") == "5")
+						{
+							"<a class=\"icon-only\" href=\"/Secure/Administration/Sub-Accounts/\">"
+						}
+						else
+						{
+							"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/\">"
+						}
+						
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		if (QueryString.GetValue("back") != null)
+		{
+			"<a class=\"icon-only\" href=\"" + QueryString.GetValue("back") + "\">"
+		}	
+		else
+		{
+			"<a class=\"icon-only\" href=\"/Secure/Administration/Clients/\">"
+		}
+	}
+#%}
+
+<!-- without button -->
+
+{% returnMode = QueryString.GetValue("r"); #%}
+
+{%
+	if (QueryString.GetValue("r") != null)
+	{
+		if (QueryString.GetValue("r") == "1")
+		{	
+			"/Secure/Administration/Clients/"
+		}
+		else
+		{
+			if (QueryString.GetValue("r") == "2")
+			{
+				    if (ParentItemGUID != null)
+				    {
+					    "/Secure/Administration/Clients/Client-Overview?client=" + ParentItemGUID + "&cid=" + ParentItemID
+				    }
+				    else
+				    {
+				        if (ItemID != null)
+					    {
+						    "/Secure/Administration/Clients/Client-Overview?client=" + ItemGUID + "&cid=" + ItemID
+					    }
+					    else
+					    {
+							if (QueryString.GetValue("client") != null)
+							{
+								"/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client") + "&cid=" + QueryString.GetValue("cid")
+							}
+							else
+							{
+								"/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("parent") + "&cid=" + QueryString.GetValue("cid")
+							}
+						    
+					    }
+				    }
+			}
+			else
+			{
+				if (QueryString.GetValue("r") == "3")
+				{
+						if (ItemID != null)
+					    {
+							if (ParentItemGUID != null)
+							{
+								"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + ItemGUID + "&cid=" + ItemID + "&client=" + ParentItemGUID + "&pcid=" + ParentItemID + "&r=2"
+							}
+							else
+							{
+								"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + ItemGUID + "&cid=" + ItemID + "&client=" + QueryString.GetValue("client") + "&pcid=" + QueryString.GetValue("pcid") + "&r=2"
+							}						    
+					    }
+					    else
+					    {
+						    "/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + QueryString.GetValue("subaccount") + "&cid=" + QueryString.GetValue("cid") + "&client=" + QueryString.GetValue("client") + "&pcid=" + QueryString.GetValue("pcid") + "&r=2"
+					    }
+				}
+				else
+				{
+					if (QueryString.GetValue("r") == "4")
+					{
+						"/Secure/Administration/Employees/"
+					}
+					else
+					{
+						if (QueryString.GetValue("r") == "5")
+						{
+							"/Secure/Administration/Sub-Accounts/"
+						}
+						else
+						{
+							if (QueryString.GetValue("back") != null)
+							{
+								QueryString.GetValue("back")
+							}	
+							else
+							{
+								"/Secure/Administration/Clients/"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		if (QueryString.GetValue("back") != null)
+		{
+			QueryString.GetValue("back")
+		}	
+		else
+		{
+			"/Secure/Administration/Clients/"
+		}
+	}
+#%}
+<!-- without button new -->
+<!-- without button -->
+
+
+<!-- version 2 -->
+{% 
+    if (QueryString.GetValue("r") == "1")
+    {
+       "/Secure/Administration/Clients/"
+    } 
+    else
+    {
+		If (QueryString.GetValue("r") == "2")
+		{
+			"/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client") + "&cid=" + QueryString.GetValue("cid") 
+		}
+		else 
+		{
+			if (QueryString.GetValue("r") == "3")
+			{
+				if (QueryString.GetValue("parent") != null)
+				{
+					"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + QueryString.GetValue("subaccount") + "&parent=" + QueryString.GetValue("parent") + "&cid=" + QueryString.GetValue("cid") + "&pcid" + QueryString.GetValue("pcid")
+				}
+				else
+				{
+					"/Secure/Administration/Clients/Sub-Account-Overview?subaccount=" + QueryString.GetValue("subaccount") + "&client=" + QueryString.GetValue("parent") + "&cid=" + QueryString.GetValue("cid") + "&pcid" + QueryString.GetValue("pcid")
+				}
+			}
+			else
+			{
+				if (QueryString.GetValue("r") == "4")
+				{
+					"/Secure/Administration/Employees/"
+				}
+				else
+				{
+					if (QueryString.GetValue("Back") != null)
+					{
+						QueryString.GetValue("Back") 
+					}
+					else
+					{
+						"/Secure/Administration/Clients/"
+				    }
+				}
+			}
+		}
+      }
+#%}
+
+
+<!-- without datasource -->
+{% 
+    if (QueryString.GetValue("r") == "1")
+    {
+       "/Secure/Administration/Clients/"
+    } 
+    else
+    {
+        if (QueryString.GetValue("client") != null)
+        {
+            if (QueryString.GetValue("cid") != null)
+            {
+               "/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client") + "&cid=" + QueryString.GetValue("cid") 
+            }
+            else
+            {
+               if (QueryString.GetValue("itemid") != null)
+               {
+                  "/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client") + "&cid=" + QueryString.GetValue("itemid") 
+               }
+               else
+               {
+                  "/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client") 
+               }
+            }
+        }
+        else
+        {
+            if (QueryString.GetValue("parent") != null)
+			{
+				if (QueryString.GetValue("cid") != null)
+            {
+               "/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client") + "&cid=" + QueryString.GetValue("cid") 
+            }
+            else
+            {
+               if (QueryString.GetValue("itemid") != null)
+               {
+                  "/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client") + "&cid=" + QueryString.GetValue("itemid") 
+               }
+               else
+               {
+                  "/Secure/Administration/Clients/Client-Overview?client=" + QueryString.GetValue("client") 
+               }
+            }
+			}
+			else
+			{
+				if (QueryString.GetValue("Back") != null)
+				{
+					QueryString.GetValue("Back") 
+				}
+				else
+				{
+					"/Secure/Administration/Clients/"
+				}
+			}				
+        }
+    }
+#%}
+
+
+
+
+
+
+       

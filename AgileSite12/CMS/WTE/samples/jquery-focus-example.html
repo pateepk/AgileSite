@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="web_author" content="WTE Solutions">
+    <!-- <link rel="stylesheet" type="text/css" href="https://learn.streamery.co/App_Themes/TNet19/assets/css/core.css"> -->
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <meta name="google-site-verification" content="6cLh7LxlyALB12LWRUov1n4An4ZwMKm9SOUJQu74SWs" />
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <script>
+        $(function () {
+            var datepickerX = getParameterByName("datepicker");
+            var anchor = getParameterByName("anchor");
+            if (datepickerX !== '') {
+                $("#txtdatepicker").val(datepickerX);
+            }
+            //anchor = 'item2'
+            if (anchor !== '') {
+                focustocontrol(anchor);
+            }
+        });
+
+        // focus to the control with the "name"
+        function focustocontrol(name) {
+            var n = '#' + name;
+            if ($(n) != null) {
+                $(n).focus();
+            }
+            else {
+                alert("control:" + name + " not found!")
+            }
+        };
+
+        function cleardatepickerBox() {
+            var datepicker2 = $("#txtdatepicker").val();
+            if (datepicker2 == 'mm/dd/yyyy') {
+                $("#txtdatepicker").val('');
+            }
+        }
+
+        function filldatepickerBox() {
+            var datepicker = $("#txtdatepicker").val();
+            if (datepicker == '') {
+                $("#txtdatepicker").val('mm/dd/yyyy');
+            }
+        }
+
+        // redirect and set date picker.
+        function SetDatePicker(datepicker, anchor) {
+            var dp = datepicker + anchor;
+            reloadWithQueryStringVars({
+                'datepicker': datepicker,
+                'anchor': anchor
+            });
+
+        }
+
+        function applyFilters() {
+            var datepicker = $("#txtdatepicker").val();
+            reloadWithQueryStringVars({
+                'datepicker': datepicker
+            });
+        }
+
+        function resetFilters() {
+            var dp = $('#textdatepicker')
+            if (dp != null) {
+                dp.val('');
+            }
+            //var datepicker = 'mm/dd/yyyy';
+            //reloadWithQueryStringVars({
+            //    'datepicker': datepicker,
+            //    'anchor': ''
+            //});
+        }
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function reloadWithoutQueryString() {
+            window.location = window.location.href.split("?")[0];
+        }
+
+        function reloadWithQueryStringVars(queryStringVars) {
+            var existingQueryVars = location.search ? location.search.substring(1).split("&") : [],
+                currentUrl = location.search ? location.href.replace(location.search, "") : location.href,
+                newQueryVars = {},
+                newUrl = currentUrl + "?";
+            if (existingQueryVars.length > 0) {
+                for (var i = 0; i < existingQueryVars.length; i++) {
+                    var pair = existingQueryVars[i].split("=");
+                    newQueryVars[pair[0]] = pair[1];
+                }
+            }
+            if (queryStringVars) {
+                for (var queryStringVar in queryStringVars) {
+                    newQueryVars[queryStringVar] = queryStringVars[queryStringVar];
+                }
+            }
+            if (newQueryVars) {
+                for (var newQueryVar in newQueryVars) {
+                    newUrl += newQueryVar + "=" + newQueryVars[newQueryVar] + "&";
+                }
+                newUrl = newUrl.substring(0, newUrl.length - 1);
+                window.location.href = newUrl;
+            } else {
+                window.location.href = location.href;
+            }
+        }
+    </script>
+    <a id="item1" href='' onlick="SetDatePicker('04/19/2021', 'item3'); return false;">Top of page (click here to go to table)</a>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <a id="item3">Top of page (click here to go to table)</a>
+    <table id="maintable" class="table-nice">
+        <thead>
+            <tr>
+                <th>click</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a id="click1" onclick="SetDatePicker('04/19/2021','item1');return false;">Go to top of page, and set date to 4/19/2021</a> </td>
+            </tr>
+            <tr>
+                <td><a id="click2" onclick="SetDatePicker('05/14/2021','item2');return false;">Go to bottom of page, and set date to 5/14/2021</a> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <div class="inline-form-group">
+            <input type="text" id="txtdatepicker" name="txtdatepicker" value="mm/dd/yyyy" onfocus="cleardatepickerBox();" />
+        </div>
+        <div class="inline-form-group">
+            <button class="btn btn-brand-2" onclick="applyFilters();return false;">Filter</button>
+            <button class="btn" onclick="resetFilters();return false;">Reset</button>
+        </div>
+    </p>
+
+    <br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <a id="item2" href='' onlick="SetDatePicker('04/19/2021', 'item1'); return false;">><b>Go back to top of the page</b></a>
+</body>
+</html>

@@ -4842,12 +4842,32 @@
     <Content Include="IntranetPortal\media\Media\Trees for Bugs\Trees-for-bugs-5.jpg" />
     <Content Include="IntranetPortal\media\Microsoft_Office_Upgrade\Microsoft Office graphics\msoffice.jpg" />
     <Content Include="IntranetPortal\media\Microsoft_Office_Upgrade\Microsoft Office graphics\msoffice_col.jpg" />
+    <Content Include="KofcNC\test\help-bubble-v1.html" />
+    <Content Include="KofcNC\test\help-bubble-v2.html" />
+    <Content Include="WTE\samples\actionbuttons.xml" />
+    <Content Include="WTE\samples\backbutton.xml" />
+    <Content Include="WTE\samples\jquery-focus-example.html" />
+    <Content Include="WTE\samples\sample-page-script.html" />
+    <Content Include="WTE\samples\param-buttons-1.xml" />
+    <Content Include="WTE\samples\param-buttons-2.xml" />
+    <Content Include="WTE\samples\param-buttons-3.xml" />
+    <Content Include="WTE\samples\redirectUrl.xml" />
+    <Content Include="WTE\samples\Redirect_with_querystring_w_cookie-2.html" />
+    <Content Include="WTE\samples\Redirect_with_querystring_w_cookies-1.html" />
+    <Content Include="WTE\samples\Redirect_with_querystring_w_cookies-coa-1.html" />
+    <Content Include="WTE\samples\Redirect_with_querystring_w_cookies-proj-1.html" />
+    <Content Include="WTE\samples\SearchFilter-with-dates.html" />
+    <Content Include="WTE\samples\SearchFilter-with-dates2.html" />
+    <Content Include="WTE\samples\table-header-sort.html" />
+    <Content Include="WTE\samples\transformation.txt" />
+    <Content Include="WTE\samples\transformations-1.xml" />
+    <Content Include="WTE\samples\transformations-2.xml" />
     <Content Include="WTE\test\paypal-test.html" />
     <Content Include="WTE\test\buttons-test.html" />
     <Content Include="WTE\test\css1.css" />
-    <Content Include="KofcNC\test_member_search.html" />
-    <Content Include="KofcNC\test_member_filter.html" />
-    <Content Include="KofcNC\test_member_lookup.html" />
+    <Content Include="KofcNC\test\member-filter-v1.html" />
+    <Content Include="KofcNC\test\member-filter-v2.html" />
+    <Content Include="KofcNC\test\member-lookup.html" />
     <Content Include="ObjectTranslationRESTService.svc" />
     <Content Include="DocumentRESTService.svc" />
     <Content Include="Default.aspx" />
@@ -23488,7 +23508,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

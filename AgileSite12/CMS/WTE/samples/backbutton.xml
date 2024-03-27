@@ -1,0 +1,270 @@
+﻿{%
+
+    /******************************************/
+    /* RetMode                                */
+    /* 1 = main client page                   */
+    /* 2 = to parent (client overview)        */
+    /* 3 = to subaccount overview             */
+    /* 4 = to employee                        */
+    /* 5 = back to subaccount/company         */
+    /* 6 = Quiz report main                   */
+    /* 7 = Video report main                  */
+    /******************************************/
+ 
+	baseClientURL = "/Secure/Administration/Clients/";
+	baseClientOverViewURL = "/Secure/Administration/Clients/Client-Overview";
+	baseSubOverViewURL = "/Secure/Administration/Clients/Sub-Account-Overview";
+	baseEmployeeURL = "/Secure/Administration/Employees/";
+	baseCompanyURL = "/Secure/Administration/Sub-Accounts/"; 
+	
+	redirectUrl = "/Secure/Administration/Clients/";
+	r = Convert.ToString(QueryString.GetValue("r"),""); /* return mode  */
+	dpguid = Convert.ToString(ParentItemGUID, ""); /* parentItemGUID from datasource */
+	dpcid  = Convert.ToString(ParentItemID,""); /* parentItemID from datasource */
+	dcguid = Convert.ToString(ItemGUID, ""); /* ItemGUID from datasource */
+	dcid = Convert.ToString(ItemID, ""); /* ItemID from dataSource */
+	back = Convert.ToString(QueryString.GetValue("back"), "");
+	parent = Convert.ToString(QueryString.GetValue("parent"), "");
+	client = Convert.ToString(QueryString.GetValue("client"), "");
+	subaccount = Convert.ToString(QueryString.GetValue("subaccount"), "");
+	itemid = Convert.ToString(QueryString.GetValue("ItemID"), "");
+	cid = Convert.ToString(QueryString.GetValue("cid"), "");
+	pcid = Convert.ToString(QueryString.GetValue("pcid"), "");
+	
+	newparams = "";
+	
+	useclientid = "";
+	usesubaccountid = "";
+	useparentid = "";
+	usecid = "";
+	useparentcid = "";
+	retmode = "";
+	
+	/* "test: " + r; */
+	/* "test2:" + dcid; */
+	
+	
+	/* Client overview page param:  ?client=8433bbf0-e684-4ec2-a4cd-79ed4bf79d10&cid=3023 */
+    /* Sub-account over page param: ?subaccount=1facb9f4-8145-496d-9fd7-3e685c4b2b10&client=8433bbf0-e684-4ec2-a4cd-79ed4bf79d10&cid=5006&pcid=3023&r=2 */
+    /* Sub-account edit page: ?ItemID=1&Action=Edit&subaccount=8bf8eac7-cd85-4b7b-981b-50a51e3d9204&client=d4b6274a-3e49-446f-be0e-ed4a4af8b420&cid=1&pcid=3024&r=3 */
+
+	if (r != "")
+	{	
+		if (r == "1")
+		{
+			/* 1 = main client page */
+			redirectURL = baseClientURL;
+		}
+		
+		if (r == "2")
+		{
+		    /* 2 = to parent (client overview) */
+			redirectURL = baseClientOverViewURL;
+			retmode = "1";
+			if (dpguid != "")
+			{
+				useclientid = dpguid;
+			}
+			else
+			{
+				if (parent != "")
+				{
+					useclientid = parent;
+				}
+				else
+				{
+					if (client != "")
+					{
+						useclientid = client;
+					}
+				}
+			}
+			
+			if (dpcid != "")
+			{
+				usecid = dpcid;
+			}
+			else
+			{
+				if (pcid != "")
+				{
+					usecid = pcid;
+				}
+				else
+				{
+					if (cid != "")
+					{
+						usecid = cid;
+					}
+					else
+					{
+						if (itemid != "")
+						{
+							usecid = itemid;
+						}
+					}
+				}
+			}
+		}
+			
+		if (r == "3")
+		{
+			/* 3 = to subaccount overview */
+			redirectURL = baseSubOverViewURL;
+			retmode = "2";
+			
+			if (dcguid != "")
+			{
+				usesubaccountid = dcguid;
+			}
+			else
+			{
+				if (subaccount != "")
+				{
+					usesubaccountid = subaccount;
+				}
+			}
+			
+			if (dcid != "")
+			{
+				usecid = dcid;
+			}
+			else
+			{
+				if (cid != "")
+				{
+					usecid = cid;
+				}
+				else
+				{
+					if (itemid != "")
+					{
+						usecid = itemid;
+					}
+				}
+			}
+					
+			if (dpguid != "")
+			{
+				useclientid = dpguid;
+			}
+			else
+			{
+				if (parent != "")
+				{
+					useclientid = parent;
+				}
+				else
+				{
+					if (client != "")
+					{
+						useclientid = client;
+					}
+				}
+			}
+			
+			if (dpcid != "")
+			{
+				useparentcid = dpcid;
+			}
+			else
+			{
+				if (pcid != "")
+				{
+					useparentcid = pcid;
+				}
+			}
+		}
+		
+		if (r == "4")
+		{
+			/* 4 = to employee */
+			redirectURL = baseEmployeeURL;
+		}
+		
+		if (r == "5")
+		{
+			/* 5 = back to subaccount/company */
+			redirectURL = baseCompanyURL;
+		}		
+	}
+	else
+	{
+		if (back != null)
+		{
+			redirectURL = back;
+		}
+		else
+		{
+			redirectURL = baseClientURL;
+		}
+	}
+	
+	/* build param string */	
+
+    /* client */	
+	if (useclientid != "")
+	{
+		if (newparams != "")
+		{
+			newparams = newparams + "&";
+		}
+		newparams = newparams + "client=" + useclientid;
+	}
+	
+	if (usesubaccountid != "")
+	{
+		if (newparams != "")
+		{
+			newparams = newparams + "&";
+		}
+		newparams = newparams + "subaccount=" + usesubaccountid;
+	}
+	
+	if (useparentid != "")
+	{
+		if (newparams != "")
+		{
+			newparams = newparams + "&";
+		}
+		newparams = newparams + "parent=" + useparentid;
+	}
+	
+	if (usecid != "")
+	{
+		if (newparams != "")
+		{
+			newparams = newparams + "&";
+		}
+		newparams = newparams + "cid=" + usecid;
+	}
+	
+	if (useparentcid != "")
+	{
+		if (newparams != "")
+		{
+			newparams = newparams + "&";
+		}
+		newparams = newparams + "pcid=" + useparentcid;
+	}
+	
+	if (retmode != "")
+	{
+		if (newparams != "")
+		{
+			newparams = newparams + "&";
+		}
+		newparams = newparams + "r=" + retmode;
+	}
+	
+	
+	if (newparams != "")
+	{
+		redirectURL = redirectURL + "?" + newparams;
+	}
+	
+	redirectURL = "<a class=\"icon-only\" href=\"" + redirectURL + "\">";
+	
+	Convert.ToString(redirectURL, "");
+	
+#%}

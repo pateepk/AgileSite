@@ -1,0 +1,219 @@
+﻿<div class="m-h-1 m-b-2"> 
+  <div class="center m-b-2">
+    <h3>You are about to enable the following user account: <span>{%FullName%}</span></h3>
+{%
+
+    /******************************************/
+    /* RetMode                                */
+    /* 1 = main client page                   */
+    /* 2 = to parent (client overview)        */
+    /* 3 = to subaccount overview             */
+    /* 4 = to employee                        */
+    /* 5 = back to subaccount/company         */
+    /* 6 = Quiz report main                   */
+    /* 7 = Video report main                  */
+    /******************************************/
+
+    /* https://trainingnetworknow.com/System/TestMacros?sdt=12/29/2019&edt=03/27/2020&SortID=0&tf=0&Status=1&searchTerm=x */
+		
+		buttons = "";
+		button_link = "/Secure/Administration/Employees/Enable-Employee/Confirm.aspx";
+		button_css = "btn-admin";
+		button_icon = "fas fa-check green";
+		button_title = "Enable Account";
+		
+		userCompany = Convert.ToString(CurrentUser.UserCompany, "");
+		userGuid = Convert.ToString(QueryString.GetValue("eid"),""); 
+		sortId = Convert.ToString(QueryString.GetValue("SortID"),""); 
+		status = Convert.ToString(QueryString.GetValue("status"),""); 
+		searchTerm = Convert.ToString(QueryString.GetValue("SearchTerm"),""); 
+		timeFrame = Convert.ToString(QueryString.GetValue("tf"),""); 
+		startDate = Convert.ToString(QueryString.GetValue("sdt"),""); 
+		endDate = Convert.ToString(QueryString.GetValue("edt"),"");
+		
+		redirectUrl = "/Secure/Administration/Clients/";
+		r = Convert.ToString(QueryString.GetValue("r"),""); /* return mode  */
+		dpguid = Convert.ToString(ParentItemGUID, ""); /* parentItemGUID from datasource */
+		dpcid  = Convert.ToString(ParentItemID,""); /* parentItemID from datasource */
+		dcguid = Convert.ToString(ItemGUID, ""); /* ItemGUID from datasource */
+		dcid = Convert.ToString(ItemID, ""); /* ItemID from dataSource */
+		back = Convert.ToString(QueryString.GetValue("back"), "");
+		parent = Convert.ToString(QueryString.GetValue("parent"), "");
+		client = Convert.ToString(QueryString.GetValue("client"), "");
+		subaccount = Convert.ToString(QueryString.GetValue("subaccount"), "");
+		itemid = Convert.ToString(QueryString.GetValue("ItemID"), "");
+		cid = Convert.ToString(QueryString.GetValue("cid"), "");
+		pcid = Convert.ToString(QueryString.GetValue("pcid"), "");
+		eguid = Convert.ToString(QueryString.GetValue("eguid"),"");
+		
+		newparams = "";
+		useCid = "";
+		
+	
+		if (cid != "")
+		{
+			useCid = cid;
+		}
+		else
+		{
+			if (userCompany != "")
+			{
+				useCid = userCompany;
+			}
+		}
+			
+		if (parent != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "parent=" + parent;
+		}
+
+		if (client != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "client=" + client;
+		}	
+		
+		if (subaccount != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "subaccount=" + subaccount;
+		}
+	
+		if (useCid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "cid=" + useCid;
+		}
+		
+		if (useCid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "CompanyID=" + useCid;
+		}
+				
+		if (pcid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "pcid=" + client;
+		}
+		
+		
+		if (r != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "r=" + r;
+		}
+		
+			
+		if (userGuid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "eid=" + userGuid;
+		}
+		
+		if (eguid != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "eguid=" + eguid;
+		}
+		
+		if (sortId != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "SortID=" + sortId;
+		}
+				
+		if (status != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "Status=" + status;
+		}
+
+		if (searchTerm != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "SearchTerm=" + searchTerm;
+		}
+		
+		if (timeFrame != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "tf=" + timeFrame;
+		}
+		
+		if (startDate != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "sdt=" + startDate;
+		}
+		
+		if (endDate != "")
+		{
+			if (newparams != "")
+			{
+				newparams = newparams + "&";
+			}
+			newparams = newparams + "edt=" + endDate;
+		}	
+		
+		if (button_link != "")
+		{
+			if (newparams != "")
+			{
+				button_link = button_link + "?" + newparams;
+			}
+		}
+		
+		if (button_link != "")
+		{
+			buttons = buttons + "<a class=\"" + button_css + "\" href=\"" + button_link + "\"><i class=\"" + button_icon + "\"></i> " + button_title + "</a>";
+		}
+		
+		Convert.ToString(buttons);
+
+#%}
+  </div>
+</div>  
