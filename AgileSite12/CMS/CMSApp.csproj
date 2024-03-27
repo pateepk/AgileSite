@@ -4842,6 +4842,9 @@
     <Content Include="IntranetPortal\media\Media\Trees for Bugs\Trees-for-bugs-5.jpg" />
     <Content Include="IntranetPortal\media\Microsoft_Office_Upgrade\Microsoft Office graphics\msoffice.jpg" />
     <Content Include="IntranetPortal\media\Microsoft_Office_Upgrade\Microsoft Office graphics\msoffice_col.jpg" />
+    <Content Include="WTE\test\paypal-test.html" />
+    <Content Include="WTE\test\buttons-test.html" />
+    <Content Include="WTE\test\css1.css" />
     <Content Include="KofcNC\test_member_search.html" />
     <Content Include="KofcNC\test_member_filter.html" />
     <Content Include="KofcNC\test_member_lookup.html" />
@@ -4901,7 +4904,7 @@
     <Content Include="App_Data\RadSpell\de-DE.tdf" />
     <Content Include="App_Data\RadSpell\en-US.tdf" />
     <Content Include="App_Data\RadSpell\fr-FR.tdf" />
-    <Content Include="WTE\clouduploadtest.aspx" />
+    <Content Include="WTE\test\clouduploadtest.aspx" />
     <Content Include="WTE\EditVersionHistory.aspx" />
     <None Include="App_Themes\Default\CMSModules\cms.messages.less" />
     <None Include="App_Themes\Default\CMSModules\cms.emailmarketing\cms.emailmarketing.emailbuilder.emailproperties.less" />
@@ -4935,22 +4938,22 @@
     <Content Include="Web-default.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="WTE\UploadToCarmeets.ashx" />
-    <Content Include="WTE\UploadToMods.ashx" />
-    <Content Include="WTE\UploadToRides.ashx" />
+    <Content Include="Ride\UploadToCarmeets.ashx" />
+    <Content Include="Ride\UploadToMods.ashx" />
+    <Content Include="Ride\UploadToRides.ashx" />
     <Content Include="Web-Rideology.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web-As12_production_1.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="WTE\UploadToCarModels.ashx" />
-    <Content Include="WTE\UploadToCharityImages.ashx" />
-    <Content Include="WTE\UploadToPhotoShare.ashx" />
-    <Content Include="WTE\UploadToPropAsset.ashx" />
-    <Content Include="WTE\UploadToPropBuilding.ashx" />
-    <Content Include="WTE\UploadToPropConstruction.ashx" />
-    <Content Include="WTE\UploadToPropStructure.ashx" />
+    <Content Include="Ride\UploadToCarModels.ashx" />
+    <Content Include="Ride\UploadToCharityImages.ashx" />
+    <Content Include="Ride\UploadToPhotoShare.ashx" />
+    <Content Include="PropTrax\UploadToPropAsset.ashx" />
+    <Content Include="PropTrax\UploadToPropBuilding.ashx" />
+    <Content Include="PropTrax\UploadToPropConstruction.ashx" />
+    <Content Include="PropTrax\UploadToPropStructure.ashx" />
     <Content Include="web-slipcash.config" />
     <Content Include="web-kofnc.config" />
   </ItemGroup>
@@ -5538,11 +5541,11 @@
     <Compile Include="Ride\test1.aspx.designer.cs">
       <DependentUpon>test1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\clouduploadtest.aspx.cs">
+    <Compile Include="WTE\test\clouduploadtest.aspx.cs">
       <DependentUpon>clouduploadtest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WTE\clouduploadtest.aspx.designer.cs">
+    <Compile Include="WTE\test\clouduploadtest.aspx.designer.cs">
       <DependentUpon>clouduploadtest.aspx</DependentUpon>
     </Compile>
     <Compile Include="WTE\EditVersionHistory.aspx.cs">
@@ -5552,34 +5555,34 @@
     <Compile Include="WTE\EditVersionHistory.aspx.designer.cs">
       <DependentUpon>EditVersionHistory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToCarmeets.ashx.cs">
+    <Compile Include="Ride\UploadToCarmeets.ashx.cs">
       <DependentUpon>UploadToCarmeets.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToCarModels.ashx.cs">
+    <Compile Include="Ride\UploadToCarModels.ashx.cs">
       <DependentUpon>UploadToCarModels.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToCharityImages.ashx.cs">
+    <Compile Include="Ride\UploadToCharityImages.ashx.cs">
       <DependentUpon>UploadToCharityImages.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToMods.ashx.cs">
+    <Compile Include="Ride\UploadToMods.ashx.cs">
       <DependentUpon>UploadToMods.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToPhotoShare.ashx.cs">
+    <Compile Include="Ride\UploadToPhotoShare.ashx.cs">
       <DependentUpon>UploadToPhotoShare.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToPropAsset.ashx.cs">
+    <Compile Include="PropTrax\UploadToPropAsset.ashx.cs">
       <DependentUpon>UploadToPropAsset.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToPropBuilding.ashx.cs">
+    <Compile Include="PropTrax\UploadToPropBuilding.ashx.cs">
       <DependentUpon>UploadToPropBuilding.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToPropConstruction.ashx.cs">
+    <Compile Include="PropTrax\UploadToPropConstruction.ashx.cs">
       <DependentUpon>UploadToPropConstruction.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToPropStructure.ashx.cs">
+    <Compile Include="PropTrax\UploadToPropStructure.ashx.cs">
       <DependentUpon>UploadToPropStructure.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WTE\UploadToRides.ashx.cs">
+    <Compile Include="Ride\UploadToRides.ashx.cs">
       <DependentUpon>UploadToRides.ashx</DependentUpon>
     </Compile>
     <Content Include="App_Data\CMSModules\QRCode\Resources.zip" />
@@ -23485,7 +23488,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="web_author" content="WTE Solutions">
+   <meta name="google-site-verification" content="6cLh7LxlyALB12LWRUov1n4An4ZwMKm9SOUJQu74SWs" />
+
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+   <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js"></script>
+
+   <link rel="stylesheet" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/css/core.min.css" type="text/css" media="all">
+
+   <!--v6 font awesome -->
+   <!--<script data-search-pseudo-elements src="https://kit.fontawesome.com/a2dcd68816.js" crossorigin="anonymous"></script>-->
+   <!--v5 font awesome?? -- why are we switching backwards???? - because v6 breaks all the icons on the site because it's written in v5 code - pk-->
+   <script data-search-pseudo-elements src="https://kit.fontawesome.com/ecc92a4d73.js" crossorigin="anonymous" defer></script>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+   <link rel="apple-touch-icon" sizes="180x180" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon-16x16.png">
+   <link rel="mask-icon" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/safari-pinned-tab.svg" color="#5bbad5">
+   <link rel="shortcut icon" href="https://kofcnc.agilesite.com/App_Themes/kofcNC/assets/fav/favicon.ico">
+   <meta name="msapplication-TileColor" content="#ffffff">
+
+</head>
+<body>
+
+       <script src="https://www.paypal.com/sdk/js?client-id=AQ5J9Nn3CG7zqGTLXm1wuP6ccAf7G_gT2EjEojghBJNdh8bMPisP2wn_iVBLQNuPzTTrka0Twjze53yu">
+
+    </script>
+    <div id="paypal-button-container"></div>
+
+   <!-- Replace "test" with your own sandbox Business account app client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=&currency=USD"></script>
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
+    <script>
+       paypal.Buttons({
+          createOrder() {
+             var order = createOrder1();
+             return order.then((order) => order.id);
+          } 
+      }).render('#paypal-button-container');
+
+
+// use the orders api to create an order
+function createOrder1() {
+  // create accessToken using your clientID and clientSecret
+  // for the full stack example, please see the Standard Integration guide
+  // https://developer.paypal.com/docs/multiparty/checkout/standard/integrate/
+  const accessToken = "EOYhA2CQe9qKFxyPBHiffxBLBtB9odNYxNaasMOwrSRrFmkvrMDfMmFItNlKRQu0dg-BEsFVF0UYkg0I";
+  return fetch ("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ${accessToken}',
+    },
+    body: JSON.stringify({
+      "purchase_units": [
+        {
+          "amount": {
+            "currency_code": "USD",
+            "value": "100.00"
+          },
+          "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b"
+        }
+      ],
+      "intent": "CAPTURE",
+      "payment_source": {
+        "paypal": {
+          "experience_context": {
+            "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
+            "payment_method_selected": "PAYPAL",
+            "brand_name": "EXAMPLE INC",
+            "locale": "en-US",
+            "landing_page": "LOGIN",
+            "shipping_preference": "SET_PROVIDED_ADDRESS",
+            "user_action": "PAY_NOW",
+            "return_url": "https://example.com/returnUrl",
+            "cancel_url": "https://example.com/cancelUrl"
+          }
+        }
+      }
+    })
+  })
+  .then((response) => response.json());
+}
+    </script>
+
+
+
+</body>
+</html>
